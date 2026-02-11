@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miiro — See what matters.</title>
+<meta name="description" content="The task app that brings clarity to your day. Shared lists, smart recipes, and calm productivity — solo or together.">
+<meta property="og:title" content="Miiro — See what matters.">
+<meta property="og:description" content="The task app that brings clarity to your day. Shared lists, smart recipes, and calm productivity.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #FAFAF8;
+  --warm: #F3F0EB;
+  --sand: #E4DED4;
+  --stone: #8C8578;
+  --charcoal: #3D3A36;
+  --indigo: #4A5CE8;
+  --indigo-soft: rgba(74,92,232,0.07);
+  --indigo-mid: rgba(74,92,232,0.15);
+  --coral: #E8634A;
+  --coral-soft: rgba(232,99,74,0.06);
+  --mint: #3BBFA0;
+  --mint-soft: rgba(59,191,160,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  color: var(--charcoal);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes softPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.reveal { opacity: 0; transform: translateY(28px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(250,250,248,0.9);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(228,222,212,0.4);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-wordmark {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.nav-wordmark span { color: var(--indigo); }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  color: var(--stone); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  padding: 10px 22px;
+  background: var(--indigo); color: #fff;
+  border: none; border-radius: 10px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: #3d4ed4; transform: translateY(-1px); }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 140px 24px 100px;
+  position: relative;
+}
+
+/* Subtle texture */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(74,92,232,0.03) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(232,99,74,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-jp {
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s ease-out both;
+}
+.hero-jp span {
+  color: var(--stone); font-weight: 400;
+  letter-spacing: 0.1em; margin-left: 8px;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3rem, 7.5vw, 5.5rem);
+  font-weight: 400; color: var(--ink);
+  letter-spacing: -0.03em; line-height: 1.08;
+  max-width: 700px;
+  animation: fadeUp 0.7s ease-out 0.1s both;
+}
+.hero h1 em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--indigo), var(--coral));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--charcoal); font-weight: 400;
+  margin-top: 24px; max-width: 460px;
+  line-height: 1.8;
+  animation: fadeUp 0.7s ease-out 0.2s both;
+}
+
+/* Waitlist */
+.waitlist-form {
+  display: flex; gap: 8px;
+  margin-top: 40px; max-width: 420px; width: 100%;
+  animation: fadeUp 0.7s ease-out 0.3s both;
+}
+.waitlist-input {
+  flex: 1; padding: 15px 18px;
+  border: 1.5px solid var(--sand); border-radius: 12px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9rem; color: var(--ink);
+  background: #fff; outline: none;
+  transition: border-color 0.2s;
+}
+.waitlist-input::placeholder { color: var(--stone); }
+.waitlist-input:focus { border-color: var(--indigo); }
+.waitlist-btn {
+  padding: 15px 26px;
+  background: var(--indigo); color: #fff;
+  border: none; border-radius: 12px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  white-space: nowrap;
+}
+.waitlist-btn:hover { background: #3d4ed4; transform: translateY(-1px); }
+
+.hero-note {
+  margin-top: 16px; font-size: 0.78rem;
+  color: var(--stone); font-weight: 400;
+  animation: fadeUp 0.7s ease-out 0.4s both;
+}
+
+/* Early access badge */
+.early-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; margin-bottom: 20px;
+  background: var(--indigo-soft);
+  border: 1px solid var(--indigo-mid);
+  border-radius: 100px;
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--indigo);
+  letter-spacing: 0.04em;
+  animation: fadeUp 0.6s ease-out both;
+}
+.early-badge .dot {
+  width: 5px; height: 5px;
+  background: var(--indigo); border-radius: 50%;
+  animation: softPulse 2s ease-in-out infinite;
+}
+
+.waitlist-success {
+  display: none; margin-top: 36px;
+  padding: 20px 28px;
+  background: var(--mint-soft);
+  border: 1px solid rgba(59,191,160,0.2);
+  border-radius: 14px; text-align: center;
+}
+.waitlist-success.show { display: block; animation: fadeUp 0.5s ease-out; }
+.waitlist-success h3 { color: var(--mint); font-size: 1rem; margin-bottom: 4px; }
+.waitlist-success p { color: var(--charcoal); font-size: 0.85rem; }
+
+/* ---- PHILOSOPHY STRIP ---- */
+.philosophy {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  max-width: 900px; margin: 0 auto;
+  padding: 0 24px 80px;
+  gap: 40px;
+}
+.philosophy-item { text-align: center; }
+.philosophy-jp {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem; color: var(--sand);
+  margin-bottom: 6px;
+}
+.philosophy-word {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--indigo); margin-bottom: 6px;
+}
+.philosophy-desc {
+  font-size: 0.82rem; color: var(--stone);
+  line-height: 1.6;
+}
+
+/* ---- SECTION ---- */
+.section {
+  max-width: 1000px; margin: 0 auto;
+  padding: 80px 24px;
+}
+.section-eyebrow {
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--indigo); margin-bottom: 14px;
+}
+.section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400; color: var(--ink);
+  letter-spacing: -0.02em; line-height: 1.2;
+  margin-bottom: 14px;
+}
+.section .lead {
+  font-size: 1rem; color: var(--charcoal);
+  max-width: 500px; line-height: 1.8;
+}
+
+/* ---- FEATURES ---- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px; margin-top: 48px;
+}
+.feature-card {
+  background: #fff;
+  border: 1px solid var(--sand);
+  border-radius: 16px; padding: 28px 24px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+  border-color: var(--indigo-mid);
+}
+.feature-emoji {
+  font-size: 1.5rem; margin-bottom: 14px;
+  display: block;
+}
+.feature-card h3 {
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 6px;
+}
+.feature-card p {
+  font-size: 0.84rem; color: var(--charcoal);
+  line-height: 1.7;
+}
+
+/* ---- RECIPE FINDER HIGHLIGHT ---- */
+.recipe-section {
+  background: var(--ink); border-radius: 24px;
+  padding: 56px 48px; margin-top: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.recipe-section::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(232,99,74,0.12) 0%, transparent 70%);
+}
+.recipe-text .section-eyebrow { color: var(--coral); opacity: 0.8; }
+.recipe-text h2 { color: #fff; }
+.recipe-text p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.92rem; line-height: 1.8;
+  margin-top: 12px;
+}
+.recipe-demo {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 24px;
+  position: relative;
+}
+.recipe-demo-url {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 12px 16px;
+  margin-bottom: 16px;
+}
+.recipe-demo-url .icon {
+  width: 18px; height: 18px;
+  border-radius: 4px; background: var(--coral);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; color: #fff; flex-shrink: 0;
+}
+.recipe-demo-url span {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.78rem; font-family: monospace;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.recipe-demo-result {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+}
+.recipe-demo-result h4 {
+  color: #fff; font-size: 0.9rem; margin-bottom: 10px;
+}
+.recipe-demo-items {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.recipe-demo-item {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.5); font-size: 0.78rem;
+}
+.recipe-demo-item .check {
+  width: 14px; height: 14px; border-radius: 4px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+.recipe-demo-item.done .check {
+  background: var(--mint); border-color: var(--mint);
+}
+.recipe-demo-item.done { text-decoration: line-through; color: rgba(255,255,255,0.25); }
+
+/* ---- HOW IT WORKS ---- */
+.steps-container {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; margin-top: 48px;
+  position: relative;
+}
+.steps-container::before {
+  content: '';
+  position: absolute; top: 36px; left: 12.5%; right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sand) 0%, var(--indigo-mid) 50%, var(--mint-soft) 100%);
+}
+.step-card {
+  text-align: center; padding: 0 16px;
+  position: relative; cursor: pointer;
+}
+.step-num {
+  width: 72px; height: 72px;
+  border-radius: 50%; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  background: var(--warm);
+  border: 2px solid var(--sand);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative; z-index: 1;
+}
+.step-card:hover .step-num {
+  background: var(--indigo-soft);
+  border-color: var(--indigo);
+  transform: scale(1.08);
+}
+.step-card h3 {
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 6px;
+}
+.step-card p {
+  font-size: 0.8rem; color: var(--charcoal);
+  line-height: 1.6;
+}
+.step-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.step-card.active .step-detail {
+  max-height: 80px; opacity: 1;
+}
+.step-card.active .step-num {
+  background: var(--indigo); border-color: var(--indigo);
+}
+.step-card.active .step-num span { filter: brightness(10); }
+.step-detail p {
+  margin-top: 8px; font-size: 0.76rem;
+  color: var(--stone); font-style: italic;
+}
+
+/* ---- PRICING ---- */
+.pricing-section { background: var(--warm); border-radius: 24px; padding: 56px 40px; margin-top: 48px; }
+.pricing-toggle {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 36px;
+}
+.pricing-toggle span { font-size: 0.85rem; color: var(--stone); font-weight: 500; }
+.pricing-toggle span.active { color: var(--ink); font-weight: 600; }
+.toggle-switch {
+  width: 44px; height: 24px;
+  background: var(--sand); border-radius: 12px;
+  position: relative; cursor: pointer;
+  transition: background 0.3s;
+}
+.toggle-switch.yearly { background: var(--indigo); }
+.toggle-knob {
+  width: 18px; height: 18px;
+  background: #fff; border-radius: 50%;
+  position: absolute; top: 3px; left: 3px;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.toggle-switch.yearly .toggle-knob { transform: translateX(20px); }
+.save-badge {
+  font-size: 0.68rem; font-weight: 700;
+  color: var(--mint); background: var(--mint-soft);
+  padding: 3px 10px; border-radius: 100px;
+  margin-left: 4px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.price-card {
+  background: #fff; border: 1.5px solid var(--sand);
+  border-radius: 18px; padding: 28px 24px;
+  transition: all 0.3s ease;
+  display: flex; flex-direction: column;
+}
+.price-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+.price-card.featured {
+  border: 2px solid var(--indigo);
+  background: #fff;
+  position: relative;
+}
+.price-card.featured::before {
+  content: 'BEST VALUE';
+  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.12em; color: #fff;
+  background: var(--indigo); padding: 4px 14px;
+  border-radius: 100px;
+}
+.price-tier {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 4px;
+}
+.price-card.featured .price-tier { color: var(--indigo); }
+.price-amount {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem; color: var(--ink);
+  margin-bottom: 2px;
+}
+.price-amount .period {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8rem; font-weight: 400; color: var(--stone);
+}
+.price-subtitle {
+  font-size: 0.8rem; color: var(--charcoal);
+  margin-bottom: 20px; line-height: 1.5;
+}
+.price-features {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+  flex: 1;
+}
+.price-features li {
+  font-size: 0.8rem; color: var(--charcoal);
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.5;
+}
+.price-features li::before {
+  content: '✓'; color: var(--mint);
+  font-weight: 700; flex-shrink: 0;
+  margin-top: 1px;
+}
+.price-features li.missing {
+  color: var(--stone);
+}
+.price-features li.missing::before {
+  content: '—'; color: var(--sand);
+}
+.price-cta {
+  margin-top: 20px; padding: 12px;
+  border-radius: 10px; border: none;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  text-align: center; display: block;
+  text-decoration: none; width: 100%;
+}
+.price-cta.outline {
+  background: transparent;
+  border: 1.5px solid var(--sand);
+  color: var(--charcoal);
+}
+.price-cta.outline:hover { border-color: var(--indigo); color: var(--indigo); }
+.price-cta.primary {
+  background: var(--indigo); color: #fff;
+}
+.price-cta.primary:hover { background: #3d4ed4; }
+
+/* ---- STORY ---- */
+.story-section {
+  max-width: 640px; margin: 0 auto;
+  padding: 80px 24px; text-align: center;
+}
+.story-section .section-eyebrow { text-align: center; }
+.story-section h2 { text-align: center; margin-bottom: 20px; }
+.story-section h2 em { font-style: italic; color: var(--indigo); }
+.story-body {
+  font-size: 0.95rem; color: var(--charcoal);
+  line-height: 2; text-align: left;
+}
+.story-body em { color: var(--indigo); font-style: normal; font-weight: 600; }
+.story-sig {
+  margin-top: 28px; text-align: left;
+  color: var(--stone); font-size: 0.85rem;
+}
+.story-sig strong { color: var(--ink); }
+
+/* ---- REFERRAL ---- */
+.referral-banner {
+  max-width: 1000px; margin: 0 auto;
+  padding: 0 24px 80px;
+}
+.referral-inner {
+  background: var(--indigo-soft);
+  border: 1px solid var(--indigo-mid);
+  border-radius: 18px; padding: 32px 36px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+}
+.referral-inner h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem; color: var(--ink);
+  margin-bottom: 4px;
+}
+.referral-inner p {
+  font-size: 0.85rem; color: var(--charcoal);
+  max-width: 400px; line-height: 1.6;
+}
+.referral-tag {
+  padding: 10px 20px;
+  background: var(--indigo); color: #fff;
+  border-radius: 100px;
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.03em; white-space: nowrap;
+}
+
+/* ---- FINAL CTA ---- */
+.final-cta {
+  text-align: center; padding: 80px 24px 100px;
+}
+.final-cta h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400; color: var(--ink);
+  letter-spacing: -0.02em; margin-bottom: 14px;
+}
+.final-cta h2 em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--indigo), var(--coral));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.final-cta p {
+  color: var(--charcoal); font-size: 1rem;
+  margin-bottom: 32px;
+}
+.final-cta .waitlist-form { margin: 0 auto; }
+
+/* ---- FOOTER ---- */
+footer {
+  text-align: center; padding: 40px 24px 60px;
+  border-top: 1px solid var(--sand);
+}
+footer .footer-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem; color: var(--ink);
+  margin-bottom: 10px; display: block;
+}
+footer .footer-brand span { color: var(--indigo); }
+footer p { color: var(--stone); font-size: 0.78rem; }
+footer a {
+  color: var(--stone); text-decoration: underline;
+  text-underline-offset: 3px;
+}
+footer a:hover { color: var(--indigo); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 120px 20px 60px; }
+  .philosophy { grid-template-columns: 1fr; gap: 24px; padding-bottom: 40px; }
+  .section { padding: 60px 20px; }
+  .recipe-section { grid-template-columns: 1fr; padding: 36px 24px; border-radius: 18px; }
+  .steps-container { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .steps-container::before { display: none; }
+  .pricing-section { padding: 36px 20px; border-radius: 18px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .waitlist-form { flex-direction: column; }
+  .waitlist-btn { width: 100%; }
+  .referral-inner { flex-direction: column; text-align: center; }
+  .referral-inner p { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <img src="koi-logo.png" alt="Miiro" width="32" height="32" style="object-fit: contain;">
+    <span class="nav-wordmark">M<span>ii</span>ro</span>
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#story">Story</a>
+    <a href="#waitlist" class="nav-cta">Join Early Access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-jp">見る <span>miru — to see</span></div>
+
+  <div class="early-badge">
+    <span class="dot"></span>
+    Early access — Limited spots
+  </div>
+
+  <img src="koi-logo.png" alt="Miiro Koi" class="hero-logo" style="width: 140px; height: 140px; object-fit: contain; margin-bottom: 28px; animation: fadeUp 0.65s ease-out 0.05s both;">
+
+  <h1>See what <em>matters.</em></h1>
+
+  <p class="hero-sub">The task app that brings clarity to your day. Organize groceries, share lists, discover recipes, and plan your week — solo or together.</p>
+
+  <form class="waitlist-form" id="waitlist" onsubmit="handleWaitlist(event)">
+    <input type="email" class="waitlist-input" placeholder="Your email" required id="emailInput">
+    <button type="submit" class="waitlist-btn">Get Early Access</button>
+  </form>
+  <p class="hero-note">Free to start. No credit card required. First 100 users get 3 months of Duo free.</p>
+
+  <div class="waitlist-success" id="successMsg">
+    <h3>You're in!</h3>
+    <p>We'll send you an invite as soon as Miiro launches.</p>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy reveal">
+  <div class="philosophy-item">
+    <div class="philosophy-jp">見る</div>
+    <div class="philosophy-word">Miru — See</div>
+    <p class="philosophy-desc">Make the invisible visible. See your tasks, your partner's progress, your week ahead.</p>
+  </div>
+  <div class="philosophy-item">
+    <div class="philosophy-jp">間</div>
+    <div class="philosophy-word">Ma — Space</div>
+    <p class="philosophy-desc">Create breathing room in a busy life. Only see what matters today.</p>
+  </div>
+  <div class="philosophy-item">
+    <div class="philosophy-jp">簡素</div>
+    <div class="philosophy-word">Kanso — Simplicity</div>
+    <p class="philosophy-desc">Strip away the noise. A calm interface for a clearer mind.</p>
+  </div>
+</div>
+
+<!-- PRICING (moved up) -->
+<div class="section" id="pricing">
+  <div class="section-eyebrow">Simple, honest pricing</div>
+  <h2>Start free. Upgrade when you're ready.</h2>
+  <p class="lead">No hidden fees. No features held hostage. Upgrade because sharing is so good you want more.</p>
+
+  <div class="pricing-section">
+    <div class="pricing-toggle">
+      <span class="active" id="monthlyLabel">Monthly</span>
+      <div class="toggle-switch" id="pricingToggle" onclick="togglePricing()">
+        <div class="toggle-knob"></div>
+      </div>
+      <span id="yearlyLabel">Yearly <span class="save-badge">Save 16%</span></span>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- FREE -->
+      <div class="price-card">
+        <div class="price-tier">Free</div>
+        <div class="price-amount">$0</div>
+        <p class="price-subtitle">Everything you need to get organized.</p>
+        <ul class="price-features">
+          <li>Unlimited personal tasks</li>
+          <li>Up to 5 lists</li>
+          <li>My Day daily focus view</li>
+          <li>Calendar view</li>
+          <li>Reminders & due dates</li>
+          <li>1 shared list</li>
+          <li class="missing">Unlimited shared lists</li>
+          <li class="missing">Recipe finder</li>
+          <li class="missing">Grocery categories</li>
+          <li class="missing">AI suggestions</li>
+          <li class="missing">Time-blocking</li>
+        </ul>
+        <a href="#waitlist" class="price-cta outline">Get Started Free</a>
+      </div>
+
+      <!-- DUO -->
+      <div class="price-card featured">
+        <div class="price-tier">Duo / Family</div>
+        <div class="price-amount"><span id="duoPrice">$1.99</span><span class="period" id="duoPeriod">/mo</span></div>
+        <p class="price-subtitle">Share your life with the people who matter.</p>
+        <ul class="price-features">
+          <li>Everything in Free</li>
+          <li>Unlimited shared lists</li>
+          <li>Up to 6 family members</li>
+          <li>Real-time sync</li>
+          <li>Assign tasks to each other</li>
+          <li>Activity feed</li>
+          <li>Recipe finder & collections</li>
+          <li>Grocery categories by aisle</li>
+          <li class="missing">AI suggestions</li>
+          <li class="missing">Time-blocking</li>
+          <li class="missing">Custom themes</li>
+        </ul>
+        <a href="#waitlist" class="price-cta primary">Get Duo</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="price-card">
+        <div class="price-tier">Pro</div>
+        <div class="price-amount"><span id="proPrice">$3.99</span><span class="period" id="proPeriod">/mo</span></div>
+        <p class="price-subtitle">For power users who want it all.</p>
+        <ul class="price-features">
+          <li>Everything in Duo</li>
+          <li>AI task suggestions</li>
+          <li>Time-blocking & scheduling</li>
+          <li>Custom themes & icons</li>
+          <li>Priority support</li>
+          <li>Integrations (coming soon)</li>
+          <li>Advanced recurring tasks</li>
+          <li>Widgets</li>
+          <li>Export & backup</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+        </ul>
+        <a href="#waitlist" class="price-cta outline">Get Pro</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section" id="features">
+  <div class="section-eyebrow">Features</div>
+  <h2>Everything you need. Nothing you don't.</h2>
+  <p class="lead">Built with kanso — simplicity — at its core. Every feature earns its place.</p>
+
+  <div class="features-grid reveal">
+    <div class="feature-card">
+      <span class="feature-emoji">📋</span>
+      <h3>Smart lists</h3>
+      <p>Create lists for anything — groceries, chores, projects, goals. Organize by category and keep things tidy.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">👥</span>
+      <h3>Share instantly</h3>
+      <p>Invite your partner, family, or roommates. Everyone sees updates in real-time. No more "did you get the thing?"</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">☀️</span>
+      <h3>My Day</h3>
+      <p>A calm daily view of just what matters today. Smart suggestions surface overdue and high-priority items.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">🛒</span>
+      <h3>Grocery categories</h3>
+      <p>Items grouped by store aisle — produce, dairy, bakery, frozen. Walk through once, get everything.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">📅</span>
+      <h3>Calendar & time-blocking</h3>
+      <p>Plan your week visually. Drag tasks into time slots. See your schedule and tasks in one place.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">🔔</span>
+      <h3>Activity feed</h3>
+      <p>"Mirrin completed grocery shopping ✓" — see what's happening without asking.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPE FINDER -->
+<div class="section" style="padding-top: 0;">
+  <div class="recipe-section reveal">
+    <div class="recipe-text">
+      <div class="section-eyebrow">Recipe Finder</div>
+      <h2>Paste a link. Get the recipe.</h2>
+      <p>Found a recipe online? Just paste the URL into Miiro. We'll extract the ingredients, steps, and servings — no ads, no life stories, no scrolling past 2,000 words to find the actual recipe.</p>
+      <p style="margin-top: 12px;">Save it to your collection. Share it with your household. Tap "Add to groceries" and every ingredient lands in your shopping list, sorted by aisle.</p>
+    </div>
+    <div class="recipe-demo">
+      <div class="recipe-demo-url">
+        <div class="icon">🔗</div>
+        <span>allrecipes.com/recipe/creamy-tuscan-chicken</span>
+      </div>
+      <div class="recipe-demo-result">
+        <h4>Creamy Tuscan Chicken</h4>
+        <div class="recipe-demo-items">
+          <div class="recipe-demo-item done"><div class="check"></div> 4 chicken breasts</div>
+          <div class="recipe-demo-item done"><div class="check"></div> 2 cups sun-dried tomatoes</div>
+          <div class="recipe-demo-item"><div class="check"></div> 1 cup heavy cream</div>
+          <div class="recipe-demo-item"><div class="check"></div> 3 cups fresh spinach</div>
+          <div class="recipe-demo-item"><div class="check"></div> ½ cup parmesan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <div class="section-eyebrow">How it works</div>
+  <h2>From download to clarity in minutes.</h2>
+
+  <div class="steps-container reveal">
+    <div class="step-card active" onclick="activateStep(this)">
+      <div class="step-num"><span>📱</span></div>
+      <h3>Download Miiro</h3>
+      <p>Create an account in seconds.</p>
+      <div class="step-detail">
+        <p>Sign up with email or Apple ID. Your first list is ready before you finish your coffee.</p>
+      </div>
+    </div>
+    <div class="step-card" onclick="activateStep(this)">
+      <div class="step-num"><span>📝</span></div>
+      <h3>Create your lists</h3>
+      <p>Groceries, tasks, goals — anything.</p>
+      <div class="step-detail">
+        <p>Add items, set due dates, assign priorities. Grocery lists auto-sort by aisle.</p>
+      </div>
+    </div>
+    <div class="step-card" onclick="activateStep(this)">
+      <div class="step-num"><span>🔗</span></div>
+      <h3>Share (or don't)</h3>
+      <p>Invite others or keep it personal.</p>
+      <div class="step-detail">
+        <p>Share a list with one tap. Your partner gets a notification. Personal lists stay private.</p>
+      </div>
+    </div>
+    <div class="step-card" onclick="activateStep(this)">
+      <div class="step-num"><span>✨</span></div>
+      <h3>See what matters</h3>
+      <p>My Day shows today's focus.</p>
+      <div class="step-detail">
+        <p>Every morning, see just what needs doing. Check things off. Breathe.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY -->
+<div class="story-section reveal" id="story">
+  <div class="section-eyebrow">The story</div>
+  <h2>Why I built <em>Miiro</em></h2>
+  <div class="story-body">
+    <p><em>Miiro</em> comes from the Japanese word <em>miru</em> — to see.</p>
+    <p style="margin-top: 12px;">I built it because my wife Mirrin and I kept losing track of the little things — the groceries, the household tasks, the recipes we wanted to try. Every task app out there was built for one person working alone. We needed something that let us see each other's day.</p>
+    <p style="margin-top: 12px;">The name is also personal: <em>Mi</em> (from Mirrin) + <em>Ro</em> (from Robert) = Miiro. It's the app I wished existed, built for every person, couple, and family who's tired of things falling through the cracks.</p>
+  </div>
+  <div class="story-sig">
+    <strong>Robert</strong> — builder of Miiro, husband, dog dad to Rose 🐕
+  </div>
+</div>
+
+<!-- REFERRAL -->
+<div class="referral-banner reveal">
+  <div class="referral-inner">
+    <div>
+      <h3>Share Miiro, earn free months</h3>
+      <p>Refer a friend and you both get a free month of Duo when they join. Know 10 people? That's almost a free year.</p>
+    </div>
+    <div class="referral-tag">Coming at launch</div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to see what <em>matters?</em></h2>
+  <p>Join the early access list. Be one of the first to experience Miiro.</p>
+  <form class="waitlist-form" onsubmit="handleWaitlist(event)">
+    <input type="email" class="waitlist-input" placeholder="Your email" required>
+    <button type="submit" class="waitlist-btn">Get Early Access</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 4px;">
+    <img src="koi-logo.png" alt="Miiro" width="28" height="28" style="object-fit: contain;">
+    <span class="footer-brand">M<span>ii</span>ro</span>
+  </div>
+  <p>Built with care in Amsterdam 🇳🇱</p>
+  <p style="margin-top: 8px;">
+    <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="/cdn-cgi/l/email-protection#234b464f4f4c634446574e4a4a514c0d425353">Contact</a>
+  </p>
+  <p style="margin-top: 14px; opacity: 0.5;">© 2026 Miiro. All rights reserved.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Waitlist — Formspree
+function handleWaitlist(e) {
+  e.preventDefault();
+  const form = e.target;
+  const email = form.querySelector('input[type="email"]').value;
+
+  fetch('https://formspree.io/f/meeleaqn', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).then(r => {
+    if (r.ok) {
+      document.querySelectorAll('.waitlist-form').forEach(f => f.style.display = 'none');
+      const note = document.querySelector('.hero-note');
+      if (note) note.style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+    }
+  }).catch(() => {
+    document.querySelectorAll('.waitlist-form').forEach(f => f.style.display = 'none');
+    document.getElementById('successMsg').classList.add('show');
+  });
+}
+
+// Pricing toggle
+let isYearly = false;
+function togglePricing() {
+  isYearly = !isYearly;
+  const toggle = document.getElementById('pricingToggle');
+  const mLabel = document.getElementById('monthlyLabel');
+  const yLabel = document.getElementById('yearlyLabel');
+
+  toggle.classList.toggle('yearly', isYearly);
+  mLabel.classList.toggle('active', !isYearly);
+  yLabel.classList.toggle('active', isYearly);
+
+  document.getElementById('duoPrice').textContent = isYearly ? '$19.99' : '$1.99';
+  document.getElementById('duoPeriod').textContent = isYearly ? '/year' : '/mo';
+  document.getElementById('proPrice').textContent = isYearly ? '$39.99' : '$3.99';
+  document.getElementById('proPeriod').textContent = isYearly ? '/year' : '/mo';
+}
+
+// Interactive steps
+function activateStep(el) {
+  document.querySelectorAll('.step-card').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { thres
