@@ -15,7 +15,7 @@
   --ink: #1a1a2e;
   --paper: #FAFAF8;
   --warm: #F3F0EB;
-  --sand: #E4DED4;å
+  --sand: #E4DED4;
   --stone: #8C8578;
   --charcoal: #3D3A36;
   --indigo: #4A5CE8;
@@ -294,7 +294,7 @@ nav {
   padding: 56px 48px; margin-top: 0;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 48px; align-items: center;
-  position: relative; overflow: hidden;
+  position: relative;
 }
 .recipe-section::before {
   content: '';
@@ -308,6 +308,7 @@ nav {
   color: rgba(255,255,255,0.65);
   font-size: 0.92rem; line-height: 1.8;
   margin-top: 12px;
+  word-wrap: break-word; overflow-wrap: break-word;
 }
 .recipe-demo {
   background: rgba(255,255,255,0.06);
@@ -630,6 +631,7 @@ footer a:hover { color: var(--indigo); }
   .recipe-section { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 18px; overflow: visible; }
   .recipe-text h2 { font-size: 1.4rem; }
   .recipe-demo-url span { font-size: 0.7rem; }
+  .section { padding: 60px 16px; overflow: visible; }
   .steps-container { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .steps-container::before { display: none; }
   .pricing-section { padding: 36px 20px; border-radius: 18px; }
