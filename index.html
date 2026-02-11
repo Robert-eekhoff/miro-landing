@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miiro — See what matters.</title>
-<meta name="description" content="The task app that brings clarity to your day. Shared lists, smart recipes, and calm productivity — solo or together.">
+<meta name="description" content="The task app for couples, families, and roommates. Shared lists, smart recipes, and calm productivity.">
 <meta property="og:title" content="Miiro — See what matters.">
-<meta property="og:description" content="The task app that brings clarity to your day. Shared lists, smart recipes, and calm productivity.">
+<meta property="og:description" content="The task app for people who share a life. Groceries, chores, recipes, and daily planning.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +40,6 @@ body {
   max-width: 100vw;
 }
 
-/* ---- ANIMATIONS ---- */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
@@ -49,16 +48,10 @@ body {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
-
-/* scroll animations removed for reliability */
 
 /* ---- NAV ---- */
 nav {
@@ -106,8 +99,6 @@ nav {
   padding: 140px 24px 100px;
   position: relative;
 }
-
-/* Subtle texture */
 .hero::before {
   content: '';
   position: absolute; inset: 0;
@@ -115,7 +106,6 @@ nav {
               radial-gradient(ellipse at 70% 80%, rgba(232,99,74,0.03) 0%, transparent 50%);
   pointer-events: none;
 }
-
 .hero-jp {
   font-size: 0.7rem; font-weight: 600;
   letter-spacing: 0.25em; text-transform: uppercase;
@@ -127,7 +117,6 @@ nav {
   color: var(--stone); font-weight: 400;
   letter-spacing: 0.1em; margin-left: 8px;
 }
-
 .hero h1 {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(3rem, 7.5vw, 5.5rem);
@@ -142,7 +131,6 @@ nav {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.15rem);
   color: var(--charcoal); font-weight: 400;
@@ -150,8 +138,6 @@ nav {
   line-height: 1.8;
   animation: fadeUp 0.7s ease-out 0.2s both;
 }
-
-/* Waitlist */
 .waitlist-form {
   display: flex; gap: 8px;
   margin-top: 40px; max-width: 420px; width: 100%;
@@ -177,14 +163,11 @@ nav {
   white-space: nowrap;
 }
 .waitlist-btn:hover { background: #3d4ed4; transform: translateY(-1px); }
-
 .hero-note {
   margin-top: 16px; font-size: 0.78rem;
   color: var(--stone); font-weight: 400;
   animation: fadeUp 0.7s ease-out 0.4s both;
 }
-
-/* Early access badge */
 .early-badge {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 6px 16px; margin-bottom: 20px;
@@ -201,7 +184,6 @@ nav {
   background: var(--indigo); border-radius: 50%;
   animation: softPulse 2s ease-in-out infinite;
 }
-
 .waitlist-success {
   display: none; margin-top: 36px;
   padding: 20px 28px;
@@ -213,7 +195,12 @@ nav {
 .waitlist-success h3 { color: var(--mint); font-size: 1rem; margin-bottom: 4px; }
 .waitlist-success p { color: var(--charcoal); font-size: 0.85rem; }
 
-/* ---- PHILOSOPHY STRIP ---- */
+/* ---- PHILOSOPHY ---- */
+.philosophy-intro {
+  text-align: center; max-width: 500px; margin: 0 auto;
+  padding: 0 24px 24px;
+  font-size: 0.85rem; color: var(--stone); line-height: 1.7;
+}
 .philosophy {
   display: grid; grid-template-columns: repeat(3, 1fr);
   max-width: 900px; margin: 0 auto;
@@ -269,7 +256,6 @@ nav {
   border: 1px solid var(--sand);
   border-radius: 16px; padding: 28px 24px;
   transition: all 0.3s ease;
-  position: relative;
 }
 .feature-card:hover {
   transform: translateY(-2px);
@@ -289,12 +275,12 @@ nav {
   line-height: 1.7;
 }
 
-/* ---- RECIPE FINDER HIGHLIGHT ---- */
+/* ---- RECIPE: JUST THE RECIPE ---- */
 .recipe-section {
   background: var(--ink); border-radius: 24px;
   padding: 56px 48px; margin-top: 0;
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px; align-items: center;
+  gap: 48px; align-items: start;
   position: relative;
 }
 .recipe-section::before {
@@ -302,6 +288,7 @@ nav {
   position: absolute; top: -60px; right: -60px;
   width: 250px; height: 250px;
   background: radial-gradient(circle, rgba(232,99,74,0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 .recipe-text .section-eyebrow { color: var(--coral); opacity: 0.8; }
 .recipe-text h2 { color: #fff; }
@@ -311,53 +298,117 @@ nav {
   margin-top: 12px;
   word-wrap: break-word; overflow-wrap: break-word;
 }
-.recipe-demo {
+
+/* Interactive recipe demo */
+.recipe-demo-live {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px; padding: 24px;
-  position: relative;
 }
-.recipe-demo-url {
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px; padding: 12px 16px;
-  margin-bottom: 16px;
+.recipe-input-row {
+  display: flex; gap: 8px; margin-bottom: 16px;
 }
-.recipe-demo-url .icon {
-  width: 18px; height: 18px;
-  border-radius: 4px; background: var(--coral);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.6rem; color: #fff; flex-shrink: 0;
+.recipe-url-input {
+  flex: 1; padding: 12px 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: #fff; font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.82rem; outline: none;
+  transition: border-color 0.2s;
 }
-.recipe-demo-url span {
-  color: rgba(255,255,255,0.4);
-  font-size: 0.78rem; font-family: monospace;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+.recipe-url-input::placeholder { color: rgba(255,255,255,0.3); }
+.recipe-url-input:focus { border-color: var(--coral); }
+.recipe-extract-btn {
+  padding: 12px 18px;
+  background: var(--coral); color: #fff;
+  border: none; border-radius: 10px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+  white-space: nowrap;
 }
-.recipe-demo-result {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: 16px;
+.recipe-extract-btn:hover { background: #d4523a; }
+.recipe-extract-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.recipe-result { display: none; }
+.recipe-result.show { display: block; animation: fadeUp 0.4s ease-out; }
+.recipe-result-header {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 12px; margin-bottom: 12px;
 }
-.recipe-demo-result h4 {
-  color: #fff; font-size: 0.9rem; margin-bottom: 10px;
+.recipe-result-header h4 {
+  color: #fff; font-size: 0.95rem; margin-bottom: 2px;
 }
-.recipe-demo-items {
+.recipe-result-header .recipe-meta {
+  font-size: 0.72rem; color: rgba(255,255,255,0.35);
+}
+.recipe-ingredients-list {
   display: flex; flex-direction: column; gap: 6px;
+  max-height: 220px; overflow-y: auto;
 }
-.recipe-demo-item {
+.recipe-ingredients-list::-webkit-scrollbar { width: 4px; }
+.recipe-ingredients-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+.recipe-ingredient-item {
   display: flex; align-items: center; gap: 8px;
-  color: rgba(255,255,255,0.5); font-size: 0.78rem;
+  color: rgba(255,255,255,0.6); font-size: 0.8rem;
+  padding: 4px 0;
 }
-.recipe-demo-item .check {
-  width: 14px; height: 14px; border-radius: 4px;
-  border: 1.5px solid rgba(255,255,255,0.2);
-  flex-shrink: 0;
+.recipe-ingredient-item .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--mint); flex-shrink: 0;
 }
-.recipe-demo-item.done .check {
-  background: var(--mint); border-color: var(--mint);
+.recipe-cta-row {
+  margin-top: 16px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: space-between;
 }
-.recipe-demo-item.done { text-decoration: line-through; color: rgba(255,255,255,0.25); }
+.recipe-cta-text {
+  font-size: 0.72rem; color: rgba(255,255,255,0.35);
+  font-style: italic;
+}
+.recipe-cta-btn {
+  padding: 8px 16px;
+  background: var(--indigo); color: #fff;
+  border: none; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.recipe-cta-btn:hover { background: #3d4ed4; }
+
+/* Loading state */
+.recipe-loading { display: none; padding: 32px 0; text-align: center; }
+.recipe-loading.show { display: block; }
+.recipe-loading p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+.recipe-loading .shimmer-bar {
+  height: 12px; border-radius: 6px; margin: 10px 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.04) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.recipe-error { display: none; color: var(--coral); font-size: 0.82rem; padding: 12px 0; }
+.recipe-error.show { display: block; }
+
+/* Preset recipe buttons */
+.recipe-presets {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.recipe-preset-btn {
+  padding: 5px 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.45); font-size: 0.7rem;
+  font-family: 'Instrument Sans', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+}
+.recipe-preset-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+}
 
 /* ---- HOW IT WORKS ---- */
 .steps-container {
@@ -409,7 +460,7 @@ nav {
 .step-card.active .step-num {
   background: var(--indigo); border-color: var(--indigo);
 }
-.step-card.active .step-num span { color: #fff !important; filter: none; }
+.step-card.active .step-num span { color: #fff !important; }
 .step-detail p {
   margin-top: 8px; font-size: 0.76rem;
   color: var(--stone); font-style: italic;
@@ -444,7 +495,6 @@ nav {
   padding: 3px 10px; border-radius: 100px;
   margin-left: 4px;
 }
-
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -462,7 +512,6 @@ nav {
 }
 .price-card.featured {
   border: 2px solid var(--indigo);
-  background: #fff;
   position: relative;
 }
 .price-card.featured::before {
@@ -503,16 +552,12 @@ nav {
   line-height: 1.5;
 }
 .price-features li::before {
-  content: '✓'; color: var(--mint);
+  content: '\2713'; color: var(--mint);
   font-weight: 700; flex-shrink: 0;
   margin-top: 1px;
 }
-.price-features li.missing {
-  color: var(--stone);
-}
-.price-features li.missing::before {
-  content: '—'; color: var(--sand);
-}
+.price-features li.missing { color: var(--stone); }
+.price-features li.missing::before { content: '\2014'; color: var(--sand); }
 .price-cta {
   margin-top: 20px; padding: 12px;
   border-radius: 10px; border: none;
@@ -528,9 +573,7 @@ nav {
   color: var(--charcoal);
 }
 .price-cta.outline:hover { border-color: var(--indigo); color: var(--indigo); }
-.price-cta.primary {
-  background: var(--indigo); color: #fff;
-}
+.price-cta.primary { background: var(--indigo); color: #fff; }
 .price-cta.primary:hover { background: #3d4ed4; }
 
 /* ---- STORY ---- */
@@ -629,13 +672,11 @@ footer a:hover { color: var(--indigo); }
   .nav-links a.nav-cta { padding: 8px 14px; font-size: 0.75rem; white-space: nowrap; }
   .hero { padding: 120px 20px 60px; }
   .philosophy { grid-template-columns: 1fr; gap: 24px; padding-bottom: 40px; }
-  .section { padding: 60px 20px; }
-  .recipe-section { grid-template-columns: 1fr; padding: 24px 28px 28px; border-radius: 18px; overflow: visible; max-width: 100%; box-sizing: border-box; }
+  .section { padding: 60px 16px; }
+  .recipe-section { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 18px; }
   .recipe-section::before { display: none; }
-  .recipe-text p { font-size: 0.85rem; }
-  .recipe-text h2 { font-size: 1.4rem; }
-  .recipe-demo-url span { font-size: 0.7rem; }
-  .section { padding: 60px 16px; overflow: visible; }
+  .recipe-input-row { flex-direction: column; }
+  .recipe-extract-btn { width: 100%; }
   .steps-container { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .steps-container::before { display: none; }
   .pricing-section { padding: 36px 20px; border-radius: 18px; }
@@ -665,24 +706,24 @@ footer a:hover { color: var(--indigo); }
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-jp">見る <span>miru — to see</span></div>
+  <div class="hero-jp">見る <span>miru · to see</span></div>
 
   <div class="early-badge">
     <span class="dot"></span>
-    Early access — Limited spots
+    Early access · Limited spots
   </div>
 
-  <img src="koi-logo.png" alt="Miiro Koi" class="hero-logo" style="width: 140px; height: 140px; object-fit: contain; margin-bottom: 28px; animation: fadeUp 0.65s ease-out 0.05s both;">
+  <img src="koi-logo.png" alt="Miiro Koi" style="width: 140px; height: 140px; object-fit: contain; margin-bottom: 28px; animation: fadeUp 0.65s ease-out 0.05s both;">
 
   <h1>See what <em>matters.</em></h1>
 
-  <p class="hero-sub">The task app for people who share a life. Groceries, chores, recipes, and daily planning — solo or together. Finally stop asking "did you get the thing?"</p>
+  <p class="hero-sub">The task app for people who share a life. Groceries, chores, recipes, and daily planning, solo or together. Finally stop asking "did you get the thing?"</p>
 
   <form class="waitlist-form" id="waitlist" onsubmit="handleWaitlist(event)">
     <input type="email" class="waitlist-input" placeholder="Your email" required id="emailInput">
     <button type="submit" class="waitlist-btn">Get Early Access</button>
   </form>
-  <p class="hero-note">Built for couples, roommates, and families. Free to start — first 100 households get 3 months of Duo free.</p>
+  <p class="hero-note">Built for couples, roommates, and families. Free to start. First 100 households get 3 months of Duo free.</p>
 
   <div class="waitlist-success" id="successMsg">
     <h3>You're in.</h3>
@@ -699,20 +740,21 @@ footer a:hover { color: var(--indigo); }
 </section>
 
 <!-- PHILOSOPHY -->
+<p class="philosophy-intro">Miiro is built on three Japanese principles that guide everything we design.</p>
 <div class="philosophy">
   <div class="philosophy-item">
     <div class="philosophy-jp">見る</div>
-    <div class="philosophy-word">Miru — See</div>
+    <div class="philosophy-word">Miru · See</div>
     <p class="philosophy-desc">Make the invisible visible. See your tasks, your partner's progress, your week ahead.</p>
   </div>
   <div class="philosophy-item">
     <div class="philosophy-jp">間</div>
-    <div class="philosophy-word">Ma — Space</div>
+    <div class="philosophy-word">Ma · Space</div>
     <p class="philosophy-desc">Create breathing room in a busy life. Only see what matters today.</p>
   </div>
   <div class="philosophy-item">
     <div class="philosophy-jp">簡素</div>
-    <div class="philosophy-word">Kanso — Simplicity</div>
+    <div class="philosophy-word">Kanso · Simplicity</div>
     <p class="philosophy-desc">Strip away the noise. A calm interface for a clearer mind.</p>
   </div>
 </div>
@@ -721,13 +763,13 @@ footer a:hover { color: var(--indigo); }
 <div class="section" id="features">
   <div class="section-eyebrow">Features</div>
   <h2>Everything you need. Nothing you don't.</h2>
-  <p class="lead">Built with kanso — simplicity — at its core. Every feature earns its place.</p>
+  <p class="lead">Built with kanso (simplicity) at its core. Every feature earns its place.</p>
 
   <div class="features-grid">
     <div class="feature-card">
       <span class="feature-emoji">📋</span>
       <h3>Smart lists</h3>
-      <p>Create lists for anything — groceries, chores, projects, goals. Organize by category and keep things tidy.</p>
+      <p>Create lists for anything: groceries, chores, projects, goals. Organize by category and keep things tidy.</p>
     </div>
     <div class="feature-card">
       <span class="feature-emoji">👥</span>
@@ -742,44 +784,57 @@ footer a:hover { color: var(--indigo); }
     <div class="feature-card">
       <span class="feature-emoji">🛒</span>
       <h3>Grocery categories</h3>
-      <p>Items grouped by store aisle — produce, dairy, bakery, frozen. Walk through once, get everything.</p>
+      <p>Items grouped by store aisle: produce, dairy, bakery, frozen. Walk through once, get everything.</p>
     </div>
     <div class="feature-card">
       <span class="feature-emoji">📅</span>
-      <h3>Calendar & time-blocking</h3>
+      <h3>Calendar and planning</h3>
       <p>Plan your week visually. Drag tasks into time slots. See your schedule and tasks in one place.</p>
     </div>
     <div class="feature-card">
       <span class="feature-emoji">🔔</span>
       <h3>Activity feed</h3>
-      <p>"Mirrin completed grocery shopping ✓" — see what's happening without asking.</p>
+      <p>"Mirrin completed grocery shopping ✓" See what's happening without asking.</p>
     </div>
   </div>
 </div>
 
-<!-- RECIPE FINDER -->
+<!-- JUST THE RECIPE -->
 <div class="section" style="padding-top: 0;">
   <div class="recipe-section">
     <div class="recipe-text">
-      <div class="section-eyebrow">Recipe Finder</div>
+      <div class="section-eyebrow">Just the Recipe</div>
       <h2>Paste a link. Get the recipe.</h2>
-      <p style="margin-top: 12px; font-weight: 600; color: rgba(255,255,255,0.85);">No ads. No life stories. Just the recipe.</p>
-      <p>Found a recipe online? Just paste the URL into Miiro. We'll extract the ingredients, steps, and servings — straight into your grocery list, sorted by aisle.</p>
-      <p style="margin-top: 12px;">Save it to your collection. Share it with your household. Tap "Add to groceries" and every ingredient lands in your shopping list, sorted by aisle.</p>
+      <p style="margin-top: 12px; font-weight: 600; color: rgba(255,255,255,0.85);">No ads. No life stories. Just the ingredients.</p>
+      <p>Found a recipe online? Paste the URL into Miiro. We extract the ingredients, steps, and servings, straight into your grocery list sorted by aisle.</p>
+      <p>Save it to your collection. Share it with your household. Tap "Add to groceries" and every ingredient lands in your shopping list, already organized.</p>
     </div>
-    <div class="recipe-demo">
-      <div class="recipe-demo-url">
-        <div class="icon">🔗</div>
-        <span>allrecipes.com/recipe/creamy-tuscan-chicken</span>
+    <div class="recipe-demo-live">
+      <div class="recipe-presets">
+        <button class="recipe-preset-btn" onclick="tryRecipe('https://www.allrecipes.com/recipe/228285/creamy-tuscan-chicken/')">Tuscan Chicken</button>
+        <button class="recipe-preset-btn" onclick="tryRecipe('https://www.allrecipes.com/recipe/24002/easy-pad-thai/')">Pad Thai</button>
+        <button class="recipe-preset-btn" onclick="tryRecipe('https://www.allrecipes.com/recipe/25037/best-banana-bread/')">Banana Bread</button>
       </div>
-      <div class="recipe-demo-result">
-        <h4>Creamy Tuscan Chicken</h4>
-        <div class="recipe-demo-items">
-          <div class="recipe-demo-item done"><div class="check"></div> 4 chicken breasts</div>
-          <div class="recipe-demo-item done"><div class="check"></div> 2 cups sun-dried tomatoes</div>
-          <div class="recipe-demo-item"><div class="check"></div> 1 cup heavy cream</div>
-          <div class="recipe-demo-item"><div class="check"></div> 3 cups fresh spinach</div>
-          <div class="recipe-demo-item"><div class="check"></div> ½ cup parmesan</div>
+      <div class="recipe-input-row">
+        <input type="url" class="recipe-url-input" id="recipeUrlInput" placeholder="Paste any recipe URL...">
+        <button class="recipe-extract-btn" id="recipeExtractBtn" onclick="extractRecipe()">Extract</button>
+      </div>
+      <div class="recipe-loading" id="recipeLoading">
+        <p>Extracting recipe...</p>
+        <div class="shimmer-bar" style="width: 80%;"></div>
+        <div class="shimmer-bar" style="width: 60%;"></div>
+        <div class="shimmer-bar" style="width: 70%;"></div>
+      </div>
+      <div class="recipe-error" id="recipeError"></div>
+      <div class="recipe-result" id="recipeResult">
+        <div class="recipe-result-header">
+          <h4 id="recipeName"></h4>
+          <span class="recipe-meta" id="recipeMeta"></span>
+        </div>
+        <div class="recipe-ingredients-list" id="recipeIngredients"></div>
+        <div class="recipe-cta-row">
+          <span class="recipe-cta-text">Add all to your grocery list in Miiro</span>
+          <a href="#waitlist" class="recipe-cta-btn">Get Early Access</a>
         </div>
       </div>
     </div>
@@ -803,7 +858,7 @@ footer a:hover { color: var(--indigo); }
     <div class="step-card" onclick="activateStep(this)">
       <div class="step-num"><span style="font-weight:700;color:var(--ink);font-size:1.2rem;">2</span></div>
       <h3>Create your lists</h3>
-      <p>Groceries, tasks, goals — anything.</p>
+      <p>Groceries, tasks, goals, anything.</p>
       <div class="step-detail">
         <p>Add items, set due dates, assign priorities. Grocery lists auto-sort by aisle.</p>
       </div>
@@ -843,7 +898,6 @@ footer a:hover { color: var(--indigo); }
     </div>
 
     <div class="pricing-grid">
-      <!-- FREE -->
       <div class="price-card">
         <div class="price-tier">Free</div>
         <div class="price-amount">$0</div>
@@ -853,10 +907,10 @@ footer a:hover { color: var(--indigo); }
           <li>Up to 5 lists</li>
           <li>My Day daily focus view</li>
           <li>Calendar view</li>
-          <li>Reminders & due dates</li>
+          <li>Reminders and due dates</li>
           <li>1 shared list</li>
           <li class="missing">Unlimited shared lists</li>
-          <li class="missing">Recipe finder</li>
+          <li class="missing">Just the Recipe</li>
           <li class="missing">Grocery categories</li>
           <li class="missing">AI suggestions</li>
           <li class="missing">Time-blocking</li>
@@ -864,7 +918,6 @@ footer a:hover { color: var(--indigo); }
         <a href="#waitlist" class="price-cta outline">Get Started Free</a>
       </div>
 
-      <!-- DUO -->
       <div class="price-card featured">
         <div class="price-tier">Duo / Family</div>
         <div class="price-amount"><span id="duoPrice">$1.99</span><span class="period" id="duoPeriod">/mo</span></div>
@@ -876,7 +929,7 @@ footer a:hover { color: var(--indigo); }
           <li>Real-time sync</li>
           <li>Assign tasks to each other</li>
           <li>Activity feed</li>
-          <li>Recipe finder & collections</li>
+          <li>Just the Recipe + collections</li>
           <li>Grocery categories by aisle</li>
           <li class="missing">AI suggestions</li>
           <li class="missing">Time-blocking</li>
@@ -885,7 +938,6 @@ footer a:hover { color: var(--indigo); }
         <a href="#waitlist" class="price-cta primary">Get Duo</a>
       </div>
 
-      <!-- PRO -->
       <div class="price-card">
         <div class="price-tier">Pro</div>
         <div class="price-amount"><span id="proPrice">$3.99</span><span class="period" id="proPeriod">/mo</span></div>
@@ -893,13 +945,13 @@ footer a:hover { color: var(--indigo); }
         <ul class="price-features">
           <li>Everything in Duo</li>
           <li>AI task suggestions</li>
-          <li>Time-blocking & scheduling</li>
-          <li>Custom themes & icons</li>
+          <li>Time-blocking and scheduling</li>
+          <li>Custom themes and icons</li>
           <li>Priority support</li>
           <li>Integrations (coming soon)</li>
           <li>Advanced recurring tasks</li>
           <li>Widgets</li>
-          <li>Export & backup</li>
+          <li>Export and backup</li>
           <li>&nbsp;</li>
           <li>&nbsp;</li>
         </ul>
@@ -914,12 +966,12 @@ footer a:hover { color: var(--indigo); }
   <div class="section-eyebrow">The story</div>
   <h2>Why I built <em>Miiro</em></h2>
   <div class="story-body">
-    <p><em>Miiro</em> comes from the Japanese word <em>miru</em> — to see.</p>
-    <p style="margin-top: 12px;">I built it because my wife Mirrin and I kept losing track of the little things — the groceries, the household tasks, the recipes we wanted to try. Every task app out there was built for one person working alone. We needed something that let us see each other's day.</p>
+    <p><em>Miiro</em> comes from the Japanese word <em>miru</em>, to see.</p>
+    <p style="margin-top: 12px;">I built it because my wife Mirrin and I kept losing track of the little things. The groceries, the household tasks, the recipes we wanted to try. Every task app out there was built for one person working alone. We needed something that let us see each other's day.</p>
     <p style="margin-top: 12px;">The name is also personal: <em>Mi</em> (from Mirrin) + <em>Ro</em> (from Robert) = Miiro. It's the app I wished existed, built for every person, couple, and family who's tired of things falling through the cracks.</p>
   </div>
   <div class="story-sig">
-    <strong>Robert</strong> — builder of Miiro, husband, dog dad to Rose 🐕
+    <strong>Robert</strong>, builder of Miiro, husband, dog dad to Rose 🐕
   </div>
 </div>
 
@@ -927,8 +979,8 @@ footer a:hover { color: var(--indigo); }
 <div class="referral-banner">
   <div class="referral-inner">
     <div>
-      <h3>Share Miiro, earn free months</h3>
-      <p>Refer a friend and you both get a free month of Duo when they join. Know 10 people? That's almost a free year.</p>
+      <h3>Share Miiro, get free months</h3>
+      <p>Invite someone you live with and you both get Duo free when they join. Know 10 people? That's almost a free year.</p>
     </div>
     <div class="referral-tag">Coming at launch</div>
   </div>
@@ -954,11 +1006,11 @@ footer a:hover { color: var(--indigo); }
   <p style="margin-top: 8px;">
     <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:hello@getmiiro.app">Contact</a>
   </p>
-  <p style="margin-top: 14px; opacity: 0.5;">© 2026 Miiro. All rights reserved.</p>
+  <p style="margin-top: 14px; opacity: 0.5;">&copy; 2026 Miiro. All rights reserved.</p>
 </footer>
 
 <script>
-// Waitlist — Formspree
+// Waitlist
 function handleWaitlist(e) {
   e.preventDefault();
   const form = e.target;
@@ -986,12 +1038,9 @@ let isYearly = false;
 function togglePricing() {
   isYearly = !isYearly;
   const toggle = document.getElementById('pricingToggle');
-  const mLabel = document.getElementById('monthlyLabel');
-  const yLabel = document.getElementById('yearlyLabel');
-
+  document.getElementById('monthlyLabel').classList.toggle('active', !isYearly);
+  document.getElementById('yearlyLabel').classList.toggle('active', isYearly);
   toggle.classList.toggle('yearly', isYearly);
-  mLabel.classList.toggle('active', !isYearly);
-  yLabel.classList.toggle('active', isYearly);
 
   document.getElementById('duoPrice').textContent = isYearly ? '$19.99' : '$1.99';
   document.getElementById('duoPeriod').textContent = isYearly ? '/year' : '/mo';
@@ -999,19 +1048,17 @@ function togglePricing() {
   document.getElementById('proPeriod').textContent = isYearly ? '/year' : '/mo';
 }
 
-// Interactive steps
+// Steps
 function activateStep(el) {
   document.querySelectorAll('.step-card').forEach(s => s.classList.remove('active'));
   el.classList.add('active');
 }
 
-// Scroll animations removed for reliability
-
 // Share invite
 function shareInvite() {
   const shareData = {
     title: 'Join me on Miiro',
-    text: "I just joined Miiro to finally stop forgetting groceries and chores. Join me.",
+    text: 'I just joined Miiro to finally stop forgetting groceries and chores. Join me.',
     url: 'https://miro-landing-one.vercel.app'
   };
   if (navigator.share) {
@@ -1032,7 +1079,75 @@ function copyInviteLink() {
     prompt('Copy this link:', url);
   });
 }
+
+// Recipe extractor
+function tryRecipe(url) {
+  document.getElementById('recipeUrlInput').value = url;
+  extractRecipe();
+}
+
+async function extractRecipe() {
+  const url = document.getElementById('recipeUrlInput').value.trim();
+  if (!url) return;
+
+  const loading = document.getElementById('recipeLoading');
+  const result = document.getElementById('recipeResult');
+  const error = document.getElementById('recipeError');
+  const btn = document.getElementById('recipeExtractBtn');
+
+  // Reset states
+  loading.classList.add('show');
+  result.classList.remove('show');
+  error.classList.remove('show');
+  btn.disabled = true;
+  btn.textContent = 'Extracting...';
+
+  try {
+    const response = await fetch('/api/recipe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: url })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Could not extract recipe');
+    }
+
+    // Show recipe name
+    document.getElementById('recipeName').textContent = data.name;
+
+    // Show meta info
+    const meta = [];
+    if (data.servings) meta.push(data.servings + (typeof data.servings === 'number' ? ' servings' : ''));
+    if (data.ingredients) meta.push(data.ingredients.length + ' ingredients');
+    document.getElementById('recipeMeta').textContent = meta.join(' · ');
+
+    // Show ingredients
+    const ingredientsList = document.getElementById('recipeIngredients');
+    ingredientsList.innerHTML = '';
+    data.ingredients.forEach(ingredient => {
+      const div = document.createElement('div');
+      div.className = 'recipe-ingredient-item';
+      div.innerHTML = '<span class="dot"></span>' + ingredient;
+      ingredientsList.appendChild(div);
+    });
+
+    loading.classList.remove('show');
+    result.classList.add('show');
+
+  } catch (err) {
+    loading.classList.remove('show');
+    error.textContent = err.message || 'Something went wrong. Try a different recipe URL.';
+    error.classList.add('show');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Extract';
+}
 </script>
 
 </body>
 </html>
+
