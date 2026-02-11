@@ -15,7 +15,7 @@
   --ink: #1a1a2e;
   --paper: #FAFAF8;
   --warm: #F3F0EB;
-  --sand: #E4DED4;
+  --sand: #E4DED4;å
   --stone: #8C8578;
   --charcoal: #3D3A36;
   --indigo: #4A5CE8;
@@ -627,7 +627,9 @@ footer a:hover { color: var(--indigo); }
   .hero { padding: 120px 20px 60px; }
   .philosophy { grid-template-columns: 1fr; gap: 24px; padding-bottom: 40px; }
   .section { padding: 60px 20px; }
-  .recipe-section { grid-template-columns: 1fr; padding: 36px 24px; border-radius: 18px; }
+  .recipe-section { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 18px; overflow: visible; }
+  .recipe-text h2 { font-size: 1.4rem; }
+  .recipe-demo-url span { font-size: 0.7rem; }
   .steps-container { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .steps-container::before { display: none; }
   .pricing-section { padding: 36px 20px; border-radius: 18px; }
@@ -668,17 +670,25 @@ footer a:hover { color: var(--indigo); }
 
   <h1>See what <em>matters.</em></h1>
 
-  <p class="hero-sub">The task app that brings clarity to your day. Organize groceries, share lists, discover recipes, and plan your week — solo or together.</p>
+  <p class="hero-sub">The task app for people who share a life. Groceries, chores, recipes, and daily planning — solo or together. Finally stop asking "did you get the thing?"</p>
 
   <form class="waitlist-form" id="waitlist" onsubmit="handleWaitlist(event)">
     <input type="email" class="waitlist-input" placeholder="Your email" required id="emailInput">
     <button type="submit" class="waitlist-btn">Get Early Access</button>
   </form>
-  <p class="hero-note">Free to start. No credit card required. First 100 users get 3 months of Duo free.</p>
+  <p class="hero-note">Built for couples, roommates, and families. Free to start — first 100 households get 3 months of Duo free.</p>
 
   <div class="waitlist-success" id="successMsg">
-    <h3>You're in!</h3>
-    <p>We'll send you an invite as soon as Miiro launches.</p>
+    <h3>You're in.</h3>
+    <p style="margin-bottom: 4px;">You're early. We're opening Miiro to a small group first.</p>
+    <p style="font-size: 0.75rem; color: var(--stone); margin-bottom: 20px;">Opening access to the first 1,000 households.</p>
+    
+    <div style="background: var(--indigo-soft); border: 1px solid var(--indigo-mid); border-radius: 14px; padding: 20px; margin-top: 12px;">
+      <h4 style="font-size: 0.95rem; color: var(--ink); margin-bottom: 6px;">Invite the person you share life with</h4>
+      <p style="font-size: 0.82rem; color: var(--charcoal); line-height: 1.6; margin-bottom: 14px;">Miiro works best when it's shared. Invite one person you live with and you both get Duo free at launch.</p>
+      <button onclick="shareInvite()" style="width: 100%; padding: 12px; background: var(--indigo); color: #fff; border: none; border-radius: 10px; font-family: 'Instrument Sans', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer;">Invite them</button>
+      <button onclick="copyInviteLink()" style="width: 100%; padding: 10px; background: transparent; color: var(--indigo); border: none; font-family: 'Instrument Sans', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; margin-top: 6px;">Copy invite link</button>
+    </div>
   </div>
 </section>
 
@@ -747,7 +757,8 @@ footer a:hover { color: var(--indigo); }
     <div class="recipe-text">
       <div class="section-eyebrow">Recipe Finder</div>
       <h2>Paste a link. Get the recipe.</h2>
-      <p>Found a recipe online? Just paste the URL into Miiro. We'll extract the ingredients, steps, and servings — no ads, no life stories, no scrolling past 2,000 words to find the actual recipe.</p>
+      <p style="margin-top: 12px; font-weight: 600; color: rgba(255,255,255,0.85);">No ads. No life stories. Just the recipe.</p>
+      <p>Found a recipe online? Just paste the URL into Miiro. We'll extract the ingredients, steps, and servings — straight into your grocery list, sorted by aisle.</p>
       <p style="margin-top: 12px;">Save it to your collection. Share it with your household. Tap "Add to groceries" and every ingredient lands in your shopping list, sorted by aisle.</p>
     </div>
     <div class="recipe-demo">
@@ -989,10 +1000,33 @@ function activateStep(el) {
 }
 
 // Scroll animations removed for reliability
+
+// Share invite
+function shareInvite() {
+  const shareData = {
+    title: 'Join me on Miiro',
+    text: "I just joined Miiro to finally stop forgetting groceries and chores. Join me.",
+    url: 'https://miro-landing-one.vercel.app'
+  };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+  } else {
+    copyInviteLink();
+  }
+}
+
+function copyInviteLink() {
+  const url = 'https://miro-landing-one.vercel.app';
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = 'Link copied!';
+    setTimeout(() => { btn.textContent = orig; }, 2000);
+  }).catch(() => {
+    prompt('Copy this link:', url);
+  });
+}
 </script>
 
 </body>
 </html>
-git add index.html
-git commit -m "Fix hidden sections"
-git push
