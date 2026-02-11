@@ -630,8 +630,9 @@ footer a:hover { color: var(--indigo); }
   .hero { padding: 120px 20px 60px; }
   .philosophy { grid-template-columns: 1fr; gap: 24px; padding-bottom: 40px; }
   .section { padding: 60px 20px; }
-  .recipe-section { grid-template-columns: 1fr; padding: 24px 24px 28px; border-radius: 18px; overflow: visible; max-width: 100%; box-sizing: border-box; }
-  .recipe-text p { font-size: 0.85rem; padding-right: 8px; }
+  .recipe-section { grid-template-columns: 1fr; padding: 24px 28px 28px; border-radius: 18px; overflow: visible; max-width: 100%; box-sizing: border-box; }
+  .recipe-section::before { display: none; }
+  .recipe-text p { font-size: 0.85rem; }
   .recipe-text h2 { font-size: 1.4rem; }
   .recipe-demo-url span { font-size: 0.7rem; }
   .section { padding: 60px 16px; overflow: visible; }
