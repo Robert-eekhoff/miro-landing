@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Miiro</title>
+<meta name="description" content="Get help with Miiro — FAQs, troubleshooting, and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #FAF9F6;
+  --warm: #F3F0EB;
+  --sand: #E4DED4;
+  --stone: #8C8578;
+  --charcoal: #3D3A36;
+  --indigo: #4A5CE8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--charcoal);
+  line-height: 1.7;
+}
+nav {
+  padding: 16px 40px;
+  display: flex; align-items: center;
+  border-bottom: 1px solid rgba(228,222,212,0.4);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-brand img { width: 32px; height: 32px; object-fit: contain; }
+.nav-wordmark {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.nav-wordmark span { color: var(--indigo); }
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem; font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.subtitle {
+  color: var(--stone);
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem; font-weight: 400;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+p { margin-bottom: 12px; font-size: 0.95rem; }
+a { color: var(--indigo); }
+
+.faq-item {
+  border-bottom: 1px solid var(--sand);
+}
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0; cursor: pointer;
+  font-size: 0.92rem; font-weight: 600; color: var(--ink);
+  background: none; border: none; width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  text-align: left;
+}
+.faq-question:hover { color: var(--indigo); }
+.faq-icon {
+  font-size: 1.2rem; color: var(--stone);
+  transition: transform 0.3s;
+  flex-shrink: 0; margin-left: 16px;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-item.open .faq-answer { max-height: 200px; }
+.faq-answer p {
+  font-size: 0.86rem; color: var(--charcoal);
+  line-height: 1.7; padding-bottom: 18px;
+}
+
+.contact-box {
+  margin-top: 48px;
+  padding: 32px;
+  background: var(--warm);
+  border-radius: 16px;
+  text-align: center;
+}
+.contact-box h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem; font-weight: 400;
+  color: var(--ink); margin-bottom: 8px;
+}
+.contact-box p { font-size: 0.9rem; color: var(--charcoal); margin-bottom: 0; }
+.contact-box a { font-weight: 600; }
+
+footer {
+  text-align: center; padding: 32px 24px 48px;
+  border-top: 1px solid var(--sand);
+}
+footer p { color: var(--stone); font-size: 0.78rem; }
+footer a { color: var(--stone); text-decoration: underline; text-underline-offset: 3px; }
+footer a:hover { color: var(--indigo); }
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .container { padding: 32px 20px 60px; }
+  h1 { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="koi-logo.png" alt="Miiro">
+    <span class="nav-wordmark">M<span>ii</span>ro</span>
+  </a>
+</nav>
+
+<div class="container">
+  <h1>How can we help?</h1>
+  <p class="subtitle">Find answers to common questions below, or get in touch.</p>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      How do I share a list with my partner?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Open any list, tap the share icon, and send them your household code. Once they join, all shared lists sync in real time.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      How do I cancel my subscription?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Go to iPhone Settings, tap your name, then Subscriptions, then Miiro+. Cancel anytime — you keep access until your billing period ends.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      How do I save a recipe?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Go to Toru (Recipe Finder), paste any recipe URL, and tap the bookmark icon to save it to your cookbook.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      Can I use Miiro without paying?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Yes! Every feature works on the free plan. Miiro+ gives you more lists, recipes, templates, and household members.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      How do I export my calendar?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>In the Calendar tab, tap the share icon and select "Subscribe to Calendar." Copy the link into Apple Calendar, Google Calendar, or Outlook.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      I found a bug or have feedback
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>We'd love to hear it! Email us at <a href="mailto:support@miiro.app">support@miiro.app</a>.</p>
+    </div>
+  </div>
+
+  <div class="contact-box">
+    <h3>Still need help?</h3>
+    <p>Email us at <a href="mailto:support@miiro.app">support@miiro.app</a> — we usually respond within 24 hours.</p>
+  </div>
+</div>
+
+<footer>
+  <p><a href="index.html">Home</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p>
+  <p style="margin-top: 12px;">&copy; 2026 Miiro. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  var item = btn.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>

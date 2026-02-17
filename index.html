@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miiro — See what matters.</title>
-<meta name="description" content="The task app for couples, families, and roommates. Shared lists, smart recipes, and calm productivity.">
-<meta property="og:title" content="Miiro — See what matters.">
-<meta property="og:description" content="The task app for people who share a life. Groceries, chores, recipes, and daily planning.">
+<title>Miiro — See what matters</title>
+<meta name="description" content="The app for couples and families who share a life. Plan meals, share lists, save recipes, and coordinate your household.">
+<meta property="og:title" content="Miiro — See what matters">
+<meta property="og:description" content="The app for couples and families who share a life. Plan meals, share lists, save recipes, and coordinate your household.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="koi-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #1a1a2e;
-  --paper: #FAFAF8;
+  --paper: #FAF9F6;
   --warm: #F3F0EB;
   --sand: #E4DED4;
   --stone: #8C8578;
@@ -31,7 +33,7 @@
 html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   color: var(--charcoal);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
@@ -41,12 +43,8 @@ body {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
-}
-@keyframes softPulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
 }
 @keyframes shimmer {
   0% { background-position: -200% 0; }
@@ -56,9 +54,14 @@ body {
 /* ---- NAV ---- */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 18px 40px;
+  padding: 16px 40px;
   display: flex; align-items: center; justify-content: space-between;
-  background: rgba(250,250,248,0.9);
+  background: transparent;
+  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(250,249,246,0.92);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(228,222,212,0.4);
 }
@@ -66,9 +69,10 @@ nav {
   display: flex; align-items: center; gap: 10px;
   text-decoration: none;
 }
+.nav-brand img { width: 36px; height: 36px; object-fit: contain; }
 .nav-wordmark {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem; font-weight: 400;
+  font-size: 1.45rem; font-weight: 400;
   color: var(--ink); letter-spacing: -0.02em;
 }
 .nav-wordmark span { color: var(--indigo); }
@@ -79,147 +83,120 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
-.nav-links a.nav-cta {
-  padding: 10px 22px;
-  background: var(--indigo); color: #fff !important;
-  border: none; border-radius: 10px;
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 600;
-  cursor: pointer; text-decoration: none;
-  transition: all 0.2s;
-}
-.nav-cta:hover { background: #3d4ed4; transform: translateY(-1px); }
 
 /* ---- HERO ---- */
 .hero {
   min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  padding: 140px 24px 100px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 24px 80px;
   position: relative;
+  max-width: 1100px; margin: 0 auto;
+  gap: 60px;
 }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 20%, rgba(74,92,232,0.03) 0%, transparent 50%),
-              radial-gradient(ellipse at 70% 80%, rgba(232,99,74,0.03) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 20% 30%, rgba(74,92,232,0.03) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 70%, rgba(232,99,74,0.03) 0%, transparent 50%);
   pointer-events: none;
 }
+.hero-content {
+  flex: 1; position: relative; z-index: 1;
+}
 .hero-jp {
-  font-size: 0.7rem; font-weight: 600;
-  letter-spacing: 0.25em; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--indigo);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   animation: fadeUp 0.6s ease-out both;
 }
-.hero-jp span {
-  color: var(--stone); font-weight: 400;
-  letter-spacing: 0.1em; margin-left: 8px;
+.hero-jp em {
+  color: var(--stone); font-weight: 400; font-style: normal;
+  letter-spacing: 0.08em; margin-left: 8px;
 }
 .hero h1 {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(3rem, 7.5vw, 5.5rem);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 400; color: var(--ink);
-  letter-spacing: -0.03em; line-height: 1.08;
-  max-width: 700px;
+  letter-spacing: -0.03em; line-height: 1.1;
+  max-width: 540px;
   animation: fadeUp 0.7s ease-out 0.1s both;
 }
-.hero h1 em {
-  font-style: italic;
-  background: linear-gradient(135deg, var(--indigo), var(--coral));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 .hero-sub {
-  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
   color: var(--charcoal); font-weight: 400;
-  margin-top: 24px; max-width: 460px;
-  line-height: 1.8;
+  margin-top: 20px; max-width: 460px;
+  line-height: 1.75;
   animation: fadeUp 0.7s ease-out 0.2s both;
 }
-.waitlist-form {
-  display: flex; gap: 8px;
-  margin-top: 40px; max-width: 420px; width: 100%;
+.hero-cta {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 32px;
   animation: fadeUp 0.7s ease-out 0.3s both;
 }
-.waitlist-input {
-  flex: 1; padding: 15px 18px;
-  border: 1.5px solid var(--sand); border-radius: 12px;
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 0.9rem; color: var(--ink);
-  background: #fff; outline: none;
-  transition: border-color 0.2s;
+.app-store-badge {
+  height: 48px; width: auto;
+  transition: opacity 0.2s;
 }
-.waitlist-input::placeholder { color: var(--stone); }
-.waitlist-input:focus { border-color: var(--indigo); }
-.waitlist-btn {
-  padding: 15px 26px;
-  background: var(--indigo); color: #fff;
-  border: none; border-radius: 12px;
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 0.9rem; font-weight: 600;
-  cursor: pointer; transition: all 0.2s;
-  white-space: nowrap;
-}
-.waitlist-btn:hover { background: #3d4ed4; transform: translateY(-1px); }
+.app-store-badge:hover { opacity: 0.85; }
 .hero-note {
-  margin-top: 16px; font-size: 0.78rem;
+  margin-top: 14px; font-size: 0.8rem;
   color: var(--stone); font-weight: 400;
   animation: fadeUp 0.7s ease-out 0.4s both;
 }
-.early-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 16px; margin-bottom: 20px;
-  background: var(--indigo-soft);
-  border: 1px solid var(--indigo-mid);
-  border-radius: 100px;
-  font-size: 0.72rem; font-weight: 600;
-  color: var(--indigo);
-  letter-spacing: 0.04em;
-  animation: fadeUp 0.6s ease-out both;
+.hero-mockup {
+  flex: 0 0 300px;
+  position: relative; z-index: 1;
+  animation: fadeUp 0.8s ease-out 0.3s both;
 }
-.early-badge .dot {
-  width: 5px; height: 5px;
-  background: var(--indigo); border-radius: 50%;
-  animation: softPulse 2s ease-in-out infinite;
+.phone-frame {
+  width: 280px; height: 560px;
+  border-radius: 40px;
+  border: 8px solid var(--ink);
+  background: linear-gradient(165deg, #F3F0EB 0%, #E4DED4 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.1);
 }
-.waitlist-success {
-  display: none; margin-top: 36px;
-  padding: 20px 28px;
-  background: var(--mint-soft);
-  border: 1px solid rgba(59,191,160,0.2);
-  border-radius: 14px; text-align: center;
+.phone-frame::before {
+  content: '';
+  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 28px;
+  background: var(--ink); border-radius: 14px;
 }
-.waitlist-success.show { display: block; animation: fadeUp 0.5s ease-out; }
-.waitlist-success h3 { color: var(--mint); font-size: 1rem; margin-bottom: 4px; }
-.waitlist-success p { color: var(--charcoal); font-size: 0.85rem; }
+.phone-frame-text {
+  font-size: 0.78rem; color: var(--stone);
+  text-align: center; padding: 0 32px;
+  line-height: 1.5;
+}
 
 /* ---- PHILOSOPHY ---- */
+.philosophy-section {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 24px 80px;
+}
 .philosophy-intro {
-  text-align: center; max-width: 500px; margin: 0 auto;
-  padding: 0 24px 24px;
+  text-align: center; max-width: 480px; margin: 0 auto;
+  padding-bottom: 32px;
   font-size: 0.85rem; color: var(--stone); line-height: 1.7;
 }
 .philosophy {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  max-width: 900px; margin: 0 auto;
-  padding: 0 24px 80px;
   gap: 40px;
 }
 .philosophy-item { text-align: center; }
 .philosophy-jp {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.6rem; color: var(--sand);
-  margin-bottom: 6px;
+  font-size: 2.8rem; color: var(--sand);
+  margin-bottom: 8px; line-height: 1.2;
 }
 .philosophy-word {
   font-size: 0.65rem; font-weight: 700;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--indigo); margin-bottom: 6px;
+  color: var(--indigo); margin-bottom: 8px;
 }
 .philosophy-desc {
-  font-size: 0.82rem; color: var(--stone);
+  font-size: 0.84rem; color: var(--stone);
   line-height: 1.6;
 }
 
@@ -248,7 +225,7 @@ nav {
 /* ---- FEATURES ---- */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px; margin-top: 48px;
 }
 .feature-card {
@@ -275,7 +252,7 @@ nav {
   line-height: 1.7;
 }
 
-/* ---- RECIPE: JUST THE RECIPE ---- */
+/* ---- TORU RECIPE SECTION ---- */
 .recipe-section {
   background: var(--ink); border-radius: 24px;
   padding: 56px 48px; margin-top: 0;
@@ -292,11 +269,19 @@ nav {
 }
 .recipe-text .section-eyebrow { color: var(--coral); opacity: 0.8; }
 .recipe-text h2 { color: #fff; }
+.recipe-text .toru-jp {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem; color: rgba(255,255,255,0.12);
+  margin-bottom: 4px;
+}
 .recipe-text p {
   color: rgba(255,255,255,0.65);
   font-size: 0.92rem; line-height: 1.8;
   margin-top: 12px;
-  word-wrap: break-word; overflow-wrap: break-word;
+}
+.recipe-text .toru-available {
+  margin-top: 24px; font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
 }
 
 /* Interactive recipe demo */
@@ -313,7 +298,7 @@ nav {
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 10px;
-  color: #fff; font-family: 'Instrument Sans', sans-serif;
+  color: #fff; font-family: 'DM Sans', sans-serif;
   font-size: 0.82rem; outline: none;
   transition: border-color 0.2s;
 }
@@ -323,7 +308,7 @@ nav {
   padding: 12px 18px;
   background: var(--coral); color: #fff;
   border: none; border-radius: 10px;
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.82rem; font-weight: 600;
   cursor: pointer; transition: all 0.2s;
   white-space: nowrap;
@@ -367,18 +352,7 @@ nav {
   font-size: 0.72rem; color: rgba(255,255,255,0.35);
   font-style: italic;
 }
-.recipe-cta-btn {
-  padding: 8px 16px;
-  background: var(--indigo); color: #fff;
-  border: none; border-radius: 8px;
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 0.75rem; font-weight: 600;
-  cursor: pointer; text-decoration: none;
-  transition: all 0.2s;
-}
-.recipe-cta-btn:hover { background: #3d4ed4; }
 
-/* Loading state */
 .recipe-loading { display: none; padding: 32px 0; text-align: center; }
 .recipe-loading.show { display: block; }
 .recipe-loading p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
@@ -391,7 +365,6 @@ nav {
 .recipe-error { display: none; color: var(--coral); font-size: 0.82rem; padding: 12px 0; }
 .recipe-error.show { display: block; }
 
-/* Preset recipe buttons */
 .recipe-presets {
   display: flex; gap: 6px; flex-wrap: wrap;
   margin-bottom: 12px;
@@ -402,7 +375,7 @@ nav {
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 100px;
   color: rgba(255,255,255,0.45); font-size: 0.7rem;
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   cursor: pointer; transition: all 0.2s;
 }
 .recipe-preset-btn:hover {
@@ -410,64 +383,78 @@ nav {
   color: rgba(255,255,255,0.7);
 }
 
+/* Cooking mode preview */
+.cooking-preview {
+  display: none; margin-top: 16px;
+  padding: 16px; border-radius: 12px;
+  background: rgba(232,99,74,0.08);
+  border: 1px solid rgba(232,99,74,0.15);
+}
+.cooking-preview.show { display: block; animation: fadeUp 0.4s ease-out; }
+.cooking-preview-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cooking-preview-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--coral);
+}
+.cooking-preview-step {
+  font-size: 0.82rem; color: rgba(255,255,255,0.7); line-height: 1.6;
+}
+.cooking-timer {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; padding: 6px 14px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px; font-size: 0.75rem;
+  color: var(--coral); font-weight: 600;
+}
+
 /* ---- HOW IT WORKS ---- */
-.steps-container {
+.workflow-container {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 0; margin-top: 48px;
   position: relative;
 }
-.steps-container::before {
+.workflow-container::before {
   content: '';
   position: absolute; top: 36px; left: 12.5%; right: 12.5%;
   height: 2px;
   background: linear-gradient(90deg, var(--sand) 0%, var(--indigo-mid) 50%, var(--mint-soft) 100%);
 }
-.step-card {
+.workflow-step {
   text-align: center; padding: 0 16px;
-  position: relative; cursor: pointer;
+  position: relative;
 }
-.step-num {
+.workflow-num {
   width: 72px; height: 72px;
   border-radius: 50%; margin: 0 auto 16px;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.5rem;
   background: var(--warm);
   border: 2px solid var(--sand);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.3s ease;
   position: relative; z-index: 1;
 }
-.step-card:hover .step-num {
+.workflow-step:hover .workflow-num {
   background: var(--indigo-soft);
   border-color: var(--indigo);
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
-.step-card h3 {
-  font-size: 0.9rem; font-weight: 600;
+.workflow-step h3 {
+  font-size: 0.88rem; font-weight: 600;
   color: var(--ink); margin-bottom: 6px;
 }
-.step-card p {
+.workflow-step p {
   font-size: 0.8rem; color: var(--charcoal);
   line-height: 1.6;
 }
-.step-detail {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-.step-card.active .step-detail {
-  max-height: 80px; opacity: 1;
-}
-.step-card.active .step-num {
-  background: var(--indigo); border-color: var(--indigo);
-}
-.step-card.active .step-num span { color: #fff !important; }
-.step-detail p {
-  margin-top: 8px; font-size: 0.76rem;
-  color: var(--stone); font-style: italic;
-}
 
 /* ---- PRICING ---- */
-.pricing-section { background: var(--warm); border-radius: 24px; padding: 56px 40px; margin-top: 48px; }
+.pricing-section {
+  background: var(--warm); border-radius: 24px;
+  padding: 56px 40px; margin-top: 48px;
+}
 .pricing-toggle {
   display: flex; align-items: center; justify-content: center;
   gap: 12px; margin-bottom: 36px;
@@ -497,12 +484,13 @@ nav {
 }
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 680px; margin: 0 auto;
 }
 .price-card {
   background: #fff; border: 1.5px solid var(--sand);
-  border-radius: 18px; padding: 28px 24px;
+  border-radius: 18px; padding: 32px 28px;
   transition: all 0.3s ease;
   display: flex; flex-direction: column;
 }
@@ -515,7 +503,7 @@ nav {
   position: relative;
 }
 .price-card.featured::before {
-  content: 'BEST VALUE';
+  content: 'RECOMMENDED';
   position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
   font-size: 0.58rem; font-weight: 700;
   letter-spacing: 0.12em; color: #fff;
@@ -530,16 +518,20 @@ nav {
 .price-card.featured .price-tier { color: var(--indigo); }
 .price-amount {
   font-family: 'DM Serif Display', serif;
-  font-size: 2.2rem; color: var(--ink);
+  font-size: 2.4rem; color: var(--ink);
   margin-bottom: 2px;
 }
 .price-amount .period {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.8rem; font-weight: 400; color: var(--stone);
 }
 .price-subtitle {
   font-size: 0.8rem; color: var(--charcoal);
   margin-bottom: 20px; line-height: 1.5;
+}
+.price-per-day {
+  font-size: 0.75rem; color: var(--mint); font-weight: 600;
+  margin-bottom: 16px;
 }
 .price-features {
   list-style: none; padding: 0;
@@ -547,7 +539,7 @@ nav {
   flex: 1;
 }
 .price-features li {
-  font-size: 0.8rem; color: var(--charcoal);
+  font-size: 0.82rem; color: var(--charcoal);
   display: flex; align-items: flex-start; gap: 8px;
   line-height: 1.5;
 }
@@ -556,12 +548,10 @@ nav {
   font-weight: 700; flex-shrink: 0;
   margin-top: 1px;
 }
-.price-features li.missing { color: var(--stone); }
-.price-features li.missing::before { content: '\2014'; color: var(--sand); }
 .price-cta {
-  margin-top: 20px; padding: 12px;
+  margin-top: 20px; padding: 13px;
   border-radius: 10px; border: none;
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.85rem; font-weight: 600;
   cursor: pointer; transition: all 0.2s;
   text-align: center; display: block;
@@ -575,55 +565,93 @@ nav {
 .price-cta.outline:hover { border-color: var(--indigo); color: var(--indigo); }
 .price-cta.primary { background: var(--indigo); color: #fff; }
 .price-cta.primary:hover { background: #3d4ed4; }
+.pricing-note {
+  text-align: center; margin-top: 20px;
+  font-size: 0.82rem; color: var(--stone);
+}
+.pricing-legal {
+  text-align: center; margin-top: 24px;
+  font-size: 0.68rem; color: var(--stone);
+  line-height: 1.5; max-width: 500px; margin-left: auto; margin-right: auto;
+}
 
 /* ---- STORY ---- */
 .story-section {
-  max-width: 640px; margin: 0 auto;
-  padding: 80px 24px; text-align: center;
+  max-width: 900px; margin: 0 auto;
+  padding: 80px 24px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
 }
-.story-section .section-eyebrow { text-align: center; }
-.story-section h2 { text-align: center; margin-bottom: 20px; }
-.story-section h2 em { font-style: italic; color: var(--indigo); }
+.story-content {}
+.story-content .section-eyebrow { color: var(--coral); }
+.story-content h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 400; color: var(--ink);
+  letter-spacing: -0.02em; line-height: 1.2;
+  margin-bottom: 20px;
+}
 .story-body {
-  font-size: 0.95rem; color: var(--charcoal);
-  line-height: 2; text-align: left;
+  font-size: 0.92rem; color: var(--charcoal);
+  line-height: 1.9;
 }
+.story-body p + p { margin-top: 14px; }
 .story-body em { color: var(--indigo); font-style: normal; font-weight: 600; }
 .story-sig {
-  margin-top: 28px; text-align: left;
+  margin-top: 24px;
   color: var(--stone); font-size: 0.85rem;
 }
 .story-sig strong { color: var(--ink); }
+.story-visual {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.story-visual img {
+  width: 240px; height: 240px;
+  object-fit: contain; opacity: 0.12;
+}
 
-/* ---- REFERRAL ---- */
-.referral-banner {
-  max-width: 1000px; margin: 0 auto;
-  padding: 0 24px 80px;
+/* ---- FAQ ---- */
+.faq-section {
+  max-width: 700px; margin: 0 auto;
+  padding: 80px 24px;
 }
-.referral-inner {
-  background: var(--indigo-soft);
-  border: 1px solid var(--indigo-mid);
-  border-radius: 18px; padding: 32px 36px;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  gap: 24px; flex-wrap: wrap;
-}
-.referral-inner h3 {
+.faq-section h2 {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.2rem; color: var(--ink);
-  margin-bottom: 4px;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 400; color: var(--ink);
+  letter-spacing: -0.02em; margin-bottom: 32px;
 }
-.referral-inner p {
-  font-size: 0.85rem; color: var(--charcoal);
-  max-width: 400px; line-height: 1.6;
+.faq-item {
+  border-bottom: 1px solid var(--sand);
 }
-.referral-tag {
-  padding: 10px 20px;
-  background: var(--indigo); color: #fff;
-  border-radius: 100px;
-  font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.03em; white-space: nowrap;
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0; cursor: pointer;
+  font-size: 0.92rem; font-weight: 600; color: var(--ink);
+  background: none; border: none; width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  text-align: left;
 }
+.faq-question:hover { color: var(--indigo); }
+.faq-icon {
+  font-size: 1.2rem; color: var(--stone);
+  transition: transform 0.3s;
+  flex-shrink: 0; margin-left: 16px;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 200px;
+}
+.faq-answer p {
+  font-size: 0.86rem; color: var(--charcoal);
+  line-height: 1.7; padding-bottom: 18px;
+}
+.faq-answer a { color: var(--indigo); }
 
 /* ---- FINAL CTA ---- */
 .final-cta {
@@ -635,27 +663,27 @@ nav {
   font-weight: 400; color: var(--ink);
   letter-spacing: -0.02em; margin-bottom: 14px;
 }
-.final-cta h2 em {
-  font-style: italic;
-  background: linear-gradient(135deg, var(--indigo), var(--coral));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 .final-cta p {
   color: var(--charcoal); font-size: 1rem;
   margin-bottom: 32px;
 }
-.final-cta .waitlist-form { margin: 0 auto; }
+.final-cta-badge {
+  display: flex; justify-content: center;
+}
 
 /* ---- FOOTER ---- */
 footer {
   text-align: center; padding: 40px 24px 60px;
   border-top: 1px solid var(--sand);
 }
+footer .footer-brand-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 8px;
+}
+footer .footer-brand-row img { width: 28px; height: 28px; object-fit: contain; }
 footer .footer-brand {
   font-family: 'DM Serif Display', serif;
   font-size: 1.1rem; color: var(--ink);
-  margin-bottom: 10px; display: block;
 }
 footer .footer-brand span { color: var(--indigo); }
 footer p { color: var(--stone); font-size: 0.78rem; }
@@ -666,96 +694,96 @@ footer a {
 footer a:hover { color: var(--indigo); }
 
 /* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 768px) {
   nav { padding: 14px 20px; }
-  .nav-links a:not(.nav-cta) { display: none; }
-  .nav-links a.nav-cta { padding: 8px 14px; font-size: 0.75rem; white-space: nowrap; }
-  .hero { padding: 120px 20px 60px; }
-  .philosophy { grid-template-columns: 1fr; gap: 24px; padding-bottom: 40px; }
+  .nav-links a { display: none; }
+  .hero {
+    flex-direction: column; padding: 100px 20px 60px;
+    text-align: center; gap: 40px;
+  }
+  .hero-content { display: flex; flex-direction: column; align-items: center; }
+  .hero-sub { text-align: center; }
+  .hero-cta { justify-content: center; }
+  .hero-mockup { flex: none; }
+  .phone-frame { width: 220px; height: 440px; border-width: 6px; border-radius: 32px; }
+  .phone-frame::before { width: 80px; height: 22px; border-radius: 11px; top: 10px; }
+  .philosophy { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 60px 16px; }
+  .features-grid { grid-template-columns: 1fr; }
   .recipe-section { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 18px; }
   .recipe-section::before { display: none; }
   .recipe-input-row { flex-direction: column; }
   .recipe-extract-btn { width: 100%; }
-  .steps-container { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .steps-container::before { display: none; }
+  .workflow-container { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .workflow-container::before { display: none; }
   .pricing-section { padding: 36px 20px; border-radius: 18px; }
   .pricing-grid { grid-template-columns: 1fr; }
-  .waitlist-form { flex-direction: column; }
-  .waitlist-btn { width: 100%; }
-  .referral-inner { flex-direction: column; text-align: center; }
-  .referral-inner p { max-width: 100%; }
+  .story-section { grid-template-columns: 1fr; gap: 32px; padding: 60px 20px; text-align: center; }
+  .story-body { text-align: left; }
+  .story-visual { order: -1; }
+  .story-visual img { width: 160px; height: 160px; }
+  .faq-section { padding: 60px 20px; }
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <a href="#" class="nav-brand">
-    <img src="koi-logo.png" alt="Miiro" width="32" height="32" style="object-fit: contain;">
+    <img src="koi-logo.png" alt="Miiro" loading="eager">
     <span class="nav-wordmark">M<span>ii</span>ro</span>
   </a>
   <div class="nav-links">
     <a href="#features">Features</a>
+    <a href="#toru">Toru</a>
     <a href="#pricing">Pricing</a>
-    <a href="#story">Story</a>
-    <a href="#waitlist" class="nav-cta">Join Early Access</a>
+    <a href="#story">Our Story</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-jp">見る <span>miru · to see</span></div>
-
-  <div class="early-badge">
-    <span class="dot"></span>
-    Early access · Limited spots
+  <div class="hero-content">
+    <div class="hero-jp">見る <em>miru · to see</em></div>
+    <h1>See what matters.</h1>
+    <p class="hero-sub">The app for couples and families who share a life. Plan meals, share lists, save recipes — and finally stop asking "did you get the milk?"</p>
+    <div class="hero-cta">
+      <a href="#" aria-label="Download on the App Store">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
+      </a>
+    </div>
+    <p class="hero-note">Free to start. One subscription covers your whole household.</p>
   </div>
-
-  <img src="koi-logo.png" alt="Miiro Koi" style="width: 140px; height: 140px; object-fit: contain; margin-bottom: 28px; animation: fadeUp 0.65s ease-out 0.05s both;">
-
-  <h1>See what <em>matters.</em></h1>
-
-  <p class="hero-sub">The task app for people who share a life. Groceries, chores, recipes, and daily planning, solo or together. Finally stop asking "did you get the thing?"</p>
-
-  <form class="waitlist-form" id="waitlist" onsubmit="handleWaitlist(event)">
-    <input type="email" class="waitlist-input" placeholder="Your email" required id="emailInput">
-    <button type="submit" class="waitlist-btn">Get Early Access</button>
-  </form>
-  <p class="hero-note">Built for couples, roommates, and families. Free to start. First 100 households get 3 months of Duo free.</p>
-
-  <div class="waitlist-success" id="successMsg">
-    <h3>You're in.</h3>
-    <p style="margin-bottom: 4px;">You're early. We're opening Miiro to a small group first.</p>
-    <p style="font-size: 0.75rem; color: var(--stone); margin-bottom: 20px;">Opening access to the first 1,000 households.</p>
-    
-    <div style="background: var(--indigo-soft); border: 1px solid var(--indigo-mid); border-radius: 14px; padding: 20px; margin-top: 12px;">
-      <h4 style="font-size: 0.95rem; color: var(--ink); margin-bottom: 6px;">Invite the person you share life with</h4>
-      <p style="font-size: 0.82rem; color: var(--charcoal); line-height: 1.6; margin-bottom: 14px;">Miiro works best when it's shared. Invite one person you live with and you both get Duo free at launch.</p>
-      <button onclick="shareInvite()" style="width: 100%; padding: 12px; background: var(--indigo); color: #fff; border: none; border-radius: 10px; font-family: 'Instrument Sans', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer;">Invite them</button>
-      <button onclick="copyInviteLink()" style="width: 100%; padding: 10px; background: transparent; color: var(--indigo); border: none; font-family: 'Instrument Sans', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; margin-top: 6px;">Copy invite link</button>
+  <div class="hero-mockup">
+    <div class="phone-frame">
+      <p class="phone-frame-text">App screenshot coming soon</p>
     </div>
   </div>
 </section>
 
 <!-- PHILOSOPHY -->
-<p class="philosophy-intro">Miiro is built on three Japanese principles that guide everything we design.</p>
-<div class="philosophy">
-  <div class="philosophy-item">
-    <div class="philosophy-jp">見る</div>
-    <div class="philosophy-word">Miru · See</div>
-    <p class="philosophy-desc">Make the invisible visible. See your tasks, your partner's progress, your week ahead.</p>
-  </div>
-  <div class="philosophy-item">
-    <div class="philosophy-jp">間</div>
-    <div class="philosophy-word">Ma · Space</div>
-    <p class="philosophy-desc">Create breathing room in a busy life. Only see what matters today.</p>
-  </div>
-  <div class="philosophy-item">
-    <div class="philosophy-jp">簡素</div>
-    <div class="philosophy-word">Kanso · Simplicity</div>
-    <p class="philosophy-desc">Strip away the noise. A calm interface for a clearer mind.</p>
+<div class="philosophy-section">
+  <p class="philosophy-intro">Miiro is built on three Japanese principles that guide everything we design.</p>
+  <div class="philosophy">
+    <div class="philosophy-item">
+      <div class="philosophy-jp">見る</div>
+      <div class="philosophy-word">Miru · See</div>
+      <p class="philosophy-desc">Make the invisible visible.</p>
+    </div>
+    <div class="philosophy-item">
+      <div class="philosophy-jp">間</div>
+      <div class="philosophy-word">Ma · Space</div>
+      <p class="philosophy-desc">Create breathing room.</p>
+    </div>
+    <div class="philosophy-item">
+      <div class="philosophy-jp">簡素</div>
+      <div class="philosophy-word">Kanso · Simplicity</div>
+      <p class="philosophy-desc">Strip away the noise.</p>
+    </div>
   </div>
 </div>
 
@@ -763,51 +791,52 @@ footer a:hover { color: var(--indigo); }
 <div class="section" id="features">
   <div class="section-eyebrow">Features</div>
   <h2>Everything you need. Nothing you don't.</h2>
-  <p class="lead">Built with kanso (simplicity) at its core. Every feature earns its place.</p>
 
   <div class="features-grid">
     <div class="feature-card">
-      <span class="feature-emoji">📋</span>
-      <h3>Smart lists</h3>
-      <p>Create lists for anything: groceries, chores, projects, goals. Organize by category and keep things tidy.</p>
+      <span class="feature-emoji">&#128101;</span>
+      <h3>Shared Lists</h3>
+      <p>Create grocery lists, to-do lists, or packing lists that sync instantly. When they check off milk at the store, you see it disappear.</p>
     </div>
     <div class="feature-card">
-      <span class="feature-emoji">👥</span>
-      <h3>Share instantly</h3>
-      <p>Invite your partner, family, or roommates. Everyone sees updates in real-time. No more "did you get the thing?"</p>
+      <span class="feature-emoji">&#128197;</span>
+      <h3>Meal Planning</h3>
+      <p>Drag recipes onto your weekly plan. See what's for dinner at a glance. Add all ingredients to your grocery list with one tap.</p>
     </div>
     <div class="feature-card">
-      <span class="feature-emoji">☀️</span>
+      <span class="feature-emoji">&#128270;</span>
+      <h3>Toru Recipe Finder</h3>
+      <p>Paste any recipe URL. We strip away the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">&#129489;&#8205;&#127859;</span>
+      <h3>Cooking Mode</h3>
+      <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">&#128276;</span>
+      <h3>Activity Feed</h3>
+      <p>See what your partner did today — groceries bought, tasks completed, meals planned. No more "did you do the thing?"</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-emoji">&#9728;&#65039;</span>
       <h3>My Day</h3>
-      <p>A calm daily view of just what matters today. Smart suggestions surface overdue and high-priority items.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">🛒</span>
-      <h3>Grocery categories</h3>
-      <p>Items grouped by store aisle: produce, dairy, bakery, frozen. Walk through once, get everything.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">📅</span>
-      <h3>Calendar and planning</h3>
-      <p>Plan your week visually. Drag tasks into time slots. See your schedule and tasks in one place.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-emoji">🔔</span>
-      <h3>Activity feed</h3>
-      <p>"Mirrin completed grocery shopping ✓" See what's happening without asking.</p>
+      <p>Every morning, see just what needs doing. Tasks, meals, groceries — all in one calm view.</p>
     </div>
   </div>
 </div>
 
-<!-- JUST THE RECIPE -->
-<div class="section" style="padding-top: 0;">
+<!-- TORU -->
+<div class="section" id="toru" style="padding-top: 0;">
   <div class="recipe-section">
     <div class="recipe-text">
-      <div class="section-eyebrow">Just the Recipe</div>
-      <h2>Paste a link. Get the recipe.</h2>
-      <p style="margin-top: 12px; font-weight: 600; color: rgba(255,255,255,0.85);">No ads. No life stories. Just the ingredients.</p>
-      <p>Found a recipe online? Paste the URL into Miiro. We extract the ingredients, steps, and servings, straight into your grocery list sorted by aisle. Works with most recipe sites, even the ones behind paywalls.</p>
-      <p>Save it to your collection. Share it with your household. Tap "Add to groceries" and every ingredient lands in your shopping list, already organized.</p>
+      <div class="toru-jp">取る</div>
+      <div class="section-eyebrow" style="color: var(--coral);">Toru · to take</div>
+      <h2>Paste a link. Get the recipe. Start cooking.</h2>
+      <p style="margin-top: 12px; font-weight: 600; color: rgba(255,255,255,0.85);">No ads. No life stories. Just the recipe.</p>
+      <p>Found something online? Paste the URL into Toru. We extract the ingredients, steps, and servings. Save it to your cookbook, share it with your household, or add every ingredient to your grocery list with one tap.</p>
+      <p>Works with most recipe sites — RecipeTin Eats, BBC Good Food, Budget Bytes, and many more.</p>
+      <p class="toru-available">Available in Miiro</p>
     </div>
     <div class="recipe-demo-live">
       <div class="recipe-presets">
@@ -828,7 +857,7 @@ footer a:hover { color: var(--indigo); }
       <div class="recipe-error" id="recipeError"></div>
       <div class="recipe-result" id="recipeResult">
         <div class="recipe-result-header">
-          <img id="recipeImage" style="display:none; width:100%; height:140px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
+          <img id="recipeImage" alt="" style="display:none; width:100%; height:140px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
           <h4 id="recipeName"></h4>
           <span class="recipe-meta" id="recipeMeta"></span>
         </div>
@@ -838,11 +867,17 @@ footer a:hover { color: var(--indigo); }
         </div>
         <div id="recipeInstructionsWrap" style="display:none; margin-top:14px;">
           <div style="font-size:0.7rem; font-weight:600; color:var(--coral); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Steps</div>
-          <div class="recipe-instructions-list" id="recipeInstructions" style="display:flex; flex-direction:column; gap:8px; max-height:180px; overflow-y:auto;"></div>
+          <div id="recipeInstructions" style="display:flex; flex-direction:column; gap:8px; max-height:180px; overflow-y:auto;"></div>
+        </div>
+        <div class="cooking-preview" id="cookingPreview">
+          <div class="cooking-preview-header">
+            <span class="cooking-preview-label">Cooking Mode Preview</span>
+          </div>
+          <p class="cooking-preview-step" id="cookingPreviewStep"></p>
+          <div class="cooking-timer" id="cookingTimer" style="display:none;">&#9202; Timer ready</div>
         </div>
         <div class="recipe-cta-row">
-          <span class="recipe-cta-text">Add all to your grocery list in Miiro</span>
-          <a href="#waitlist" class="recipe-cta-btn">Get Early Access</a>
+          <span class="recipe-cta-text">Save to your cookbook in Miiro</span>
         </div>
       </div>
     </div>
@@ -852,40 +887,28 @@ footer a:hover { color: var(--indigo); }
 <!-- HOW IT WORKS -->
 <div class="section">
   <div class="section-eyebrow">How it works</div>
-  <h2>From download to clarity in minutes.</h2>
+  <h2>From chaos to calm in minutes.</h2>
 
-  <div class="steps-container">
-    <div class="step-card active" onclick="activateStep(this)">
-      <div class="step-num"><span style="font-weight:700;color:var(--ink);font-size:1.2rem;">1</span></div>
-      <h3>Download Miiro</h3>
-      <p>Create an account in seconds.</p>
-      <div class="step-detail">
-        <p>Sign up with email or Apple ID. Your first list is ready before you finish your coffee.</p>
-      </div>
+  <div class="workflow-container">
+    <div class="workflow-step">
+      <div class="workflow-num"><span style="font-size:1.3rem;">&#128270;</span></div>
+      <h3>Find a recipe</h3>
+      <p>Paste a URL into Toru. Get clean ingredients and steps.</p>
     </div>
-    <div class="step-card" onclick="activateStep(this)">
-      <div class="step-num"><span style="font-weight:700;color:var(--ink);font-size:1.2rem;">2</span></div>
-      <h3>Create your lists</h3>
-      <p>Groceries, tasks, goals, anything.</p>
-      <div class="step-detail">
-        <p>Add items, set due dates, assign priorities. Grocery lists auto-sort by aisle.</p>
-      </div>
+    <div class="workflow-step">
+      <div class="workflow-num"><span style="font-size:1.3rem;">&#128197;</span></div>
+      <h3>Plan your week</h3>
+      <p>Drag it onto your meal plan. Tuesday dinner: sorted.</p>
     </div>
-    <div class="step-card" onclick="activateStep(this)">
-      <div class="step-num"><span style="font-weight:700;color:var(--ink);font-size:1.2rem;">3</span></div>
-      <h3>Share (or don't)</h3>
-      <p>Invite others or keep it personal.</p>
-      <div class="step-detail">
-        <p>Share a list with one tap. Your partner gets a notification. Personal lists stay private.</p>
-      </div>
+    <div class="workflow-step">
+      <div class="workflow-num"><span style="font-size:1.3rem;">&#128722;</span></div>
+      <h3>Generate your list</h3>
+      <p>One tap. Every ingredient lands in your list, sorted by aisle.</p>
     </div>
-    <div class="step-card" onclick="activateStep(this)">
-      <div class="step-num"><span style="font-weight:700;color:var(--ink);font-size:1.2rem;">4</span></div>
-      <h3>See what matters</h3>
-      <p>My Day shows today's focus.</p>
-      <div class="step-detail">
-        <p>Every morning, see just what needs doing. Check things off. Breathe.</p>
-      </div>
+    <div class="workflow-step">
+      <div class="workflow-num"><span style="font-size:1.3rem;">&#129489;&#8205;&#127859;</span></div>
+      <h3>Cook together</h3>
+      <p>Step-by-step mode with timers. Swipe through while cooking.</p>
     </div>
   </div>
 </div>
@@ -893,194 +916,208 @@ footer a:hover { color: var(--indigo); }
 <!-- PRICING -->
 <div class="section" id="pricing">
   <div class="section-eyebrow">Simple, honest pricing</div>
-  <h2>Start free. Upgrade when you're ready.</h2>
-  <p class="lead">No hidden fees. No features held hostage. Upgrade because sharing is so good you want more.</p>
+  <h2>Start free. Upgrade when you want more.</h2>
+  <p class="lead">No hidden fees. Every feature works on every plan.</p>
 
   <div class="pricing-section">
     <div class="pricing-toggle">
       <span class="active" id="monthlyLabel">Monthly</span>
-      <div class="toggle-switch" id="pricingToggle" onclick="togglePricing()">
+      <div class="toggle-switch yearly" id="pricingToggle" onclick="togglePricing()">
         <div class="toggle-knob"></div>
       </div>
-      <span id="yearlyLabel">Yearly <span class="save-badge">Save 16%</span></span>
+      <span class="active" id="yearlyLabel">Yearly <span class="save-badge">Save 30%</span></span>
     </div>
 
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-tier">Free</div>
         <div class="price-amount">$0</div>
-        <p class="price-subtitle">Everything you need to get organized.</p>
+        <p class="price-subtitle">Everything you need to get started.</p>
         <ul class="price-features">
-          <li>Unlimited personal tasks</li>
-          <li>Up to 5 lists</li>
-          <li>My Day daily focus view</li>
-          <li>Calendar view</li>
-          <li>Reminders and due dates</li>
+          <li>3 lists</li>
+          <li>5 saved recipes</li>
+          <li>3 recipe imports</li>
+          <li>1 template</li>
           <li>1 shared list</li>
-          <li class="missing">Unlimited shared lists</li>
-          <li>5 recipe imports</li>
-          <li class="missing">Unlimited recipes</li>
-          <li class="missing">Grocery categories</li>
+          <li>2 household members</li>
+          <li>All features included</li>
         </ul>
-        <a href="#waitlist" class="price-cta outline">Get Started Free</a>
+        <a href="#" class="price-cta outline">Get Started Free</a>
       </div>
 
       <div class="price-card featured">
-        <div class="price-tier">Duo / Family</div>
-        <div class="price-amount"><span id="duoPrice">$1.99</span><span class="period" id="duoPeriod">/mo</span></div>
-        <p class="price-subtitle">Share your life with the people who matter.</p>
+        <div class="price-tier">Miiro+</div>
+        <div class="price-amount"><span id="plusPrice">$24.99</span><span class="period" id="plusPeriod">/yr</span></div>
+        <p class="price-per-day" id="plusPerDay">Less than 7&#162; a day</p>
+        <p class="price-subtitle">Unlimited everything for your whole household.</p>
         <ul class="price-features">
-          <li>Everything in Free</li>
-          <li>Unlimited shared lists</li>
-          <li>Up to 6 family members</li>
-          <li>Real-time sync</li>
-          <li>Assign tasks to each other</li>
-          <li>Activity feed</li>
-          <li>Just the Recipe + collections</li>
-          <li>Grocery categories by aisle</li>
-          <li>Recurring tasks</li>
+          <li>Unlimited lists</li>
+          <li>Unlimited recipes</li>
+          <li>Unlimited imports</li>
+          <li>Unlimited templates</li>
+          <li>Unlimited sharing</li>
+          <li>Up to 6 members</li>
+          <li>All features included</li>
         </ul>
-        <a href="#waitlist" class="price-cta primary">Get Duo</a>
-      </div>
-
-      <div class="price-card">
-        <div class="price-tier">Pro</div>
-        <div class="price-amount"><span id="proPrice">$3.99</span><span class="period" id="proPeriod">/mo</span></div>
-        <p class="price-subtitle">For power users who want it all.</p>
-        <ul class="price-features">
-          <li>Everything in Duo</li>
-          <li>Smart suggestions</li>
-          <li>Weekly household summary</li>
-          <li>Multiple households</li>
-          <li>Advanced stats and insights</li>
-          <li>Recurring task templates</li>
-          <li>Home screen widgets</li>
-          <li>Export and backup</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="#waitlist" class="price-cta outline">Get Pro</a>
+        <a href="#" class="price-cta primary">Start Free Trial</a>
       </div>
     </div>
+
+    <p class="pricing-note">One subscription covers your whole household.</p>
+    <p class="pricing-legal">Payment will be charged to your Apple ID account at confirmation of purchase. Subscription automatically renews unless canceled at least 24 hours before the end of the current period.</p>
   </div>
 </div>
 
 <!-- STORY -->
-<div class="story-section" id="story">
-  <div class="section-eyebrow">The story</div>
-  <h2>Why I built <em>Miiro</em></h2>
-  <div class="story-body">
-    <p><em>Miiro</em> comes from the Japanese word <em>miru</em>, to see.</p>
-    <p style="margin-top: 12px;">I built it because my wife Mirrin and I kept losing track of the little things. The groceries, the household tasks, the recipes we wanted to try. Every task app out there was built for one person working alone. We needed something that let us see each other's day.</p>
-    <p style="margin-top: 12px;">The name is also personal: <em>Mi</em> (from Mirrin) + <em>Ro</em> (from Robert) = Miiro. It's the app I wished existed, built for every person, couple, and family who's tired of things falling through the cracks.</p>
+<div id="story" class="story-section">
+  <div class="story-content">
+    <div class="section-eyebrow">The story</div>
+    <h2>Why I built Miiro</h2>
+    <div class="story-body">
+      <p><em>Miiro</em> comes from the Japanese word <em>miru</em>, to see.</p>
+      <p>I built it because my wife Mirrin and I kept losing track of the little things — the groceries, the school pickups, the "I thought you were handling that" moments.</p>
+      <p>One morning, we both showed up to pick up Miles from kindergarten. Neither of us had bought groceries. The mental load wasn't shared — it was just invisible.</p>
+      <p>Every task app was built for one person working alone. We needed something that let us see each other's day.</p>
+      <p>The name is personal: <em>Mi</em> (from Mirrin) + <em>Ro</em> (from Robert) = Miiro. It's the app I wished existed.</p>
+    </div>
+    <div class="story-sig">
+      <strong>Robert</strong>, builder of Miiro<br>
+      Amsterdam, dog dad to Rose &#128054;
+    </div>
   </div>
-  <div class="story-sig">
-    <strong>Robert</strong>, builder of Miiro, husband, dog dad to Rose 🐕
+  <div class="story-visual">
+    <img src="koi-logo.png" alt="" aria-hidden="true">
   </div>
 </div>
 
-<!-- REFERRAL -->
-<div class="referral-banner">
-  <div class="referral-inner">
-    <div>
-      <h3>Share Miiro, get free months</h3>
-      <p>Invite someone you live with and you both get Duo free when they join. Know 10 people? That's almost a free year.</p>
+<!-- FAQ -->
+<div class="faq-section" id="faq">
+  <h2>Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      Is it really free?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Yes. Every feature works on the free plan. You get 3 lists, 5 saved recipes, and sharing with 1 person. Miiro+ just gives you more of everything.</p>
     </div>
-    <div class="referral-tag">Coming at launch</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      Does my partner need to pay too?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>No. One Miiro+ subscription covers your whole household — up to 6 people. Your partner gets full access through Apple Family Sharing.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      What happens after the free trial?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>After 7 days, you'll be charged $2.99/month (or $24.99/year if you chose annual). You can cancel anytime in your iPhone Settings. If you cancel, you keep access until the end of your billing period.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      What recipe sites does Toru work with?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Most major recipe sites — including BBC Good Food, RecipeTin Eats, Budget Bytes, Allrecipes, and many more. If a site has structured recipe data, Toru can extract it.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      Is my data private?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Your data is stored securely on Google Firebase with encryption. We don't sell your data, don't show ads, and don't track your browsing. Read our full <a href="privacy.html">privacy policy</a>.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggleFaq(this)">
+      Can I use Miiro without sharing?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Absolutely. Miiro works great for solo use too. Sharing is optional — you can keep all your lists private.</p>
+    </div>
   </div>
 </div>
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <h2>Ready to see what <em>matters?</em></h2>
-  <p>Join the early access list. Be one of the first to experience Miiro.</p>
-  <form class="waitlist-form" onsubmit="handleWaitlist(event)">
-    <input type="email" class="waitlist-input" placeholder="Your email" required>
-    <button type="submit" class="waitlist-btn">Get Early Access</button>
-  </form>
+  <h2>Ready to see what matters?</h2>
+  <p>Free to start. Your household will thank you.</p>
+  <div class="final-cta-badge">
+    <a href="#" aria-label="Download on the App Store">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
+    </a>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 4px;">
-    <img src="koi-logo.png" alt="Miiro" width="28" height="28" style="object-fit: contain;">
+  <div class="footer-brand-row">
+    <img src="koi-logo.png" alt="Miiro" loading="lazy">
     <span class="footer-brand">M<span>ii</span>ro</span>
   </div>
-  <p>Built with care in Amsterdam 🇳🇱</p>
+  <p>Built with care in Amsterdam &#127475;&#127473;</p>
   <p style="margin-top: 8px;">
-    <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:hello@getmiiro.app">Contact</a>
+    <a href="privacy.html">Privacy</a> &middot; <a href="support.html">Support</a> &middot; <a href="terms.html">Terms</a>
   </p>
+  <p style="margin-top: 6px;"><a href="mailto:support@miiro.app">support@miiro.app</a></p>
   <p style="margin-top: 14px; opacity: 0.5;">&copy; 2026 Miiro. All rights reserved.</p>
 </footer>
 
 <script>
-// Waitlist
-function handleWaitlist(e) {
-  e.preventDefault();
-  const form = e.target;
-  const email = form.querySelector('input[type="email"]').value;
+// Nav scroll effect
+(function() {
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
 
-  fetch('https://formspree.io/f/meeleaqn', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email })
-  }).then(r => {
-    if (r.ok) {
-      document.querySelectorAll('.waitlist-form').forEach(f => f.style.display = 'none');
-      const note = document.querySelector('.hero-note');
-      if (note) note.style.display = 'none';
-      document.getElementById('successMsg').classList.add('show');
-    }
-  }).catch(() => {
-    document.querySelectorAll('.waitlist-form').forEach(f => f.style.display = 'none');
-    document.getElementById('successMsg').classList.add('show');
-  });
-}
-
-// Pricing toggle
-let isYearly = false;
+// Pricing toggle (default to yearly)
+var isYearly = true;
 function togglePricing() {
   isYearly = !isYearly;
-  const toggle = document.getElementById('pricingToggle');
+  var toggle = document.getElementById('pricingToggle');
   document.getElementById('monthlyLabel').classList.toggle('active', !isYearly);
   document.getElementById('yearlyLabel').classList.toggle('active', isYearly);
   toggle.classList.toggle('yearly', isYearly);
 
-  document.getElementById('duoPrice').textContent = isYearly ? '$19.99' : '$1.99';
-  document.getElementById('duoPeriod').textContent = isYearly ? '/year' : '/mo';
-  document.getElementById('proPrice').textContent = isYearly ? '$39.99' : '$3.99';
-  document.getElementById('proPeriod').textContent = isYearly ? '/year' : '/mo';
-}
-
-// Steps
-function activateStep(el) {
-  document.querySelectorAll('.step-card').forEach(s => s.classList.remove('active'));
-  el.classList.add('active');
-}
-
-// Share invite
-function shareInvite() {
-  const shareData = {
-    title: 'Join me on Miiro',
-    text: 'I just joined Miiro to finally stop forgetting groceries and chores. Join me.',
-    url: 'https://miro-landing-one.vercel.app'
-  };
-  if (navigator.share) {
-    navigator.share(shareData).catch(() => {});
+  if (isYearly) {
+    document.getElementById('plusPrice').textContent = '$24.99';
+    document.getElementById('plusPeriod').textContent = '/yr';
+    document.getElementById('plusPerDay').textContent = 'Less than 7\u00A2 a day';
+    document.getElementById('plusPerDay').style.display = '';
   } else {
-    copyInviteLink();
+    document.getElementById('plusPrice').textContent = '$2.99';
+    document.getElementById('plusPeriod').textContent = '/mo';
+    document.getElementById('plusPerDay').textContent = '7-day free trial';
+    document.getElementById('plusPerDay').style.display = '';
   }
 }
 
-function copyInviteLink() {
-  const url = 'https://miro-landing-one.vercel.app';
-  navigator.clipboard.writeText(url).then(() => {
-    const btn = event.target;
-    const orig = btn.textContent;
-    btn.textContent = 'Link copied!';
-    setTimeout(() => { btn.textContent = orig; }, 2000);
-  }).catch(() => {
-    prompt('Copy this link:', url);
-  });
+// FAQ accordion
+function toggleFaq(btn) {
+  var item = btn.parentElement;
+  var wasOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
 }
 
 // Recipe extractor
@@ -1090,75 +1127,101 @@ function tryRecipe(url) {
 }
 
 async function extractRecipe() {
-  const url = document.getElementById('recipeUrlInput').value.trim();
+  var url = document.getElementById('recipeUrlInput').value.trim();
   if (!url) return;
 
-  const loading = document.getElementById('recipeLoading');
-  const result = document.getElementById('recipeResult');
-  const error = document.getElementById('recipeError');
-  const btn = document.getElementById('recipeExtractBtn');
+  var loading = document.getElementById('recipeLoading');
+  var result = document.getElementById('recipeResult');
+  var error = document.getElementById('recipeError');
+  var btn = document.getElementById('recipeExtractBtn');
+  var cookingPreview = document.getElementById('cookingPreview');
 
-  // Reset states
   loading.classList.add('show');
   result.classList.remove('show');
   error.classList.remove('show');
+  cookingPreview.classList.remove('show');
   btn.disabled = true;
   btn.textContent = 'Extracting...';
 
   try {
-    const response = await fetch('/api/recipe', {
+    var response = await fetch('/api/recipe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url: url })
     });
 
-    const data = await response.json();
+    var data = await response.json();
 
     if (!response.ok) {
       throw new Error(data.error || 'Could not extract recipe');
     }
 
-    // Show recipe image
-    const img = document.getElementById('recipeImage');
+    // Image
+    var img = document.getElementById('recipeImage');
     if (data.image) {
       img.src = data.image;
+      img.alt = data.name || 'Recipe image';
       img.style.display = 'block';
     } else {
       img.style.display = 'none';
     }
 
-    // Show recipe name
+    // Name
     document.getElementById('recipeName').textContent = data.name;
 
-    // Show meta info
-    const meta = [];
+    // Meta
+    var meta = [];
     if (data.servings) meta.push(data.servings + (typeof data.servings === 'number' ? ' servings' : ''));
     if (data.ingredients) meta.push(data.ingredients.length + ' ingredients');
     if (data.instructions) meta.push(data.instructions.length + ' steps');
-    document.getElementById('recipeMeta').textContent = meta.join(' · ');
+    document.getElementById('recipeMeta').textContent = meta.join(' \u00B7 ');
 
-    // Show ingredients
-    const ingredientsList = document.getElementById('recipeIngredients');
+    // Ingredients
+    var ingredientsList = document.getElementById('recipeIngredients');
     ingredientsList.innerHTML = '';
-    data.ingredients.forEach(ingredient => {
-      const div = document.createElement('div');
+    (data.ingredients || []).forEach(function(ingredient) {
+      var div = document.createElement('div');
       div.className = 'recipe-ingredient-item';
-      div.innerHTML = '<span class="dot"></span>' + ingredient;
+      var dot = document.createElement('span');
+      dot.className = 'dot';
+      div.appendChild(dot);
+      div.appendChild(document.createTextNode(ingredient));
       ingredientsList.appendChild(div);
     });
 
-    // Show instructions
-    const instructionsWrap = document.getElementById('recipeInstructionsWrap');
-    const instructionsList = document.getElementById('recipeInstructions');
+    // Instructions
+    var instructionsWrap = document.getElementById('recipeInstructionsWrap');
+    var instructionsList = document.getElementById('recipeInstructions');
     instructionsList.innerHTML = '';
     if (data.instructions && data.instructions.length > 0) {
       instructionsWrap.style.display = 'block';
-      data.instructions.forEach((step, i) => {
-        const div = document.createElement('div');
+      data.instructions.forEach(function(step, i) {
+        var div = document.createElement('div');
         div.style.cssText = 'display:flex; gap:10px; font-size:0.78rem; color:rgba(255,255,255,0.55); line-height:1.5;';
-        div.innerHTML = '<span style="color:var(--coral); font-weight:600; flex-shrink:0;">' + (i + 1) + '.</span><span>' + step + '</span>';
+        var num = document.createElement('span');
+        num.style.cssText = 'color:var(--coral); font-weight:600; flex-shrink:0;';
+        num.textContent = (i + 1) + '.';
+        var text = document.createElement('span');
+        text.textContent = step;
+        div.appendChild(num);
+        div.appendChild(text);
         instructionsList.appendChild(div);
       });
+
+      // Show cooking mode preview
+      var firstStep = data.instructions[0];
+      if (firstStep) {
+        document.getElementById('cookingPreviewStep').textContent =
+          'Step 1: ' + (firstStep.length > 120 ? firstStep.substring(0, 120) + '...' : firstStep);
+        cookingPreview.classList.add('show');
+        // Show timer if step mentions time
+        var timerEl = document.getElementById('cookingTimer');
+        if (/\d+\s*(min|hour|second)/i.test(firstStep)) {
+          timerEl.style.display = 'inline-flex';
+        } else {
+          timerEl.style.display = 'none';
+        }
+      }
     } else {
       instructionsWrap.style.display = 'none';
     }
@@ -1179,4 +1242,3 @@ async function extractRecipe() {
 
 </body>
 </html>
-
