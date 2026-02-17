@@ -42,7 +42,7 @@ body {
   max-width: 100vw;
 }
 
-.ii { color: var(--indigo); }
+.ii { color: var(--indigo); display: inline; margin: 0; padding: 0; letter-spacing: inherit; font-size: inherit; line-height: inherit; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -648,8 +648,8 @@ nav.scrolled {
   display: flex; align-items: center; justify-content: center;
 }
 .story-visual img {
-  width: 240px; height: 240px;
-  object-fit: contain; opacity: 0.12;
+  width: 140px; height: 140px;
+  object-fit: contain; opacity: 0.15;
 }
 
 /* ---- FAQ ---- */
@@ -766,7 +766,7 @@ footer a:hover { color: var(--indigo); }
   .story-section { grid-template-columns: 1fr; gap: 32px; padding: 60px 20px; text-align: center; }
   .story-body { text-align: left; }
   .story-visual { order: -1; }
-  .story-visual img { width: 160px; height: 160px; }
+  .story-visual img { width: 100px; height: 100px; }
   .faq-section { padding: 60px 20px; }
 }
 </style>
@@ -784,7 +784,7 @@ footer a:hover { color: var(--indigo); }
     <a href="#toru">Toru</a>
     <a href="#pricing">Pricing</a>
     <a href="#story">Our Story</a>
-    <a href="#" class="nav-cta">Get M<span class="ii">ii</span>ro</a>
+    <a href="#" class="nav-cta">Get Miiro</a>
   </div>
 </nav>
 
@@ -938,31 +938,31 @@ footer a:hover { color: var(--indigo); }
   <div class="workflow-container">
     <div class="workflow-step">
       <div class="workflow-num">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
       </div>
-      <h3>Find a recipe</h3>
-      <p>Paste a URL into Toru. Get clean ingredients and steps.</p>
+      <h3>Create your lists</h3>
+      <p>Groceries, to-dos, packing lists — whatever your household needs.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Share with your household</h3>
+      <p>Invite your partner or family. Everything syncs in real time.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       </div>
       <h3>Plan your week</h3>
-      <p>Drag it onto your meal plan. Tuesday dinner: sorted.</p>
+      <p>Meals, tasks, and events on one calendar. Know what's coming.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </div>
-      <h3>Generate your list</h3>
-      <p>One tap. Every ingredient lands in your list, sorted by aisle.</p>
-    </div>
-    <div class="workflow-step">
-      <div class="workflow-num">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Z"/><path d="M12 12c2-2.67 4-4 6-4a4 4 0 1 1 0 8c-2 0-4-1.33-6-4Z"/><path d="M12 3v1"/><path d="M12 20v1"/></svg>
-      </div>
-      <h3>Cook together</h3>
-      <p>Step-by-step mode with timers. Swipe through while cooking.</p>
+      <h3>See what matters</h3>
+      <p>My Day shows today's tasks, meals, and groceries in one calm view.</p>
     </div>
   </div>
 </div>
