@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miiro — One message. Your whole day, sorted.</title>
-<meta name="description" content="Tell Miiro everything on your mind — tasks, meals, groceries — and it organizes your household instantly. Built for couples and families. Free to start.">
-<meta property="og:title" content="Miiro — One message. Your whole day, sorted.">
-<meta property="og:description" content="Tell Miiro everything on your mind — tasks, meals, groceries — and it organizes your household instantly. Built for couples and families. Free to start.">
+<title>Miiro: One message. Your whole day, sorted.</title>
+<meta name="description" content="Tell Miiro everything on your mind. Tasks, meals, groceries, all organized instantly. Built for couples and families. Free to start.">
+<meta property="og:title" content="Miiro: One message. Your whole day, sorted.">
+<meta property="og:description" content="Tell Miiro everything on your mind. Tasks, meals, groceries, all organized instantly. Built for couples and families. Free to start.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="koi-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,20 +60,6 @@ body {
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
-}
-@keyframes phoneSortIn {
-  0% { opacity: 0; transform: translateY(10px); }
-  15% { opacity: 1; transform: translateY(0); }
-  75% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 0; transform: translateY(-4px); }
-  100% { opacity: 0; transform: translateY(-4px); }
-}
-@keyframes phoneLabelIn {
-  0% { opacity: 0; }
-  12% { opacity: 1; }
-  75% { opacity: 1; }
-  90% { opacity: 0; }
-  100% { opacity: 0; }
 }
 
 /* ---- NAV ---- */
@@ -198,16 +184,16 @@ nav.scrolled {
 .phone-frame {
   width: 260px; height: 520px;
   border-radius: 36px;
-  border: 6px solid var(--ink);
+  border: 3px solid var(--sand);
   background: var(--paper);
   position: relative;
-  box-shadow: 0 20px 60px rgba(140,133,120,0.12), 0 4px 16px rgba(140,133,120,0.06);
+  box-shadow: 0 24px 64px rgba(140,133,120,0.16), 0 8px 24px rgba(140,133,120,0.08), 0 0 0 1px rgba(228,222,212,0.3);
   overflow: hidden;
 }
 .phone-notch {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 90px; height: 26px;
-  background: var(--ink); border-radius: 0 0 16px 16px;
+  background: var(--charcoal); border-radius: 0 0 16px 16px;
   z-index: 2;
 }
 .phone-screen {
@@ -238,9 +224,9 @@ nav.scrolled {
   margin-bottom: 6px;
   text-align: center;
   opacity: 0;
-  animation: phoneLabelIn 7s ease-in-out infinite;
-  animation-delay: 0.3s;
+  transition: opacity 0.35s ease;
 }
+.phone-sorted-label.show { opacity: 1; }
 .phone-items {
   display: flex; flex-direction: column;
 }
@@ -251,12 +237,13 @@ nav.scrolled {
   font-size: 0.7rem;
   color: var(--ink);
   opacity: 0;
-  animation: phoneSortIn 7s ease-in-out infinite;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
-.phone-item:nth-child(1) { animation-delay: 0.6s; }
-.phone-item:nth-child(2) { animation-delay: 0.9s; }
-.phone-item:nth-child(3) { animation-delay: 1.2s; }
-.phone-item:nth-child(4) { animation-delay: 1.5s; }
+.phone-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 .phone-item:last-child { border-bottom: none; }
 .phone-dot {
   width: 6px; height: 6px;
@@ -989,9 +976,9 @@ footer a:hover { color: var(--indigo); }
   .hero-mockup { flex: none; }
   .phone-frame {
     width: 220px; height: 440px;
-    border-width: 5px; border-radius: 30px;
+    border-width: 2.5px; border-radius: 30px;
   }
-  .phone-notch { width: 72px; height: 22px; }
+  .phone-notch { width: 72px; height: 22px; background: var(--charcoal); }
   .phone-screen { padding: 36px 14px 14px; }
 
   /* Mobile reorder: features before philosophy */
@@ -1038,7 +1025,7 @@ footer a:hover { color: var(--indigo); }
 <section class="hero" id="top">
   <div class="hero-content">
     <h1>One message. Your whole day, sorted.</h1>
-    <p class="hero-sub">Tell Miiro everything — pick up the kids, dinner ideas, groceries — and it organizes your household instantly.</p>
+    <p class="hero-sub">Tell Miiro everything. Pick up the kids, dinner ideas, groceries. It organizes your household instantly.</p>
     <p class="hero-descriptor">Built for couples and families. Free to start.</p>
     <div class="hero-cta">
       <a href="#" aria-label="Download on the App Store">
@@ -1052,28 +1039,28 @@ footer a:hover { color: var(--indigo); }
       <div class="phone-notch"></div>
       <div class="phone-screen">
         <div class="phone-header">Tell Miiro...</div>
-        <div class="phone-input-mock">Pick up Miles at 3, chicken for dinner, call the vet, grab eggs...</div>
-        <div class="phone-sorted-label">Sorted</div>
-        <div class="phone-items">
+        <div class="phone-input-mock">Pick up Miles at 3, we're doing pasta tonight, need milk eggs and butter, and remind me to call the dentist</div>
+        <div class="phone-sorted-label" id="phoneSortedLabel">Sorted</div>
+        <div class="phone-items" id="phoneItems">
           <div class="phone-item">
             <span class="phone-dot" style="background:var(--coral)"></span>
             <span class="phone-item-text">Pick up Miles</span>
-            <span class="phone-item-meta">3 PM</span>
+            <span class="phone-item-meta">3:00 PM</span>
           </div>
           <div class="phone-item">
             <span class="phone-dot" style="background:var(--mint)"></span>
-            <span class="phone-item-text">Chicken &amp; rice</span>
+            <span class="phone-item-text">Pasta night</span>
             <span class="phone-item-meta">Dinner</span>
           </div>
           <div class="phone-item">
-            <span class="phone-dot" style="background:var(--coral)"></span>
-            <span class="phone-item-text">Call the vet</span>
-            <span class="phone-item-meta">Today</span>
+            <span class="phone-dot" style="background:var(--indigo)"></span>
+            <span class="phone-item-text">Milk, eggs, butter</span>
+            <span class="phone-item-meta">Grocery list</span>
           </div>
           <div class="phone-item">
-            <span class="phone-dot" style="background:var(--indigo)"></span>
-            <span class="phone-item-text">Olive oil, eggs</span>
-            <span class="phone-item-meta">Shop</span>
+            <span class="phone-dot" style="background:var(--coral)"></span>
+            <span class="phone-item-text">Call the dentist</span>
+            <span class="phone-item-meta">Reminder</span>
           </div>
         </div>
       </div>
@@ -1085,7 +1072,7 @@ footer a:hover { color: var(--indigo); }
 <section class="tellmiiro-section" id="tellmiiro">
   <div class="section-eyebrow">Tell Miiro</div>
   <h2>Tell Miiro what's on your mind</h2>
-  <p class="lead">Type it like you'd text a friend. Miiro turns your thoughts into tasks, meals, and groceries — instantly.</p>
+  <p class="lead">Type it like you'd text a friend. Miiro turns your thoughts into tasks, meals, and groceries. Instantly.</p>
 
   <div class="tellmiiro-demo" id="tellmiiroDemo">
     <div class="tellmiiro-input-area">
@@ -1177,7 +1164,7 @@ footer a:hover { color: var(--indigo); }
     <div class="feature-card">
       <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="8" y2="20"/><circle cx="8" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><line x1="14" y1="6" x2="20" y2="6"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg></div>
       <h3>Timeline with Chat</h3>
-      <p>See your whole day — tasks, meals, and events — on one timeline. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
+      <p>See your whole day on one timeline: tasks, meals, and events. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon" style="font-family:'DM Serif Display',serif; color:var(--coral); opacity:0.7; font-size:1.8rem; line-height:1;">取</div>
@@ -1192,12 +1179,12 @@ footer a:hover { color: var(--indigo); }
     <div class="feature-card">
       <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
       <h3>Shared Lists</h3>
-      <p>Grocery lists, to-do lists, packing lists — synced in real time. When they check off milk, you see it disappear.</p>
+      <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
       <h3>My Day</h3>
-      <p>Every morning, see just what needs doing. Tasks, meals, groceries — all in one calm view.</p>
+      <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
     </div>
   </div>
 </div>
@@ -1211,7 +1198,7 @@ footer a:hover { color: var(--indigo); }
       <h2>Paste a link. Get the recipe. Start cooking.</h2>
       <p class="toru-tagline">No ads. No life stories. Just the recipe.</p>
       <p>Found something online? Paste the URL into Toru. We extract the ingredients, steps, and servings. Save it to your cookbook, share it with your household, or add every ingredient to your grocery list with one tap.</p>
-      <p>Works with most recipe sites — RecipeTin Eats, BBC Good Food, Budget Bytes, and many more.</p>
+      <p>Works with most recipe sites including RecipeTin Eats, BBC Good Food, Budget Bytes, and many more.</p>
       <p class="toru-available">Available in Miiro</p>
     </div>
     <div class="recipe-demo-live">
@@ -1271,7 +1258,7 @@ footer a:hover { color: var(--indigo); }
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </div>
       <h3>Tell Miiro</h3>
-      <p>Type everything on your mind — tasks, meals, groceries. Miiro sorts it all.</p>
+      <p>Type everything on your mind. Tasks, meals, groceries. Miiro sorts it all.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">
@@ -1311,7 +1298,7 @@ footer a:hover { color: var(--indigo); }
         <div class="price-amount">$0</div>
         <p class="price-subtitle">Everything you need to get started.</p>
         <ul class="price-features">
-          <li>Tell Miiro AI — 5 credits</li>
+          <li>Tell Miiro AI (5 credits)</li>
           <li>3 lists</li>
           <li>5 saved recipes</li>
           <li>3 recipe imports</li>
@@ -1352,14 +1339,14 @@ footer a:hover { color: var(--indigo); }
       <div class="section-eyebrow">The story</div>
       <h2>Why I built M<span class="brand-ii">ii</span>ro</h2>
       <div class="story-body">
-        <p><em>Miiro</em> comes from the Japanese word <em>miru</em> (見る) — to see.</p>
+        <p><em>Miiro</em> comes from the Japanese word <em>miru</em> (見る), meaning to see.</p>
         <p>I built it because my wife Mirrin and I kept dropping the ball on the little things. The groceries nobody bought. The kindergarten pickup we both showed up to. The "I thought you were handling that" moments.</p>
-        <p>The mental load wasn't shared — it was invisible.</p>
+        <p>The mental load wasn't shared. It was invisible.</p>
         <p>Every task app out there was built for one person working alone. We needed something that let us see each other's day.</p>
         <p>The name is personal: <span class="mi-highlight">Mi</span> (from Mirrin) + <span class="ro-highlight">Ro</span> (from Robert) = Miiro. It's the app I wished existed.</p>
       </div>
       <div class="story-sig">
-        — <strong>Robert</strong>, builder of Miiro<br>
+        <strong>Robert</strong>, builder of Miiro<br>
         Amsterdam, father to Miles, dog dad to Rose &#128054;
       </div>
     </div>
@@ -1380,7 +1367,7 @@ footer a:hover { color: var(--indigo); }
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Tell Miiro is our AI assistant. Type everything on your mind in natural language — tasks, meals, groceries — and Miiro automatically sorts them into the right lists. It's like texting a friend who actually organizes everything. Free users get 5 credits. Miiro+ users get unlimited.</p>
+        <p>Tell Miiro is our AI assistant. Type everything on your mind in natural language, and Miiro automatically sorts it into tasks, meals, and grocery lists. It's like texting a friend who actually organizes everything. Free users get 5 credits. Miiro+ users get unlimited.</p>
       </div>
     </div>
 
@@ -1400,7 +1387,7 @@ footer a:hover { color: var(--indigo); }
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>No. One Miiro+ subscription covers your whole household — up to 6 people. Your partner gets full access through Apple Family Sharing.</p>
+        <p>No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access through Apple Family Sharing.</p>
       </div>
     </div>
 
@@ -1420,7 +1407,7 @@ footer a:hover { color: var(--indigo); }
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Most major recipe sites — including BBC Good Food, RecipeTin Eats, Budget Bytes, Allrecipes, and many more. If a site has structured recipe data, Toru can extract it.</p>
+        <p>Most major recipe sites including BBC Good Food, RecipeTin Eats, Budget Bytes, Allrecipes, and many more. If a site has structured recipe data, Toru can extract it.</p>
       </div>
     </div>
 
@@ -1440,7 +1427,7 @@ footer a:hover { color: var(--indigo); }
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Absolutely. Miiro works great for solo use too. Sharing is optional — you can keep all your lists private.</p>
+        <p>Absolutely. Miiro works great for solo use too. Sharing is optional, and you can keep all your lists private.</p>
       </div>
     </div>
   </div>
@@ -1704,6 +1691,30 @@ async function extractRecipe() {
   if (replayBtn) {
     replayBtn.addEventListener('click', replay);
   }
+})();
+
+// Phone mockup looping animation
+(function() {
+  var label = document.getElementById('phoneSortedLabel');
+  var items = document.getElementById('phoneItems');
+  if (!label || !items) return;
+  var phoneItems = items.querySelectorAll('.phone-item');
+
+  function showItems() {
+    label.classList.add('show');
+    phoneItems.forEach(function(item, i) {
+      setTimeout(function() { item.classList.add('show'); }, i * 300);
+    });
+    // After all shown, pause 3s, then fade out and restart
+    var totalIn = phoneItems.length * 300;
+    setTimeout(function() {
+      label.classList.remove('show');
+      phoneItems.forEach(function(item) { item.classList.remove('show'); });
+      setTimeout(showItems, 600);
+    }, totalIn + 3000);
+  }
+
+  setTimeout(showItems, 800);
 })();
 </script>
 
