@@ -422,18 +422,19 @@ nav.scrolled {
 .page-sections {
   display: flex; flex-direction: column;
 }
-.page-sections .philosophy-section { order: 1; }
-.page-sections .features-section { order: 2; }
+.page-sections .features-section { order: 1; }
+.page-sections .tellmiiro-wrap { order: 2; }
 .page-sections .toru-section { order: 3; }
 .page-sections .workflow-section { order: 4; }
 .page-sections .pricing-wrap { order: 5; }
 .page-sections .story-wrap { order: 6; }
 .page-sections .faq-wrap { order: 7; }
 
-/* ---- PHILOSOPHY ---- */
-.philosophy-section {
+/* ---- PHILOSOPHY (inside story) ---- */
+.story-philosophy {
   max-width: 900px; margin: 0 auto;
-  padding: 0 24px 80px;
+  padding: 48px 24px 0;
+  border-top: 1px solid var(--sand);
 }
 .philosophy-intro {
   text-align: center; max-width: 480px; margin: 0 auto;
@@ -981,9 +982,6 @@ footer a:hover { color: var(--indigo); }
   .phone-notch { width: 72px; height: 22px; background: var(--charcoal); }
   .phone-screen { padding: 36px 14px 14px; }
 
-  /* Mobile reorder: features before philosophy */
-  .page-sections .features-section { order: 1; }
-  .page-sections .philosophy-section { order: 2; }
 
   .tellmiiro-section { padding: 0 20px 56px; }
   .tellmiiro-demo { padding: 20px; }
@@ -1068,7 +1066,50 @@ footer a:hover { color: var(--indigo); }
   </div>
 </section>
 
+<!-- Sections wrapper for mobile reordering -->
+<div class="page-sections">
+
+<!-- FEATURES -->
+<div class="section features-section" id="features">
+  <div class="section-eyebrow">Features</div>
+  <h2>Everything you need. Nothing you don't.</h2>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M14 9l-2-2-4 4"/><circle cx="16" cy="6" r="1.5" fill="currentColor" stroke="none" opacity="0.4"/></svg></div>
+      <h3>Tell Miiro AI</h3>
+      <p>Brain dump your entire day in one message. Miiro sorts it into tasks, meals, and groceries automatically.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="8" y2="20"/><circle cx="8" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><line x1="14" y1="6" x2="20" y2="6"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg></div>
+      <h3>Timeline with Chat</h3>
+      <p>See your whole day on one timeline: tasks, meals, and events. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="font-family:'DM Serif Display',serif; color:var(--coral); opacity:0.7; font-size:1.8rem; line-height:1;">取</div>
+      <h3>Toru Recipe Finder</h3>
+      <p>Paste any recipe URL. We strip the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Cooking Mode</h3>
+      <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
+      <h3>Shared Lists</h3>
+      <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
+      <h3>My Day</h3>
+      <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
+    </div>
+  </div>
+</div>
+
 <!-- TELL MIIRO -->
+<div class="tellmiiro-wrap">
 <section class="tellmiiro-section" id="tellmiiro">
   <div class="section-eyebrow">Tell Miiro</div>
   <h2>Tell Miiro what's on your mind</h2>
@@ -1124,69 +1165,6 @@ footer a:hover { color: var(--indigo); }
 
   <p class="tellmiiro-credits">5 free credits. Unlimited with Miiro+.</p>
 </section>
-
-<!-- Sections wrapper for mobile reordering -->
-<div class="page-sections">
-
-<!-- PHILOSOPHY -->
-<div class="philosophy-section">
-  <p class="philosophy-intro">Miiro is built on three Japanese principles that guide everything we design.</p>
-  <div class="philosophy">
-    <div class="philosophy-item">
-      <div class="philosophy-jp">見る</div>
-      <div class="philosophy-word">Miru · See</div>
-      <p class="philosophy-desc">Make the invisible visible.</p>
-    </div>
-    <div class="philosophy-item">
-      <div class="philosophy-jp">間</div>
-      <div class="philosophy-word">Ma · Space</div>
-      <p class="philosophy-desc">Create breathing room.</p>
-    </div>
-    <div class="philosophy-item">
-      <div class="philosophy-jp">簡素</div>
-      <div class="philosophy-word">Kanso · Simplicity</div>
-      <p class="philosophy-desc">Strip away the noise.</p>
-    </div>
-  </div>
-</div>
-
-<!-- FEATURES -->
-<div class="section features-section" id="features">
-  <div class="section-eyebrow">Features</div>
-  <h2>Everything you need. Nothing you don't.</h2>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M14 9l-2-2-4 4"/><circle cx="16" cy="6" r="1.5" fill="currentColor" stroke="none" opacity="0.4"/></svg></div>
-      <h3>Tell Miiro AI</h3>
-      <p>Brain dump your entire day in one message. Miiro sorts it into tasks, meals, and groceries automatically.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="8" y2="20"/><circle cx="8" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><line x1="14" y1="6" x2="20" y2="6"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg></div>
-      <h3>Timeline with Chat</h3>
-      <p>See your whole day on one timeline: tasks, meals, and events. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="font-family:'DM Serif Display',serif; color:var(--coral); opacity:0.7; font-size:1.8rem; line-height:1;">取</div>
-      <h3>Toru Recipe Finder</h3>
-      <p>Paste any recipe URL. We strip the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <h3>Cooking Mode</h3>
-      <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
-      <h3>Shared Lists</h3>
-      <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
-      <h3>My Day</h3>
-      <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
-    </div>
-  </div>
 </div>
 
 <!-- TORU -->
@@ -1352,6 +1330,27 @@ footer a:hover { color: var(--indigo); }
     </div>
     <div class="story-visual">
       <img src="koi-logo.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+
+  <div class="story-philosophy">
+    <p class="philosophy-intro">Miiro is built on three Japanese principles that guide everything we design.</p>
+    <div class="philosophy">
+      <div class="philosophy-item">
+        <div class="philosophy-jp">見る</div>
+        <div class="philosophy-word">Miru · See</div>
+        <p class="philosophy-desc">Make the invisible visible.</p>
+      </div>
+      <div class="philosophy-item">
+        <div class="philosophy-jp">間</div>
+        <div class="philosophy-word">Ma · Space</div>
+        <p class="philosophy-desc">Create breathing room.</p>
+      </div>
+      <div class="philosophy-item">
+        <div class="philosophy-jp">簡素</div>
+        <div class="philosophy-word">Kanso · Simplicity</div>
+        <p class="philosophy-desc">Strip away the noise.</p>
+      </div>
     </div>
   </div>
 </div>
