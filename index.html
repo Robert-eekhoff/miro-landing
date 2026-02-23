@@ -1309,10 +1309,10 @@ footer a:hover { color: var(--indigo); }
   <div class="pricing-section">
     <div class="pricing-toggle">
       <span class="active" id="monthlyLabel">Monthly</span>
-      <div class="toggle-switch yearly" id="pricingToggle" onclick="togglePricing()">
+      <div class="toggle-switch" id="pricingToggle" onclick="togglePricing()">
         <div class="toggle-knob"></div>
       </div>
-      <span class="active" id="yearlyLabel">Yearly <span class="save-badge">Save 25%</span></span>
+      <span id="yearlyLabel">Yearly <span class="save-badge">Save 25%</span></span>
     </div>
 
     <div class="pricing-grid">
@@ -1334,8 +1334,8 @@ footer a:hover { color: var(--indigo); }
 
       <div class="price-card featured">
         <div class="price-tier">M<span class="brand-ii">ii</span>ro+</div>
-        <div class="price-amount"><span id="plusPrice">$44.99</span><span class="period" id="plusPeriod">/yr</span></div>
-        <p class="price-per-day" id="plusPerDay">Just $3.75/mo</p>
+        <div class="price-amount"><span id="plusPrice">$4.99</span><span class="period" id="plusPeriod">/mo</span></div>
+        <p class="price-per-day" id="plusPerDay" style="display:none"></p>
         <p class="price-subtitle">Unlimited everything for your whole household.</p>
         <ul class="price-features">
           <li>Unlimited Tell Miiro AI</li>
@@ -1493,7 +1493,7 @@ footer a:hover { color: var(--indigo); }
 })();
 
 // Pricing toggle (default to yearly)
-var isYearly = true;
+var isYearly = false;
 function togglePricing() {
   isYearly = !isYearly;
   var toggle = document.getElementById('pricingToggle');
