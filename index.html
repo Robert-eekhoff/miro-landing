@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miiro — See what matters</title>
-<meta name="description" content="Miiro — the household app with an AI brain. Tell it what's on your mind. It sorts tasks, meals, and groceries for your whole family. Free to start.">
-<meta property="og:title" content="Miiro — See what matters">
-<meta property="og:description" content="Miiro — the household app with an AI brain. Tell it what's on your mind. It sorts tasks, meals, and groceries for your whole family. Free to start.">
+<title>Miiro — One message. Your whole day, sorted.</title>
+<meta name="description" content="Tell Miiro everything on your mind — tasks, meals, groceries — and it organizes your household instantly. Built for couples and families. Free to start.">
+<meta property="og:title" content="Miiro — One message. Your whole day, sorted.">
+<meta property="og:description" content="Tell Miiro everything on your mind — tasks, meals, groceries — and it organizes your household instantly. Built for couples and families. Free to start.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="koi-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -145,17 +145,6 @@ nav.scrolled {
   flex: 1;
   position: relative; z-index: 1;
 }
-.hero-jp {
-  font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--indigo);
-  margin-bottom: 20px;
-  animation: fadeUp 0.6s ease-out both;
-}
-.hero-jp em {
-  color: var(--stone); font-weight: 400; font-style: normal;
-  letter-spacing: 0.08em; margin-left: 8px;
-}
 .hero h1 {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(2.8rem, 6vw, 4.5rem);
@@ -170,15 +159,22 @@ nav.scrolled {
   animation: fadeUp 0.7s ease-out 0.1s both, gradientShift 8s ease-in-out infinite;
 }
 .hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.1rem);
-  color: var(--charcoal); font-weight: 400;
-  margin-top: 20px; max-width: 460px;
+  font-size: clamp(1.05rem, 1.8vw, 1.15rem);
+  color: var(--ink); font-weight: 400;
+  margin-top: 20px; max-width: 480px;
   line-height: 1.75;
   animation: fadeUp 0.7s ease-out 0.2s both;
 }
+.hero-descriptor {
+  font-size: 0.88rem;
+  color: var(--stone); font-weight: 400;
+  margin-top: 14px; max-width: 460px;
+  line-height: 1.7;
+  animation: fadeUp 0.7s ease-out 0.25s both;
+}
 .hero-cta {
   display: flex; align-items: center; gap: 16px;
-  margin-top: 32px;
+  margin-top: 28px;
   animation: fadeUp 0.7s ease-out 0.3s both;
 }
 .app-store-badge {
@@ -186,15 +182,10 @@ nav.scrolled {
   transition: opacity 0.2s;
 }
 .app-store-badge:hover { opacity: 0.85; }
-.hero-note {
-  margin-top: 14px; font-size: 0.8rem;
+.hero-social {
+  margin-top: 16px; font-size: 0.78rem;
   color: var(--stone); font-weight: 400;
   animation: fadeUp 0.7s ease-out 0.4s both;
-}
-.hero-social {
-  margin-top: 20px; font-size: 0.78rem;
-  color: var(--stone); font-weight: 400;
-  animation: fadeUp 0.7s ease-out 0.5s both;
   line-height: 1.6;
 }
 
@@ -1046,15 +1037,14 @@ footer a:hover { color: var(--indigo); }
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-content">
-    <div class="hero-jp">見る <em>miru · to see</em></div>
-    <h1>See what matters.</h1>
-    <p class="hero-sub">The household app with an AI brain. Tell it what's on your mind — it handles the rest.</p>
+    <h1>One message. Your whole day, sorted.</h1>
+    <p class="hero-sub">Tell Miiro everything — pick up the kids, dinner ideas, groceries — and it organizes your household instantly.</p>
+    <p class="hero-descriptor">Built for couples and families. Free to start.</p>
     <div class="hero-cta">
       <a href="#" aria-label="Download on the App Store">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
       </a>
     </div>
-    <p class="hero-note">Free to start. Cancel anytime.</p>
     <p class="hero-social">Built with love by a real family in Amsterdam &#127475;&#127473;</p>
   </div>
   <div class="hero-mockup">
@@ -1475,6 +1465,7 @@ footer a:hover { color: var(--indigo); }
     <img src="koi-logo.png" alt="Miiro" loading="lazy">
     <span class="footer-brand">Miiro</span>
   </div>
+  <p style="font-size:0.82rem; color:var(--stone); margin-bottom:4px;">See what matters.</p>
   <p>Built with care in Amsterdam &#127475;&#127473;</p>
   <p style="margin-top: 8px;">
     <a href="privacy.html">Privacy</a> &middot; <a href="support.html">Support</a> &middot; <a href="terms.html">Terms</a>
