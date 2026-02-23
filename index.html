@@ -115,9 +115,10 @@ nav.scrolled {
 .hero {
   min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
-  padding: 120px 24px 80px;
+  padding: 120px 24px 60px;
   position: relative;
   max-width: 1100px; margin: 0 auto;
+  gap: 48px;
 }
 .hero::before {
   content: '';
@@ -127,9 +128,8 @@ nav.scrolled {
   pointer-events: none;
 }
 .hero-content {
+  flex: 1;
   position: relative; z-index: 1;
-  text-align: center;
-  display: flex; flex-direction: column; align-items: center;
 }
 .hero-jp {
   font-size: 0.72rem; font-weight: 600;
@@ -146,28 +146,21 @@ nav.scrolled {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 400;
+  color: var(--ink);
   letter-spacing: -0.03em; line-height: 1.1;
   max-width: 540px;
   animation: fadeUp 0.7s ease-out 0.1s both;
-  background: linear-gradient(135deg, var(--coral), var(--indigo), var(--coral));
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeUp 0.7s ease-out 0.1s both, gradientShift 9s ease-in-out infinite;
 }
 .hero-sub {
   font-size: clamp(1rem, 1.8vw, 1.1rem);
   color: var(--charcoal); font-weight: 400;
   margin-top: 20px; max-width: 460px;
   line-height: 1.75;
-  text-align: center;
   animation: fadeUp 0.7s ease-out 0.2s both;
 }
 .hero-cta {
   display: flex; align-items: center; gap: 16px;
   margin-top: 32px;
-  justify-content: center;
   animation: fadeUp 0.7s ease-out 0.3s both;
 }
 .app-store-badge {
@@ -181,10 +174,82 @@ nav.scrolled {
   animation: fadeUp 0.7s ease-out 0.4s both;
 }
 
+/* ---- HERO PHONE MOCKUP ---- */
+.hero-mockup {
+  flex: 0 0 260px;
+  position: relative; z-index: 1;
+  animation: fadeUp 0.8s ease-out 0.3s both;
+}
+.phone-frame {
+  width: 260px; height: 520px;
+  border-radius: 36px;
+  border: 6px solid var(--ink);
+  background: var(--paper);
+  position: relative;
+  box-shadow: 0 20px 60px rgba(140,133,120,0.12), 0 4px 16px rgba(140,133,120,0.06);
+  overflow: hidden;
+}
+.phone-notch {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 26px;
+  background: var(--ink); border-radius: 0 0 16px 16px;
+  z-index: 2;
+}
+.phone-screen {
+  padding: 42px 16px 16px;
+  height: 100%;
+  display: flex; flex-direction: column;
+}
+.phone-header {
+  font-size: 0.68rem; font-weight: 600;
+  color: var(--stone); letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+.phone-input-mock {
+  background: var(--warm);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 0.7rem;
+  color: var(--charcoal);
+  line-height: 1.5;
+}
+.phone-sorted-label {
+  font-size: 0.56rem;
+  font-weight: 700;
+  color: var(--stone);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.phone-items {
+  display: flex; flex-direction: column;
+}
+.phone-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(228,222,212,0.5);
+  font-size: 0.7rem;
+  color: var(--ink);
+}
+.phone-item:last-child { border-bottom: none; }
+.phone-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.phone-item-text { flex: 1; font-weight: 500; }
+.phone-item-meta {
+  font-size: 0.6rem;
+  color: var(--stone);
+  font-weight: 400;
+}
+
 /* ---- TELL MIIRO SECTION ---- */
 .tellmiiro-section {
   max-width: 1000px; margin: 0 auto;
-  padding: 0 24px 80px;
+  padding: 0 24px 56px;
   text-align: center;
 }
 .tellmiiro-section .section-eyebrow {
@@ -206,12 +271,12 @@ nav.scrolled {
 }
 .tellmiiro-demo {
   max-width: 580px;
-  margin: 40px auto 0;
-  background: #fff;
+  margin: 36px auto 0;
+  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
   border: 1px solid var(--sand);
   border-radius: 20px;
   padding: 28px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 48px rgba(140,133,120,0.1), 0 2px 8px rgba(140,133,120,0.04);
   text-align: left;
 }
 .tellmiiro-input-area {
@@ -358,7 +423,7 @@ nav.scrolled {
 /* ---- PHILOSOPHY ---- */
 .philosophy-section {
   max-width: 900px; margin: 0 auto;
-  padding: 0 24px 80px;
+  padding: 0 24px 56px;
 }
 .philosophy-intro {
   text-align: center; max-width: 480px; margin: 0 auto;
@@ -388,7 +453,7 @@ nav.scrolled {
 /* ---- SECTION ---- */
 .section {
   max-width: 1000px; margin: 0 auto;
-  padding: 80px 24px;
+  padding: 56px 24px;
 }
 .section-eyebrow {
   font-size: 0.62rem; font-weight: 700;
@@ -411,7 +476,7 @@ nav.scrolled {
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px; margin-top: 48px;
+  gap: 16px; margin-top: 32px;
 }
 .feature-card {
   background: #fff;
@@ -421,12 +486,13 @@ nav.scrolled {
 }
 .feature-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+  box-shadow: 0 8px 32px rgba(140,133,120,0.08);
   border-color: var(--indigo-mid);
 }
-.feature-icon {
-  width: 36px; height: 36px; margin-bottom: 14px;
-  color: var(--indigo);
+.feature-emoji {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  line-height: 1;
 }
 .feature-card h3 {
   font-size: 0.95rem; font-weight: 600;
@@ -440,12 +506,19 @@ nav.scrolled {
 /* ---- SOCIAL PROOF ---- */
 .social-proof-strip {
   text-align: center;
-  padding: 48px 24px;
+  padding: 32px 24px;
   max-width: 640px;
+  margin: 0 auto;
+  background: var(--warm);
+  border-radius: 14px;
+}
+.social-proof-wrap {
+  padding: 0 24px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .social-proof-strip p {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--charcoal);
   line-height: 1.8;
   font-weight: 500;
@@ -453,11 +526,12 @@ nav.scrolled {
 
 /* ---- TORU RECIPE SECTION (warm light) ---- */
 .recipe-section {
-  background: #fff;
+  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
   border: 1px solid var(--sand);
   border-left: 4px solid var(--coral);
   border-radius: 18px;
-  padding: 48px 44px;
+  padding: 44px 40px;
+  box-shadow: 0 8px 36px rgba(140,133,120,0.06);
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 44px; align-items: start;
 }
@@ -611,7 +685,7 @@ nav.scrolled {
 /* ---- HOW IT WORKS ---- */
 .workflow-container {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0; margin-top: 48px;
+  gap: 0; margin-top: 32px;
   position: relative;
 }
 .workflow-container::before {
@@ -651,7 +725,7 @@ nav.scrolled {
 /* ---- PRICING ---- */
 .pricing-section {
   background: var(--warm); border-radius: 24px;
-  padding: 56px 40px; margin-top: 48px;
+  padding: 48px 40px; margin-top: 32px;
 }
 .pricing-toggle {
   display: flex; align-items: center; justify-content: center;
@@ -776,7 +850,7 @@ nav.scrolled {
 /* ---- STORY ---- */
 .story-section {
   max-width: 900px; margin: 0 auto;
-  padding: 80px 24px;
+  padding: 56px 24px;
   display: grid; grid-template-columns: 1fr auto;
   gap: 60px; align-items: center;
 }
@@ -813,7 +887,7 @@ nav.scrolled {
 /* ---- FAQ ---- */
 .faq-section {
   max-width: 700px; margin: 0 auto;
-  padding: 80px 24px;
+  padding: 56px 24px;
 }
 .faq-section h2 {
   font-family: 'DM Serif Display', serif;
@@ -852,7 +926,7 @@ nav.scrolled {
 
 /* ---- FINAL CTA ---- */
 .final-cta {
-  text-align: center; padding: 80px 24px 100px;
+  text-align: center; padding: 56px 24px 72px;
 }
 .final-cta h2 {
   font-family: 'DM Serif Display', serif;
@@ -898,30 +972,44 @@ footer a:hover { color: var(--indigo); }
   .nav-links a:not(.nav-cta) { display: none; }
   .nav-cta { padding: 8px 16px; font-size: 0.78rem; }
   .hero {
-    padding: 100px 20px 60px;
+    flex-direction: column; padding: 100px 20px 48px;
+    text-align: center; gap: 32px;
   }
+  .hero-content {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .hero-sub { text-align: center; }
+  .hero-cta { justify-content: center; }
+  .hero-mockup { flex: none; }
+  .phone-frame {
+    width: 220px; height: 440px;
+    border-width: 5px; border-radius: 30px;
+  }
+  .phone-notch { width: 72px; height: 22px; }
+  .phone-screen { padding: 36px 14px 14px; }
 
   /* Mobile reorder: features before philosophy */
   .page-sections .features-section { order: 1; }
   .page-sections .philosophy-section { order: 2; }
 
-  .tellmiiro-section { padding: 0 20px 60px; }
+  .tellmiiro-section { padding: 0 20px 48px; }
   .tellmiiro-demo { padding: 20px; }
   .tellmiiro-input-area { padding: 14px 16px; }
 
   .philosophy { grid-template-columns: 1fr; gap: 28px; }
-  .section { padding: 60px 16px; }
+  .section { padding: 48px 16px; }
   .features-grid { grid-template-columns: 1fr; }
   .recipe-section { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 14px; }
   .workflow-container { grid-template-columns: 1fr; gap: 24px; }
   .workflow-container::before { display: none; }
-  .pricing-section { padding: 36px 20px; border-radius: 18px; }
+  .pricing-section { padding: 32px 20px; border-radius: 18px; }
   .pricing-grid { grid-template-columns: 1fr; }
-  .story-section { grid-template-columns: 1fr; gap: 32px; padding: 60px 20px; text-align: center; }
+  .story-section { grid-template-columns: 1fr; gap: 28px; padding: 48px 20px; text-align: center; }
   .story-body { text-align: left; }
   .story-visual { order: -1; }
-  .story-visual img { width: 180px; height: 180px; }
-  .faq-section { padding: 60px 20px; }
+  .story-visual img { width: 160px; height: 160px; }
+  .faq-section { padding: 48px 20px; }
+  .social-proof-wrap { padding: 0 16px; }
 }
 </style>
 </head>
@@ -953,6 +1041,38 @@ footer a:hover { color: var(--indigo); }
       </a>
     </div>
     <p class="hero-note">Free to start. Cancel anytime.</p>
+  </div>
+  <div class="hero-mockup">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-header">Tell Miiro...</div>
+        <div class="phone-input-mock">Pick up Miles at 3, chicken for dinner, call the vet, grab eggs...</div>
+        <div class="phone-sorted-label">Sorted</div>
+        <div class="phone-items">
+          <div class="phone-item">
+            <span class="phone-dot" style="background:var(--coral)"></span>
+            <span class="phone-item-text">Pick up Miles</span>
+            <span class="phone-item-meta">3 PM</span>
+          </div>
+          <div class="phone-item">
+            <span class="phone-dot" style="background:var(--mint)"></span>
+            <span class="phone-item-text">Chicken &amp; rice</span>
+            <span class="phone-item-meta">Dinner</span>
+          </div>
+          <div class="phone-item">
+            <span class="phone-dot" style="background:var(--coral)"></span>
+            <span class="phone-item-text">Call the vet</span>
+            <span class="phone-item-meta">Today</span>
+          </div>
+          <div class="phone-item">
+            <span class="phone-dot" style="background:var(--indigo)"></span>
+            <span class="phone-item-text">Olive oil, eggs</span>
+            <span class="phone-item-meta">Shop</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1045,32 +1165,32 @@ footer a:hover { color: var(--indigo); }
 
   <div class="features-grid">
     <div class="feature-card">
-      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 2 17.5v-1a2.5 2.5 0 0 1 2.5-2.5H7"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44A2.5 2.5 0 0 0 22 17.5v-1a2.5 2.5 0 0 0-2.5-2.5H17"/></svg>
+      <div class="feature-emoji">🧠</div>
       <h3>Tell Miiro AI</h3>
       <p>Brain dump your entire day in one message. Miiro sorts it into tasks, meals, and groceries automatically.</p>
     </div>
     <div class="feature-card">
-      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+      <div class="feature-emoji">💬</div>
       <h3>Timeline with Chat</h3>
       <p>See your whole day — tasks, meals, and events — on one timeline. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
     </div>
     <div class="feature-card">
-      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <div class="feature-emoji" style="font-family:'DM Serif Display',serif; color:var(--coral); opacity:0.7;">取</div>
       <h3>Toru Recipe Finder</h3>
       <p>Paste any recipe URL. We strip the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
     </div>
     <div class="feature-card">
-      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Z"/><path d="M12 12c2-2.67 4-4 6-4a4 4 0 1 1 0 8c-2 0-4-1.33-6-4Z"/><path d="M12 3v1"/><path d="M12 20v1"/></svg>
+      <div class="feature-emoji">🍳</div>
       <h3>Cooking Mode</h3>
       <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
     </div>
     <div class="feature-card">
-      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="feature-emoji">📋</div>
       <h3>Shared Lists</h3>
       <p>Grocery lists, to-do lists, packing lists — synced in real time. When they check off milk, you see it disappear.</p>
     </div>
     <div class="feature-card">
-      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <div class="feature-emoji">☀️</div>
       <h3>My Day</h3>
       <p>Every morning, see just what needs doing. Tasks, meals, groceries — all in one calm view.</p>
     </div>
