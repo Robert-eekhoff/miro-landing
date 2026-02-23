@@ -151,12 +151,34 @@ nav.scrolled {
   line-height: 1.75;
   animation: fadeUp 0.7s ease-out 0.2s both;
 }
-.hero-descriptor {
+/* ---- QUOTE TICKER ---- */
+.quote-ticker {
+  overflow: hidden;
+  background: var(--warm);
+  padding: 20px 0;
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
+}
+.quote-ticker-track {
+  display: flex;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.quote-ticker-item {
+  flex-shrink: 0;
+  padding: 0 24px;
   font-size: 0.88rem;
-  color: var(--stone); font-weight: 400;
-  margin-top: 14px; max-width: 460px;
-  line-height: 1.7;
-  animation: fadeUp 0.7s ease-out 0.25s both;
+  color: var(--indigo);
+  font-weight: 500;
+  display: flex; align-items: center; gap: 24px;
+}
+.quote-ticker-item::after {
+  content: '\00B7';
+  color: var(--sand); font-size: 1.4rem;
 }
 .hero-cta {
   display: flex; align-items: center; gap: 16px;
@@ -196,65 +218,63 @@ nav.scrolled {
   background: var(--ink); border-radius: 0 0 14px 14px;
   z-index: 2;
 }
-.phone-screen {
-  padding: 42px 16px 16px;
-  height: 100%;
-  display: flex; flex-direction: column;
+/* Hero video placeholder inside phone frame */
+.hero-video-placeholder {
+  width: 100%; height: 100%;
+  position: relative;
 }
-.phone-header {
-  font-size: 0.68rem; font-weight: 600;
-  color: var(--stone); letter-spacing: 0.04em;
-  margin-bottom: 10px;
+.hero-video-placeholder video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: none;
 }
-.phone-input-mock {
-  background: var(--warm);
-  border-radius: 10px;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  font-size: 0.7rem;
-  color: var(--charcoal);
-  line-height: 1.5;
+.hero-video-fallback {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--warm) 0%, rgba(74,92,232,0.06) 33%, rgba(232,99,74,0.06) 66%, var(--warm) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease-in-out infinite;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--stone); font-size: 0.75rem; font-weight: 500;
 }
-.phone-sorted-label {
-  font-size: 0.56rem;
-  font-weight: 700;
-  color: var(--stone);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+
+/* Hero star rating */
+.hero-stars {
+  margin-top: 16px;
+  animation: fadeUp 0.7s ease-out 0.15s both;
+}
+.hero-stars .stars {
+  color: #D4A017; font-size: 0.95rem; letter-spacing: 1px;
+}
+.hero-stars .stars-text {
+  color: var(--stone); font-size: 0.78rem;
+  margin-left: 6px; font-weight: 400;
+}
+
+/* Hero rotating descriptor */
+.hero-rotating {
+  font-size: 1.05rem; color: var(--stone);
+  margin-top: 16px;
+  animation: fadeUp 0.7s ease-out 0.25s both;
+}
+.rotating-words {
+  display: inline-block; position: relative;
+}
+.rotating-word {
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  position: absolute; left: 0; top: 0;
+  white-space: nowrap; font-weight: 600;
+}
+.rotating-word.active {
+  opacity: 1; transform: translateY(0);
+  position: relative;
+}
+
+/* Hero trust line */
+.hero-trust-line {
+  font-size: 0.85rem; color: var(--stone);
   margin-bottom: 6px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.phone-sorted-label.show { opacity: 1; }
-.phone-items {
-  display: flex; flex-direction: column;
-}
-.phone-item {
-  display: flex; align-items: center; gap: 8px;
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(228,222,212,0.5);
-  font-size: 0.7rem;
-  color: var(--ink);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.phone-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.phone-item:last-child { border-bottom: none; }
-.phone-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.phone-item-text { flex: 1; font-weight: 500; }
-.phone-item-meta {
-  font-size: 0.6rem;
-  color: var(--stone);
-  font-weight: 400;
+  animation: fadeUp 0.7s ease-out 0.28s both;
 }
 
 /* ---- TELL MIIRO SECTION ---- */
@@ -423,12 +443,14 @@ nav.scrolled {
   display: flex; flex-direction: column;
 }
 .page-sections .features-section { order: 1; }
-.page-sections .tellmiiro-wrap { order: 2; }
-.page-sections .toru-section { order: 3; }
-.page-sections .workflow-section { order: 4; }
-.page-sections .pricing-wrap { order: 5; }
-.page-sections .story-wrap { order: 6; }
-.page-sections .faq-wrap { order: 7; }
+.page-sections .stats-strip { order: 2; }
+.page-sections .tellmiiro-wrap { order: 3; }
+.page-sections .toru-section { order: 4; }
+.page-sections .workflow-section { order: 5; }
+.page-sections .pricing-wrap { order: 6; }
+.page-sections .reviews-wrap { order: 7; }
+.page-sections .story-wrap { order: 8; }
+.page-sections .faq-wrap { order: 9; }
 
 /* ---- PHILOSOPHY (inside story) ---- */
 .story-philosophy {
@@ -483,39 +505,107 @@ nav.scrolled {
   max-width: 500px; line-height: 1.8;
 }
 
-/* ---- FEATURES ---- */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px; margin-top: 32px;
+/* ---- FEATURES (alternating blocks) ---- */
+.feature-blocks { margin-top: 32px; }
+.feature-block {
+  display: flex; align-items: center;
+  gap: 48px; padding: 48px 0;
+  border-bottom: 1px solid var(--sand);
 }
-.feature-card {
-  background: #fff;
-  border: 1px solid var(--sand);
-  border-radius: 16px; padding: 28px 24px;
-  transition: all 0.3s ease;
+.feature-block:last-child { border-bottom: none; }
+.feature-block:nth-child(even) { flex-direction: row-reverse; }
+.feature-block-video {
+  flex: 1;
+  aspect-ratio: 16/10;
+  border-radius: 16px; overflow: hidden;
+  background: linear-gradient(135deg, var(--warm) 0%, var(--sand) 50%, var(--warm) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease-in-out infinite;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--stone); font-size: 0.82rem; font-weight: 500;
 }
-.feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(140,133,120,0.08);
-  border-color: var(--indigo-mid);
-}
+.feature-block-content { flex: 1; }
 .feature-icon {
   width: 32px; height: 32px;
-  margin-bottom: 10px;
-  color: var(--indigo);
+  margin-bottom: 12px; color: var(--indigo);
 }
-.feature-icon svg {
-  width: 32px; height: 32px;
+.feature-icon svg { width: 32px; height: 32px; }
+.feature-block-content h3 {
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 8px;
 }
-.feature-card h3 {
-  font-size: 0.95rem; font-weight: 600;
-  color: var(--ink); margin-bottom: 6px;
+.feature-block-content p {
+  font-size: 0.92rem; color: var(--charcoal);
+  line-height: 1.8; max-width: 400px;
 }
-.feature-card p {
-  font-size: 0.84rem; color: var(--charcoal);
-  line-height: 1.7;
+
+/* ---- STATS STRIP ---- */
+.stats-strip {
+  background: var(--warm);
+  padding: 56px 24px;
 }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px; max-width: 900px;
+  margin: 0 auto; text-align: center;
+}
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem; font-weight: 400;
+  line-height: 1.2; margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 0.82rem; color: var(--stone); line-height: 1.5;
+}
+
+/* ---- REVIEW CAROUSEL ---- */
+.reviews-section {
+  max-width: 1000px; margin: 0 auto;
+  padding: 80px 24px; text-align: center;
+}
+.reviews-section .section-eyebrow { color: var(--coral); }
+.reviews-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400; color: var(--ink);
+  letter-spacing: -0.02em; margin-bottom: 36px;
+}
+.reviews-track-wrap {
+  overflow: hidden; margin: 0 -24px; padding: 0 24px;
+}
+.reviews-track {
+  display: flex; transition: transform 0.5s ease;
+}
+.review-card {
+  flex: 0 0 100%; padding: 0 16px; box-sizing: border-box;
+}
+.review-card-inner {
+  background: #fff; border: 1px solid var(--sand);
+  border-radius: 18px; padding: 36px 32px;
+  max-width: 560px; margin: 0 auto; text-align: center;
+}
+.review-stars {
+  color: #D4A017; font-size: 1.2rem;
+  letter-spacing: 2px; margin-bottom: 16px;
+}
+.review-quote {
+  font-size: 1rem; color: var(--charcoal);
+  line-height: 1.8; font-style: italic; margin-bottom: 16px;
+}
+.review-author {
+  font-size: 0.82rem; color: var(--stone); font-weight: 500;
+}
+.reviews-dots {
+  display: flex; justify-content: center;
+  gap: 8px; margin-top: 24px;
+}
+.reviews-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--sand); border: none;
+  cursor: pointer; transition: background 0.3s; padding: 0;
+}
+.reviews-dot.active { background: var(--indigo); }
 
 
 /* ---- TORU RECIPE SECTION (warm light) ---- */
@@ -920,7 +1010,13 @@ nav.scrolled {
 
 /* ---- FINAL CTA ---- */
 .final-cta {
-  text-align: center; padding: 80px 24px 80px;
+  text-align: center; padding: 80px 24px;
+  background: var(--warm);
+  border-top: 1px solid var(--sand);
+}
+.final-cta-sub {
+  color: var(--stone); font-size: 0.85rem;
+  margin-top: 8px;
 }
 .final-cta h2 {
   font-family: 'DM Serif Display', serif;
@@ -959,7 +1055,8 @@ footer a:hover { color: var(--indigo); }
 
 /* ---- RESPONSIVE ---- */
 @media (max-width: 900px) {
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-block { gap: 32px; padding: 36px 0; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 @media (max-width: 768px) {
   nav { padding: 14px 20px; }
@@ -980,8 +1077,19 @@ footer a:hover { color: var(--indigo); }
     border-radius: 34px;
   }
   .phone-notch { width: 66px; height: 20px; }
-  .phone-screen { padding: 36px 14px 14px; }
 
+  .quote-ticker { padding: 16px 0; }
+  .quote-ticker-item { padding: 0 16px; font-size: 0.78rem; }
+
+  .feature-block,
+  .feature-block:nth-child(even) {
+    flex-direction: column; gap: 24px; padding: 32px 0;
+  }
+  .feature-block-video { aspect-ratio: 16/9; width: 100%; }
+  .feature-block-content p { max-width: none; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .stat-number { font-size: 1.8rem; }
 
   .tellmiiro-section { padding: 0 20px 56px; }
   .tellmiiro-demo { padding: 20px; }
@@ -989,12 +1097,15 @@ footer a:hover { color: var(--indigo); }
 
   .philosophy { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 56px 16px; }
-  .features-grid { grid-template-columns: 1fr; }
   .recipe-section { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 14px; }
   .workflow-container { grid-template-columns: 1fr; gap: 24px; }
   .workflow-container::before { display: none; }
   .pricing-section { padding: 32px 20px; border-radius: 18px; }
   .pricing-grid { grid-template-columns: 1fr; }
+
+  .reviews-section { padding: 56px 20px; }
+  .review-card-inner { padding: 28px 20px; }
+
   .story-section { grid-template-columns: 1fr; gap: 28px; padding: 56px 20px; text-align: center; }
   .story-body { text-align: left; }
   .story-visual { order: -1; }
@@ -1023,8 +1134,10 @@ footer a:hover { color: var(--indigo); }
 <section class="hero" id="top">
   <div class="hero-content">
     <h1>One message. Your whole day, sorted.</h1>
+    <div class="hero-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-text">Loved by real households</span></div>
     <p class="hero-sub">Tell Miiro everything. Pick up the kids, dinner ideas, groceries. It organizes your household instantly.</p>
-    <p class="hero-descriptor">Built for couples and families. Free to start.</p>
+    <p class="hero-rotating" aria-live="polite">One message sorts your <span class="rotating-words"><span class="rotating-word active" style="color:var(--coral)">tasks</span><span class="rotating-word" style="color:var(--mint)">meals</span><span class="rotating-word" style="color:var(--indigo)">groceries</span><span class="rotating-word" style="color:var(--charcoal)">reminders</span></span></p>
+    <p class="hero-trust-line">Built for couples and families. Free to start.</p>
     <div class="hero-cta">
       <a href="#" aria-label="Download on the App Store">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
@@ -1035,36 +1148,31 @@ footer a:hover { color: var(--indigo); }
   <div class="hero-mockup">
     <div class="phone-frame">
       <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="phone-header">Tell Miiro...</div>
-        <div class="phone-input-mock">Pick up Miles at 3, we're doing pasta tonight, need milk eggs and butter, and remind me to call the dentist</div>
-        <div class="phone-sorted-label" id="phoneSortedLabel">Sorted</div>
-        <div class="phone-items" id="phoneItems">
-          <div class="phone-item">
-            <span class="phone-dot" style="background:var(--coral)"></span>
-            <span class="phone-item-text">Pick up Miles</span>
-            <span class="phone-item-meta">3:00 PM</span>
-          </div>
-          <div class="phone-item">
-            <span class="phone-dot" style="background:var(--mint)"></span>
-            <span class="phone-item-text">Pasta night</span>
-            <span class="phone-item-meta">Dinner</span>
-          </div>
-          <div class="phone-item">
-            <span class="phone-dot" style="background:var(--indigo)"></span>
-            <span class="phone-item-text">Milk, eggs, butter</span>
-            <span class="phone-item-meta">Grocery list</span>
-          </div>
-          <div class="phone-item">
-            <span class="phone-dot" style="background:var(--coral)"></span>
-            <span class="phone-item-text">Call the dentist</span>
-            <span class="phone-item-meta">Reminder</span>
-          </div>
-        </div>
+      <div class="hero-video-placeholder">
+        <video src="/hero-demo.mp4" autoplay muted loop playsinline></video>
+        <div class="hero-video-fallback">Demo coming soon</div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- QUOTE TICKER -->
+<div class="quote-ticker">
+  <div class="quote-ticker-track">
+    <span class="quote-ticker-item">"Finally, we're on the same page."</span>
+    <span class="quote-ticker-item">"It replaced 4 apps for us."</span>
+    <span class="quote-ticker-item">"The mental load is finally shared."</span>
+    <span class="quote-ticker-item">"I just tell Miiro and it's done."</span>
+    <span class="quote-ticker-item">"Our grocery game changed overnight."</span>
+    <span class="quote-ticker-item">"Cooking mode is a game changer."</span>
+    <span class="quote-ticker-item">"Finally, we're on the same page."</span>
+    <span class="quote-ticker-item">"It replaced 4 apps for us."</span>
+    <span class="quote-ticker-item">"The mental load is finally shared."</span>
+    <span class="quote-ticker-item">"I just tell Miiro and it's done."</span>
+    <span class="quote-ticker-item">"Our grocery game changed overnight."</span>
+    <span class="quote-ticker-item">"Cooking mode is a game changer."</span>
+  </div>
+</div>
 
 <!-- Sections wrapper for mobile reordering -->
 <div class="page-sections">
@@ -1074,36 +1182,76 @@ footer a:hover { color: var(--indigo); }
   <div class="section-eyebrow">Features</div>
   <h2>Everything you need. Nothing you don't.</h2>
 
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M14 9l-2-2-4 4"/><circle cx="16" cy="6" r="1.5" fill="currentColor" stroke="none" opacity="0.4"/></svg></div>
-      <h3>Tell Miiro AI</h3>
-      <p>Brain dump your entire day in one message. Miiro sorts it into tasks, meals, and groceries automatically.</p>
+  <div class="feature-blocks">
+    <div class="feature-block">
+      <div class="feature-block-video">Demo coming soon</div>
+      <div class="feature-block-content">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M14 9l-2-2-4 4"/><circle cx="16" cy="6" r="1.5" fill="currentColor" stroke="none" opacity="0.4"/></svg></div>
+        <h3>Tell Miiro AI</h3>
+        <p>Brain dump your entire day in one message. Miiro sorts it into tasks, meals, and groceries automatically.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="8" y2="20"/><circle cx="8" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><line x1="14" y1="6" x2="20" y2="6"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg></div>
-      <h3>Timeline with Chat</h3>
-      <p>See your whole day on one timeline: tasks, meals, and events. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
+    <div class="feature-block">
+      <div class="feature-block-video">Demo coming soon</div>
+      <div class="feature-block-content">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="8" y2="20"/><circle cx="8" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><line x1="14" y1="6" x2="20" y2="6"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg></div>
+        <h3>Timeline with Chat</h3>
+        <p>See your whole day on one timeline: tasks, meals, and events. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="font-family:'DM Serif Display',serif; color:var(--coral); opacity:0.7; font-size:1.8rem; line-height:1;">取</div>
-      <h3>Toru Recipe Finder</h3>
-      <p>Paste any recipe URL. We strip the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
+    <div class="feature-block">
+      <div class="feature-block-video">Demo coming soon</div>
+      <div class="feature-block-content">
+        <div class="feature-icon" style="font-family:'DM Serif Display',serif; color:var(--coral); opacity:0.7; font-size:1.8rem; line-height:1;">取</div>
+        <h3>Toru Recipe Finder</h3>
+        <p>Paste any recipe URL. We strip the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <h3>Cooking Mode</h3>
-      <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
+    <div class="feature-block">
+      <div class="feature-block-video">Demo coming soon</div>
+      <div class="feature-block-content">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Cooking Mode</h3>
+        <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
-      <h3>Shared Lists</h3>
-      <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
+    <div class="feature-block">
+      <div class="feature-block-video">Demo coming soon</div>
+      <div class="feature-block-content">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
+        <h3>Shared Lists</h3>
+        <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
-      <h3>My Day</h3>
-      <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
+    <div class="feature-block">
+      <div class="feature-block-video">Demo coming soon</div>
+      <div class="feature-block-content">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
+        <h3>My Day</h3>
+        <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number" style="color:var(--indigo)">4</div>
+      <div class="stat-label">smart categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" style="color:var(--coral)">3</div>
+      <div class="stat-label">built by a family of</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" style="color:var(--mint)">0</div>
+      <div class="stat-label">ads, ever</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" style="color:var(--charcoal)">100%</div>
+      <div class="stat-label">real-time sync</div>
     </div>
   </div>
 </div>
@@ -1310,6 +1458,44 @@ footer a:hover { color: var(--indigo); }
   </div>
 </div>
 
+<!-- REVIEW CAROUSEL -->
+<div class="reviews-wrap">
+  <div class="reviews-section">
+    <div class="section-eyebrow">What people say</div>
+    <h2>Loved by real households</h2>
+    <div class="reviews-track-wrap">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card">
+          <div class="review-card-inner">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-quote">"Miiro replaced our whiteboard, shared notes app, and the constant 'did you get my text?' We just tell Miiro and it's done."</p>
+            <p class="review-author">— Sarah &amp; Tom, parents of 2</p>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-card-inner">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-quote">"The mental load was crushing me. Now I brain dump into Miiro and everything is organized. My partner finally sees what needs doing."</p>
+            <p class="review-author">— Maria, Amsterdam</p>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-card-inner">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-quote">"Toru is worth the subscription alone. No more scrolling through life stories to find a recipe. Just ingredients and steps."</p>
+            <p class="review-author">— Kenji, family of 3</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-dots" id="reviewsDots">
+      <button class="reviews-dot active" data-index="0"></button>
+      <button class="reviews-dot" data-index="1"></button>
+      <button class="reviews-dot" data-index="2"></button>
+    </div>
+  </div>
+</div>
+
 <!-- STORY -->
 <div class="story-wrap" id="story">
   <div class="story-section">
@@ -1436,13 +1622,14 @@ footer a:hover { color: var(--indigo); }
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <h2>Ready to see what matters?</h2>
-  <p>Free to start. Your household will thank you.</p>
+  <h2>One message. Your whole day sorted.</h2>
+  <p>Join families who are finally on the same page.</p>
   <div class="final-cta-badge">
     <a href="#" aria-label="Download on the App Store">
       <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
     </a>
   </div>
+  <p class="final-cta-sub">Free to start. Cancel anytime.</p>
 </section>
 
 <!-- FOOTER -->
@@ -1692,28 +1879,56 @@ async function extractRecipe() {
   }
 })();
 
-// Phone mockup looping animation
+// Rotating hero text
 (function() {
-  var label = document.getElementById('phoneSortedLabel');
-  var items = document.getElementById('phoneItems');
-  if (!label || !items) return;
-  var phoneItems = items.querySelectorAll('.phone-item');
+  var words = document.querySelectorAll('.rotating-word');
+  if (!words.length) return;
+  var current = 0;
+  setInterval(function() {
+    words[current].classList.remove('active');
+    current = (current + 1) % words.length;
+    words[current].classList.add('active');
+  }, 2500);
+})();
 
-  function showItems() {
-    label.classList.add('show');
-    phoneItems.forEach(function(item, i) {
-      setTimeout(function() { item.classList.add('show'); }, i * 300);
+// Review carousel
+(function() {
+  var track = document.getElementById('reviewsTrack');
+  var dots = document.querySelectorAll('.reviews-dot');
+  if (!track || !dots.length) return;
+  var current = 0;
+  var total = dots.length;
+  var interval;
+
+  function goTo(index) {
+    current = index;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
     });
-    // After all shown, pause 3s, then fade out and restart
-    var totalIn = phoneItems.length * 300;
-    setTimeout(function() {
-      label.classList.remove('show');
-      phoneItems.forEach(function(item) { item.classList.remove('show'); });
-      setTimeout(showItems, 600);
-    }, totalIn + 3000);
   }
 
-  setTimeout(showItems, 800);
+  function advance() {
+    goTo((current + 1) % total);
+  }
+
+  function startAuto() {
+    interval = setInterval(advance, 4000);
+  }
+
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      goTo(parseInt(this.getAttribute('data-index')));
+      clearInterval(interval);
+      startAuto();
+    });
+  });
+
+  var wrap = track.parentElement;
+  wrap.addEventListener('mouseenter', function() { clearInterval(interval); });
+  wrap.addEventListener('mouseleave', startAuto);
+
+  startAuto();
 })();
 </script>
 
