@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miiro</title>
+  <link rel="icon" type="image/png" href="/koi-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #FFF8F5;
+      color: #2D2D2D;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 48px 36px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .logo { width: 56px; height: 56px; margin: 0 auto 16px; display: block; }
+
+    .wordmark {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #2D2D2D;
+      letter-spacing: -0.5px;
+      margin-bottom: 32px;
+    }
+    .wordmark .ii { color: #4A5CE8; }
+
+    .icon-circle {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .icon-circle.success { background: #E8FAF4; }
+    .icon-circle.error { background: #FFF0ED; }
+    .icon-circle.loading { background: #F0F0FF; }
+
+    .icon-circle svg { width: 28px; height: 28px; }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: #0D0D12;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      line-height: 24px;
+      color: #6B7280;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #E8634A;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn.secondary {
+      background: transparent;
+      color: #4A5CE8;
+      border: 1.5px solid #E8E0D4;
+      margin-top: 12px;
+    }
+
+    .password-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #E8E0D4;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: #0D0D12;
+      background: #FAF9F7;
+      outline: none;
+      margin-bottom: 12px;
+      transition: border-color 0.15s;
+    }
+    .password-input:focus { border-color: #4A5CE8; }
+    .password-input::placeholder { color: #A09889; }
+
+    .error-text { color: #E8634A; font-size: 13px; margin-bottom: 12px; min-height: 20px; }
+
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 13px;
+      color: #A09889;
+      line-height: 20px;
+    }
+    .footer .ii { color: #4A5CE8; }
+    .footer a { color: #A09889; text-decoration: underline; }
+
+    .spinner {
+      width: 24px; height: 24px;
+      border: 3px solid #E8E0D4;
+      border-top-color: #4A5CE8;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Hide all states by default */
+    .state { display: none; }
+    .state.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="/koi-logo.png" alt="Miiro" class="logo">
+    <div class="wordmark">M<span class="ii">ii</span>ro</div>
+
+    <!-- Loading -->
+    <div id="state-loading" class="state active">
+      <div class="icon-circle loading">
+        <div class="spinner"></div>
+      </div>
+      <h1>One moment...</h1>
+      <p class="subtitle">Verifying your request</p>
+    </div>
+
+    <!-- Verify: Success -->
+    <div id="state-verify-success" class="state">
+      <div class="icon-circle success">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3BBFA0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h1>Email verified</h1>
+      <p class="subtitle">You're all set. Open Miiro to get started.</p>
+      <a href="https://apps.apple.com/app/miiro-shared-tasks/id6740478599" class="btn">Open Miiro</a>
+    </div>
+
+    <!-- Verify: Error -->
+    <div id="state-verify-error" class="state">
+      <div class="icon-circle error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E8634A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+      </div>
+      <h1>Link expired</h1>
+      <p class="subtitle" id="verify-error-msg">This verification link has expired or was already used. Open Miiro to request a new one.</p>
+      <a href="https://apps.apple.com/app/miiro-shared-tasks/id6740478599" class="btn">Open Miiro</a>
+    </div>
+
+    <!-- Reset: Form -->
+    <div id="state-reset-form" class="state">
+      <h1>Choose a new password</h1>
+      <p class="subtitle">Enter your new password below.</p>
+      <input type="password" id="new-password" class="password-input" placeholder="New password" autocomplete="new-password" minlength="8">
+      <input type="password" id="confirm-password" class="password-input" placeholder="Confirm password" autocomplete="new-password">
+      <p class="error-text" id="reset-error"></p>
+      <button id="reset-btn" class="btn" onclick="handleResetPassword()">Reset Password</button>
+    </div>
+
+    <!-- Reset: Success -->
+    <div id="state-reset-success" class="state">
+      <div class="icon-circle success">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3BBFA0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h1>Password updated</h1>
+      <p class="subtitle">Your password has been changed. You can now sign in with your new password.</p>
+      <a href="https://apps.apple.com/app/miiro-shared-tasks/id6740478599" class="btn">Open Miiro</a>
+    </div>
+
+    <!-- Reset: Error -->
+    <div id="state-reset-error" class="state">
+      <div class="icon-circle error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E8634A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+      </div>
+      <h1>Link expired</h1>
+      <p class="subtitle" id="reset-error-msg">This reset link has expired or was already used. Open Miiro to request a new one.</p>
+      <a href="https://apps.apple.com/app/miiro-shared-tasks/id6740478599" class="btn">Open Miiro</a>
+    </div>
+
+    <!-- Unknown mode -->
+    <div id="state-unknown" class="state">
+      <div class="icon-circle error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E8634A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <h1>Invalid link</h1>
+      <p class="subtitle">This link doesn't look right. If you need help, contact support.</p>
+      <a href="https://miiro.app" class="btn">Go to Miiro</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>M<span class="ii">ii</span>ro &mdash; See what matters</p>
+    <p><a href="mailto:support@miiro.app">Contact support</a></p>
+  </div>
+
+  <!-- Firebase Auth SDK (compat, minimal) -->
+  <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-auth-compat.js"></script>
+  <script>
+    // ── Parse URL parameters ──
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode');
+    const oobCode = params.get('oobCode');
+    const apiKey = params.get('apiKey');
+
+    // ── Init Firebase with the apiKey from the URL ──
+    firebase.initializeApp({ apiKey: apiKey, authDomain: 'mirert-ec2a5.firebaseapp.com' });
+    const auth = firebase.auth();
+
+    function showState(id) {
+      document.querySelectorAll('.state').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    // ── Route by mode ──
+    (async function() {
+      if (!oobCode || !apiKey) { showState('state-unknown'); return; }
+
+      if (mode === 'verifyEmail') {
+        try {
+          await auth.applyActionCode(oobCode);
+          showState('state-verify-success');
+        } catch (e) {
+          const msg = e.code === 'auth/invalid-action-code'
+            ? 'This verification link has expired or was already used. Open Miiro to request a new one.'
+            : 'Something went wrong. Please try again or contact support.';
+          document.getElementById('verify-error-msg').textContent = msg;
+          showState('state-verify-error');
+        }
+      } else if (mode === 'resetPassword') {
+        try {
+          await auth.verifyPasswordResetCode(oobCode);
+          showState('state-reset-form');
+          document.getElementById('new-password').focus();
+        } catch (e) {
+          const msg = e.code === 'auth/invalid-action-code'
+            ? 'This reset link has expired or was already used. Open Miiro to request a new one.'
+            : 'Something went wrong. Please try again or contact support.';
+          document.getElementById('reset-error-msg').textContent = msg;
+          showState('state-reset-error');
+        }
+      } else {
+        showState('state-unknown');
+      }
+    })();
+
+    // ── Password reset handler ──
+    async function handleResetPassword() {
+      const pw = document.getElementById('new-password').value;
+      const confirm = document.getElementById('confirm-password').value;
+      const errorEl = document.getElementById('reset-error');
+      const btn = document.getElementById('reset-btn');
+
+      errorEl.textContent = '';
+
+      if (pw.length < 8) { errorEl.textContent = 'Password must be at least 8 characters.'; return; }
+      if (pw !== confirm) { errorEl.textContent = 'Passwords don\u2019t match.'; return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Updating...';
+
+      try {
+        await auth.confirmPasswordReset(oobCode, pw);
+        showState('state-reset-success');
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = 'Reset Password';
+        if (e.code === 'auth/weak-password') {
+          errorEl.textContent = 'Password is too weak. Try a stronger one.';
+        } else if (e.code === 'auth/expired-action-code') {
+          showState('state-reset-error');
+        } else {
+          errorEl.textContent = 'Something went wrong. Please try again.';
+        }
+      }
+    }
+
+    // Submit on Enter from password fields
+    document.getElementById('confirm-password').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleResetPassword();
+    });
+    document.getElementById('new-password').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') document.getElementById('confirm-password').focus();
+    });
+  </script>
+</body>
+</html>
