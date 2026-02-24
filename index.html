@@ -543,6 +543,41 @@ nav.scrolled {
   line-height: 1.8; max-width: 400px;
 }
 
+/* ---- FEATURE COMPACT GRID (Tier 2) ---- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+  padding-top: 48px;
+  border-top: 1px solid var(--sand);
+}
+.feature-grid-card {
+  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
+  border: 1px solid var(--sand);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: all 0.3s ease;
+}
+.feature-grid-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(140,133,120,0.08);
+}
+.feature-grid-card .feature-icon {
+  margin-bottom: 10px;
+}
+.feature-grid-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.feature-grid-card p {
+  font-size: 0.86rem;
+  color: var(--charcoal);
+  line-height: 1.7;
+}
+
 /* ---- STATS STRIP ---- */
 .stats-strip {
   background: var(--warm);
@@ -1093,6 +1128,9 @@ footer a:hover { color: var(--indigo); }
   .feature-block-video { aspect-ratio: 16/9; width: 100%; }
   .feature-block-content p { max-width: none; }
 
+  .feature-grid { grid-template-columns: 1fr; gap: 16px; padding-top: 32px; }
+  .feature-grid-card { padding: 22px 20px; }
+
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .stat-number { font-size: 1.8rem; }
 
@@ -1212,37 +1250,28 @@ footer a:hover { color: var(--indigo); }
         <p>Paste any recipe URL. We strip the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
       </div>
     </div>
-    <div class="feature-block">
-      <div class="feature-block-video">Demo coming soon</div>
-      <div class="feature-block-content">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3>Cooking Mode</h3>
-        <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
-      </div>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-grid-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Cooking Mode</h3>
+      <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
     </div>
-    <div class="feature-block">
-      <div class="feature-block-video">Demo coming soon</div>
-      <div class="feature-block-content">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
-        <h3>Shared Lists</h3>
-        <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
-      </div>
+    <div class="feature-grid-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
+      <h3>Shared Lists</h3>
+      <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
     </div>
-    <div class="feature-block">
-      <div class="feature-block-video">Demo coming soon</div>
-      <div class="feature-block-content">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
-        <h3>My Day</h3>
-        <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
-      </div>
+    <div class="feature-grid-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
+      <h3>My Day</h3>
+      <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
     </div>
-    <div class="feature-block">
-      <div class="feature-block-video">Demo coming soon</div>
-      <div class="feature-block-content">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="8" cy="15" r="1.5" fill="var(--coral)" stroke="none"/><circle cx="12" cy="15" r="1.5" fill="var(--mint)" stroke="none"/><circle cx="16" cy="15" r="1.5" fill="var(--indigo)" stroke="none"/></svg></div>
-        <h3>Shared Calendars</h3>
-        <p>Personal and shared calendars, color-coded and synced instantly. Family calendars update for everyone. Private calendars stay completely private.</p>
-      </div>
+    <div class="feature-grid-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="8" cy="15" r="1.5" fill="var(--coral)" stroke="none"/><circle cx="12" cy="15" r="1.5" fill="var(--mint)" stroke="none"/><circle cx="16" cy="15" r="1.5" fill="var(--indigo)" stroke="none"/></svg></div>
+      <h3>Shared Calendars</h3>
+      <p>Personal and shared calendars, color-coded and synced instantly. Family calendars update for everyone. Private calendars stay completely private.</p>
     </div>
   </div>
 </div>
