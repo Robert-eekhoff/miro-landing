@@ -281,8 +281,11 @@ nav.scrolled {
 .tellmiiro-section {
   max-width: 1000px; margin: 0 auto;
   padding: 0 24px 80px;
-  text-align: center;
+  display: flex;
+  gap: 48px;
+  align-items: start;
 }
+.tellmiiro-text { flex: 1; min-width: 0; }
 .tellmiiro-section .section-eyebrow {
   font-size: 0.62rem; font-weight: 700;
   letter-spacing: 0.2em; text-transform: uppercase;
@@ -298,11 +301,10 @@ nav.scrolled {
 .tellmiiro-section .lead {
   font-size: 1rem; color: var(--charcoal);
   max-width: 540px; line-height: 1.8;
-  margin: 0 auto;
 }
 .tellmiiro-demo {
-  max-width: 580px;
-  margin: 36px auto 0;
+  flex: 1;
+  min-width: 0;
   background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
   border: 1px solid var(--sand);
   border-radius: 20px;
@@ -436,7 +438,6 @@ nav.scrolled {
 }
 .tellmiiro-replay button:hover { color: var(--coral); }
 .tellmiiro-credits {
-  text-align: center;
   margin-top: 24px;
   font-size: 0.82rem;
   color: var(--stone);
@@ -446,11 +447,11 @@ nav.scrolled {
 .page-sections {
   display: flex; flex-direction: column;
 }
-.page-sections .features-section { order: 1; }
-.page-sections .stats-strip { order: 2; }
-.page-sections .tellmiiro-wrap { order: 3; }
-.page-sections .toru-section { order: 4; }
-.page-sections .workflow-section { order: 5; }
+.page-sections .workflow-section { order: 1; }
+.page-sections .features-section { order: 2; }
+.page-sections .stats-strip { order: 3; }
+.page-sections .tellmiiro-wrap { order: 4; }
+.page-sections .toru-section { order: 5; }
 .page-sections .pricing-wrap { order: 6; }
 .page-sections .reviews-wrap { order: 7; }
 .page-sections .story-wrap { order: 8; }
@@ -648,17 +649,13 @@ nav.scrolled {
 .reviews-dot.active { background: var(--indigo); }
 
 
-/* ---- TORU RECIPE SECTION (warm light) ---- */
+/* ---- TORU RECIPE SECTION ---- */
 .recipe-section {
-  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
-  border: 1px solid var(--sand);
-  border-left: 4px solid var(--coral);
-  border-radius: 18px;
-  padding: 44px 40px;
-  box-shadow: 0 8px 36px rgba(140,133,120,0.06);
-  display: grid; grid-template-columns: 5fr 7fr;
-  gap: 44px; align-items: start;
+  display: flex;
+  gap: 48px;
+  align-items: start;
 }
+.recipe-text { flex: 1; min-width: 0; }
 .recipe-text .section-eyebrow { color: var(--coral); }
 .recipe-text h2 { color: var(--ink); }
 .recipe-text .toru-jp {
@@ -680,11 +677,15 @@ nav.scrolled {
   letter-spacing: 0.05em;
 }
 
-/* Toru interactive demo (warm) */
+/* Toru interactive demo */
 .recipe-demo-live {
-  background: var(--warm);
+  flex: 1;
+  min-width: 0;
+  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
   border: 1px solid var(--sand);
-  border-radius: 14px; padding: 24px;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 12px 48px rgba(140,133,120,0.1), 0 2px 8px rgba(140,133,120,0.04);
 }
 .recipe-input-row {
   display: flex; gap: 8px; margin-bottom: 16px;
@@ -1134,13 +1135,14 @@ footer a:hover { color: var(--indigo); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .stat-number { font-size: 1.8rem; }
 
-  .tellmiiro-section { padding: 0 20px 56px; }
+  .tellmiiro-section { padding: 0 20px 56px; flex-direction: column; gap: 28px; }
   .tellmiiro-demo { padding: 20px; }
   .tellmiiro-input-area { padding: 14px 16px; }
 
   .philosophy { grid-template-columns: 1fr; gap: 28px; }
   .section { padding: 56px 16px; }
-  .recipe-section { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 14px; }
+  .recipe-section { flex-direction: column; gap: 28px; }
+  .recipe-demo-live { padding: 20px; }
   .workflow-container { grid-template-columns: 1fr; gap: 24px; }
   .workflow-container::before { display: none; }
   .pricing-section { padding: 32px 20px; border-radius: 18px; }
@@ -1301,10 +1303,6 @@ footer a:hover { color: var(--indigo); }
 <!-- TELL MIIRO -->
 <div class="tellmiiro-wrap">
 <section class="tellmiiro-section" id="tellmiiro">
-  <div class="section-eyebrow">Tell Miiro</div>
-  <h2>Tell Miiro what's on your mind</h2>
-  <p class="lead">Type it like you'd text a friend. Miiro turns your thoughts into tasks, events, meals, and groceries. Instantly.</p>
-
   <div class="tellmiiro-demo" id="tellmiiroDemo">
     <div class="tellmiiro-input-area">
       <div class="tellmiiro-input-label">Tell Miiro...</div>
@@ -1361,7 +1359,12 @@ footer a:hover { color: var(--indigo); }
     </div>
   </div>
 
-  <p class="tellmiiro-credits">5 free credits. Unlimited with Miiro+.</p>
+  <div class="tellmiiro-text">
+    <div class="section-eyebrow">Tell Miiro</div>
+    <h2>Tell Miiro what's on your mind</h2>
+    <p class="lead">Type it like you'd text a friend. Miiro turns your thoughts into tasks, events, meals, and groceries. Instantly.</p>
+    <p class="tellmiiro-credits">5 free credits. Unlimited with Miiro+.</p>
+  </div>
 </section>
 </div>
 
