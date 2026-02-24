@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miiro: One message. Your whole day, sorted.</title>
-<meta name="description" content="Tell Miiro everything on your mind. Tasks, meals, groceries, all organized instantly. Built for couples and families. Free to start.">
+<meta name="description" content="Tell Miiro everything on your mind. Tasks, events, meals, groceries, all organized instantly. Shared calendars for couples and families. Free to start.">
 <meta property="og:title" content="Miiro: One message. Your whole day, sorted.">
-<meta property="og:description" content="Tell Miiro everything on your mind. Tasks, meals, groceries, all organized instantly. Built for couples and families. Free to start.">
+<meta property="og:description" content="Tell Miiro everything on your mind. Tasks, events, meals, groceries, all organized instantly. Shared calendars for couples and families. Free to start.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="koi-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -404,6 +404,10 @@ nav.scrolled {
 .tellmiiro-category.grocery {
   color: var(--indigo);
   background: var(--indigo-soft);
+}
+.tellmiiro-category.event {
+  color: #8B5CF6;
+  background: rgba(139,92,246,0.08);
 }
 .tellmiiro-result-text {
   font-size: 0.86rem;
@@ -1136,8 +1140,8 @@ footer a:hover { color: var(--indigo); }
   <div class="hero-content">
     <h1>One message. Your whole day, sorted.</h1>
     <div class="hero-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-text">Loved by real households</span></div>
-    <p class="hero-sub">Tell Miiro everything. Pick up the kids, dinner ideas, groceries. It organizes your household instantly.</p>
-    <p class="hero-rotating" aria-live="polite">One message sorts your <span class="rotating-words"><span class="rotating-word active" style="color:var(--coral)">tasks</span><span class="rotating-word" style="color:var(--mint)">meals</span><span class="rotating-word" style="color:var(--indigo)">groceries</span><span class="rotating-word" style="color:var(--charcoal)">reminders</span></span></p>
+    <p class="hero-sub">Tell Miiro everything. Pick up the kids, dinner ideas, groceries, doctor appointments. It organizes your household instantly.</p>
+    <p class="hero-rotating" aria-live="polite">One message sorts your <span class="rotating-words"><span class="rotating-word active" style="color:var(--coral)">tasks</span><span class="rotating-word" style="color:var(--mint)">meals</span><span class="rotating-word" style="color:var(--indigo)">groceries</span><span class="rotating-word" style="color:#8B5CF6">events</span><span class="rotating-word" style="color:var(--charcoal)">reminders</span></span></p>
     <p class="hero-trust-line">Built for couples and families. Free to start.</p>
     <div class="hero-cta">
       <a href="#" aria-label="Download on the App Store">
@@ -1232,6 +1236,14 @@ footer a:hover { color: var(--indigo); }
         <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
       </div>
     </div>
+    <div class="feature-block">
+      <div class="feature-block-video">Demo coming soon</div>
+      <div class="feature-block-content">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="8" cy="15" r="1.5" fill="var(--coral)" stroke="none"/><circle cx="12" cy="15" r="1.5" fill="var(--mint)" stroke="none"/><circle cx="16" cy="15" r="1.5" fill="var(--indigo)" stroke="none"/></svg></div>
+        <h3>Shared Calendars</h3>
+        <p>Personal and shared calendars, color-coded and synced instantly. Family calendars update for everyone. Private calendars stay completely private.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1262,12 +1274,12 @@ footer a:hover { color: var(--indigo); }
 <section class="tellmiiro-section" id="tellmiiro">
   <div class="section-eyebrow">Tell Miiro</div>
   <h2>Tell Miiro what's on your mind</h2>
-  <p class="lead">Type it like you'd text a friend. Miiro turns your thoughts into tasks, meals, and groceries. Instantly.</p>
+  <p class="lead">Type it like you'd text a friend. Miiro turns your thoughts into tasks, events, meals, and groceries. Instantly.</p>
 
   <div class="tellmiiro-demo" id="tellmiiroDemo">
     <div class="tellmiiro-input-area">
       <div class="tellmiiro-input-label">Tell Miiro...</div>
-      <div class="tellmiiro-input-text" id="tellmiiroInput">Pick up Miles from school at 3, we need chicken and rice for dinner tonight, call the vet about Rose's appointment, and grab olive oil and eggs from the store</div>
+      <div class="tellmiiro-input-text" id="tellmiiroInput">Pick up Miles from school at 3, we need chicken and rice for dinner tonight, doctor appointment Tuesday 2pm, call the vet about Rose's appointment, and grab olive oil and eggs from the store</div>
     </div>
 
     <div class="tellmiiro-divider"><span>Miiro sorted this into</span></div>
@@ -1287,6 +1299,14 @@ footer a:hover { color: var(--indigo); }
           <span class="tellmiiro-category meal">Meal</span>
           <span class="tellmiiro-result-text">Chicken and rice</span>
           <span class="tellmiiro-result-meta">→ Tonight's dinner</span>
+        </div>
+      </div>
+      <div class="tellmiiro-result-item">
+        <span class="tellmiiro-emoji">📅</span>
+        <div class="tellmiiro-result-content">
+          <span class="tellmiiro-category event">Event</span>
+          <span class="tellmiiro-result-text">Doctor appointment</span>
+          <span class="tellmiiro-result-meta">→ Tuesday 2:00 PM · Personal calendar</span>
         </div>
       </div>
       <div class="tellmiiro-result-item">
@@ -1427,6 +1447,7 @@ footer a:hover { color: var(--indigo); }
         <ul class="price-features">
           <li>Tell Miiro AI (5 credits)</li>
           <li>3 lists</li>
+          <li>2 calendars</li>
           <li>5 saved recipes</li>
           <li>3 recipe imports</li>
           <li>1 template</li>
@@ -1444,6 +1465,7 @@ footer a:hover { color: var(--indigo); }
         <ul class="price-features">
           <li>Unlimited Tell Miiro AI</li>
           <li>Unlimited lists</li>
+          <li>Unlimited calendars</li>
           <li>Unlimited recipes</li>
           <li>Unlimited imports</li>
           <li>Unlimited templates</li>
@@ -1553,7 +1575,7 @@ footer a:hover { color: var(--indigo); }
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Tell Miiro is our AI assistant. Type everything on your mind in natural language, and Miiro automatically sorts it into tasks, meals, and grocery lists. It's like texting a friend who actually organizes everything. Free users get 5 credits. Miiro+ users get unlimited.</p>
+        <p>Tell Miiro is our AI assistant. Type everything on your mind in natural language, and Miiro automatically sorts it into tasks, events, meals, and grocery lists. It's like texting a friend who actually organizes everything. Free users get 5 credits. Miiro+ users get unlimited.</p>
       </div>
     </div>
 
@@ -1563,7 +1585,7 @@ footer a:hover { color: var(--indigo); }
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Yes. Every feature works on the free plan, including 5 Tell Miiro AI credits. You get 3 lists, 5 saved recipes, and sharing with 1 person. Miiro+ gives you unlimited everything.</p>
+        <p>Yes. Every feature works on the free plan, including 5 Tell Miiro AI credits. You get 3 lists, 2 calendars, 5 saved recipes, and sharing with 1 person. Miiro+ gives you unlimited everything.</p>
       </div>
     </div>
 
@@ -1594,6 +1616,26 @@ footer a:hover { color: var(--indigo); }
       </button>
       <div class="faq-answer">
         <p>Most major recipe sites including BBC Good Food, RecipeTin Eats, Budget Bytes, Allrecipes, and many more. If a site has structured recipe data, Toru can extract it.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do shared calendars work?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>When you create a shared calendar, your partner sees all events in it automatically. Personal calendars stay completely private. Everything syncs in real time, so you're always on the same page.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I keep a calendar private?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes! Every user gets a Personal calendar that only they can see. Create as many private or shared calendars as you need. Free includes 2 calendars, Miiro+ gives unlimited calendars.</p>
       </div>
     </div>
 
