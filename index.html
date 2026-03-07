@@ -3,2033 +3,1716 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miiro: One message. Your whole day, sorted.</title>
-<meta name="description" content="Tell Miiro everything on your mind. Tasks, events, meals, groceries, all organized instantly. Shared calendars for couples and families. Free to start.">
-<meta property="og:title" content="Miiro: One message. Your whole day, sorted.">
-<meta property="og:description" content="Tell Miiro everything on your mind. Tasks, events, meals, groceries, all organized instantly. Shared calendars for couples and families. Free to start.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="koi-logo.png">
+<title>Miiro — See what matters.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink: #1a1a2e;
-  --paper: #FAF9F6;
-  --warm: #F3F0EB;
-  --sand: #E4DED4;
-  --stone: #8C8578;
-  --charcoal: #3D3A36;
-  --indigo: #4A5CE8;
-  --indigo-soft: rgba(74,92,232,0.07);
-  --indigo-mid: rgba(74,92,232,0.15);
-  --coral: #E8634A;
-  --coral-soft: rgba(232,99,74,0.06);
-  --mint: #3BBFA0;
-  --mint-soft: rgba(59,191,160,0.08);
-}
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --coral-soft: #F4A393;
+    --coral-bg: rgba(232, 99, 74, 0.06);
+    --indigo: #4A5CE8;
+    --indigo-soft: #7B8AF0;
+    --indigo-bg: rgba(74, 92, 232, 0.06);
+    --mint: #3BBFA0;
+    --mint-bg: rgba(59, 191, 160, 0.06);
+    --gold: #D4A853;
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+    --shadow-lg: 0 8px 40px rgba(44, 40, 37, 0.08);
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-xl: 40px;
+  }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  color: var(--charcoal);
-  background: var(--paper);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  line-height: 1.7;
-  max-width: 100vw;
-}
+  html { scroll-behavior: smooth; font-size: 16px; }
 
-.brand-ii { color: #4A5CE8; }
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
+  .serif { font-family: 'Lora', Georgia, serif; }
 
-/* ---- NAV ---- */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 16px 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: transparent;
-  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
-  border-bottom: 1px solid transparent;
-}
-nav.scrolled {
-  background: rgba(250,249,246,0.92);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(228,222,212,0.4);
-}
-.nav-brand {
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none;
-}
-.nav-brand img { width: 36px; height: 36px; object-fit: contain; }
-.nav-wordmark {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.45rem; font-weight: 400;
-  color: var(--ink); letter-spacing: -0.02em;
-}
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a {
-  color: var(--stone); text-decoration: none;
-  font-size: 0.85rem; font-weight: 500;
-  transition: color 0.2s;
-  position: relative;
-}
-.nav-links a:not(.nav-cta)::after {
-  content: '';
-  position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 2px;
-  background: var(--coral);
-  transition: width 0.25s ease;
-}
-.nav-links a:not(.nav-cta):hover { color: var(--coral); }
-.nav-links a:not(.nav-cta):hover::after { width: 100%; }
-.nav-cta {
-  padding: 9px 20px;
-  background: var(--indigo); color: #fff !important;
-  border-radius: 100px;
-  font-size: 0.82rem; font-weight: 600;
-  transition: background 0.2s, transform 0.2s;
-}
-.nav-cta:hover { background: #3d4ed4; transform: translateY(-1px); }
+  /* ===== UTILITIES ===== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
 
-/* ---- HERO ---- */
-.hero {
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  padding: 120px 24px 60px;
-  position: relative;
-  max-width: 1100px; margin: 0 auto;
-  gap: 48px;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 20% 30%, rgba(74,92,232,0.03) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 70%, rgba(232,99,74,0.03) 0%, transparent 50%);
-  pointer-events: none;
-}
-.hero-content {
-  flex: 1;
-  position: relative; z-index: 1;
-}
-.hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  font-weight: 400;
-  letter-spacing: -0.03em; line-height: 1.1;
-  max-width: 540px;
-  background: linear-gradient(135deg, var(--indigo), var(--coral));
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeUp 0.7s ease-out 0.1s both, gradientShift 8s ease-in-out infinite;
-}
-.hero-sub {
-  font-size: clamp(1.05rem, 1.8vw, 1.15rem);
-  color: var(--ink); font-weight: 400;
-  margin-top: 20px; max-width: 480px;
-  line-height: 1.75;
-  animation: fadeUp 0.7s ease-out 0.2s both;
-}
-/* ---- QUOTE TICKER ---- */
-.quote-ticker {
-  overflow: hidden;
-  background: var(--warm);
-  padding: 20px 0;
-  border-top: 1px solid var(--sand);
-  border-bottom: 1px solid var(--sand);
-}
-.quote-ticker-track {
-  display: flex;
-  animation: ticker 30s linear infinite;
-  white-space: nowrap;
-}
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.quote-ticker-item {
-  flex-shrink: 0;
-  padding: 0 24px;
-  font-size: 0.88rem;
-  color: var(--indigo);
-  font-weight: 500;
-  display: flex; align-items: center; gap: 24px;
-}
-.quote-ticker-item::after {
-  content: '\00B7';
-  color: var(--sand); font-size: 1.4rem;
-}
-.hero-cta {
-  display: flex; align-items: center; gap: 16px;
-  margin-top: 28px;
-  animation: fadeUp 0.7s ease-out 0.3s both;
-}
-.app-store-badge {
-  height: 48px; width: auto;
-  transition: opacity 0.2s;
-}
-.app-store-badge:hover { opacity: 0.85; }
-.hero-social {
-  margin-top: 16px; font-size: 0.78rem;
-  color: var(--stone); font-weight: 400;
-  animation: fadeUp 0.7s ease-out 0.4s both;
-  line-height: 1.6;
-}
+  .container--narrow {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
 
-/* ---- HERO PHONE MOCKUP ---- */
-.hero-mockup {
-  flex: 0 0 260px;
-  position: relative; z-index: 1;
-  animation: fadeUp 0.8s ease-out 0.3s both;
-}
-.phone-frame {
-  width: 260px; height: 520px;
-  border-radius: 40px;
-  border: 2px solid #D4CFC9;
-  background: var(--paper);
-  position: relative;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  overflow: hidden;
-}
-.phone-notch {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 80px; height: 24px;
-  background: var(--ink); border-radius: 0 0 14px 14px;
-  z-index: 2;
-}
-/* Hero video inside phone frame */
-.hero-video-placeholder {
-  width: 100%; height: 100%;
-  position: relative;
-}
-.hero-video-placeholder video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  .section {
+    padding: clamp(60px, 10vw, 140px) 0;
+  }
 
-/* Hero star rating */
-.hero-stars {
-  margin-top: 16px;
-  animation: fadeUp 0.7s ease-out 0.15s both;
-}
-.hero-stars .stars {
-  color: #D4A017; font-size: 0.95rem; letter-spacing: 1px;
-}
-.hero-stars .stars-text {
-  color: var(--stone); font-size: 0.78rem;
-  margin-left: 6px; font-weight: 400;
-}
+  .text-center { text-align: center; }
 
-/* Hero rotating descriptor */
-.hero-rotating {
-  font-size: 1.05rem; color: var(--stone);
-  margin-top: 16px;
-  animation: fadeUp 0.7s ease-out 0.25s both;
-}
-.rotating-words {
-  display: inline-block; position: relative;
-}
-.rotating-word {
-  opacity: 0; transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  position: absolute; left: 0; top: 0;
-  white-space: nowrap; font-weight: 600;
-}
-.rotating-word.active {
-  opacity: 1; transform: translateY(0);
-  position: relative;
-}
+  .accent { color: var(--coral); }
 
-/* Hero trust line */
-.hero-trust-line {
-  font-size: 0.85rem; color: var(--stone);
-  margin-bottom: 6px;
-  animation: fadeUp 0.7s ease-out 0.28s both;
-}
+  .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+    display: block;
+  }
 
-/* ---- TELL MIIRO SECTION ---- */
-.tellmiiro-section {
-  max-width: 1000px; margin: 0 auto;
-  padding: 0 24px 80px;
-  display: flex;
-  gap: 48px;
-  align-items: start;
-}
-.tellmiiro-text { flex: 1; min-width: 0; }
-.tellmiiro-section .section-eyebrow {
-  font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--coral); margin-bottom: 14px;
-}
-.tellmiiro-section h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 400; color: var(--ink);
-  letter-spacing: -0.02em; line-height: 1.2;
-  margin-bottom: 14px;
-}
-.tellmiiro-section .lead {
-  font-size: 1rem; color: var(--charcoal);
-  max-width: 540px; line-height: 1.8;
-}
-.tellmiiro-demo {
-  flex: 1;
-  min-width: 0;
-  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
-  border: 1px solid var(--sand);
-  border-radius: 20px;
-  padding: 28px;
-  box-shadow: 0 12px 48px rgba(140,133,120,0.1), 0 2px 8px rgba(140,133,120,0.04);
-  text-align: left;
-}
-.tellmiiro-input-area {
-  background: var(--warm);
-  border-radius: 14px;
-  padding: 18px 20px;
-  margin-bottom: 20px;
-}
-.tellmiiro-input-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--stone);
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
-}
-.tellmiiro-input-text {
-  font-size: 0.88rem;
-  color: var(--charcoal);
-  line-height: 1.7;
-  min-height: 48px;
-}
-.tellmiiro-input-text.typing::after {
-  content: '';
-  display: inline-block;
-  width: 2px; height: 1.1em;
-  background: var(--coral);
-  margin-left: 1px;
-  vertical-align: text-bottom;
-  animation: blink 0.7s step-end infinite;
-}
-.tellmiiro-divider {
-  text-align: center;
-  margin: 0 0 16px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--stone);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  display: flex; align-items: center; gap: 12px;
-}
-.tellmiiro-divider::before,
-.tellmiiro-divider::after {
-  content: '';
-  flex: 1; height: 1px;
-  background: var(--sand);
-}
-.tellmiiro-result-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(228,222,212,0.5);
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-.tellmiiro-result-item:last-child { border-bottom: none; }
-.tellmiiro-demo.animating .tellmiiro-result-item {
-  opacity: 0;
-  transform: translateY(12px);
-}
-.tellmiiro-demo.animating .tellmiiro-result-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.tellmiiro-emoji {
-  font-size: 1rem;
-  flex-shrink: 0;
-  margin-top: 1px;
-  line-height: 1.5;
-}
-.tellmiiro-result-content {
-  flex: 1; min-width: 0;
-}
-.tellmiiro-category {
-  display: inline-block;
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 4px;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-.tellmiiro-category.task {
-  color: var(--coral);
-  background: var(--coral-soft);
-}
-.tellmiiro-category.meal {
-  color: var(--mint);
-  background: var(--mint-soft);
-}
-.tellmiiro-category.grocery {
-  color: var(--indigo);
-  background: var(--indigo-soft);
-}
-.tellmiiro-category.event {
-  color: #8B5CF6;
-  background: rgba(139,92,246,0.08);
-}
-.tellmiiro-result-text {
-  font-size: 0.86rem;
-  color: var(--ink);
-  font-weight: 500;
-  vertical-align: middle;
-}
-.tellmiiro-result-meta {
-  display: block;
-  font-size: 0.76rem;
-  color: var(--stone);
-  margin-top: 2px;
-}
-.tellmiiro-replay {
-  display: none;
-  text-align: center;
-  margin-top: 12px;
-}
-.tellmiiro-replay button {
-  background: none; border: none;
-  color: var(--stone);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.76rem;
-  cursor: pointer; padding: 4px 12px;
-  transition: color 0.2s;
-}
-.tellmiiro-replay button:hover { color: var(--coral); }
-.tellmiiro-credits {
-  margin-top: 24px;
-  font-size: 0.82rem;
-  color: var(--stone);
-}
+  h1, h2, h3, h4 { line-height: 1.15; font-weight: 600; }
 
-/* ---- PAGE LAYOUT WRAPPER (for mobile reordering) ---- */
-.page-sections {
-  display: flex; flex-direction: column;
-}
-.page-sections .workflow-section { order: 1; }
-.page-sections .features-section { order: 2; }
-.page-sections .stats-strip { order: 3; }
-.page-sections .tellmiiro-wrap { order: 4; }
-.page-sections .toru-section { order: 5; }
-.page-sections .pricing-wrap { order: 6; }
-.page-sections .reviews-wrap { order: 7; }
-.page-sections .story-wrap { order: 8; }
-.page-sections .faq-wrap { order: 9; }
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-/* ---- PHILOSOPHY (inside story) ---- */
-.story-philosophy {
-  max-width: 900px; margin: 0 auto;
-  padding: 48px 24px 0;
-  border-top: 1px solid var(--sand);
-}
-.philosophy-intro {
-  text-align: center; max-width: 480px; margin: 0 auto;
-  padding-bottom: 32px;
-  font-size: 0.85rem; color: var(--stone); line-height: 1.7;
-}
-.philosophy {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-.philosophy-item { text-align: center; }
-.philosophy-jp {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2.8rem; color: var(--sand);
-  margin-bottom: 8px; line-height: 1.2;
-}
-.philosophy-word {
-  font-size: 0.65rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--indigo); margin-bottom: 8px;
-}
-.philosophy-desc {
-  font-size: 0.84rem; color: var(--stone);
-  line-height: 1.6;
-}
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
 
-/* ---- SECTION ---- */
-.section {
-  max-width: 1000px; margin: 0 auto;
-  padding: 80px 24px;
-}
-.section-eyebrow {
-  font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--indigo); margin-bottom: 14px;
-}
-.section h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 400; color: var(--ink);
-  letter-spacing: -0.02em; line-height: 1.2;
-  margin-bottom: 14px;
-}
-.section .lead {
-  font-size: 1rem; color: var(--charcoal);
-  max-width: 500px; line-height: 1.8;
-}
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
-/* ---- FEATURES (alternating blocks) ---- */
-.feature-blocks { margin-top: 32px; }
-.feature-block {
-  display: flex; align-items: center;
-  gap: 48px; padding: 48px 0;
-  border-bottom: 1px solid var(--sand);
-}
-.feature-block:last-child { border-bottom: none; }
-.feature-block:nth-child(even) { flex-direction: row-reverse; }
-.feature-block-video {
-  flex: 0 0 240px;
-  position: relative;
-}
-.feature-block-video .feature-phone-frame {
-  width: 240px; height: 480px;
-  border-radius: 36px;
-  border: 2px solid #D4CFC9;
-  background: var(--paper);
-  position: relative;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  overflow: hidden;
-}
-.feature-block-video .feature-phone-notch {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 72px; height: 22px;
-  background: var(--ink); border-radius: 0 0 12px 12px;
-  z-index: 2;
-}
-.feature-block-video video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.feature-block-content { flex: 1; }
-.feature-icon {
-  width: 32px; height: 32px;
-  margin-bottom: 12px; color: var(--indigo);
-}
-.feature-icon svg { width: 32px; height: 32px; }
-.feature-block-content h3 {
-  font-size: 1.1rem; font-weight: 600;
-  color: var(--ink); margin-bottom: 8px;
-}
-.feature-block-content p {
-  font-size: 0.92rem; color: var(--charcoal);
-  line-height: 1.8; max-width: 400px;
-}
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
 
-/* ---- FEATURE COMPACT GRID (Tier 2) ---- */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 32px;
-  padding-top: 48px;
-  border-top: 1px solid var(--sand);
-}
-.feature-grid-card {
-  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
-  border: 1px solid var(--sand);
-  border-radius: 16px;
-  padding: 28px 24px;
-  transition: all 0.3s ease;
-}
-.feature-grid-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(140,133,120,0.08);
-}
-.feature-grid-card .feature-icon {
-  margin-bottom: 10px;
-}
-.feature-grid-card h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 6px;
-}
-.feature-grid-card p {
-  font-size: 0.86rem;
-  color: var(--charcoal);
-  line-height: 1.7;
-}
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
 
-/* ---- STATS STRIP ---- */
-.stats-strip {
-  background: var(--warm);
-  padding: 72px 24px;
-  margin-bottom: 80px;
-}
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px; max-width: 900px;
-  margin: 0 auto; text-align: center;
-}
-.stat-number {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2.4rem; font-weight: 400;
-  line-height: 1.2; margin-bottom: 4px;
-}
-.stat-label {
-  font-size: 0.82rem; color: var(--stone); line-height: 1.5;
-}
+  .animate-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
 
-/* ---- REVIEW CAROUSEL ---- */
-.reviews-section {
-  max-width: 1000px; margin: 0 auto;
-  padding: 80px 24px; text-align: center;
-}
-.reviews-section .section-eyebrow { color: var(--coral); }
-.reviews-section h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 400; color: var(--ink);
-  letter-spacing: -0.02em; margin-bottom: 36px;
-}
-.reviews-track-wrap {
-  overflow: hidden; margin: 0 -24px; padding: 0 24px;
-}
-.reviews-track {
-  display: flex; transition: transform 0.5s ease;
-}
-.review-card {
-  flex: 0 0 100%; padding: 0 16px; box-sizing: border-box;
-}
-.review-card-inner {
-  background: #fff; border: 1px solid var(--sand);
-  border-radius: 18px; padding: 36px 32px;
-  max-width: 560px; margin: 0 auto; text-align: center;
-}
-.review-stars {
-  color: #D4A017; font-size: 1.2rem;
-  letter-spacing: 2px; margin-bottom: 16px;
-}
-.review-quote {
-  font-size: 1rem; color: var(--charcoal);
-  line-height: 1.8; font-style: italic; margin-bottom: 16px;
-}
-.review-author {
-  font-size: 0.82rem; color: var(--stone); font-weight: 500;
-}
-.reviews-dots {
-  display: flex; justify-content: center;
-  gap: 8px; margin-top: 24px;
-}
-.reviews-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--sand); border: none;
-  cursor: pointer; transition: background 0.3s; padding: 0;
-}
-.reviews-dot.active { background: var(--indigo); }
+  .animate-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 16px 0;
+    transition: all 0.3s ease;
+  }
 
-/* ---- TORU RECIPE SECTION ---- */
-.recipe-section {
-  display: flex;
-  gap: 48px;
-  align-items: start;
-}
-.recipe-text { flex: 1; min-width: 0; }
-.recipe-text .section-eyebrow { color: var(--coral); }
-.recipe-text h2 { color: var(--ink); }
-.recipe-text .toru-jp {
-  font-family: 'DM Serif Display', serif;
-  font-size: 3rem; color: var(--coral);
-  opacity: 0.2; margin-bottom: 4px;
-}
-.recipe-text p {
-  color: var(--charcoal);
-  font-size: 0.92rem; line-height: 1.8;
-  margin-top: 12px;
-}
-.recipe-text .toru-tagline {
-  margin-top: 12px; font-weight: 600; color: var(--ink);
-}
-.recipe-text .toru-available {
-  margin-top: 24px; font-size: 0.75rem;
-  color: var(--indigo); font-weight: 600;
-  letter-spacing: 0.05em;
-}
+  nav.scrolled {
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
 
-/* Toru interactive demo */
-.recipe-demo-live {
-  flex: 1;
-  min-width: 0;
-  background: linear-gradient(170deg, #fff 0%, #FDFCFA 100%);
-  border: 1px solid var(--sand);
-  border-radius: 20px;
-  padding: 28px;
-  box-shadow: 0 12px 48px rgba(140,133,120,0.1), 0 2px 8px rgba(140,133,120,0.04);
-}
-.recipe-input-row {
-  display: flex; gap: 8px; margin-bottom: 16px;
-}
-.recipe-url-input {
-  flex: 1; padding: 12px 14px;
-  background: #fff;
-  border: 1px solid var(--sand);
-  border-radius: 10px;
-  color: var(--ink); font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem; outline: none;
-  transition: border-color 0.2s;
-}
-.recipe-url-input::placeholder { color: var(--stone); }
-.recipe-url-input:focus { border-color: var(--coral); }
-.recipe-extract-btn {
-  padding: 12px 18px;
-  background: var(--coral); color: #fff;
-  border: none; border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 600;
-  cursor: pointer; transition: all 0.2s;
-  white-space: nowrap;
-}
-.recipe-extract-btn:hover { background: #d4523a; }
-.recipe-extract-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-.recipe-result { display: none; }
-.recipe-result.show { display: block; animation: fadeUp 0.4s ease-out; }
-.recipe-result-header {
-  border-bottom: 1px solid var(--sand);
-  padding-bottom: 12px; margin-bottom: 12px;
-}
-.recipe-result-header h4 {
-  color: var(--ink); font-size: 0.95rem; margin-bottom: 2px;
-}
-.recipe-result-header .recipe-meta {
-  font-size: 0.72rem; color: var(--stone);
-}
-.recipe-ingredients-list {
-  display: flex; flex-direction: column; gap: 6px;
-  max-height: 220px; overflow-y: auto;
-}
-.recipe-ingredients-list::-webkit-scrollbar { width: 4px; }
-.recipe-ingredients-list::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
-.recipe-ingredient-item {
-  display: flex; align-items: center; gap: 8px;
-  color: var(--charcoal); font-size: 0.8rem;
-  padding: 4px 0;
-}
-.recipe-ingredient-item .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--mint); flex-shrink: 0;
-}
-.recipe-cta-row {
-  margin-top: 16px; padding-top: 12px;
-  border-top: 1px solid var(--sand);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.recipe-cta-text {
-  font-size: 0.72rem; color: var(--stone);
-  font-style: italic;
-}
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
 
-.recipe-loading { display: none; padding: 32px 0; text-align: center; }
-.recipe-loading.show { display: block; }
-.recipe-loading p { color: var(--stone); font-size: 0.82rem; }
-.recipe-loading .shimmer-bar {
-  height: 12px; border-radius: 6px; margin: 10px 0;
-  background: linear-gradient(90deg, var(--sand) 0%, rgba(228,222,212,0.4) 50%, var(--sand) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-.recipe-error { display: none; color: var(--coral); font-size: 0.82rem; padding: 12px 0; }
-.recipe-error.show { display: block; }
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.recipe-presets {
-  display: flex; gap: 6px; flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-.recipe-preset-btn {
-  padding: 5px 12px;
-  background: #fff;
-  border: 1px solid var(--sand);
-  border-radius: 100px;
-  color: var(--stone); font-size: 0.7rem;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer; transition: all 0.2s;
-}
-.recipe-preset-btn:hover {
-  border-color: var(--coral);
-  color: var(--coral);
-}
+  .nav-logo-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
 
-/* Cooking mode preview (warm) */
-.cooking-preview {
-  display: none; margin-top: 16px;
-  padding: 16px; border-radius: 12px;
-  background: rgba(232,99,74,0.06);
-  border: 1px solid rgba(232,99,74,0.15);
-}
-.cooking-preview.show { display: block; animation: fadeUp 0.4s ease-out; }
-.cooking-preview-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 10px;
-}
-.cooking-preview-label {
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--coral);
-}
-.cooking-preview-step {
-  font-size: 0.82rem; color: var(--charcoal); line-height: 1.6;
-}
-.cooking-timer {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 10px; padding: 6px 14px;
-  background: rgba(232,99,74,0.06);
-  border-radius: 8px; font-size: 0.75rem;
-  color: var(--coral); font-weight: 600;
-}
+  .nav-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
 
-/* ---- HOW IT WORKS ---- */
-.workflow-container {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0; margin-top: 32px;
-  position: relative;
-}
-.workflow-container::before {
-  content: '';
-  position: absolute; top: 36px; left: 16.5%; right: 16.5%;
-  height: 0;
-  border-top: 1.5px dashed var(--sand);
-}
-.workflow-step {
-  text-align: center; padding: 0 16px;
-  position: relative;
-}
-.workflow-num {
-  width: 72px; height: 72px;
-  border-radius: 50%; margin: 0 auto 16px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--warm);
-  border: 2px solid var(--sand);
-  transition: all 0.3s ease;
-  position: relative; z-index: 1;
-}
-.workflow-num svg { width: 28px; height: 28px; color: var(--indigo); }
-.workflow-step:hover .workflow-num {
-  background: var(--indigo-soft);
-  border-color: var(--indigo);
-  transform: scale(1.06);
-}
-.workflow-step h3 {
-  font-size: 0.88rem; font-weight: 600;
-  color: var(--ink); margin-bottom: 6px;
-}
-.workflow-step p {
-  font-size: 0.8rem; color: var(--charcoal);
-  line-height: 1.6;
-}
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
 
-/* ---- PRICING ---- */
-.pricing-section {
-  background: var(--warm); border-radius: 24px;
-  padding: 48px 40px; margin-top: 32px;
-}
-.pricing-toggle {
-  display: flex; align-items: center; justify-content: center;
-  gap: 12px; margin-bottom: 36px;
-}
-.pricing-toggle span { font-size: 0.85rem; color: var(--stone); font-weight: 500; }
-.pricing-toggle span.active { color: var(--ink); font-weight: 600; }
-.toggle-switch {
-  width: 44px; height: 24px;
-  background: var(--sand); border-radius: 12px;
-  position: relative; cursor: pointer;
-  transition: background 0.3s;
-}
-.toggle-switch.yearly { background: var(--indigo); }
-.toggle-knob {
-  width: 18px; height: 18px;
-  background: #fff; border-radius: 50%;
-  position: absolute; top: 3px; left: 3px;
-  transition: transform 0.3s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-}
-.toggle-switch.yearly .toggle-knob { transform: translateX(20px); }
-.save-badge {
-  font-size: 0.68rem; font-weight: 700;
-  color: var(--mint); background: var(--mint-soft);
-  padding: 3px 10px; border-radius: 100px;
-  margin-left: 4px;
-}
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 680px; margin: 0 auto;
-}
-.price-card {
-  background: #fff; border: 1.5px solid var(--sand);
-  border-radius: 18px; padding: 32px 28px;
-  transition: all 0.3s ease;
-  display: flex; flex-direction: column;
-}
-.price-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-}
-.price-card.featured {
-  border: 2px solid var(--indigo);
-  position: relative;
-}
-.price-card.featured::before {
-  content: 'RECOMMENDED';
-  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-  font-size: 0.58rem; font-weight: 700;
-  letter-spacing: 0.12em; color: #fff;
-  background: var(--indigo); padding: 4px 14px;
-  border-radius: 100px;
-}
-.price-tier {
-  font-size: 0.65rem; font-weight: 700;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--stone); margin-bottom: 4px;
-}
-.price-card.featured .price-tier { color: var(--indigo); }
-.price-amount {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2.4rem; color: var(--ink);
-  margin-bottom: 2px;
-}
-.price-amount .period {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem; font-weight: 400; color: var(--stone);
-}
-.price-subtitle {
-  font-size: 0.8rem; color: var(--charcoal);
-  margin-bottom: 20px; line-height: 1.5;
-}
-.price-per-day {
-  font-size: 0.75rem; color: var(--mint); font-weight: 600;
-  margin-bottom: 16px;
-}
-.price-features {
-  list-style: none; padding: 0;
-  display: flex; flex-direction: column; gap: 10px;
-  flex: 1;
-}
-.price-features li {
-  font-size: 0.82rem; color: var(--charcoal);
-  display: flex; align-items: flex-start; gap: 8px;
-  line-height: 1.5;
-}
-.price-features li::before {
-  content: '\2713'; color: var(--mint);
-  font-weight: 700; flex-shrink: 0;
-  margin-top: 1px;
-}
-.price-cta {
-  margin-top: 20px; padding: 13px;
-  border-radius: 10px; border: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem; font-weight: 600;
-  cursor: pointer; transition: all 0.2s;
-  text-align: center; display: block;
-  text-decoration: none; width: 100%;
-}
-.price-cta.outline {
-  background: transparent;
-  border: 1.5px solid var(--sand);
-  color: var(--charcoal);
-}
-.price-cta.outline:hover { border-color: var(--indigo); color: var(--indigo); }
-.price-cta.primary { background: var(--indigo); color: #fff; }
-.price-cta.primary:hover { background: #3d4ed4; }
-.pricing-note {
-  text-align: center; margin-top: 20px;
-  font-size: 0.82rem; color: var(--stone);
-}
-.pricing-legal {
-  text-align: center; margin-top: 24px;
-  font-size: 0.68rem; color: var(--stone);
-  line-height: 1.5; max-width: 500px; margin-left: auto; margin-right: auto;
-}
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
 
-/* ---- STORY ---- */
-.story-section {
-  max-width: 900px; margin: 0 auto;
-  padding: 80px 24px;
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 60px; align-items: center;
-}
-.story-content .section-eyebrow { color: var(--coral); }
-.story-content h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-  font-weight: 400; color: var(--ink);
-  letter-spacing: -0.02em; line-height: 1.2;
-  margin-bottom: 20px;
-}
-.story-body {
-  font-size: 0.92rem; color: var(--charcoal);
-  line-height: 1.9;
-}
-.story-body p + p { margin-top: 14px; }
-.story-body em { color: var(--indigo); font-style: normal; font-weight: 600; }
-.story-body .mi-highlight { color: var(--coral); font-weight: 600; }
-.story-body .ro-highlight { color: var(--indigo); font-weight: 600; }
-.story-sig {
-  margin-top: 24px;
-  color: var(--stone); font-size: 0.85rem;
-  line-height: 1.6;
-}
-.story-sig strong { color: var(--ink); }
-.story-visual {
-  display: flex; align-items: center; justify-content: center;
-}
-.story-visual img {
-  width: 280px; height: 280px;
-  object-fit: contain;
-}
+  .nav-links a:hover { color: var(--text-primary); }
 
-/* ---- FAQ ---- */
-.faq-section {
-  max-width: 700px; margin: 0 auto;
-  padding: 80px 24px;
-}
-.faq-section h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-  font-weight: 400; color: var(--ink);
-  letter-spacing: -0.02em; margin-bottom: 32px;
-}
-.faq-item {
-  border-bottom: 1px solid var(--sand);
-}
-.faq-question {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 0; cursor: pointer;
-  font-size: 0.92rem; font-weight: 600; color: var(--ink);
-  background: none; border: none; width: 100%;
-  font-family: 'DM Sans', sans-serif;
-  text-align: left;
-}
-.faq-question:hover { color: var(--indigo); }
-.faq-icon {
-  font-size: 1.2rem; color: var(--stone);
-  transition: transform 0.3s;
-  flex-shrink: 0; margin-left: 16px;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-answer {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-.faq-item.open .faq-answer { max-height: 300px; }
-.faq-answer p {
-  font-size: 0.86rem; color: var(--charcoal);
-  line-height: 1.7; padding-bottom: 18px;
-}
-.faq-answer a { color: var(--indigo); }
+  .nav-cta {
+    background: var(--indigo);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
 
-/* ---- FINAL CTA ---- */
-.final-cta {
-  text-align: center; padding: 80px 24px;
-  background: var(--warm);
-  border-top: 1px solid var(--sand);
-}
-.final-cta-sub {
-  color: var(--stone); font-size: 0.85rem;
-  margin-top: 8px;
-}
-.final-cta h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 400; color: var(--ink);
-  letter-spacing: -0.02em; margin-bottom: 14px;
-}
-.final-cta p {
-  color: var(--charcoal); font-size: 1rem;
-  margin-bottom: 32px;
-}
-.final-cta-badge {
-  display: flex; justify-content: center;
-}
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
 
-/* ---- FOOTER ---- */
-footer {
-  text-align: center; padding: 40px 24px 60px;
-  border-top: 1px solid var(--sand);
-}
-footer .footer-brand-row {
-  display: flex; align-items: center; justify-content: center;
-  gap: 10px; margin-bottom: 8px;
-}
-footer .footer-brand-row img { width: 28px; height: 28px; object-fit: contain; }
-footer .footer-brand {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem; color: var(--ink);
-}
-footer p { color: var(--stone); font-size: 0.78rem; }
-footer a {
-  color: var(--stone); text-decoration: underline;
-  text-underline-offset: 3px;
-}
-footer a:hover { color: var(--indigo); }
-
-/* ---- RESPONSIVE ---- */
-@media (max-width: 900px) {
-  .feature-block { gap: 32px; padding: 36px 0; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-}
-@media (max-width: 768px) {
-  nav { padding: 14px 20px; }
-  .nav-links a:not(.nav-cta) { display: none; }
-  .nav-cta { padding: 8px 16px; font-size: 0.78rem; }
+  /* ===== HERO ===== */
   .hero {
-    flex-direction: column; padding: 100px 20px 48px;
-    text-align: center; gap: 32px;
+    padding-top: clamp(120px, 15vw, 180px);
+    padding-bottom: clamp(40px, 6vw, 80px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
   }
-  .hero-content {
-    display: flex; flex-direction: column; align-items: center;
+
+  .hero::before {
+    content: '見';
+    position: absolute;
+    top: 12%;
+    right: -5%;
+    font-size: clamp(200px, 30vw, 500px);
+    font-family: 'Lora', serif;
+    color: rgba(74, 92, 232, 0.03);
+    pointer-events: none;
+    line-height: 1;
   }
-  .hero-sub { text-align: center; }
-  .hero-cta { justify-content: center; }
-  .hero-mockup { flex: none; }
+
+  .hero h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    animation: fadeUp 0.8s ease 0.15s forwards;
+    opacity: 0;
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+    opacity: 0;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--indigo);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(74, 92, 232, 0.25);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text-primary);
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1.5px solid var(--border);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--text-tertiary);
+    transform: translateY(-1px);
+  }
+
+  .hero-note {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 16px;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+    opacity: 0;
+  }
+
+  /* Phone mockup */
+  .hero-device {
+    max-width: 340px;
+    margin: clamp(40px, 6vw, 80px) auto 0;
+    position: relative;
+    animation: fadeUp 1s ease 0.5s forwards;
+    opacity: 0;
+  }
+
   .phone-frame {
-    width: 220px; height: 440px;
-    border-radius: 34px;
+    background: var(--text-primary);
+    border-radius: 36px;
+    padding: 6px;
+    box-shadow: 0 20px 60px rgba(44, 40, 37, 0.12), 0 0 0 0.5px rgba(255,255,255,0.08) inset;
+    position: relative;
   }
-  .phone-notch { width: 66px; height: 20px; }
 
-  .quote-ticker { padding: 14px 0; }
-  .quote-ticker-item { padding: 0 14px; font-size: 0.76rem; }
-
-  .stats-strip { padding: 40px 20px; margin-bottom: 40px; }
-  .stats-grid { gap: 16px; }
-  .stat-number { font-size: 1.5rem; }
-  .stat-label { font-size: 0.75rem; }
-
-  .feature-block,
-  .feature-block:nth-child(even) {
-    flex-direction: column; gap: 24px; padding: 32px 0;
+  .phone-screen {
+    background: white;
+    border-radius: 30px;
+    aspect-ratio: 9/19.5;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
-  .feature-block-video { flex: none; width: 100%; display: flex; justify-content: center; }
-  .feature-block-video .feature-phone-frame { width: 200px; height: 400px; border-radius: 30px; }
-  .feature-block-content p { max-width: none; }
 
-  .feature-grid { grid-template-columns: 1fr; gap: 16px; padding-top: 32px; }
-  .feature-grid-card { padding: 22px 20px; }
+  .phone-notch {
+    width: 100px;
+    height: 24px;
+    background: var(--text-primary);
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
 
-  .tellmiiro-section { padding: 0 20px 56px; flex-direction: column; gap: 28px; }
-  .tellmiiro-text { order: -1; }
-  .tellmiiro-demo { padding: 20px; }
-  .tellmiiro-input-area { padding: 14px 16px; }
+  .phone-screen-content {
+    flex: 1;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.7rem;
+  }
 
-  .philosophy { grid-template-columns: 1fr; gap: 28px; }
-  .section { padding: 56px 16px; }
-  .recipe-section { flex-direction: column; gap: 28px; }
-  .recipe-demo-live { padding: 20px; }
-  .workflow-container { grid-template-columns: 1fr; gap: 24px; }
-  .workflow-container::before { display: none; }
-  .pricing-section { padding: 32px 20px; border-radius: 18px; }
-  .pricing-grid { grid-template-columns: 1fr; }
+  .mock-header {
+    text-align: center;
+    padding: 8px 0 4px;
+  }
 
-  .reviews-section { padding: 56px 20px; }
-  .review-card-inner { padding: 28px 20px; }
+  .mock-header-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+  }
 
-  .story-section { grid-template-columns: 1fr; gap: 28px; padding: 56px 20px; text-align: center; }
-  .story-body { text-align: left; }
-  .story-visual { order: -1; }
-  .story-visual img { width: 160px; height: 160px; }
-  .faq-section { padding: 56px 20px; }
-}
+  .mock-header-date {
+    font-size: 0.65rem;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  .mock-timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--cream);
+    border-radius: 12px;
+  }
+
+  .mock-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .mock-time {
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+    width: 36px;
+    flex-shrink: 0;
+  }
+
+  .mock-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .mock-meal-card {
+    background: linear-gradient(135deg, rgba(59, 191, 160, 0.06), rgba(59, 191, 160, 0.02));
+    border: 1px solid rgba(59, 191, 160, 0.12);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mock-meal-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background: rgba(59, 191, 160, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mock-meal-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .mock-input-bar {
+    margin-top: auto;
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mock-input-text {
+    color: var(--text-tertiary);
+    font-size: 0.65rem;
+  }
+
+  .mock-input-icon {
+    width: 20px;
+    height: 20px;
+    background: var(--indigo);
+    border-radius: 50%;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: white;
+  }
+
+  /* Floating accents around phone */
+  .hero-device::before {
+    content: '取';
+    position: absolute;
+    top: 15%;
+    left: -60px;
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    color: rgba(74, 92, 232, 0.08);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-device::after {
+    content: '◯';
+    position: absolute;
+    bottom: 20%;
+    right: -50px;
+    font-size: 3rem;
+    color: rgba(232, 99, 74, 0.08);
+    animation: float 6s ease-in-out infinite 2s;
+  }
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--warm-white);
+  }
+
+  .trust-marquee {
+    display: flex;
+    gap: 60px;
+    animation: marquee 35s linear infinite;
+    width: max-content;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .trust-quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .trust-sep {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--indigo-soft);
+    flex-shrink: 0;
+  }
+
+  .trust-source {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+
+  /* ===== FEATURES ===== */
+  .features { background: var(--cream); }
+
+  .features-header {
+    text-align: center;
+    margin-bottom: clamp(60px, 8vw, 100px);
+  }
+
+  .features-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: center;
+    margin-bottom: clamp(80px, 10vw, 140px);
+  }
+
+  .feature-block:last-child { margin-bottom: 0; }
+
+  .feature-block.reverse .feature-text { order: 2; }
+  .feature-block.reverse .feature-visual { order: 1; }
+
+  .feature-text { max-width: 460px; }
+
+  .feature-kanji {
+    font-size: 2rem;
+    opacity: 0.2;
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1;
+  }
+
+  .feature-kanji.indigo { color: var(--indigo); }
+  .feature-kanji.coral { color: var(--coral); }
+  .feature-kanji.mint { color: var(--mint); }
+
+  .feature-text h3 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .feature-text p {
+    color: var(--text-secondary);
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .feature-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .feature-detail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--coral);
+  }
+
+  .feature-visual {
+    position: relative;
+  }
+
+  .feature-phone {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .feature-phone .phone-frame {
+    box-shadow: 0 16px 48px rgba(44, 40, 37, 0.08);
+  }
+
+  .video-placeholder {
+    width: 100%;
+    aspect-ratio: 9/19.5;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-placeholder-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg, #FFF 0%, var(--cream) 100%);
+  }
+
+  .video-play-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--indigo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 20px rgba(74, 92, 232, 0.3);
+  }
+
+  .video-placeholder-label {
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+  }
+
+  /* ===== INTERACTIVE DEMO ===== */
+  .demo {
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .demo-header {
+    text-align: center;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+
+  .demo-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .demo-header p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+  }
+
+  .demo-container {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .demo-input-area {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 28px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .demo-input-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .demo-input-label span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--indigo);
+  }
+
+  .demo-input-text {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .demo-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .demo-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .demo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .demo-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .demo-card-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .demo-card-icon.task-icon { background: rgba(232, 99, 74, 0.08); }
+  .demo-card-icon.meal-icon { background: rgba(59, 191, 160, 0.08); }
+  .demo-card-icon.event-icon { background: rgba(74, 92, 232, 0.08); }
+  .demo-card-icon.grocery-icon { background: rgba(212, 168, 83, 0.08); }
+
+  .demo-card-type {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .demo-card-type.task { color: var(--coral); }
+  .demo-card-type.meal { color: var(--mint); }
+  .demo-card-type.event { color: var(--indigo); }
+  .demo-card-type.grocery { color: var(--gold); }
+
+  .demo-card-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .demo-card-meta {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+  }
+
+  .demo-card.wide {
+    grid-column: 1 / -1;
+  }
+
+  /* ===== PRICING ===== */
+  .pricing { background: var(--cream); }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+
+  .pricing-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .pricing-header p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+  }
+
+  .pricing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .pricing-toggle-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .pricing-toggle-label.active { color: var(--text-primary); }
+
+  .pricing-toggle-switch {
+    width: 52px;
+    height: 28px;
+    background: var(--indigo);
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .pricing-toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s;
+  }
+
+  .pricing-toggle-switch.yearly::after {
+    transform: translateX(24px);
+  }
+
+  .pricing-save {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--indigo);
+    background: var(--indigo-bg);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: clamp(32px, 4vw, 48px);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 1px var(--indigo), var(--shadow-lg);
+  }
+
+  .pricing-card-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--indigo);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 100px;
+  }
+
+  .pricing-card-name {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .pricing-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .pricing-card-amount {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .pricing-card-period {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+  }
+
+  .pricing-card-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .pricing-features li {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pricing-features li::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--indigo-bg);
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='%234A5CE8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .pricing-card-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .pricing-card .pricing-card-btn {
+    background: var(--cream);
+    color: var(--text-primary);
+  }
+
+  .pricing-card.featured .pricing-card-btn {
+    background: var(--indigo);
+    color: white;
+  }
+
+  .pricing-card.featured .pricing-card-btn:hover {
+    box-shadow: 0 8px 24px rgba(74, 92, 232, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .pricing-note {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  /* ===== STORY ===== */
+  .story {
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: start;
+  }
+
+  .story-text h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .story-text p {
+    color: var(--text-secondary);
+    font-size: clamp(0.95rem, 1.3vw, 1rem);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  .story-signature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .story-sig-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--indigo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .story-sig-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .story-sig-role {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+  }
+
+  .story-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .principle-card {
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .principle-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .principle-kanji {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    display: block;
+    line-height: 1;
+  }
+
+  .principle-name {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .principle-romaji {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .principle-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    text-align: center;
+    background: var(--text-primary);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(74, 92, 232, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    right: -10%;
+    width: 50%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(232, 99, 74, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--cream);
+    position: relative;
+  }
+
+  .final-cta p {
+    color: rgba(249, 246, 241, 0.6);
+    font-size: 1.05rem;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .final-cta .btn-primary {
+    position: relative;
+  }
+
+  .final-cta-sub {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: rgba(249, 246, 241, 0.35);
+    position: relative;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--text-primary);
+    border-top: 1px solid rgba(249, 246, 241, 0.06);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-brand-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .footer-brand-text {
+    font-family: 'Lora', serif;
+    color: rgba(249, 246, 241, 0.6);
+    font-size: 0.95rem;
+  }
+
+  .footer-tagline {
+    font-style: italic;
+    color: rgba(249, 246, 241, 0.3);
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(249, 246, 241, 0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(249, 246, 241, 0.7); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(249, 246, 241, 0.2);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .feature-block {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+    .feature-block.reverse .feature-text { order: 1; }
+    .feature-block.reverse .feature-visual { order: 2; }
+    .feature-text { max-width: 100%; margin: 0 auto; }
+
+    .demo-results {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-cards {
+      grid-template-columns: 1fr;
+      max-width: 440px;
+    }
+
+    .story-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+      padding: 0 20px;
+    }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="mainNav">
-  <a href="#" class="nav-brand">
-    <img src="koi-logo.png" alt="Miiro" loading="eager">
-    <span class="nav-wordmark">M<span class="brand-ii">ii</span>ro</span>
-  </a>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#story">Our Story</a>
-    <a href="#" class="nav-cta">Get Miiro</a>
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon"><img src="koi-logo.png" alt="Miiro koi logo"></div>
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#" class="nav-cta">Get Miiro</a></li>
+    </ul>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-content">
-    <h1>One message. Your whole day, sorted.</h1>
-    <div class="hero-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-text">Loved by real households</span></div>
-    <p class="hero-sub">Tell Miiro everything. Pick up the kids, dinner ideas, groceries, doctor appointments. It organizes your household instantly.</p>
-    <p class="hero-rotating" aria-live="polite">One message sorts your <span class="rotating-words"><span class="rotating-word active" style="color:var(--coral)">tasks</span><span class="rotating-word" style="color:var(--mint)">meals</span><span class="rotating-word" style="color:var(--indigo)">groceries</span><span class="rotating-word" style="color:#8B5CF6">events</span><span class="rotating-word" style="color:var(--charcoal)">reminders</span></span></p>
-    <p class="hero-trust-line">Built for couples and families. Free to start.</p>
-    <div class="hero-cta">
-      <a href="#" aria-label="Download on the App Store">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <h1>One message.<br>Your whole day, <em>sorted.</em></h1>
+    <p class="hero-sub">Tell Miiro everything on your mind. It organizes your household into tasks, meals, groceries, and events — instantly.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Download for iOS
       </a>
+      <a href="#demo" class="btn-secondary">See how it works</a>
     </div>
-    <p class="hero-social">Built with love by a real family in Amsterdam &#127475;&#127473;</p>
-  </div>
-  <div class="hero-mockup">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="hero-video-placeholder">
-        <video src="assets/videos/hero-demo.mp4" poster="assets/videos/hero-demo-poster.jpg" autoplay muted loop playsinline loading="lazy"></video>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="hero-note">Free to start · Built with love in Amsterdam 🇳🇱</p>
 
-<!-- QUOTE TICKER -->
-<div class="quote-ticker">
-  <div class="quote-ticker-track">
-    <span class="quote-ticker-item">"Finally, we're on the same page."</span>
-    <span class="quote-ticker-item">"It replaced 4 apps for us."</span>
-    <span class="quote-ticker-item">"The mental load is finally shared."</span>
-    <span class="quote-ticker-item">"I just tell Miiro and it's done."</span>
-    <span class="quote-ticker-item">"Our grocery game changed overnight."</span>
-    <span class="quote-ticker-item">"Cooking mode is a game changer."</span>
-    <span class="quote-ticker-item">"Finally, we're on the same page."</span>
-    <span class="quote-ticker-item">"It replaced 4 apps for us."</span>
-    <span class="quote-ticker-item">"The mental load is finally shared."</span>
-    <span class="quote-ticker-item">"I just tell Miiro and it's done."</span>
-    <span class="quote-ticker-item">"Our grocery game changed overnight."</span>
-    <span class="quote-ticker-item">"Cooking mode is a game changer."</span>
-  </div>
-</div>
-
-<!-- Sections wrapper for mobile reordering -->
-<div class="page-sections">
-
-<!-- FEATURES -->
-<div class="section features-section" id="features">
-  <div class="section-eyebrow">Features</div>
-  <h2>Everything you need. Nothing you don't.</h2>
-
-  <div class="feature-blocks">
-    <div class="feature-block">
-      <div class="feature-block-video">
-        <div class="feature-phone-frame">
-          <div class="feature-phone-notch"></div>
-          <video src="assets/videos/feature-tellmiiro.mp4" poster="assets/videos/feature-tellmiiro-poster.jpg" autoplay muted loop playsinline loading="lazy"></video>
-        </div>
-      </div>
-      <div class="feature-block-content">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M14 9l-2-2-4 4"/><circle cx="16" cy="6" r="1.5" fill="currentColor" stroke="none" opacity="0.4"/></svg></div>
-        <h3>Tell Miiro AI</h3>
-        <p>Brain dump your entire day in one message. Miiro sorts it into tasks, meals, and groceries automatically.</p>
-      </div>
-    </div>
-    <div class="feature-block">
-      <div class="feature-block-video">
-        <div class="feature-phone-frame">
-          <div class="feature-phone-notch"></div>
-          <video src="assets/videos/feature-timeline.mp4" poster="assets/videos/feature-timeline-poster.jpg" autoplay muted loop playsinline loading="lazy"></video>
-        </div>
-      </div>
-      <div class="feature-block-content">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="8" y2="20"/><circle cx="8" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><line x1="14" y1="6" x2="20" y2="6"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="14" y1="18" x2="20" y2="18"/></svg></div>
-        <h3>Timeline with Chat</h3>
-        <p>See your whole day on one timeline: tasks, meals, and events. Tap any item to chat about it with your partner. No more "did you see my text?"</p>
-      </div>
-    </div>
-    <div class="feature-block">
-      <div class="feature-block-video">
-        <div class="feature-phone-frame">
-          <div class="feature-phone-notch"></div>
-          <video src="assets/videos/feature-toru.mp4" poster="assets/videos/feature-toru-poster.jpg" autoplay muted loop playsinline loading="lazy"></video>
-        </div>
-      </div>
-      <div class="feature-block-content">
-        <div class="feature-icon" style="font-family:'DM Serif Display',serif; color:var(--coral); opacity:0.7; font-size:1.8rem; line-height:1;">取</div>
-        <h3>Toru Recipe Finder</h3>
-        <p>Paste any recipe URL. We strip the ads and life stories. Just ingredients and steps, saved to your cookbook.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="feature-grid">
-    <div class="feature-grid-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <h3>Cooking Mode</h3>
-      <p>Step-by-step guidance with built-in timers. Swipe through each step while your hands are covered in flour.</p>
-    </div>
-    <div class="feature-grid-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10l2 2 4-4"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div>
-      <h3>Shared Lists</h3>
-      <p>Grocery lists, to-do lists, packing lists, all synced in real time. When they check off milk, you see it disappear.</p>
-    </div>
-    <div class="feature-grid-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
-      <h3>My Day</h3>
-      <p>Every morning, see just what needs doing. Tasks, meals, groceries, all in one calm view.</p>
-    </div>
-    <div class="feature-grid-card">
-      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="8" cy="15" r="1.5" fill="var(--coral)" stroke="none"/><circle cx="12" cy="15" r="1.5" fill="var(--mint)" stroke="none"/><circle cx="16" cy="15" r="1.5" fill="var(--indigo)" stroke="none"/></svg></div>
-      <h3>Shared Calendars</h3>
-      <p>Personal and shared calendars, color-coded and synced instantly. Family calendars update for everyone. Private calendars stay completely private.</p>
-    </div>
-  </div>
-</div>
-
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="stats-grid">
-    <div class="stat-item">
-      <div class="stat-number" style="color:var(--coral)">1 message</div>
-      <div class="stat-label">sorts your entire day</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" style="color:var(--indigo)">2 people</div>
-      <div class="stat-label">finally on the same page</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" style="color:var(--mint)">0 ads</div>
-      <div class="stat-label">not now, not ever</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" style="color:var(--charcoal)">100%</div>
-      <div class="stat-label">real-time sync</div>
-    </div>
-  </div>
-</div>
-
-<!-- TELL MIIRO -->
-<div class="tellmiiro-wrap">
-<section class="tellmiiro-section" id="tellmiiro">
-  <div class="tellmiiro-demo" id="tellmiiroDemo">
-    <div class="tellmiiro-input-area">
-      <div class="tellmiiro-input-label">Tell Miiro...</div>
-      <div class="tellmiiro-input-text" id="tellmiiroInput">Pick up Miles from school at 3, we need chicken and rice for dinner tonight, doctor appointment Tuesday 2pm, call the vet about Rose's appointment, and grab olive oil and eggs from the store</div>
-    </div>
-
-    <div class="tellmiiro-divider"><span>Miiro sorted this into</span></div>
-
-    <div class="tellmiiro-results" id="tellmiiroResults">
-      <div class="tellmiiro-result-item">
-        <span class="tellmiiro-emoji">📋</span>
-        <div class="tellmiiro-result-content">
-          <span class="tellmiiro-category task">Task</span>
-          <span class="tellmiiro-result-text">Pick up Miles from school</span>
-          <span class="tellmiiro-result-meta">→ Today 3:00 PM</span>
-        </div>
-      </div>
-      <div class="tellmiiro-result-item">
-        <span class="tellmiiro-emoji">🍽️</span>
-        <div class="tellmiiro-result-content">
-          <span class="tellmiiro-category meal">Meal</span>
-          <span class="tellmiiro-result-text">Chicken and rice</span>
-          <span class="tellmiiro-result-meta">→ Tonight's dinner</span>
-        </div>
-      </div>
-      <div class="tellmiiro-result-item">
-        <span class="tellmiiro-emoji">📅</span>
-        <div class="tellmiiro-result-content">
-          <span class="tellmiiro-category event">Event</span>
-          <span class="tellmiiro-result-text">Doctor appointment</span>
-          <span class="tellmiiro-result-meta">→ Tuesday 2:00 PM · Personal calendar</span>
-        </div>
-      </div>
-      <div class="tellmiiro-result-item">
-        <span class="tellmiiro-emoji">📋</span>
-        <div class="tellmiiro-result-content">
-          <span class="tellmiiro-category task">Task</span>
-          <span class="tellmiiro-result-text">Call the vet about Rose's appointment</span>
-          <span class="tellmiiro-result-meta">→ Today</span>
-        </div>
-      </div>
-      <div class="tellmiiro-result-item">
-        <span class="tellmiiro-emoji">🛒</span>
-        <div class="tellmiiro-result-content">
-          <span class="tellmiiro-category grocery">Grocery</span>
-          <span class="tellmiiro-result-text">Chicken, Rice, Olive oil, Eggs</span>
-          <span class="tellmiiro-result-meta">→ Shopping list</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="tellmiiro-replay" id="tellmiiroReplay">
-      <button id="tellmiiroReplayBtn">Watch again ↺</button>
-    </div>
-  </div>
-
-  <div class="tellmiiro-text">
-    <div class="section-eyebrow">Tell Miiro</div>
-    <h2>Tell Miiro what's on your mind</h2>
-    <p class="lead">Type it like you'd text a friend. Miiro turns your thoughts into tasks, events, meals, and groceries. Instantly.</p>
-    <p class="tellmiiro-credits">10 free credits. Unlimited with Miiro+.</p>
-  </div>
-</section>
-</div>
-
-<!-- TORU -->
-<div class="section toru-section" id="toru" style="padding-top: 0;">
-  <div class="recipe-section">
-    <div class="recipe-text">
-      <div class="toru-jp">取る</div>
-      <div class="section-eyebrow">Toru · to take</div>
-      <h2>Paste a link. Get the recipe. Start cooking.</h2>
-      <p class="toru-tagline">No ads. No life stories. Just the recipe.</p>
-      <p>Found something online? Paste the URL into Toru. We extract the ingredients, steps, and servings. Save it to your cookbook, share it with your household, or add every ingredient to your grocery list with one tap.</p>
-      <p>Works with most recipe sites including RecipeTin Eats, BBC Good Food, Budget Bytes, and many more.</p>
-      <p class="toru-available">Available in Miiro</p>
-    </div>
-    <div class="recipe-demo-live">
-      <div class="recipe-presets">
-        <button class="recipe-preset-btn" onclick="tryRecipe('https://www.recipetineats.com/chicken-pad-thai/')">Pad Thai</button>
-        <button class="recipe-preset-btn" onclick="tryRecipe('https://www.budgetbytes.com/one-pot-creamy-pesto-chicken-pasta/')">Pesto Pasta</button>
-        <button class="recipe-preset-btn" onclick="tryRecipe('https://themodernproper.com/salmon-burgers')">Salmon Burgers</button>
-      </div>
-      <div class="recipe-input-row">
-        <input type="url" class="recipe-url-input" id="recipeUrlInput" placeholder="Paste any recipe URL...">
-        <button class="recipe-extract-btn" id="recipeExtractBtn" onclick="extractRecipe()">Extract</button>
-      </div>
-      <div class="recipe-loading" id="recipeLoading">
-        <p>Extracting recipe...</p>
-        <div class="shimmer-bar" style="width: 80%;"></div>
-        <div class="shimmer-bar" style="width: 60%;"></div>
-        <div class="shimmer-bar" style="width: 70%;"></div>
-      </div>
-      <div class="recipe-error" id="recipeError"></div>
-      <div class="recipe-result" id="recipeResult">
-        <div class="recipe-result-header">
-          <img id="recipeImage" alt="" style="display:none; width:100%; height:140px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
-          <h4 id="recipeName"></h4>
-          <span class="recipe-meta" id="recipeMeta"></span>
-        </div>
-        <div style="margin-top:14px;">
-          <div style="font-size:0.7rem; font-weight:600; color:var(--mint); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Ingredients</div>
-          <div class="recipe-ingredients-list" id="recipeIngredients"></div>
-        </div>
-        <div id="recipeInstructionsWrap" style="display:none; margin-top:14px;">
-          <div style="font-size:0.7rem; font-weight:600; color:var(--coral); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Steps</div>
-          <div id="recipeInstructions" style="display:flex; flex-direction:column; gap:8px; max-height:180px; overflow-y:auto;"></div>
-        </div>
-        <div class="cooking-preview" id="cookingPreview">
-          <div class="cooking-preview-header">
-            <span class="cooking-preview-label">Cooking Mode Preview</span>
+    <!-- Phone Mockup -->
+    <div class="hero-device">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-screen-content">
+            <div class="mock-header">
+              <div class="mock-header-title">My Day</div>
+              <div class="mock-header-date">Thursday, March 6</div>
+            </div>
+            <div class="mock-timeline-item">
+              <div class="mock-time">9:00</div>
+              <div class="mock-dot" style="background: var(--indigo)"></div>
+              <div class="mock-label">Doctor appointment</div>
+            </div>
+            <div class="mock-timeline-item">
+              <div class="mock-time">12:00</div>
+              <div class="mock-dot" style="background: var(--coral)"></div>
+              <div class="mock-label">Call vet about Rose</div>
+            </div>
+            <div class="mock-timeline-item">
+              <div class="mock-time">15:00</div>
+              <div class="mock-dot" style="background: var(--coral)"></div>
+              <div class="mock-label">Pick up Miles from school</div>
+            </div>
+            <div class="mock-meal-card">
+              <div class="mock-meal-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#3BBFA0" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M6 9h6"/></svg></div>
+              <div>
+                <div class="mock-label">Chicken & Rice</div>
+                <div style="font-size: 0.6rem; color: var(--text-tertiary)">Tonight's dinner</div>
+              </div>
+            </div>
+            <div class="mock-input-bar">
+              <span class="mock-input-text">Tell Miiro what's on your mind...</span>
+              <div class="mock-input-icon">↑</div>
+            </div>
           </div>
-          <p class="cooking-preview-step" id="cookingPreviewStep"></p>
-          <div class="cooking-timer" id="cookingTimer" style="display:none;">&#9202; Timer ready</div>
-        </div>
-        <div class="recipe-cta-row">
-          <span class="recipe-cta-text">Save to your cookbook in Miiro</span>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- HOW IT WORKS -->
-<div class="section workflow-section">
-  <div class="section-eyebrow">How it works</div>
-  <h2>From chaos to calm in minutes.</h2>
-
-  <div class="workflow-container">
-    <div class="workflow-step">
-      <div class="workflow-num">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <h3>Tell Miiro</h3>
-      <p>Type everything on your mind. Tasks, meals, groceries. Miiro sorts it all.</p>
+<!-- ===== TRUST STRIP ===== -->
+<section class="trust-strip">
+  <div class="trust-marquee">
+    <div class="trust-item">
+      <span class="trust-quote">"It replaced 4 apps for us."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Beta tester, family of 4</span>
     </div>
-    <div class="workflow-step">
-      <div class="workflow-num">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <h3>Share with your partner</h3>
-      <p>Invite them. Everything syncs instantly. Chat right on each task.</p>
+    <div class="trust-item">
+      <span class="trust-quote">"The mental load is finally shared."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Early user, Amsterdam</span>
     </div>
-    <div class="workflow-step">
-      <div class="workflow-num">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-      </div>
-      <h3>See your day</h3>
-      <p>My Day shows exactly what matters today. Nothing more, nothing less.</p>
+    <div class="trust-item">
+      <span class="trust-quote">"I just tell Miiro and it's done."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Beta tester, couple</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"Cooking mode is a game changer."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Early user, parent of 3</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"Finally, we're on the same page."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Beta tester, couple</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"Our grocery game changed overnight."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Early user, family of 3</span>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="trust-item">
+      <span class="trust-quote">"It replaced 4 apps for us."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Beta tester, family of 4</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"The mental load is finally shared."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Early user, Amsterdam</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"I just tell Miiro and it's done."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Beta tester, couple</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"Cooking mode is a game changer."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Early user, parent of 3</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"Finally, we're on the same page."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Beta tester, couple</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-quote">"Our grocery game changed overnight."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">— Early user, family of 3</span>
     </div>
   </div>
-</div>
+</section>
 
-<!-- PRICING -->
-<div class="section pricing-wrap" id="pricing">
-  <div class="section-eyebrow">Simple, honest pricing</div>
-  <h2>Start free. Upgrade when you want more.</h2>
-  <p class="lead">No hidden fees. Every feature works on every plan.</p>
-
-  <div class="pricing-section">
-    <div class="pricing-toggle">
-      <span class="active" id="monthlyLabel">Monthly</span>
-      <div class="toggle-switch" id="pricingToggle" onclick="togglePricing()">
-        <div class="toggle-knob"></div>
-      </div>
-      <span id="yearlyLabel">Yearly <span class="save-badge">Save 25%</span></span>
+<!-- ===== FEATURES ===== -->
+<section class="features section" id="features">
+  <div class="container">
+    <div class="features-header animate-in">
+      <span class="label">Features</span>
+      <h2>Everything you need.<br>Nothing you don't.</h2>
     </div>
 
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-tier">Free</div>
-        <div class="price-amount">$0</div>
-        <p class="price-subtitle">Everything you need to get started.</p>
-        <ul class="price-features">
-          <li>Tell Miiro AI (10 credits)</li>
-          <li>3 lists</li>
-          <li>2 calendars</li>
+    <!-- Tell Miiro -->
+    <div class="feature-block animate-in">
+      <div class="feature-text">
+        <span class="feature-kanji indigo">見</span>
+        <h3>Tell Miiro</h3>
+        <p>Brain dump your entire day in one message. Tasks, meals, groceries, appointments — Miiro sorts it all instantly using AI. Type it like you'd text a friend.</p>
+        <div class="feature-detail">
+          <span class="feature-detail-dot"></span>
+          10 free credits · Unlimited with Miiro+
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-phone">
+          <div class="phone-frame">
+            <div class="video-placeholder">
+              <div class="video-placeholder-bg"></div>
+              <div class="video-play-icon">▶</div>
+              <span class="video-placeholder-label">Tell Miiro demo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toru -->
+    <div class="feature-block reverse animate-in">
+      <div class="feature-text">
+        <span class="feature-kanji coral">取</span>
+        <h3>Toru Recipe Finder</h3>
+        <p>Paste any recipe URL. We strip the ads and life stories. Just clean ingredients and steps, saved to your cookbook. Start cooking in step-by-step mode with built-in timers.</p>
+        <div class="feature-detail">
+          <span class="feature-detail-dot"></span>
+          Works with most major recipe sites
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-phone">
+          <div class="phone-frame">
+            <div class="video-placeholder">
+              <div class="video-placeholder-bg"></div>
+              <div class="video-play-icon">▶</div>
+              <span class="video-placeholder-label">Toru demo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shared Living -->
+    <div class="feature-block animate-in">
+      <div class="feature-text">
+        <span class="feature-kanji mint">間</span>
+        <h3>Shared Living</h3>
+        <p>Shared lists, calendars, and meal plans — all synced in real time. When they check off milk, you see it disappear. Chat right on any task. No more "did you see my text?"</p>
+        <div class="feature-detail">
+          <span class="feature-detail-dot"></span>
+          One subscription covers your whole household
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-phone">
+          <div class="phone-frame">
+            <div class="video-placeholder">
+              <div class="video-placeholder-bg"></div>
+              <div class="video-play-icon">▶</div>
+              <span class="video-placeholder-label">Shared lists demo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTERACTIVE DEMO ===== -->
+<section class="demo section" id="demo">
+  <div class="container">
+    <div class="demo-header animate-in">
+      <span class="label">See it in action</span>
+      <h2>One message. Five sorted items.</h2>
+      <p>Type it like you'd text a friend. Miiro does the rest.</p>
+    </div>
+
+    <div class="demo-container animate-in">
+      <div class="demo-input-area">
+        <div class="demo-input-label">
+          <span>Tell Miiro...</span>
+        </div>
+        <div class="demo-input-text">
+          Pick up Miles from school at 3, we need chicken and rice for dinner tonight, doctor appointment Tuesday 2pm, call the vet about Rose, and grab olive oil and eggs from the store
+        </div>
+      </div>
+
+      <div class="demo-results">
+        <div class="demo-card">
+          <div class="demo-card-icon task-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#E8634A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l3 3 7-7"/></svg></div>
+          <div class="demo-card-type task">Task</div>
+          <div class="demo-card-title">Pick up Miles from school</div>
+          <div class="demo-card-meta">Today at 3:00 PM</div>
+        </div>
+        <div class="demo-card">
+          <div class="demo-card-icon meal-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#3BBFA0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="6"/><path d="M6 9h6"/></svg></div>
+          <div class="demo-card-type meal">Meal</div>
+          <div class="demo-card-title">Chicken and rice</div>
+          <div class="demo-card-meta">Tonight's dinner</div>
+        </div>
+        <div class="demo-card">
+          <div class="demo-card-icon event-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#4A5CE8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="12" height="11" rx="2"/><path d="M6 2v3"/><path d="M12 2v3"/><path d="M3 8h12"/></svg></div>
+          <div class="demo-card-type event">Event</div>
+          <div class="demo-card-title">Doctor appointment</div>
+          <div class="demo-card-meta">Tuesday at 2:00 PM</div>
+        </div>
+        <div class="demo-card">
+          <div class="demo-card-icon task-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#E8634A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l3 3 7-7"/></svg></div>
+          <div class="demo-card-type task">Task</div>
+          <div class="demo-card-title">Call the vet about Rose</div>
+          <div class="demo-card-meta">Today</div>
+        </div>
+        <div class="demo-card wide">
+          <div class="demo-card-icon grocery-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#D4A853" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h10l-1.5 7H6.5L5 5z"/><path d="M5 5L4 2"/><circle cx="8" cy="15" r="1"/><circle cx="13" cy="15" r="1"/></svg></div>
+          <div class="demo-card-type grocery">Grocery</div>
+          <div class="demo-card-title">Chicken, Rice, Olive oil, Eggs</div>
+          <div class="demo-card-meta">Added to shopping list</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="pricing section" id="pricing">
+  <div class="container">
+    <div class="pricing-header animate-in">
+      <span class="label">Simple pricing</span>
+      <h2>Start free. Upgrade<br>when you're ready.</h2>
+      <p>No hidden fees. No ads. Not now, not ever.</p>
+    </div>
+
+    <div class="pricing-toggle animate-in">
+      <span class="pricing-toggle-label active" id="monthly-label">Monthly</span>
+      <div class="pricing-toggle-switch" id="pricing-switch" onclick="togglePricing()"></div>
+      <span class="pricing-toggle-label" id="yearly-label">Yearly</span>
+      <span class="pricing-save">Save 25%</span>
+    </div>
+
+    <div class="pricing-cards animate-in">
+      <!-- Free -->
+      <div class="pricing-card">
+        <div class="pricing-card-name">Free</div>
+        <div class="pricing-card-price">
+          <span class="pricing-card-amount">$0</span>
+        </div>
+        <p class="pricing-card-desc">Everything you need to get started.</p>
+        <ul class="pricing-features">
+          <li>10 Tell Miiro AI credits</li>
+          <li>3 lists, 2 calendars</li>
           <li>5 saved recipes</li>
-          <li>5 recipe imports</li>
-          <li>1 template</li>
           <li>1 shared list</li>
           <li>2 household members</li>
         </ul>
-        <a href="#" class="price-cta outline">Get Started Free</a>
+        <a href="#" class="pricing-card-btn">Get Started Free</a>
       </div>
 
-      <div class="price-card featured">
-        <div class="price-tier">M<span class="brand-ii">ii</span>ro+</div>
-        <div class="price-amount"><span id="plusPrice">$4.99</span><span class="period" id="plusPeriod">/mo</span></div>
-        <p class="price-per-day" id="plusPerDay" style="display:none"></p>
-        <p class="price-subtitle">Unlimited everything for your whole household.</p>
-        <ul class="price-features">
+      <!-- Miiro+ -->
+      <div class="pricing-card featured">
+        <div class="pricing-card-badge">Most Popular</div>
+        <div class="pricing-card-name">Miiro+</div>
+        <div class="pricing-card-price">
+          <span class="pricing-card-amount" id="price-amount">$4.99</span>
+          <span class="pricing-card-period" id="price-period">/month</span>
+        </div>
+        <p class="pricing-card-desc">Unlimited everything for your whole household.</p>
+        <ul class="pricing-features">
           <li>Unlimited Tell Miiro AI</li>
-          <li>Unlimited lists</li>
-          <li>Unlimited calendars</li>
-          <li>Unlimited recipes</li>
-          <li>Unlimited imports</li>
-          <li>Unlimited templates</li>
+          <li>Unlimited lists & calendars</li>
+          <li>Unlimited recipes & imports</li>
           <li>Unlimited sharing</li>
-          <li>Up to 6 members</li>
+          <li>Up to 6 household members</li>
         </ul>
-        <a href="#" class="price-cta primary">Start 7-Day Free Trial</a>
+        <a href="#" class="pricing-card-btn">Start 7-Day Free Trial</a>
       </div>
     </div>
 
-    <p class="pricing-note">One subscription covers your whole household. Cancel anytime.</p>
-    <p class="pricing-legal">Payment will be charged to your Apple ID account at confirmation of purchase. Subscription automatically renews unless canceled at least 24 hours before the end of the current period. 7-day free trial available for both monthly and yearly plans.</p>
+    <p class="pricing-note animate-in">
+      One subscription covers your whole household. Cancel anytime. 7-day free trial available for both plans.
+    </p>
   </div>
-</div>
-
-<!-- REVIEW CAROUSEL -->
-<div class="reviews-wrap">
-  <div class="reviews-section">
-    <div class="section-eyebrow">What people say</div>
-    <h2>Loved by real households</h2>
-    <div class="reviews-track-wrap">
-      <div class="reviews-track" id="reviewsTrack">
-        <div class="review-card">
-          <div class="review-card-inner">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="review-quote">"Miiro replaced our whiteboard, shared notes app, and the constant 'did you get my text?' We just tell Miiro and it's done."</p>
-            <p class="review-author">— Sarah &amp; Tom, parents of 2</p>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-card-inner">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="review-quote">"The mental load was crushing me. Now I brain dump into Miiro and everything is organized. My partner finally sees what needs doing."</p>
-            <p class="review-author">— Maria, Amsterdam</p>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-card-inner">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="review-quote">"Toru is worth the subscription alone. No more scrolling through life stories to find a recipe. Just ingredients and steps."</p>
-            <p class="review-author">— Kenji, family of 3</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="reviews-dots" id="reviewsDots">
-      <button class="reviews-dot active" data-index="0"></button>
-      <button class="reviews-dot" data-index="1"></button>
-      <button class="reviews-dot" data-index="2"></button>
-    </div>
-  </div>
-</div>
-
-<!-- STORY -->
-<div class="story-wrap" id="story">
-  <div class="story-section">
-    <div class="story-content">
-      <div class="section-eyebrow">The story</div>
-      <h2>Why I built M<span class="brand-ii">ii</span>ro</h2>
-      <div class="story-body">
-        <p><em>Miiro</em> comes from the Japanese word <em>miru</em> (見る), meaning to see.</p>
-        <p>I built it because my wife Mirrin and I kept dropping the ball on the little things. The groceries nobody bought. The kindergarten pickup we both showed up to. The "I thought you were handling that" moments.</p>
-        <p>The mental load wasn't shared. It was invisible.</p>
-        <p>Every task app out there was built for one person working alone. We needed something that let us see each other's day.</p>
-        <p>The name is personal: <span class="mi-highlight">Mi</span> (from Mirrin) + <span class="ro-highlight">Ro</span> (from Robert) = Miiro. It's the app I wished existed.</p>
-      </div>
-      <div class="story-sig">
-        <strong>Robert</strong>, builder of Miiro<br>
-        Amsterdam, father to Miles, dog dad to Rose &#128054;
-      </div>
-    </div>
-    <div class="story-visual">
-      <img src="koi-logo.png" alt="" aria-hidden="true">
-    </div>
-  </div>
-
-  <div class="story-philosophy">
-    <p class="philosophy-intro">Miiro is built on three Japanese principles that guide everything we design.</p>
-    <div class="philosophy">
-      <div class="philosophy-item">
-        <div class="philosophy-jp">見る</div>
-        <div class="philosophy-word">Miru · See</div>
-        <p class="philosophy-desc">Make the invisible visible.</p>
-      </div>
-      <div class="philosophy-item">
-        <div class="philosophy-jp">間</div>
-        <div class="philosophy-word">Ma · Space</div>
-        <p class="philosophy-desc">Create breathing room.</p>
-      </div>
-      <div class="philosophy-item">
-        <div class="philosophy-jp">簡素</div>
-        <div class="philosophy-word">Kanso · Simplicity</div>
-        <p class="philosophy-desc">Strip away the noise.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FAQ -->
-<div class="faq-wrap">
-  <div class="faq-section" id="faq">
-    <h2>Questions</h2>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        What is Tell Miiro?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Tell Miiro is our AI assistant. Type everything on your mind in natural language, and Miiro automatically sorts it into tasks, events, meals, and grocery lists. It's like texting a friend who actually organizes everything. Free users get 10 credits. Miiro+ users get unlimited.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Is it really free?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Yes. Every feature works on the free plan, including 5 Tell Miiro AI credits. You get 3 lists, 2 calendars, 5 saved recipes, and sharing with 1 person. Miiro+ gives you unlimited everything.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Does my partner need to pay too?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access through Apple Family Sharing.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        What happens after the free trial?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>After 7 days, you'll be charged $4.99/month (or $44.99/year if you chose annual). You can cancel anytime in your iPhone Settings. If you cancel, you keep access until the end of your billing period.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        What recipe sites does Toru work with?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Most major recipe sites including BBC Good Food, RecipeTin Eats, Budget Bytes, Allrecipes, and many more. If a site has structured recipe data, Toru can extract it.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        How do shared calendars work?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>When you create a shared calendar, your partner sees all events in it automatically. Personal calendars stay completely private. Everything syncs in real time, so you're always on the same page.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Can I keep a calendar private?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Yes! Every user gets a Personal calendar that only they can see. Create as many private or shared calendars as you need. Free includes 2 calendars, Miiro+ gives unlimited calendars.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Is my data private?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Your data is stored securely on Google Firebase with encryption. We don't sell your data, don't show ads, and don't track your browsing. Read our full <a href="privacy.html">privacy policy</a>.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Can I use Miiro without sharing?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Absolutely. Miiro works great for solo use too. Sharing is optional, and you can keep all your lists private.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div><!-- end page-sections -->
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <h2>One message. Your whole day sorted.</h2>
-  <p>Join families who are finally on the same page.</p>
-  <div class="final-cta-badge">
-    <a href="#" aria-label="Download on the App Store">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
-    </a>
-  </div>
-  <p class="final-cta-sub">Free to start. Cancel anytime.</p>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand-row">
-    <img src="koi-logo.png" alt="Miiro" loading="lazy">
-    <span class="footer-brand">Miiro</span>
+<!-- ===== STORY ===== -->
+<section class="story section" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text animate-in">
+        <span class="label">Our story</span>
+        <h2>Why I built Miiro</h2>
+        <p><em class="serif">Miiro</em> comes from the Japanese word <em class="serif">miru</em> (見る), meaning to see.</p>
+        <p>I built it because my wife Mirrin and I kept dropping the ball on the little things. The groceries nobody bought. The kindergarten pickup we both showed up to. The "I thought you were handling that" moments.</p>
+        <p>The mental load wasn't shared — it was invisible. Every task app out there was built for one person working alone. We needed something that let us see each other's day.</p>
+        <p>The name is personal: <strong>Mi</strong> (from Mirrin) + <strong>Ro</strong> (from Robert) = <strong>Miiro</strong>.</p>
+        <div class="story-signature">
+          <div class="story-sig-avatar">R</div>
+          <div>
+            <div class="story-sig-name">Robert</div>
+            <div class="story-sig-role">Builder of Miiro · Amsterdam 🇳🇱</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-principles animate-in">
+        <div class="principle-card">
+          <span class="principle-kanji">見る</span>
+          <div class="principle-name">Miru</div>
+          <span class="principle-romaji">to see</span>
+          <p class="principle-desc">Make the invisible visible. See your partner's day, your shared responsibilities, everything that matters.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-kanji">間</span>
+          <div class="principle-name">Ma</div>
+          <span class="principle-romaji">space</span>
+          <p class="principle-desc">Create breathing room. Less noise, less clutter, less mental overhead. Just what you need.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-kanji">簡素</span>
+          <div class="principle-name">Kanso</div>
+          <span class="principle-romaji">simplicity</span>
+          <p class="principle-desc">Strip away the unnecessary. One message handles it all. That's the whole point.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <p style="font-size:0.82rem; color:var(--stone); margin-bottom:4px;">See what matters.</p>
-  <p>Built with care in Amsterdam &#127475;&#127473;</p>
-  <p style="margin-top: 8px;">
-    <a href="privacy.html">Privacy</a> &middot; <a href="support.html">Support</a> &middot; <a href="terms.html">Terms</a>
-  </p>
-  <p style="margin-top: 6px;"><a href="mailto:support@miiro.app">support@miiro.app</a></p>
-  <p style="margin-top: 14px; opacity: 0.5;">&copy; 2026 Miiro. All rights reserved.</p>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta section">
+  <div class="container text-center">
+    <h2>One message.<br>Your whole day, sorted.</h2>
+    <p>Join families who are finally on the same page.</p>
+    <a href="#" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      Download for iOS
+    </a>
+    <p class="final-cta-sub">Free to start · Cancel anytime</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-icon"><img src="koi-logo.png" alt="Miiro"></div>
+        <span class="footer-brand-text">Miiro</span>
+        <span class="footer-tagline">— See what matters.</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+      </ul>
+      <span class="footer-copy">© 2026 Miiro. Built with care in Amsterdam.</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-// Nav scroll effect
-(function() {
-  var nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', function() {
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-})();
-
-// Pricing toggle (default to yearly)
-var isYearly = false;
-function togglePricing() {
-  isYearly = !isYearly;
-  var toggle = document.getElementById('pricingToggle');
-  document.getElementById('monthlyLabel').classList.toggle('active', !isYearly);
-  document.getElementById('yearlyLabel').classList.toggle('active', isYearly);
-  toggle.classList.toggle('yearly', isYearly);
-
-  if (isYearly) {
-    document.getElementById('plusPrice').textContent = '$44.99';
-    document.getElementById('plusPeriod').textContent = '/yr';
-    document.getElementById('plusPerDay').textContent = 'Just $3.75/mo';
-    document.getElementById('plusPerDay').style.display = '';
-  } else {
-    document.getElementById('plusPrice').textContent = '$4.99';
-    document.getElementById('plusPeriod').textContent = '/mo';
-    document.getElementById('plusPerDay').style.display = 'none';
-  }
-}
-
-// FAQ accordion
-function toggleFaq(btn) {
-  var item = btn.parentElement;
-  var wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
-  if (!wasOpen) item.classList.add('open');
-}
-
-// Recipe extractor
-function tryRecipe(url) {
-  document.getElementById('recipeUrlInput').value = url;
-  extractRecipe();
-}
-
-async function extractRecipe() {
-  var url = document.getElementById('recipeUrlInput').value.trim();
-  if (!url) return;
-
-  var loading = document.getElementById('recipeLoading');
-  var result = document.getElementById('recipeResult');
-  var error = document.getElementById('recipeError');
-  var btn = document.getElementById('recipeExtractBtn');
-  var cookingPreview = document.getElementById('cookingPreview');
-
-  loading.classList.add('show');
-  result.classList.remove('show');
-  error.classList.remove('show');
-  cookingPreview.classList.remove('show');
-  btn.disabled = true;
-  btn.textContent = 'Extracting...';
-
-  try {
-    var response = await fetch('/api/recipe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: url })
-    });
-
-    var data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || 'Could not extract recipe');
-    }
-
-    var img = document.getElementById('recipeImage');
-    if (data.image) {
-      img.src = data.image;
-      img.alt = data.name || 'Recipe image';
-      img.style.display = 'block';
-    } else {
-      img.style.display = 'none';
-    }
-
-    document.getElementById('recipeName').textContent = data.name;
-
-    var meta = [];
-    if (data.servings) meta.push(data.servings + (typeof data.servings === 'number' ? ' servings' : ''));
-    if (data.ingredients) meta.push(data.ingredients.length + ' ingredients');
-    if (data.instructions) meta.push(data.instructions.length + ' steps');
-    document.getElementById('recipeMeta').textContent = meta.join(' \u00B7 ');
-
-    var ingredientsList = document.getElementById('recipeIngredients');
-    ingredientsList.innerHTML = '';
-    (data.ingredients || []).forEach(function(ingredient) {
-      var div = document.createElement('div');
-      div.className = 'recipe-ingredient-item';
-      var dot = document.createElement('span');
-      dot.className = 'dot';
-      div.appendChild(dot);
-      div.appendChild(document.createTextNode(ingredient));
-      ingredientsList.appendChild(div);
-    });
-
-    var instructionsWrap = document.getElementById('recipeInstructionsWrap');
-    var instructionsList = document.getElementById('recipeInstructions');
-    instructionsList.innerHTML = '';
-    if (data.instructions && data.instructions.length > 0) {
-      instructionsWrap.style.display = 'block';
-      data.instructions.forEach(function(step, i) {
-        var div = document.createElement('div');
-        div.style.cssText = 'display:flex; gap:10px; font-size:0.78rem; color:var(--charcoal); line-height:1.5;';
-        var num = document.createElement('span');
-        num.style.cssText = 'color:var(--coral); font-weight:600; flex-shrink:0;';
-        num.textContent = (i + 1) + '.';
-        var text = document.createElement('span');
-        text.textContent = step;
-        div.appendChild(num);
-        div.appendChild(text);
-        instructionsList.appendChild(div);
-      });
-
-      var firstStep = data.instructions[0];
-      if (firstStep) {
-        document.getElementById('cookingPreviewStep').textContent =
-          'Step 1: ' + (firstStep.length > 120 ? firstStep.substring(0, 120) + '...' : firstStep);
-        cookingPreview.classList.add('show');
-        var timerEl = document.getElementById('cookingTimer');
-        if (/\d+\s*(min|hour|second)/i.test(firstStep)) {
-          timerEl.style.display = 'inline-flex';
-        } else {
-          timerEl.style.display = 'none';
-        }
-      }
-    } else {
-      instructionsWrap.style.display = 'none';
-    }
-
-    loading.classList.remove('show');
-    result.classList.add('show');
-
-  } catch (err) {
-    loading.classList.remove('show');
-    error.textContent = err.message || 'Something went wrong. Try a different recipe URL.';
-    error.classList.add('show');
-  }
-
-  btn.disabled = false;
-  btn.textContent = 'Extract';
-}
-
-// Tell Miiro typing demo
-(function() {
-  var demoEl = document.getElementById('tellmiiroDemo');
-  if (!demoEl) return;
-
-  var inputEl = document.getElementById('tellmiiroInput');
-  var resultItems = demoEl.querySelectorAll('.tellmiiro-result-item');
-  var replayWrap = document.getElementById('tellmiiroReplay');
-  var fullText = inputEl.textContent.trim();
-  var charIndex = 0;
-  var started = false;
-
-  function startAnimation() {
-    if (started) return;
-    started = true;
-    demoEl.classList.add('animating');
-    inputEl.textContent = '';
-    inputEl.classList.add('typing');
-    setTimeout(typeChar, 400);
-  }
-
-  function typeChar() {
-    if (charIndex < fullText.length) {
-      charIndex++;
-      inputEl.textContent = fullText.substring(0, charIndex);
-      var c = fullText[charIndex - 1];
-      var delay;
-      if (c === ',') delay = 260;
-      else if (c === '.') delay = 180;
-      else if (c === ' ') delay = 25;
-      else delay = 28 + Math.random() * 22;
-      setTimeout(typeChar, delay);
-    } else {
-      inputEl.classList.remove('typing');
-      showResults();
-    }
-  }
-
-  function showResults() {
-    resultItems.forEach(function(item, i) {
-      setTimeout(function() {
-        item.classList.add('show');
-      }, 300 + i * 350);
-    });
-    setTimeout(function() {
-      if (replayWrap) replayWrap.style.display = 'block';
-    }, 300 + resultItems.length * 350 + 300);
-  }
-
-  function replay() {
-    charIndex = 0;
-    started = false;
-    inputEl.textContent = '';
-    inputEl.classList.remove('typing');
-    resultItems.forEach(function(item) { item.classList.remove('show'); });
-    if (replayWrap) replayWrap.style.display = 'none';
-    demoEl.classList.remove('animating');
-    setTimeout(function() {
-      startAnimation();
-    }, 150);
-  }
-
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          startAnimation();
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-    observer.observe(demoEl);
-  } else {
-    setTimeout(startAnimation, 800);
-  }
-
-  var replayBtn = document.getElementById('tellmiiroReplayBtn');
-  if (replayBtn) {
-    replayBtn.addEventListener('click', replay);
-  }
-})();
-
-// Rotating hero text
-(function() {
-  var words = document.querySelectorAll('.rotating-word');
-  if (!words.length) return;
-  var current = 0;
-  setInterval(function() {
-    words[current].classList.remove('active');
-    current = (current + 1) % words.length;
-    words[current].classList.add('active');
-  }, 2500);
-})();
-
-// Review carousel
-(function() {
-  var track = document.getElementById('reviewsTrack');
-  var dots = document.querySelectorAll('.reviews-dot');
-  if (!track || !dots.length) return;
-  var current = 0;
-  var total = dots.length;
-  var interval;
-
-  function goTo(index) {
-    current = index;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === current);
-    });
-  }
-
-  function advance() {
-    goTo((current + 1) % total);
-  }
-
-  function startAuto() {
-    interval = setInterval(advance, 4000);
-  }
-
-  dots.forEach(function(dot) {
-    dot.addEventListener('click', function() {
-      goTo(parseInt(this.getAttribute('data-index')));
-      clearInterval(interval);
-      startAuto();
-    });
   });
 
-  var wrap = track.parentElement;
-  wrap.addEventListener('mouseenter', function() { clearInterval(interval); });
-  wrap.addEventListener('mouseleave', startAuto);
+  // Pricing toggle
+  let isYearly = false;
+  function togglePricing() {
+    isYearly = !isYearly;
+    const sw = document.getElementById('pricing-switch');
+    const amount = document.getElementById('price-amount');
+    const period = document.getElementById('price-period');
+    const ml = document.getElementById('monthly-label');
+    const yl = document.getElementById('yearly-label');
 
-  startAuto();
-})();
+    sw.classList.toggle('yearly', isYearly);
+    ml.classList.toggle('active', !isYearly);
+    yl.classList.toggle('active', isYearly);
+    amount.textContent = isYearly ? '$44.99' : '$4.99';
+    period.textContent = isYearly ? '/year' : '/month';
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
