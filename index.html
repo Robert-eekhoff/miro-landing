@@ -206,9 +206,8 @@
 
   /* ===== HERO ===== */
   .hero {
-    padding-top: clamp(120px, 15vw, 180px);
+    padding-top: clamp(120px, 12vw, 160px);
     padding-bottom: clamp(40px, 6vw, 80px);
-    text-align: center;
     position: relative;
     overflow: hidden;
   }
@@ -216,7 +215,7 @@
   .hero::before {
     content: '見';
     position: absolute;
-    top: 12%;
+    top: 8%;
     right: -5%;
     font-size: clamp(200px, 30vw, 500px);
     font-family: 'Lora', serif;
@@ -225,16 +224,24 @@
     line-height: 1;
   }
 
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: center;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
   .hero h1 {
     font-family: 'Lora', Georgia, serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.1;
     margin-bottom: 24px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
     animation: fadeUp 0.8s ease forwards;
   }
 
@@ -244,11 +251,11 @@
   }
 
   .hero-sub {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
     color: var(--text-secondary);
-    max-width: 520px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 0 36px;
+    line-height: 1.75;
     animation: fadeUp 0.8s ease 0.15s forwards;
     opacity: 0;
   }
@@ -256,7 +263,6 @@
   .hero-ctas {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 16px;
     margin-bottom: 12px;
     animation: fadeUp 0.8s ease 0.3s forwards;
@@ -316,8 +322,8 @@
 
   /* Phone mockup */
   .hero-device {
-    max-width: 340px;
-    margin: clamp(40px, 6vw, 80px) auto 0;
+    max-width: 320px;
+    margin: 0 auto;
     position: relative;
     animation: fadeUp 1s ease 0.5s forwards;
     opacity: 0;
@@ -607,7 +613,7 @@
   }
 
   .feature-phone {
-    max-width: 280px;
+    max-width: 300px;
     margin: 0 auto;
   }
 
@@ -682,7 +688,7 @@
   }
 
   .demo-container {
-    max-width: 740px;
+    max-width: 840px;
     margin: 0 auto;
   }
 
@@ -861,7 +867,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    max-width: 800px;
+    max-width: 860px;
     margin: 0 auto;
   }
 
@@ -1226,6 +1232,15 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero-content { text-align: center; }
+    .hero-sub { margin: 0 auto 36px; }
+    .hero-ctas { justify-content: center; }
+    .hero-device { max-width: 280px; margin-top: 40px; }
+
     .feature-block {
       grid-template-columns: 1fr;
       gap: 40px;
@@ -1284,19 +1299,22 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
-    <h1>One message.<br>Your whole day, <em>sorted.</em></h1>
-    <p class="hero-sub">Tell Miiro everything on your mind. It organizes your household into tasks, meals, groceries, and events — instantly.</p>
-    <div class="hero-ctas">
-      <a href="#" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        Download for iOS
-      </a>
-      <a href="#demo" class="btn-secondary">See how it works</a>
-    </div>
-    <p class="hero-note">Free to start · Built with love in Amsterdam 🇳🇱</p>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>One message.<br>Your whole day, <em>sorted.</em></h1>
+        <p class="hero-sub">Tell Miiro everything on your mind. It organizes your household into tasks, meals, groceries, and events — instantly.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            Download for iOS
+          </a>
+          <a href="#demo" class="btn-secondary">See how it works</a>
+        </div>
+        <p class="hero-note">Free to start · Built with love in Amsterdam 🇳🇱</p>
+      </div>
 
-    <!-- Phone Mockup -->
-    <div class="hero-device">
+      <!-- Phone Mockup -->
+      <div class="hero-device">
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
@@ -1334,6 +1352,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -1714,5 +1733,6 @@
 
   document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
