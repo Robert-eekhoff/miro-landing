@@ -837,6 +837,204 @@
     animation: mock-fade-out 0.5s ease forwards;
   }
 
+  /* ===== SHARED LIST MOCKUP ===== */
+  .shared-screen {
+    padding: 10px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+    height: 100%;
+  }
+
+  .shared-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 0 2px;
+  }
+
+  .shared-header-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .shared-header-logo {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  .shared-header-title {
+    font-weight: 700;
+    font-size: 0.65rem;
+    color: var(--text-primary);
+  }
+
+  .shared-header-subtitle {
+    font-size: 0.4rem;
+    color: var(--text-tertiary);
+    margin-bottom: 6px;
+  }
+
+  .shared-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  .shared-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(44, 40, 37, 0.05);
+    position: relative;
+  }
+
+  .shared-check {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 0.4rem;
+    color: transparent;
+  }
+
+  .shared-check.checked {
+    background: var(--mint);
+    border-color: var(--mint);
+    color: white;
+  }
+
+  .shared-item-text {
+    font-size: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+    transition: all 0.3s ease;
+  }
+
+  .shared-item-text.struck {
+    text-decoration: line-through;
+    color: var(--text-tertiary);
+  }
+
+  .shared-item-avatar {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: 0.35rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .shared-item-avatar.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .shared-item-avatar.you {
+    background: var(--indigo-bg);
+    color: var(--indigo);
+  }
+
+  .shared-item-avatar.partner {
+    background: var(--coral-bg);
+    color: var(--coral);
+  }
+
+  .shared-item.new-item {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .shared-item.new-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .shared-item.highlight {
+    animation: item-glow 0.8s ease;
+  }
+
+  @keyframes item-glow {
+    0% { background: transparent; }
+    30% { background: var(--indigo-bg); }
+    100% { background: transparent; }
+  }
+
+  .shared-input {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+  }
+
+  .shared-input-field {
+    background: var(--cream);
+    border: none;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.42rem;
+    color: var(--text-primary);
+    flex: 1;
+    min-height: 1.4em;
+  }
+
+  .shared-input-text {
+    display: inline;
+  }
+
+  .shared-input-cursor {
+    display: none;
+    width: 1px;
+    height: 0.55em;
+    background: var(--text-primary);
+    margin-left: 1px;
+    vertical-align: text-bottom;
+    animation: blink-cursor 0.6s step-end infinite;
+  }
+
+  .shared-input-add {
+    width: 16px;
+    height: 16px;
+    background: var(--mint);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    color: white;
+    flex-shrink: 0;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+  }
+
+  .shared-input-add.active {
+    opacity: 1;
+  }
+
+  .shared-screen.fade-out {
+    animation: mock-fade-out 0.5s ease forwards;
+  }
+
   /* ===== TRUST STRIP ===== */
   .trust-strip {
     padding: 32px 0;
@@ -2058,12 +2256,51 @@
         </div>
       </div>
       <div class="feature-visual">
-        <div class="feature-phone">
+        <div class="feature-phone" style="max-width: 240px;">
           <div class="phone-frame">
-            <div class="video-placeholder">
-              <div class="video-placeholder-bg"></div>
-              <div class="video-play-icon">▶</div>
-              <span class="video-placeholder-label">Shared lists demo</span>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <div class="shared-screen" id="shared-screen">
+                <div class="shared-header">
+                  <div class="shared-header-left">
+                    <img src="koi-logo.png" alt="" class="shared-header-logo">
+                    <span class="shared-header-title">Groceries</span>
+                  </div>
+                </div>
+                <div class="shared-header-subtitle">Shared with Robert</div>
+                <div class="shared-list" id="shared-list">
+                  <div class="shared-item" id="shared-pasta">
+                    <div class="shared-check checked">✓</div>
+                    <span class="shared-item-text struck">Pasta</span>
+                  </div>
+                  <div class="shared-item" id="shared-tomatoes">
+                    <div class="shared-check" id="shared-tomatoes-check"></div>
+                    <span class="shared-item-text" id="shared-tomatoes-text">Tomatoes</span>
+                    <div class="shared-item-avatar you" id="shared-tomatoes-avatar">R</div>
+                  </div>
+                  <div class="shared-item" id="shared-garlic">
+                    <div class="shared-check" id="shared-garlic-check"></div>
+                    <span class="shared-item-text" id="shared-garlic-text">Garlic</span>
+                    <div class="shared-item-avatar partner" id="shared-garlic-avatar">M</div>
+                  </div>
+                  <div class="shared-item new-item" id="shared-olive-oil">
+                    <div class="shared-check"></div>
+                    <span class="shared-item-text">Olive oil</span>
+                    <div class="shared-item-avatar partner" id="shared-olive-avatar">M</div>
+                  </div>
+                  <div class="shared-item new-item" id="shared-chicken">
+                    <div class="shared-check"></div>
+                    <span class="shared-item-text">Chicken</span>
+                    <div class="shared-item-avatar you" id="shared-chicken-avatar">R</div>
+                  </div>
+                </div>
+                <div class="shared-input">
+                  <div class="shared-input-field">
+                    <span class="shared-input-text" id="shared-input-text"></span><span class="shared-input-cursor" id="shared-input-cursor"></span>
+                  </div>
+                  <div class="shared-input-add" id="shared-input-add">+</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2531,6 +2768,110 @@
 
     // Start with a delay, offset from hero animation
     setTimeout(runToru, 2000);
+  })();
+
+  // Shared list phone mockup animation
+  (function() {
+    var screen = document.getElementById('shared-screen');
+    var oliveOil = document.getElementById('shared-olive-oil');
+    var oliveAvatar = document.getElementById('shared-olive-avatar');
+    var tomatoesCheck = document.getElementById('shared-tomatoes-check');
+    var tomatoesText = document.getElementById('shared-tomatoes-text');
+    var tomatoesAvatar = document.getElementById('shared-tomatoes-avatar');
+    var garlicCheck = document.getElementById('shared-garlic-check');
+    var garlicText = document.getElementById('shared-garlic-text');
+    var garlicAvatar = document.getElementById('shared-garlic-avatar');
+    var chicken = document.getElementById('shared-chicken');
+    var chickenAvatar = document.getElementById('shared-chicken-avatar');
+    var inputText = document.getElementById('shared-input-text');
+    var inputCursor = document.getElementById('shared-input-cursor');
+    var inputAdd = document.getElementById('shared-input-add');
+
+    if (!screen) return;
+
+    function reset() {
+      oliveOil.classList.remove('visible');
+      oliveOil.classList.remove('highlight');
+      oliveAvatar.classList.remove('visible');
+      tomatoesCheck.classList.remove('checked');
+      tomatoesCheck.innerHTML = '';
+      tomatoesText.classList.remove('struck');
+      tomatoesAvatar.classList.remove('visible');
+      garlicCheck.classList.remove('checked');
+      garlicCheck.innerHTML = '';
+      garlicText.classList.remove('struck');
+      garlicAvatar.classList.remove('visible');
+      chicken.classList.remove('visible');
+      chickenAvatar.classList.remove('visible');
+      inputText.textContent = '';
+      inputCursor.style.display = 'none';
+      inputAdd.classList.remove('active');
+      screen.classList.remove('fade-out');
+      screen.style.opacity = '1';
+    }
+
+    function runShared() {
+      reset();
+
+      // Phase 1 (1s): Partner adds "Olive oil"
+      setTimeout(function() {
+        oliveOil.classList.add('visible');
+        oliveAvatar.classList.add('visible');
+        setTimeout(function() { oliveOil.classList.add('highlight'); }, 50);
+        setTimeout(function() { oliveAvatar.classList.remove('visible'); }, 1500);
+      }, 1000);
+
+      // Phase 2 (2.5s): You check off "Tomatoes"
+      setTimeout(function() {
+        tomatoesCheck.classList.add('checked');
+        tomatoesCheck.innerHTML = '✓';
+        tomatoesText.classList.add('struck');
+        tomatoesAvatar.classList.add('visible');
+        setTimeout(function() { tomatoesAvatar.classList.remove('visible'); }, 1200);
+      }, 2500);
+
+      // Phase 3 (4s): Partner checks off "Garlic"
+      setTimeout(function() {
+        garlicCheck.classList.add('checked');
+        garlicCheck.innerHTML = '✓';
+        garlicText.classList.add('struck');
+        garlicAvatar.classList.add('visible');
+        setTimeout(function() { garlicAvatar.classList.remove('visible'); }, 1200);
+      }, 4000);
+
+      // Phase 4 (5.5s): You type "Chicken" and add it
+      setTimeout(function() {
+        inputCursor.style.display = 'inline-block';
+        var word = 'Chicken';
+        var i = 0;
+        var typeInt = setInterval(function() {
+          if (i < word.length) {
+            inputText.textContent += word[i];
+            i++;
+            if (i > 0) inputAdd.classList.add('active');
+          } else {
+            clearInterval(typeInt);
+            inputCursor.style.display = 'none';
+            // Tap add button, show item in list
+            setTimeout(function() {
+              inputText.textContent = '';
+              inputAdd.classList.remove('active');
+              chicken.classList.add('visible');
+              chickenAvatar.classList.add('visible');
+              setTimeout(function() { chickenAvatar.classList.remove('visible'); }, 1200);
+            }, 300);
+          }
+        }, 80);
+      }, 5500);
+
+      // Phase 5 (9s): Fade out and restart
+      setTimeout(function() {
+        screen.classList.add('fade-out');
+        setTimeout(runShared, 500);
+      }, 9000);
+    }
+
+    setTimeout(runShared, 2500);
   })();
 </script>
 
