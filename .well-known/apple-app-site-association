@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "3AWJHCS4VV.com.miiroapp.main",
-        "paths": ["/invite/*"]
+        "paths": ["/invite/*", "/join/*"]
       }
     ]
   }
