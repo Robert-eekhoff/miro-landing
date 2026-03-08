@@ -1284,6 +1284,152 @@
     .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
+    .stats-bar .container { flex-direction: column; gap: 16px; }
+    .stat-card { min-width: unset; width: 100%; }
+  }
+
+  /* ===== TRUST STARS ===== */
+  .trust-stars {
+    color: var(--coral);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    padding: clamp(40px, 6vw, 72px) 0;
+    background: var(--cream);
+  }
+
+  .stats-bar .container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    text-align: center;
+    min-width: 200px;
+    flex: 1;
+    max-width: 260px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-number {
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+
+  .faq-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+  }
+
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .faq-question:hover {
+    color: var(--indigo);
+  }
+
+  .faq-icon {
+    font-size: 1.3rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--text-tertiary);
+    width: 24px;
+    text-align: center;
+  }
+
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq-answer-inner {
+    padding: 0 0 20px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+  }
+
+  /* ===== HERO STAR RATING ===== */
+  .hero-stars {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+    opacity: 0;
+  }
+
+  .hero-stars-icons {
+    color: var(--coral);
+    letter-spacing: 1px;
+    margin-right: 6px;
   }
 </style>
 </head>
@@ -1312,6 +1458,7 @@
       <div class="hero-content">
         <p style="font-size: 0.95rem; color: var(--text-tertiary); margin-bottom: 16px; animation: fadeUp 0.8s ease forwards;">The mental load shouldn't live in one person's head.</p>
         <h1>One message.<br>Your whole day, <em>sorted.</em></h1>
+        <p class="hero-stars"><span class="hero-stars-icons">★★★★★</span> Loved by beta testers</p>
         <p class="hero-sub">Tell Miiro everything on your mind. It organizes your household into tasks, meals, groceries, and events — instantly.</p>
         <div class="hero-ctas">
           <a href="#" class="btn-primary">
@@ -1371,65 +1518,99 @@
 <section class="trust-strip">
   <div class="trust-marquee">
     <div class="trust-item">
-      <span class="trust-quote">"It replaced 4 apps for us."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Beta tester, family of 4</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-quote">"The mental load is finally shared."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Early user, Amsterdam</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-quote">"I just tell Miiro and it's done."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Beta tester, couple</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-quote">"Cooking mode is a game changer."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Early user, parent of 3</span>
-    </div>
-    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
       <span class="trust-quote">"Finally, we're on the same page."</span>
       <span class="trust-sep"></span>
-      <span class="trust-source">— Beta tester, couple</span>
+      <span class="trust-source">Beta tester, couple</span>
     </div>
     <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"It replaced 4 apps for us."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Family of 4</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"The mental load is finally shared."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Beta tester, Amsterdam</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"I just tell Miiro and it's done."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Beta tester, couple</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
       <span class="trust-quote">"Our grocery game changed overnight."</span>
       <span class="trust-sep"></span>
-      <span class="trust-source">— Early user, family of 3</span>
+      <span class="trust-source">Family of 3</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"Cooking mode is a game changer."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Parent of 3</span>
     </div>
     <!-- Duplicate for seamless loop -->
     <div class="trust-item">
-      <span class="trust-quote">"It replaced 4 apps for us."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Beta tester, family of 4</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-quote">"The mental load is finally shared."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Early user, Amsterdam</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-quote">"I just tell Miiro and it's done."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Beta tester, couple</span>
-    </div>
-    <div class="trust-item">
-      <span class="trust-quote">"Cooking mode is a game changer."</span>
-      <span class="trust-sep"></span>
-      <span class="trust-source">— Early user, parent of 3</span>
-    </div>
-    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
       <span class="trust-quote">"Finally, we're on the same page."</span>
       <span class="trust-sep"></span>
-      <span class="trust-source">— Beta tester, couple</span>
+      <span class="trust-source">Beta tester, couple</span>
     </div>
     <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"It replaced 4 apps for us."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Family of 4</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"The mental load is finally shared."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Beta tester, Amsterdam</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"I just tell Miiro and it's done."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Beta tester, couple</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
       <span class="trust-quote">"Our grocery game changed overnight."</span>
       <span class="trust-sep"></span>
-      <span class="trust-source">— Early user, family of 3</span>
+      <span class="trust-source">Family of 3</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-quote">"Cooking mode is a game changer."</span>
+      <span class="trust-sep"></span>
+      <span class="trust-source">Parent of 3</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="stats-bar">
+  <div class="container animate-in">
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--coral);">1</div>
+      <div class="stat-label">message sorts your day</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--indigo);">2</div>
+      <div class="stat-label">people, finally in sync</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--mint);">0</div>
+      <div class="stat-label">ads. Not now, not ever.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--text-primary);">100%</div>
+      <div class="stat-label">real-time sync</div>
     </div>
   </div>
 </section>
@@ -1614,6 +1795,82 @@
     <p class="pricing-note animate-in">
       One subscription covers your whole household. Cancel anytime. 7-day free trial available for both plans.
     </p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq section" id="faq">
+  <div class="container">
+    <div class="faq-header animate-in">
+      <span class="label">Questions</span>
+      <h2>Frequently asked</h2>
+    </div>
+
+    <div class="faq-list animate-in">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What is Tell Miiro?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Tell Miiro is our AI assistant. Type everything on your mind in natural language, and Miiro automatically sorts it into tasks, events, meals, and grocery lists. Free users get 10 credits. Miiro+ users get unlimited.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is it really free?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. Every core feature works on the free plan. You get 3 lists, 2 calendars, 5 saved recipes, and sharing with 1 person. Miiro+ removes all limits.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Does my partner need to pay too?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access when you invite them to your household.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What happens after the free trial?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">After 7 days, you'll be charged $4.99/month or $44.99/year. Cancel anytime in iPhone Settings. You keep access until the end of your billing period.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What recipe sites does Toru work with?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Most major sites including BBC Good Food, RecipeTin Eats, Budget Bytes, Allrecipes, and many more.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is my data private?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Stored securely on Google Firebase with encryption. We don't sell data, show ads, or track browsing.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I use Miiro without sharing?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Absolutely. Miiro works great solo. Sharing is optional.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
