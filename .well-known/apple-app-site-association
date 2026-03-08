@@ -1,10 +1,12 @@
 {
   "applinks": {
-    "apps": [],
     "details": [
       {
-        "appID": "3AWJHCS4VV.com.miiroapp.main",
-        "paths": ["/invite/*", "/join/*"]
+        "appIDs": ["3AWJHCS4VV.com.miiroapp.main"],
+        "components": [
+          { "/": "/invite/*" },
+          { "/": "/join/*" }
+        ]
       }
     ]
   }
