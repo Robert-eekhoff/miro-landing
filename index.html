@@ -616,7 +616,226 @@
   .mock-result-type.type-grocery { color: var(--gold); background: rgba(212, 168, 83, 0.08); }
   .mock-result-type.type-event { color: var(--indigo); background: var(--indigo-bg); }
 
-  /* Floating accents around phone - removed to prevent overlap */
+  /* ===== TORU PHONE MOCKUP ===== */
+  .toru-screen {
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.7rem;
+    height: 100%;
+  }
+
+  .toru-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 0 4px;
+  }
+
+  .toru-header-title {
+    font-weight: 700;
+    font-size: 0.65rem;
+    color: var(--text-primary);
+  }
+
+  .toru-close {
+    font-size: 0.55rem;
+    color: var(--text-tertiary);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--cream);
+  }
+
+  .toru-url-bar {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.45rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 1.8em;
+  }
+
+  .toru-url-icon {
+    color: var(--text-tertiary);
+    font-size: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .toru-url-text {
+    display: inline;
+    color: var(--text-primary);
+  }
+
+  .toru-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 0.6em;
+    background: var(--text-primary);
+    margin-left: 1px;
+    vertical-align: text-bottom;
+    animation: blink-cursor 0.6s step-end infinite;
+  }
+
+  .toru-extract-btn {
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.2s ease, transform 0.15s ease;
+  }
+
+  .toru-extract-btn.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .toru-extract-btn.pulse {
+    animation: send-tap 0.3s ease;
+  }
+
+  .toru-loading {
+    text-align: center;
+    font-size: 0.45rem;
+    color: var(--text-tertiary);
+    padding: 6px 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .toru-loading.visible {
+    opacity: 1;
+  }
+
+  .toru-loading-dots {
+    display: inline-flex;
+    gap: 3px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  .toru-loading-dots span {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--coral-soft);
+  }
+
+  .toru-loading.visible .toru-loading-dots span:nth-child(1) { animation: processing-bounce 0.5s ease infinite 0s; }
+  .toru-loading.visible .toru-loading-dots span:nth-child(2) { animation: processing-bounce 0.5s ease infinite 0.1s; }
+  .toru-loading.visible .toru-loading-dots span:nth-child(3) { animation: processing-bounce 0.5s ease infinite 0.2s; }
+
+  .toru-recipe-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toru-recipe-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .toru-recipe-title {
+    font-family: 'Lora', serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .toru-recipe-meta {
+    font-size: 0.4rem;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+
+  .toru-recipe-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .toru-recipe-info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.42rem;
+    color: var(--text-secondary);
+  }
+
+  .toru-recipe-info-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: var(--coral-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.4rem;
+    color: var(--coral);
+  }
+
+  .toru-recipe-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .toru-btn-save {
+    flex: 1;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.38rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .toru-btn-grocery {
+    flex: 1;
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.38rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .toru-screen.fade-out {
+    animation: mock-fade-out 0.5s ease forwards;
+  }
 
   /* ===== TRUST STRIP ===== */
   .trust-strip {
@@ -1787,12 +2006,40 @@
         </div>
       </div>
       <div class="feature-visual">
-        <div class="feature-phone">
+        <div class="feature-phone" style="max-width: 240px;">
           <div class="phone-frame">
-            <div class="video-placeholder">
-              <div class="video-placeholder-bg"></div>
-              <div class="video-play-icon">▶</div>
-              <span class="video-placeholder-label">Toru demo</span>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <div class="toru-screen" id="toru-screen">
+                <div class="toru-header">
+                  <span class="toru-header-title">Toru</span>
+                  <div class="toru-close">✕</div>
+                </div>
+                <div class="toru-url-bar">
+                  <span class="toru-url-icon">🔗</span>
+                  <span class="toru-url-text" id="toru-url-text"></span><span class="toru-cursor" id="toru-cursor"></span>
+                </div>
+                <div class="toru-extract-btn" id="toru-extract-btn">Extract Recipe</div>
+                <div class="toru-loading" id="toru-loading">Extracting recipe<span class="toru-loading-dots"><span></span><span></span><span></span></span></div>
+                <div class="toru-recipe-card" id="toru-recipe-card">
+                  <div class="toru-recipe-title">Pad Thai</div>
+                  <div class="toru-recipe-meta">4 servings · 30 min</div>
+                  <div class="toru-recipe-info">
+                    <div class="toru-recipe-info-item">
+                      <div class="toru-recipe-info-icon">☰</div>
+                      12 ingredients
+                    </div>
+                    <div class="toru-recipe-info-item">
+                      <div class="toru-recipe-info-icon">#</div>
+                      6 steps
+                    </div>
+                  </div>
+                  <div class="toru-recipe-actions">
+                    <div class="toru-btn-save">Save to Cookbook</div>
+                    <div class="toru-btn-grocery">Add to Groceries</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2214,6 +2461,76 @@
 
     // Start after hero fade-in completes (1.5s delay)
     setTimeout(runCycle, 1500);
+  })();
+
+  // Toru phone mockup animation
+  (function() {
+    var url = 'recipetineats.com/pad-thai';
+    var urlText = document.getElementById('toru-url-text');
+    var cursor = document.getElementById('toru-cursor');
+    var extractBtn = document.getElementById('toru-extract-btn');
+    var loading = document.getElementById('toru-loading');
+    var recipeCard = document.getElementById('toru-recipe-card');
+    var screen = document.getElementById('toru-screen');
+
+    if (!urlText) return;
+
+    function reset() {
+      urlText.textContent = '';
+      cursor.style.display = 'inline-block';
+      extractBtn.classList.remove('visible', 'pulse');
+      loading.classList.remove('visible');
+      recipeCard.classList.remove('visible');
+      screen.classList.remove('fade-out');
+      screen.style.opacity = '1';
+    }
+
+    function runToru() {
+      reset();
+      var i = 0;
+
+      // Phase 1: URL typing (0-1.5s)
+      var typeInterval = setInterval(function() {
+        if (i < url.length) {
+          urlText.textContent += url[i];
+          i++;
+        } else {
+          clearInterval(typeInterval);
+          cursor.style.display = 'none';
+
+          // Show extract button
+          extractBtn.classList.add('visible');
+
+          // Phase 2: Button tap (1.5s-2s)
+          setTimeout(function() {
+            extractBtn.classList.add('pulse');
+
+            setTimeout(function() {
+              extractBtn.classList.remove('visible');
+
+              // Phase 3: Loading (2s-3s)
+              loading.classList.add('visible');
+
+              setTimeout(function() {
+                loading.classList.remove('visible');
+
+                // Phase 4: Recipe card appears (3s-5s)
+                recipeCard.classList.add('visible');
+
+                // Phase 5: Hold (5s-7.5s), then fade and restart
+                setTimeout(function() {
+                  screen.classList.add('fade-out');
+                  setTimeout(runToru, 500);
+                }, 2500);
+              }, 1000);
+            }, 300);
+          }, 500);
+        }
+      }, 50); // ~20 chars/sec = 1.5s for 30 chars
+    }
+
+    // Start with a delay, offset from hero animation
+    setTimeout(runToru, 2000);
   })();
 </script>
 
