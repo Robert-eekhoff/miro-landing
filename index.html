@@ -375,104 +375,129 @@
     font-size: 0.7rem;
   }
 
-  .mock-header {
-    text-align: center;
-    padding: 8px 0 4px;
+  .mock-tell-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 8px;
   }
 
-  .mock-header-title {
+  .mock-tell-header-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mock-tell-logo {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+  }
+
+  .mock-tell-title {
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-primary);
   }
 
-  .mock-header-date {
-    font-size: 0.65rem;
+  .mock-tell-close {
+    font-size: 0.75rem;
     color: var(--text-tertiary);
-    margin-top: 2px;
-  }
-
-  .mock-timeline-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    background: var(--cream);
-    border-radius: 12px;
-  }
-
-  .mock-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .mock-time {
-    font-size: 0.6rem;
-    color: var(--text-tertiary);
-    width: 36px;
-    flex-shrink: 0;
-  }
-
-  .mock-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  .mock-meal-card {
-    background: linear-gradient(135deg, rgba(59, 191, 160, 0.06), rgba(59, 191, 160, 0.02));
-    border: 1px solid rgba(59, 191, 160, 0.12);
-    border-radius: 12px;
-    padding: 10px 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .mock-meal-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 8px;
-    background: rgba(59, 191, 160, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .mock-meal-icon svg {
-    width: 13px;
-    height: 13px;
-  }
-
-  .mock-input-bar {
-    margin-top: auto;
-    background: var(--cream);
-    border-radius: 20px;
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .mock-input-text {
-    color: var(--text-tertiary);
-    font-size: 0.65rem;
-  }
-
-  .mock-input-icon {
     width: 20px;
     height: 20px;
-    background: var(--indigo);
-    border-radius: 50%;
-    margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    background: var(--cream);
+  }
+
+  .mock-tell-input {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-family: 'Lora', serif;
+    font-style: italic;
     font-size: 0.6rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .mock-tell-send {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+  }
+
+  .mock-tell-send-btn {
+    width: 22px;
+    height: 22px;
+    background: var(--indigo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
     color: white;
+  }
+
+  .mock-sorted-label {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    padding: 2px 0;
+  }
+
+  .mock-sorted-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2px 0;
+  }
+
+  .mock-result-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .mock-result-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .mock-result-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mock-result-title {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .mock-result-meta {
+    font-size: 0.5rem;
+    color: var(--text-tertiary);
+    line-height: 1.2;
+  }
+
+  .mock-result-type {
+    font-size: 0.45rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-shrink: 0;
   }
 
   /* Floating accents around phone */
@@ -1476,35 +1501,59 @@
         <div class="phone-screen">
           <div class="phone-notch"></div>
           <div class="phone-screen-content">
-            <div class="mock-header">
-              <div class="mock-header-title">My Day</div>
-              <div class="mock-header-date">Thursday, March 6</div>
-            </div>
-            <div class="mock-timeline-item">
-              <div class="mock-time">9:00</div>
-              <div class="mock-dot" style="background: var(--indigo)"></div>
-              <div class="mock-label">Doctor appointment</div>
-            </div>
-            <div class="mock-timeline-item">
-              <div class="mock-time">12:00</div>
-              <div class="mock-dot" style="background: var(--coral)"></div>
-              <div class="mock-label">Call vet about Rose</div>
-            </div>
-            <div class="mock-timeline-item">
-              <div class="mock-time">15:00</div>
-              <div class="mock-dot" style="background: var(--coral)"></div>
-              <div class="mock-label">Pick up Miles from school</div>
-            </div>
-            <div class="mock-meal-card">
-              <div class="mock-meal-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#3BBFA0" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M6 9h6"/></svg></div>
-              <div>
-                <div class="mock-label">Chicken & Rice</div>
-                <div style="font-size: 0.6rem; color: var(--text-tertiary)">Tonight's dinner</div>
+            <!-- Tell Miiro header -->
+            <div class="mock-tell-header">
+              <div class="mock-tell-header-left">
+                <img src="koi-logo.png" alt="" class="mock-tell-logo">
+                <span class="mock-tell-title">Tell Miiro</span>
               </div>
+              <div class="mock-tell-close">✕</div>
             </div>
-            <div class="mock-input-bar">
-              <span class="mock-input-text">Tell Miiro what's on your mind...</span>
-              <div class="mock-input-icon">↑</div>
+
+            <!-- Brain dump input -->
+            <div class="mock-tell-input">
+              Pick up Miles at 3, pasta for dinner, need milk eggs chicken, dentist Thursday 2pm
+            </div>
+            <div class="mock-tell-send">
+              <div class="mock-tell-send-btn">↑</div>
+            </div>
+
+            <!-- Divider -->
+            <div class="mock-sorted-divider"></div>
+            <div class="mock-sorted-label">Miiro sorted this into:</div>
+
+            <!-- Sorted results -->
+            <div class="mock-result-card">
+              <div class="mock-result-dot" style="background: var(--coral)"></div>
+              <div class="mock-result-content">
+                <div class="mock-result-title">Pick up Miles</div>
+                <div class="mock-result-meta">Today 3:00 PM</div>
+              </div>
+              <span class="mock-result-type" style="color: var(--coral)">Task</span>
+            </div>
+            <div class="mock-result-card">
+              <div class="mock-result-dot" style="background: var(--mint)"></div>
+              <div class="mock-result-content">
+                <div class="mock-result-title">Pasta</div>
+                <div class="mock-result-meta">Tonight's dinner</div>
+              </div>
+              <span class="mock-result-type" style="color: var(--mint)">Meal</span>
+            </div>
+            <div class="mock-result-card">
+              <div class="mock-result-dot" style="background: var(--gold)"></div>
+              <div class="mock-result-content">
+                <div class="mock-result-title">Milk, eggs, chicken</div>
+                <div class="mock-result-meta">Shopping list</div>
+              </div>
+              <span class="mock-result-type" style="color: var(--gold)">Grocery</span>
+            </div>
+            <div class="mock-result-card">
+              <div class="mock-result-dot" style="background: var(--indigo)"></div>
+              <div class="mock-result-content">
+                <div class="mock-result-title">Dentist</div>
+                <div class="mock-result-meta">Thursday 2:00 PM</div>
+              </div>
+              <span class="mock-result-type" style="color: var(--indigo)">Event</span>
             </div>
           </div>
         </div>
