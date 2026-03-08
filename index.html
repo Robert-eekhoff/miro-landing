@@ -422,6 +422,26 @@
     color: var(--text-primary);
     line-height: 1.55;
     position: relative;
+    min-height: 3.2em;
+  }
+
+  .mock-tell-input-text {
+    display: inline;
+  }
+
+  .mock-tell-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 0.65em;
+    background: var(--text-primary);
+    margin-left: 1px;
+    vertical-align: text-bottom;
+    animation: blink-cursor 0.6s step-end infinite;
+  }
+
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 
   .mock-tell-send {
@@ -440,6 +460,17 @@
     justify-content: center;
     font-size: 0.45rem;
     color: white;
+    transition: transform 0.15s ease;
+  }
+
+  .mock-tell-send-btn.pulse {
+    animation: send-tap 0.3s ease;
+  }
+
+  @keyframes send-tap {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4); }
+    100% { transform: scale(1); }
   }
 
   .mock-sorted-label {
@@ -449,6 +480,44 @@
     text-transform: uppercase;
     color: var(--text-tertiary);
     padding: 0;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .mock-sorted-label.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mock-processing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .mock-processing.visible {
+    opacity: 1;
+  }
+
+  .mock-processing-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--indigo-soft);
+  }
+
+  .mock-processing.visible .mock-processing-dot:nth-child(1) { animation: processing-bounce 0.5s ease infinite 0s; }
+  .mock-processing.visible .mock-processing-dot:nth-child(2) { animation: processing-bounce 0.5s ease infinite 0.1s; }
+  .mock-processing.visible .mock-processing-dot:nth-child(3) { animation: processing-bounce 0.5s ease infinite 0.2s; }
+
+  @keyframes processing-bounce {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-2px); }
   }
 
   .mock-sorted-divider {
@@ -456,6 +525,12 @@
     align-items: center;
     gap: 8px;
     margin: 2px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mock-sorted-divider.visible {
+    opacity: 1;
   }
 
   .mock-sorted-divider::before,
@@ -482,6 +557,22 @@
     background: white;
     border: 1px solid var(--border);
     border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .mock-result-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .phone-screen-content.fade-out {
+    animation: mock-fade-out 0.5s ease forwards;
+  }
+
+  @keyframes mock-fade-out {
+    to { opacity: 0; }
   }
 
   .mock-result-dot {
@@ -1517,18 +1608,25 @@
 
             <!-- Brain dump input -->
             <div class="mock-tell-input">
-              Pick up Miles at 3, pasta for dinner, need milk eggs chicken, dentist Thursday 2pm
+              <span class="mock-tell-input-text" id="mock-typing"></span><span class="mock-tell-cursor" id="mock-cursor"></span>
             </div>
             <div class="mock-tell-send">
-              <div class="mock-tell-send-btn">↑</div>
+              <div class="mock-tell-send-btn" id="mock-send-btn">↑</div>
             </div>
 
-            <!-- Divider with processing indicator -->
-            <div class="mock-sorted-divider"><div class="mock-sorted-divider-dot"></div></div>
-            <div class="mock-sorted-label">Miiro sorted this into:</div>
+            <!-- Processing indicator -->
+            <div class="mock-processing" id="mock-processing">
+              <div class="mock-processing-dot"></div>
+              <div class="mock-processing-dot"></div>
+              <div class="mock-processing-dot"></div>
+            </div>
+
+            <!-- Divider and label -->
+            <div class="mock-sorted-divider" id="mock-divider"><div class="mock-sorted-divider-dot"></div></div>
+            <div class="mock-sorted-label" id="mock-sorted-label">Miiro sorted this into:</div>
 
             <!-- Sorted results -->
-            <div class="mock-result-card">
+            <div class="mock-result-card" data-mock-card>
               <div class="mock-result-dot" style="background: var(--coral)"></div>
               <div class="mock-result-content">
                 <div class="mock-result-title">Pick up Miles</div>
@@ -1536,7 +1634,7 @@
               </div>
               <span class="mock-result-type type-task">Task</span>
             </div>
-            <div class="mock-result-card">
+            <div class="mock-result-card" data-mock-card>
               <div class="mock-result-dot" style="background: var(--mint)"></div>
               <div class="mock-result-content">
                 <div class="mock-result-title">Pasta</div>
@@ -1544,7 +1642,7 @@
               </div>
               <span class="mock-result-type type-meal">Meal</span>
             </div>
-            <div class="mock-result-card">
+            <div class="mock-result-card" data-mock-card>
               <div class="mock-result-dot" style="background: var(--gold)"></div>
               <div class="mock-result-content">
                 <div class="mock-result-title">Milk, eggs, chicken</div>
@@ -1552,7 +1650,7 @@
               </div>
               <span class="mock-result-type type-grocery">Grocery</span>
             </div>
-            <div class="mock-result-card">
+            <div class="mock-result-card" data-mock-card>
               <div class="mock-result-dot" style="background: var(--indigo)"></div>
               <div class="mock-result-content">
                 <div class="mock-result-title">Dentist</div>
@@ -2039,6 +2137,84 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // Hero phone mockup animation
+  (function() {
+    const text = 'Pick up Miles at 3, pasta for dinner, need milk eggs chicken, dentist Thursday 2pm';
+    const typingEl = document.getElementById('mock-typing');
+    const cursorEl = document.getElementById('mock-cursor');
+    const sendBtn = document.getElementById('mock-send-btn');
+    const processing = document.getElementById('mock-processing');
+    const divider = document.getElementById('mock-divider');
+    const sortedLabel = document.getElementById('mock-sorted-label');
+    const cards = document.querySelectorAll('[data-mock-card]');
+    const screenContent = typingEl && typingEl.closest('.phone-screen-content');
+
+    if (!typingEl) return;
+
+    function reset() {
+      typingEl.textContent = '';
+      cursorEl.style.display = 'inline-block';
+      sendBtn.classList.remove('pulse');
+      processing.classList.remove('visible');
+      divider.classList.remove('visible');
+      sortedLabel.classList.remove('visible');
+      cards.forEach(c => c.classList.remove('visible'));
+      if (screenContent) {
+        screenContent.classList.remove('fade-out');
+        screenContent.style.opacity = '1';
+      }
+    }
+
+    function runCycle() {
+      reset();
+      var i = 0;
+
+      // Phase 1: Typing (0-3s)
+      var typeInterval = setInterval(function() {
+        if (i < text.length) {
+          typingEl.textContent += text[i];
+          i++;
+        } else {
+          clearInterval(typeInterval);
+          // Phase 2: Send pulse (3s-3.3s)
+          cursorEl.style.display = 'none';
+          sendBtn.classList.add('pulse');
+
+          setTimeout(function() {
+            // Phase 3: Processing (3.3s-3.8s)
+            processing.classList.add('visible');
+
+            setTimeout(function() {
+              processing.classList.remove('visible');
+              // Phase 4: Cards stagger in (3.8s-5s)
+              divider.classList.add('visible');
+              sortedLabel.classList.add('visible');
+
+              cards.forEach(function(card, idx) {
+                setTimeout(function() {
+                  card.classList.add('visible');
+                }, idx * 200);
+              });
+
+              // Phase 5: Hold (5s-8s), then fade out and restart
+              setTimeout(function() {
+                if (screenContent) {
+                  screenContent.classList.add('fade-out');
+                }
+                setTimeout(function() {
+                  runCycle();
+                }, 500);
+              }, 3000);
+            }, 500);
+          }, 300);
+        }
+      }, 37); // ~27 chars/sec = 3s for 80 chars
+    }
+
+    // Start after hero fade-in completes (1.5s delay)
+    setTimeout(runCycle, 1500);
+  })();
 </script>
 
 </body>
