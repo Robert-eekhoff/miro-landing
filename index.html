@@ -327,45 +327,42 @@
     opacity: 0;
   }
 
-  .phone-frame {
-    background: #1a1a1a;
-    border: none;
-    border-radius: 32px;
-    padding: 4px;
-    box-shadow: 0 20px 60px rgba(44, 40, 37, 0.12);
+  .iphone-mockup {
     position: relative;
     width: 260px;
     max-width: 260px;
-    overflow: hidden;
+    filter: drop-shadow(0 20px 60px rgba(44, 40, 37, 0.12));
   }
 
-  .phone-screen {
-    background: #FAF8F5;
-    border-radius: 28px;
-    overflow: hidden;
+  .iphone-mockup > svg {
+    width: 100%;
+    height: auto;
+    display: block;
     position: relative;
+    z-index: 1;
+  }
+
+  .iphone-screen {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border-radius: 32px;
+    overflow: hidden;
+    z-index: 2;
+    background: #FAF8F5;
     display: flex;
     flex-direction: column;
-    height: auto;
-    min-height: 0;
   }
 
-  .phone-notch {
-    width: 80px;
-    height: 20px;
-    background: #1a1a1a;
-    border-radius: 0 0 12px 12px;
-    margin: -1px auto 0;
-    position: relative;
-    z-index: 2;
-  }
-
-  .phone-screen-content {
-    padding: 8px 12px 12px;
+  .iphone-screen-content {
+    padding: 40px 12px 12px;
     display: flex;
     flex-direction: column;
     gap: 6px;
     font-size: 0.7rem;
+    flex: 1;
   }
 
   .mock-tell-header {
@@ -560,7 +557,7 @@
     transform: translateY(0);
   }
 
-  .phone-screen-content.fade-out {
+  .iphone-screen-content.fade-out {
     animation: mock-fade-out 0.5s ease forwards;
   }
 
@@ -611,7 +608,7 @@
 
   /* ===== TORU PHONE MOCKUP ===== */
   .toru-screen {
-    padding: 12px 14px 16px;
+    padding: 40px 12px 12px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -831,7 +828,7 @@
 
   /* ===== SHARED LIST MOCKUP ===== */
   .shared-screen {
-    padding: 10px 14px 16px;
+    padding: 40px 12px 12px;
     display: flex;
     flex-direction: column;
     font-size: 0.7rem;
@@ -1607,8 +1604,8 @@
     justify-content: center;
   }
 
-  .feature-phone .phone-frame {
-    box-shadow: 0 16px 48px rgba(44, 40, 37, 0.08);
+  .feature-phone .iphone-mockup {
+    filter: drop-shadow(0 16px 48px rgba(44, 40, 37, 0.08));
   }
 
   /* ===== PRICING ===== */
@@ -2124,7 +2121,7 @@
     .hero-device {
       max-width: 240px;
     }
-    .phone-frame {
+    .iphone-mockup {
       width: 230px;
       max-width: 230px;
     }
@@ -2336,10 +2333,17 @@
 
       <!-- Phone Mockup -->
       <div class="hero-device">
-      <div class="phone-frame">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-          <div class="phone-screen-content">
+      <div class="iphone-mockup">
+        <svg viewBox="0 0 260 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="258" height="538" rx="38" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+          <rect x="8" y="8" width="244" height="524" rx="32" fill="#FAF8F5"/>
+          <rect x="95" y="14" width="70" height="22" rx="11" fill="#1a1a1a"/>
+          <rect x="258" y="120" width="3" height="40" rx="1" fill="#1a1a1a"/>
+          <rect x="-1" y="100" width="3" height="28" rx="1" fill="#1a1a1a"/>
+          <rect x="-1" y="140" width="3" height="28" rx="1" fill="#1a1a1a"/>
+        </svg>
+        <div class="iphone-screen">
+          <div class="iphone-screen-content">
             <!-- Tell Miiro header -->
             <div class="mock-tell-header">
               <div class="mock-tell-header-left">
@@ -2650,9 +2654,16 @@
       </div>
       <div class="feature-visual">
         <div class="feature-phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-notch"></div>
+          <div class="iphone-mockup">
+            <svg viewBox="0 0 260 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="258" height="538" rx="38" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+              <rect x="8" y="8" width="244" height="524" rx="32" fill="#FAF8F5"/>
+              <rect x="95" y="14" width="70" height="22" rx="11" fill="#1a1a1a"/>
+              <rect x="258" y="120" width="3" height="40" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="100" width="3" height="28" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="140" width="3" height="28" rx="1" fill="#1a1a1a"/>
+            </svg>
+            <div class="iphone-screen">
               <div class="toru-screen" id="toru-screen">
                 <div class="toru-header">
                   <span class="toru-header-title">Toru</span>
@@ -2717,9 +2728,16 @@
       </div>
       <div class="feature-visual">
         <div class="feature-phone">
-          <div class="phone-frame">
-            <div class="phone-screen">
-              <div class="phone-notch"></div>
+          <div class="iphone-mockup">
+            <svg viewBox="0 0 260 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="258" height="538" rx="38" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+              <rect x="8" y="8" width="244" height="524" rx="32" fill="#FAF8F5"/>
+              <rect x="95" y="14" width="70" height="22" rx="11" fill="#1a1a1a"/>
+              <rect x="258" y="120" width="3" height="40" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="100" width="3" height="28" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="140" width="3" height="28" rx="1" fill="#1a1a1a"/>
+            </svg>
+            <div class="iphone-screen">
               <div class="shared-screen" id="shared-screen">
                 <div class="shared-header">
                   <div class="shared-header-left">
@@ -3177,7 +3195,7 @@
     const divider = document.getElementById('mock-divider');
     const sortedLabel = document.getElementById('mock-sorted-label');
     const cards = document.querySelectorAll('[data-mock-card]');
-    const screenContent = typingEl && typingEl.closest('.phone-screen-content');
+    const screenContent = typingEl && typingEl.closest('.iphone-screen-content');
 
     if (!typingEl) return;
 
