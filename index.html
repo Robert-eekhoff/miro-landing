@@ -1107,6 +1107,208 @@
     margin: 0 auto;
   }
 
+  /* ===== TELL MIIRO DEMO ===== */
+  .tell-demo {
+    background: white;
+  }
+
+  .tell-demo-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: start;
+  }
+
+  .tell-demo-card {
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    border: 1px solid var(--border);
+  }
+
+  .tell-demo-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .tell-demo-input {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    min-height: 80px;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    border: 1px solid var(--border);
+  }
+
+  .tell-demo-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--coral);
+    margin-left: 1px;
+    vertical-align: text-bottom;
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .tell-demo-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0 16px;
+  }
+
+  .tell-demo-divider::before,
+  .tell-demo-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .tell-demo-divider-text {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+  }
+
+  .tell-demo-results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tell-demo-result {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: white;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .tell-demo-result.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tell-demo-result-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tell-demo-result-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  .tell-demo-result-icon.task { background: var(--coral-bg); }
+  .tell-demo-result-icon.task svg { stroke: var(--coral); }
+  .tell-demo-result-icon.meal { background: var(--mint-bg); }
+  .tell-demo-result-icon.meal svg { stroke: var(--mint); }
+  .tell-demo-result-icon.event { background: var(--indigo-bg); }
+  .tell-demo-result-icon.event svg { stroke: var(--indigo); }
+  .tell-demo-result-icon.grocery { background: rgba(212, 168, 83, 0.08); }
+  .tell-demo-result-icon.grocery svg { stroke: var(--gold); }
+
+  .tell-demo-result-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tell-demo-result-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .tell-demo-result-meta {
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  .tell-demo-result-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .tell-demo-result-badge.task { background: var(--coral-bg); color: var(--coral); }
+  .tell-demo-result-badge.meal { background: var(--mint-bg); color: var(--mint); }
+  .tell-demo-result-badge.event { background: var(--indigo-bg); color: var(--indigo); }
+  .tell-demo-result-badge.grocery { background: rgba(212, 168, 83, 0.08); color: var(--gold); }
+
+  .tell-demo-replay {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: var(--coral);
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .tell-demo-replay.visible { opacity: 1; }
+  .tell-demo-replay:hover { text-decoration: underline; }
+
+  .tell-demo-text .label { color: var(--coral); }
+
+  .tell-demo-text h3 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .tell-demo-text p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .tell-demo-text .tell-demo-note {
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+  }
+
   /* ===== QUOTE BREAK ===== */
   .quote-break {
     background: var(--cream);
@@ -1814,6 +2016,11 @@
     .hero-ctas { justify-content: center; }
     .hero-device { max-width: 260px; margin-top: 40px; }
 
+    .tell-demo-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
     .feature-block {
       grid-template-columns: 1fr;
       gap: 40px;
@@ -2279,8 +2486,86 @@
   </div>
 </section>
 
+<!-- ===== TELL MIIRO DEMO ===== -->
+<section class="tell-demo section">
+  <div class="container">
+    <div class="tell-demo-grid animate-in">
+      <div class="tell-demo-visual">
+        <div class="tell-demo-card">
+          <span class="tell-demo-label">Tell Miiro...</span>
+          <div class="tell-demo-input">
+            <span id="tell-demo-typing"></span><span class="tell-demo-cursor" id="tell-demo-cursor"></span>
+          </div>
+          <div class="tell-demo-divider" id="tell-demo-divider" style="opacity: 0;">
+            <span class="tell-demo-divider-text">Miiro sorted this into</span>
+          </div>
+          <div class="tell-demo-results">
+            <div class="tell-demo-result" data-demo-result>
+              <div class="tell-demo-result-icon task">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <div class="tell-demo-result-content">
+                <div class="tell-demo-result-title">Pick up Miles from school</div>
+                <div class="tell-demo-result-meta">→ Today 3:00 PM</div>
+              </div>
+              <span class="tell-demo-result-badge task">Task</span>
+            </div>
+            <div class="tell-demo-result" data-demo-result>
+              <div class="tell-demo-result-icon meal">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              </div>
+              <div class="tell-demo-result-content">
+                <div class="tell-demo-result-title">Chicken and rice</div>
+                <div class="tell-demo-result-meta">→ Tonight's dinner</div>
+              </div>
+              <span class="tell-demo-result-badge meal">Meal</span>
+            </div>
+            <div class="tell-demo-result" data-demo-result>
+              <div class="tell-demo-result-icon event">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="tell-demo-result-content">
+                <div class="tell-demo-result-title">Doctor appointment</div>
+                <div class="tell-demo-result-meta">→ Tuesday 2:00 PM · Personal calendar</div>
+              </div>
+              <span class="tell-demo-result-badge event">Event</span>
+            </div>
+            <div class="tell-demo-result" data-demo-result>
+              <div class="tell-demo-result-icon task">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <div class="tell-demo-result-content">
+                <div class="tell-demo-result-title">Call the vet about Rose's appointment</div>
+                <div class="tell-demo-result-meta">→ Today</div>
+              </div>
+              <span class="tell-demo-result-badge task">Task</span>
+            </div>
+            <div class="tell-demo-result" data-demo-result>
+              <div class="tell-demo-result-icon grocery">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </div>
+              <div class="tell-demo-result-content">
+                <div class="tell-demo-result-title">Chicken, Rice, Olive oil, Eggs</div>
+                <div class="tell-demo-result-meta">→ Shopping list</div>
+              </div>
+              <span class="tell-demo-result-badge grocery">Grocery</span>
+            </div>
+          </div>
+          <button class="tell-demo-replay" id="tell-demo-replay" onclick="runTellDemo()">↻ Watch again</button>
+        </div>
+      </div>
+      <div class="tell-demo-text">
+        <span class="label">Tell Miiro</span>
+        <h3>Tell Miiro what's on your mind</h3>
+        <p>Type it like you'd text a friend. Miiro turns your thoughts into tasks, events, meals, and groceries. Instantly.</p>
+        <p class="tell-demo-note">10 free credits. Unlimited with Miiro+.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== TORU FEATURE ===== -->
-<section class="features section" style="background: white;">
+<section class="features section" style="background: var(--cream);">
   <div class="container">
     <div class="feature-block reverse animate-in">
       <div class="feature-text">
@@ -2336,7 +2621,7 @@
 </section>
 
 <!-- ===== SHARED LIVING FEATURE ===== -->
-<section class="features section" style="background: var(--cream);">
+<section class="features section" style="background: white;">
   <div class="container">
     <div class="feature-block animate-in">
       <div class="feature-text">
@@ -2717,6 +3002,59 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // Tell Miiro demo animation
+  var tellDemoText = "Pick up Miles from school at 3, we need chicken and rice for dinner tonight, doctor appointment Tuesday 2pm, call the vet about Rose's appointment, and grab olive oil and eggs from the store";
+  var tellDemoTypingEl = document.getElementById('tell-demo-typing');
+  var tellDemoCursor = document.getElementById('tell-demo-cursor');
+  var tellDemoDivider = document.getElementById('tell-demo-divider');
+  var tellDemoResults = document.querySelectorAll('[data-demo-result]');
+  var tellDemoReplay = document.getElementById('tell-demo-replay');
+  var tellDemoTimeout = null;
+
+  function runTellDemo() {
+    if (!tellDemoTypingEl) return;
+    // Reset
+    tellDemoTypingEl.textContent = '';
+    tellDemoCursor.style.display = 'inline-block';
+    tellDemoDivider.style.opacity = '0';
+    tellDemoResults.forEach(function(r) { r.classList.remove('visible'); });
+    tellDemoReplay.classList.remove('visible');
+
+    var i = 0;
+    function typeChar() {
+      if (i < tellDemoText.length) {
+        tellDemoTypingEl.textContent += tellDemoText[i];
+        i++;
+        tellDemoTimeout = setTimeout(typeChar, 18);
+      } else {
+        tellDemoCursor.style.display = 'none';
+        setTimeout(function() {
+          tellDemoDivider.style.opacity = '1';
+          tellDemoResults.forEach(function(r, idx) {
+            setTimeout(function() { r.classList.add('visible'); }, idx * 200);
+          });
+          setTimeout(function() {
+            tellDemoReplay.classList.add('visible');
+          }, tellDemoResults.length * 200 + 300);
+        }, 400);
+      }
+    }
+    tellDemoTimeout = setTimeout(typeChar, 600);
+  }
+
+  // Auto-start when section scrolls into view
+  if (tellDemoTypingEl) {
+    var tellDemoObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          runTellDemo();
+          tellDemoObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    tellDemoObserver.observe(tellDemoTypingEl.closest('.tell-demo'));
+  }
 
   // Hero phone mockup animation
   (function() {
