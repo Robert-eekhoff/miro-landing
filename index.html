@@ -1060,6 +1060,17 @@
     z-index: 0;
   }
 
+  .steps-progress-line {
+    position: absolute;
+    top: 39px;
+    left: calc(16.66% + 50px);
+    width: 0%;
+    height: 2px;
+    background: var(--indigo);
+    z-index: 0;
+    transition: width 0.4s ease;
+  }
+
   .step {
     text-align: center;
   }
@@ -1076,22 +1087,21 @@
     z-index: 1;
     background: var(--cream);
     border: 2px solid var(--border);
+    transition: border-color 0.3s ease;
   }
 
-  .step-icon.indigo { border-color: var(--indigo); }
-  .step-icon.rose { border-color: var(--coral-soft); }
-  .step-icon.warm { border-color: var(--text-tertiary); }
+  .step-icon.active { border-color: var(--indigo); }
 
   .step-icon svg {
     width: 32px;
     height: 32px;
     stroke-width: 1.5;
     fill: none;
+    stroke: var(--text-tertiary);
+    transition: stroke 0.3s ease;
   }
 
-  .step-icon.indigo svg { stroke: var(--indigo); }
-  .step-icon.rose svg { stroke: var(--text-secondary); }
-  .step-icon.warm svg { stroke: var(--text-secondary); }
+  .step-icon.active svg { stroke: var(--indigo); }
 
   .step h3 {
     font-family: 'Poppins', sans-serif;
@@ -2047,6 +2057,7 @@
       gap: 32px;
     }
     .steps-grid::before { display: none; }
+    .steps-progress-line { display: none; }
 
     .pricing-cards {
       grid-template-columns: 1fr;
@@ -2451,23 +2462,24 @@
       <span class="label">How it works</span>
       <h2>From chaos to calm in minutes.</h2>
     </div>
-    <div class="steps-grid animate-in">
+    <div class="steps-grid animate-in" id="steps-grid">
+      <div class="steps-progress-line" id="steps-progress-line"></div>
       <div class="step">
-        <div class="step-icon indigo">
+        <div class="step-icon active" data-step-icon>
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <h3>Tell Miiro</h3>
         <p>Type everything on your mind. Tasks, meals, groceries. Miiro sorts it all.</p>
       </div>
       <div class="step">
-        <div class="step-icon rose">
+        <div class="step-icon" data-step-icon>
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <h3>Share with your partner</h3>
         <p>Invite them. Everything syncs instantly. Chat right on each task.</p>
       </div>
       <div class="step">
-        <div class="step-icon warm">
+        <div class="step-icon" data-step-icon>
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </div>
         <h3>See your day</h3>
@@ -3043,6 +3055,47 @@
     }
     tellDemoTimeout = setTimeout(typeChar, 600);
   }
+
+  // How it works scroll animation
+  (function() {
+    var section = document.querySelector('.how-it-works');
+    var icons = document.querySelectorAll('[data-step-icon]');
+    var progressLine = document.getElementById('steps-progress-line');
+    if (!section || icons.length === 0) return;
+
+    // Calculate the max width the progress line can span
+    var stepsGrid = document.getElementById('steps-grid');
+
+    function updateSteps() {
+      var rect = section.getBoundingClientRect();
+      var sectionH = rect.height;
+      var viewH = window.innerHeight;
+
+      // Progress: 0 when section top hits bottom of viewport, 1 when section bottom hits top
+      var progress = (viewH - rect.top) / (sectionH + viewH);
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Map to active step: 0-0.33 = step 1, 0.33-0.66 = step 2, 0.66-1 = step 3
+      var activeIdx = progress < 0.4 ? 0 : progress < 0.65 ? 1 : 2;
+
+      icons.forEach(function(icon, i) {
+        if (i === activeIdx) {
+          icon.classList.add('active');
+        } else {
+          icon.classList.remove('active');
+        }
+      });
+
+      // Progress line: 0% at step 1, 50% at step 2, 100% at step 3
+      var lineProgress = activeIdx === 0 ? 0 : activeIdx === 1 ? 50 : 100;
+      if (progressLine) {
+        progressLine.style.width = lineProgress + '%';
+      }
+    }
+
+    window.addEventListener('scroll', updateSteps, { passive: true });
+    updateSteps();
+  })();
 
   // Auto-start when section scrolls into view
   if (tellDemoTypingEl) {
