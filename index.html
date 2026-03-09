@@ -1569,6 +1569,30 @@
     background: var(--coral);
   }
 
+  .feature-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .feature-highlight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-highlight svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke: var(--text-tertiary);
+    fill: none;
+    stroke-width: 2;
+  }
+
   .feature-visual {
     position: relative;
   }
@@ -2603,11 +2627,22 @@
     <div class="feature-block reverse animate-in">
       <div class="feature-text">
         <span class="feature-kanji coral">取</span>
-        <h3>Toru Recipe Finder</h3>
-        <p>Paste any URL. We extract ingredients, steps, and servings. Save to your cookbook or add everything to your grocery list with one tap.</p>
-        <div class="feature-detail">
-          <span class="feature-detail-dot"></span>
-          Works with most major recipe sites
+        <h3>Paste a link. Get the recipe. Start cooking.</h3>
+        <p>Every recipe online is buried under ads, pop-ups, and someone's life story. Toru strips all of that away. Paste any URL and get clean ingredients and steps in seconds.</p>
+        <p>Save recipes to your shared cookbook. Add every ingredient to your grocery list with one tap. Then switch to cooking mode: step-by-step guidance with built-in timers, designed for messy hands and busy kitchens.</p>
+        <div class="feature-highlights">
+          <div class="feature-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Works with RecipeTin Eats, BBC Good Food, Budget Bytes, and hundreds more
+          </div>
+          <div class="feature-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Save to your cookbook, share with your household
+          </div>
+          <div class="feature-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Cooking mode with built-in timers for every step
+          </div>
         </div>
       </div>
       <div class="feature-visual">
@@ -2659,11 +2694,22 @@
     <div class="feature-block animate-in">
       <div class="feature-text">
         <span class="feature-kanji mint">間</span>
-        <h3>Shared Living</h3>
-        <p>Shared lists, calendars, and meal plans, all synced in real time. When they check off milk, you see it disappear. Chat right on any task. No more "did you see my text?"</p>
-        <div class="feature-detail">
-          <span class="feature-detail-dot"></span>
-          One subscription covers your whole household
+        <h3>Finally on the same page. Literally.</h3>
+        <p>The invisible load of running a household is real. Who's picking up the kid? Did anyone buy milk? What's for dinner? With Miiro, both of you see the same lists, the same calendar, the same meal plan. Updated in real time.</p>
+        <p>When your partner checks off milk at the store, you see it disappear from your phone. Add a task and they get notified. Chat right on any item instead of sending another text that gets buried.</p>
+        <div class="feature-highlights">
+          <div class="feature-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            Real-time sync across all devices, instantly
+          </div>
+          <div class="feature-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Shared lists, calendars, and meal plans for your whole household
+          </div>
+          <div class="feature-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Private calendars stay completely private
+          </div>
         </div>
       </div>
       <div class="feature-visual">
