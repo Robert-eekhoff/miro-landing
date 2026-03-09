@@ -606,6 +606,64 @@
   .mock-result-type.type-grocery { color: var(--gold); background: rgba(212, 168, 83, 0.08); }
   .mock-result-type.type-event { color: var(--indigo); background: var(--indigo-bg); }
 
+  .mock-bottom-input {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding: 6px 8px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+  }
+
+  .mock-bottom-input-text {
+    flex: 1;
+    font-size: 0.6rem;
+    color: var(--text-tertiary);
+  }
+
+  .mock-bottom-input-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--indigo);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    flex-shrink: 0;
+  }
+
+  .toru-recent {
+    margin-top: auto;
+  }
+
+  .toru-recent-label {
+    font-size: 0.55rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .toru-recent-pills {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .toru-recent-pill {
+    font-size: 0.55rem;
+    padding: 3px 8px;
+    background: var(--cream);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
   /* ===== TORU PHONE MOCKUP ===== */
   .toru-screen {
     padding: 40px 12px 12px;
@@ -613,6 +671,7 @@
     flex-direction: column;
     gap: 8px;
     font-size: 0.7rem;
+    flex: 1;
   }
 
   .toru-header {
@@ -832,6 +891,7 @@
     display: flex;
     flex-direction: column;
     font-size: 0.7rem;
+    flex: 1;
   }
 
   .shared-header {
@@ -969,7 +1029,7 @@
     align-items: center;
     gap: 6px;
     padding: 6px 0;
-    margin-top: 6px;
+    margin-top: auto;
     border-top: 1px solid var(--border);
   }
 
@@ -2405,6 +2465,10 @@
               </div>
               <span class="mock-result-type type-event">Event</span>
             </div>
+            <div class="mock-bottom-input">
+              <span class="mock-bottom-input-text">What else is on your mind...</span>
+              <div class="mock-bottom-input-btn">↑</div>
+            </div>
           </div>
         </div>
       </div>
@@ -2691,6 +2755,13 @@
                   <div class="toru-recipe-actions">
                     <div class="toru-btn-save">Save to Cookbook</div>
                     <div class="toru-btn-grocery">Add to Groceries</div>
+                  </div>
+                </div>
+                <div class="toru-recent">
+                  <div class="toru-recent-label">Recently imported</div>
+                  <div class="toru-recent-pills">
+                    <span class="toru-recent-pill">Pesto Pasta</span>
+                    <span class="toru-recent-pill">Salmon Bowl</span>
                   </div>
                 </div>
               </div>
