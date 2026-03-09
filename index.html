@@ -328,37 +328,40 @@
   }
 
   .phone-frame {
-    background: none;
-    border: 6px solid #1E1D1B;
-    border-radius: 36px;
-    padding: 0;
+    background: #1a1a1a;
+    border: none;
+    border-radius: 32px;
+    padding: 4px;
     box-shadow: 0 20px 60px rgba(44, 40, 37, 0.12);
     position: relative;
     width: 260px;
     max-width: 260px;
+    overflow: hidden;
   }
 
   .phone-screen {
-    background: white;
-    border-radius: 30px;
+    background: #FAF8F5;
+    border-radius: 28px;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
+    height: auto;
+    min-height: 0;
   }
 
   .phone-notch {
     width: 80px;
     height: 20px;
-    background: #1E1D1B;
+    background: #1a1a1a;
     border-radius: 0 0 12px 12px;
-    margin: 0 auto;
+    margin: -1px auto 0;
     position: relative;
     z-index: 2;
   }
 
   .phone-screen-content {
-    padding: 10px 14px 16px;
+    padding: 8px 12px 12px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -2122,8 +2125,8 @@
       max-width: 240px;
     }
     .phone-frame {
-      width: 220px;
-      max-width: 220px;
+      width: 230px;
+      max-width: 230px;
     }
 
     .stats-bar .container {
