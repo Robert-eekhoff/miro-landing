@@ -349,7 +349,6 @@
   .phone-screen {
     background: white;
     border-radius: 24px;
-    aspect-ratio: 9/19.5;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -367,8 +366,7 @@
   }
 
   .phone-screen-content {
-    flex: 1;
-    padding: 10px 14px 14px;
+    padding: 10px 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -618,12 +616,11 @@
 
   /* ===== TORU PHONE MOCKUP ===== */
   .toru-screen {
-    padding: 12px 14px 14px;
+    padding: 12px 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     font-size: 0.7rem;
-    height: 100%;
   }
 
   .toru-header {
@@ -839,11 +836,10 @@
 
   /* ===== SHARED LIST MOCKUP ===== */
   .shared-screen {
-    padding: 10px 14px 14px;
+    padding: 10px 14px 16px;
     display: flex;
     flex-direction: column;
     font-size: 0.7rem;
-    height: 100%;
   }
 
   .shared-header {
@@ -881,7 +877,6 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    flex: 1;
   }
 
   .shared-item {
@@ -982,7 +977,7 @@
     align-items: center;
     gap: 6px;
     padding: 6px 0;
-    margin-top: auto;
+    margin-top: 6px;
     border-top: 1px solid var(--border);
   }
 
@@ -1037,11 +1032,10 @@
 
   /* ===== MY DAY PHONE MOCKUP ===== */
   .myday-screen {
-    padding: 10px 14px 14px;
+    padding: 10px 14px 16px;
     display: flex;
     flex-direction: column;
     font-size: 0.7rem;
-    height: 100%;
   }
 
   .myday-header {
@@ -1230,9 +1224,78 @@
     line-height: 1.6;
   }
 
-  /* ===== SHARED PHONE COMPACT ===== */
-  .phone-screen.compact {
-    aspect-ratio: 9/16;
+  /* ===== LIGHT PHONE FRAME ===== */
+  .phone-frame.light {
+    background: var(--cream-dark);
+    box-shadow: 0 20px 60px rgba(44, 40, 37, 0.08);
+  }
+
+  .phone-frame.light .phone-notch {
+    background: var(--cream-dark);
+  }
+
+  .phone-frame.light .phone-screen {
+    background: var(--cream);
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials {
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+
+  .testimonials-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 32px 28px;
+  }
+
+  .testimonial-stars {
+    color: var(--coral);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .testimonial-quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .testimonial-role {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
   }
 
   /* ===== TRUST STRIP ===== */
@@ -1360,182 +1423,12 @@
   }
 
   .feature-phone {
-    max-width: 300px;
+    max-width: 260px;
     margin: 0 auto;
   }
 
   .feature-phone .phone-frame {
     box-shadow: 0 16px 48px rgba(44, 40, 37, 0.08);
-  }
-
-  .video-placeholder {
-    width: 100%;
-    aspect-ratio: 9/19.5;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    font-size: 0.8rem;
-    color: var(--text-tertiary);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .video-placeholder-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(165deg, #FFF 0%, var(--cream) 100%);
-  }
-
-  .video-play-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--indigo);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 4px 20px rgba(74, 92, 232, 0.3);
-  }
-
-  .video-placeholder-label {
-    position: relative;
-    z-index: 1;
-    font-weight: 500;
-  }
-
-  /* ===== INTERACTIVE DEMO ===== */
-  .demo {
-    background: var(--warm-white);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .demo-header {
-    text-align: center;
-    margin-bottom: clamp(40px, 5vw, 64px);
-  }
-
-  .demo-header h2 {
-    font-family: 'Lora', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 500;
-    margin-bottom: 12px;
-  }
-
-  .demo-header p {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-  }
-
-  .demo-container {
-    max-width: 840px;
-    margin: 0 auto;
-  }
-
-  .demo-input-area {
-    background: white;
-    border-radius: var(--radius-md);
-    padding: 28px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 32px;
-    position: relative;
-  }
-
-  .demo-input-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-
-  .demo-input-label span {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--indigo);
-  }
-
-  .demo-input-text {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-    color: var(--text-secondary);
-    line-height: 1.8;
-  }
-
-  .demo-results {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .demo-card {
-    background: white;
-    border-radius: var(--radius-md);
-    padding: 24px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .demo-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-  }
-
-  .demo-card-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-  }
-
-  .demo-card-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .demo-card-icon.task-icon { background: rgba(232, 99, 74, 0.08); }
-  .demo-card-icon.meal-icon { background: rgba(59, 191, 160, 0.08); }
-  .demo-card-icon.event-icon { background: rgba(74, 92, 232, 0.08); }
-  .demo-card-icon.grocery-icon { background: rgba(212, 168, 83, 0.08); }
-
-  .demo-card-type {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .demo-card-type.task { color: var(--coral); }
-  .demo-card-type.meal { color: var(--mint); }
-  .demo-card-type.event { color: var(--indigo); }
-  .demo-card-type.grocery { color: var(--gold); }
-
-  .demo-card-title {
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-bottom: 4px;
-  }
-
-  .demo-card-meta {
-    font-size: 0.8rem;
-    color: var(--text-tertiary);
-  }
-
-  .demo-card.wide {
-    grid-column: 1 / -1;
   }
 
   /* ===== PRICING ===== */
@@ -2001,38 +1894,7 @@
     .feature-cards-row {
       grid-template-columns: 1fr;
       gap: 16px;
-    }
-
-    .pricing-cards {
-      grid-template-columns: 1fr;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-
-    .story-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .nav-links { display: none; }
-  }
-
-  @media (max-width: 768px) {
-    .feature-block .feature-text {
-      text-align: left;
-      padding-left: 0;
-    }
-    .feature-kanji { text-align: left; }
-    .feature-detail { justify-content: flex-start; }
-
-    .stats-bar .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .stat-card { min-width: unset; max-width: none; width: 100%; }
-
-    .feature-cards-row {
-      grid-template-columns: 1fr;
+      padding: 0 24px;
     }
 
     .pricing-cards {
@@ -2041,6 +1903,44 @@
       margin: 0 auto;
     }
     .pricing-card { width: 100%; }
+
+    .story-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 60px 0;
+    }
+
+    .feature-block .feature-text {
+      text-align: left;
+      padding-left: 0;
+    }
+    .feature-kanji { text-align: left; }
+    .feature-detail { justify-content: flex-start; }
+
+    .feature-phone {
+      max-width: 220px;
+    }
+    .hero-device {
+      max-width: 220px;
+    }
+
+    .stats-bar .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .stat-card { min-width: unset; max-width: none; width: 100%; }
   }
 
   @media (max-width: 600px) {
@@ -2390,28 +2290,6 @@
   </div>
 </section>
 
-<!-- ===== STATS BAR ===== -->
-<section class="stats-bar">
-  <div class="container animate-in">
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--coral);">1</div>
-      <div class="stat-label">message sorts your day</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--indigo);">2</div>
-      <div class="stat-label">people, finally in sync</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--mint);">0</div>
-      <div class="stat-label">ads. Not now, not ever.</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--text-primary);">100%</div>
-      <div class="stat-label">real-time sync</div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== FEATURES ===== -->
 <section class="features section" id="features">
   <div class="container">
@@ -2432,8 +2310,8 @@
         </div>
       </div>
       <div class="feature-visual">
-        <div class="feature-phone" style="max-width: 240px;">
-          <div class="phone-frame">
+        <div class="feature-phone">
+          <div class="phone-frame light">
             <div class="phone-screen">
               <div class="phone-notch"></div>
               <div class="myday-screen" id="myday-screen">
@@ -2510,7 +2388,7 @@
         </div>
       </div>
       <div class="feature-visual">
-        <div class="feature-phone" style="max-width: 240px;">
+        <div class="feature-phone">
           <div class="phone-frame">
             <div class="phone-screen">
               <div class="phone-notch"></div>
@@ -2562,9 +2440,9 @@
         </div>
       </div>
       <div class="feature-visual">
-        <div class="feature-phone" style="max-width: 240px;">
+        <div class="feature-phone">
           <div class="phone-frame">
-            <div class="phone-screen compact">
+            <div class="phone-screen">
               <div class="phone-notch"></div>
               <div class="shared-screen" id="shared-screen">
                 <div class="shared-header">
@@ -2612,7 +2490,6 @@
         </div>
       </div>
     </div>
-  </div>
 
     <!-- Feature Cards Row -->
     <div class="feature-cards-row animate-in">
@@ -2639,12 +2516,57 @@
       </div>
     </div>
 
-    <div style="text-align: center; padding: 60px 0 0;">
-      <a href="#" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        Download for iOS
-      </a>
-      <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-top: 12px;">Free to start. No credit card needed.</p>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="stats-bar">
+  <div class="container animate-in">
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--coral);">1</div>
+      <div class="stat-label">message sorts your day</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--indigo);">2</div>
+      <div class="stat-label">people, finally in sync</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--mint);">0</div>
+      <div class="stat-label">ads. Not now, not ever.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--text-primary);">100%</div>
+      <div class="stat-label">real-time sync</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials section">
+  <div class="container">
+    <div class="testimonials-header animate-in">
+      <span class="label">What people say</span>
+      <h2>Loved by real households</h2>
+    </div>
+    <div class="testimonials-grid animate-in">
+      <div class="testimonial-card">
+        <span class="testimonial-stars">★★★★★</span>
+        <p class="testimonial-quote">"Miiro replaced our whiteboard, shared notes app, and the constant 'did you get my text?' We just tell Miiro and it's done."</p>
+        <div class="testimonial-author">Sarah & Tom</div>
+        <div class="testimonial-role">Parents of 2</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">★★★★★</span>
+        <p class="testimonial-quote">"The mental load was crushing me. Now I brain dump into Miiro and everything is organized. My partner finally sees what needs doing."</p>
+        <div class="testimonial-author">Maria</div>
+        <div class="testimonial-role">Amsterdam</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">★★★★★</span>
+        <p class="testimonial-quote">"Toru is worth the subscription alone. No more scrolling through life stories to find a recipe. Just ingredients and steps."</p>
+        <div class="testimonial-author">Kenji</div>
+        <div class="testimonial-role">Family of 3</div>
+      </div>
     </div>
   </div>
 </section>
