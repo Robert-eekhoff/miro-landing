@@ -1035,6 +1035,206 @@
     animation: mock-fade-out 0.5s ease forwards;
   }
 
+  /* ===== MY DAY PHONE MOCKUP ===== */
+  .myday-screen {
+    padding: 10px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+    height: 100%;
+  }
+
+  .myday-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 0 2px;
+  }
+
+  .myday-header-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .myday-header-logo {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  .myday-header-title {
+    font-weight: 700;
+    font-size: 0.65rem;
+    color: var(--text-primary);
+  }
+
+  .myday-date {
+    font-size: 0.4rem;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+
+  .myday-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  .myday-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(44, 40, 37, 0.05);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .myday-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .myday-time {
+    font-size: 0.38rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    min-width: 32px;
+    padding-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .myday-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .myday-item-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .myday-item-title {
+    font-size: 0.48rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .myday-item-meta {
+    font-size: 0.36rem;
+    color: var(--text-tertiary);
+    line-height: 1.2;
+  }
+
+  .myday-item-type {
+    font-size: 0.34rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding: 2px 5px;
+    border-radius: 4px;
+    line-height: 1;
+    margin-top: 1px;
+  }
+
+  .myday-grocery-list {
+    background: rgba(212, 168, 83, 0.04);
+    border: 1px solid rgba(212, 168, 83, 0.12);
+    border-radius: 8px;
+    padding: 6px 8px;
+    margin-top: 4px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .myday-grocery-list.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .myday-grocery-header {
+    font-size: 0.38rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+
+  .myday-grocery-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+  }
+
+  .myday-grocery-items span {
+    font-size: 0.4rem;
+    color: var(--text-secondary);
+  }
+
+  .myday-screen.fade-out {
+    animation: mock-fade-out 0.5s ease forwards;
+  }
+
+  /* ===== FEATURE CARDS ROW ===== */
+  .feature-cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: clamp(40px, 5vw, 60px);
+  }
+
+  .feature-mini-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .feature-mini-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .feature-mini-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+  }
+
+  .feature-mini-card h4 {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .feature-mini-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ===== SHARED PHONE COMPACT ===== */
+  .phone-screen.compact {
+    aspect-ratio: 9/16;
+  }
+
   /* ===== TRUST STRIP ===== */
   .trust-strip {
     padding: 32px 0;
@@ -1791,19 +1991,22 @@
     .feature-block {
       grid-template-columns: 1fr;
       gap: 40px;
-      text-align: center;
     }
+    .feature-block .feature-text { text-align: left; }
     .feature-block.reverse .feature-text { order: 1; }
     .feature-block.reverse .feature-visual { order: 2; }
-    .feature-text { max-width: 100%; margin: 0 auto; }
+    .feature-text { max-width: 100%; }
+    .feature-visual { display: flex; justify-content: center; }
 
-    .demo-results {
+    .feature-cards-row {
       grid-template-columns: 1fr;
+      gap: 16px;
     }
 
     .pricing-cards {
       grid-template-columns: 1fr;
       max-width: 440px;
+      margin: 0 auto;
     }
 
     .story-grid {
@@ -1811,6 +2014,33 @@
     }
 
     .nav-links { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .feature-block .feature-text {
+      text-align: left;
+      padding-left: 0;
+    }
+    .feature-kanji { text-align: left; }
+    .feature-detail { justify-content: flex-start; }
+
+    .stats-bar .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .stat-card { min-width: unset; max-width: none; width: 100%; }
+
+    .feature-cards-row {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-cards {
+      grid-template-columns: 1fr;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .pricing-card { width: 100%; }
   }
 
   @media (max-width: 600px) {
@@ -1822,8 +2052,6 @@
     .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
-    .stats-bar .container { flex-direction: column; gap: 16px; }
-    .stat-card { min-width: unset; width: 100%; }
   }
 
   /* ===== TRUST STARS ===== */
@@ -2003,7 +2231,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
             Download for iOS
           </a>
-          <a href="#demo" class="btn-secondary">See how it works</a>
+          <a href="#features" class="btn-secondary">See how it works</a>
         </div>
         <p class="hero-note">Free to start · Built with love in Amsterdam 🇳🇱</p>
       </div>
@@ -2192,6 +2420,84 @@
       <h2>Everything you need.<br>Nothing you don't.</h2>
     </div>
 
+    <!-- Tell Miiro -->
+    <div class="feature-block reverse animate-in">
+      <div class="feature-text">
+        <span class="feature-kanji indigo">伝</span>
+        <h3>Tell Miiro</h3>
+        <p>Brain dump everything on your mind in one message. Miiro sorts it into tasks, meals, groceries, and events on your timeline. Your whole day, organized in seconds.</p>
+        <div class="feature-detail">
+          <span class="feature-detail-dot" style="background: var(--indigo);"></span>
+          10 free credits. Unlimited with Miiro+
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-phone" style="max-width: 240px;">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <div class="myday-screen" id="myday-screen">
+                <div class="myday-header">
+                  <div class="myday-header-left">
+                    <img src="koi-logo.png" alt="" class="myday-header-logo">
+                    <span class="myday-header-title">My Day</span>
+                  </div>
+                </div>
+                <div class="myday-date">Sunday, Mar 9</div>
+                <div class="myday-timeline" id="myday-timeline">
+                  <div class="myday-item" data-myday-item>
+                    <span class="myday-time">9:00</span>
+                    <div class="myday-dot" style="background: var(--coral);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">Call the vet about Rose</div>
+                    </div>
+                    <span class="myday-item-type" style="color: var(--coral); background: var(--coral-bg);">Task</span>
+                  </div>
+                  <div class="myday-item" data-myday-item>
+                    <span class="myday-time">12:00</span>
+                    <div class="myday-dot" style="background: var(--mint);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">Pasta for dinner</div>
+                      <div class="myday-item-meta">Tonight's meal</div>
+                    </div>
+                    <span class="myday-item-type" style="color: var(--mint); background: var(--mint-bg);">Meal</span>
+                  </div>
+                  <div class="myday-item" data-myday-item>
+                    <span class="myday-time">2:00</span>
+                    <div class="myday-dot" style="background: var(--indigo);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">Dentist</div>
+                      <div class="myday-item-meta">Dr. van der Berg</div>
+                    </div>
+                    <span class="myday-item-type" style="color: var(--indigo); background: var(--indigo-bg);">Event</span>
+                  </div>
+                  <div class="myday-item" data-myday-item>
+                    <span class="myday-time">3:00</span>
+                    <div class="myday-dot" style="background: var(--coral);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">Pick up Miles</div>
+                      <div class="myday-item-meta">From school</div>
+                    </div>
+                    <span class="myday-item-type" style="color: var(--coral); background: var(--coral-bg);">Task</span>
+                  </div>
+                  <div class="myday-grocery-list" data-myday-item>
+                    <div class="myday-grocery-header">Shopping list</div>
+                    <div class="myday-grocery-items">
+                      <span>Milk</span>
+                      <span>·</span>
+                      <span>Eggs</span>
+                      <span>·</span>
+                      <span>Chicken</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Toru -->
     <div class="feature-block reverse animate-in">
       <div class="feature-text">
@@ -2258,7 +2564,7 @@
       <div class="feature-visual">
         <div class="feature-phone" style="max-width: 240px;">
           <div class="phone-frame">
-            <div class="phone-screen">
+            <div class="phone-screen compact">
               <div class="phone-notch"></div>
               <div class="shared-screen" id="shared-screen">
                 <div class="shared-header">
@@ -2308,69 +2614,37 @@
     </div>
   </div>
 
-    <div style="text-align: center; padding: 40px 0;">
+    <!-- Feature Cards Row -->
+    <div class="feature-cards-row animate-in">
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--coral-bg); color: var(--coral);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M20 2v4h-4"/></svg>
+        </div>
+        <h4>Cooking Mode</h4>
+        <p>Step-by-step instructions with built-in timers. Hands-free cooking, no scrolling through blog posts.</p>
+      </div>
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--indigo-bg); color: var(--indigo);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h4>My Day</h4>
+        <p>Your daily overview at a glance. Tasks, meals, events, and groceries, all in one timeline.</p>
+      </div>
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--mint-bg); color: var(--mint);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>
+        </div>
+        <h4>Shared Calendars</h4>
+        <p>See everyone's schedule in one view. No more double-bookings or missed appointments.</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; padding: 60px 0 0;">
       <a href="#" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         Download for iOS
       </a>
       <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-top: 12px;">Free to start. No credit card needed.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== INTERACTIVE DEMO ===== -->
-<section class="demo section" id="demo">
-  <div class="container">
-    <div class="demo-header animate-in">
-      <span class="label">See it in action</span>
-      <h2>One message. Five sorted items.</h2>
-      <p>Type it like you'd text a friend. Miiro does the rest.</p>
-    </div>
-
-    <div class="demo-container animate-in">
-      <div class="demo-input-area">
-        <div class="demo-input-label">
-          <span>Tell Miiro...</span>
-        </div>
-        <div class="demo-input-text">
-          Pick up Miles from school at 3, we need chicken and rice for dinner tonight, doctor appointment Tuesday 2pm, call the vet about Rose, and grab olive oil and eggs from the store
-        </div>
-      </div>
-
-      <div class="demo-results">
-        <div class="demo-card">
-          <div class="demo-card-icon task-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#E8634A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l3 3 7-7"/></svg></div>
-          <div class="demo-card-type task">Task</div>
-          <div class="demo-card-title">Pick up Miles from school</div>
-          <div class="demo-card-meta">Today at 3:00 PM</div>
-        </div>
-        <div class="demo-card">
-          <div class="demo-card-icon meal-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#3BBFA0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="6"/><path d="M6 9h6"/></svg></div>
-          <div class="demo-card-type meal">Meal</div>
-          <div class="demo-card-title">Chicken and rice</div>
-          <div class="demo-card-meta">Tonight's dinner</div>
-        </div>
-        <div class="demo-card">
-          <div class="demo-card-icon event-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#4A5CE8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="12" height="11" rx="2"/><path d="M6 2v3"/><path d="M12 2v3"/><path d="M3 8h12"/></svg></div>
-          <div class="demo-card-type event">Event</div>
-          <div class="demo-card-title">Doctor appointment</div>
-          <div class="demo-card-meta">Tuesday at 2:00 PM</div>
-        </div>
-        <div class="demo-card">
-          <div class="demo-card-icon task-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#E8634A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l3 3 7-7"/></svg></div>
-          <div class="demo-card-type task">Task</div>
-          <div class="demo-card-title">Call the vet about Rose</div>
-          <div class="demo-card-meta">Today</div>
-        </div>
-        <div class="demo-card wide">
-          <div class="demo-card-icon grocery-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#D4A853" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h10l-1.5 7H6.5L5 5z"/><path d="M5 5L4 2"/><circle cx="8" cy="15" r="1"/><circle cx="13" cy="15" r="1"/></svg></div>
-          <div class="demo-card-type grocery">Grocery</div>
-          <div class="demo-card-title">Chicken, Rice, Olive oil, Eggs</div>
-          <div class="demo-card-meta">Added to shopping list</div>
-        </div>
-      </div>
-
-      <p style="text-align: center; font-size: 0.85rem; color: var(--text-tertiary); margin-top: 24px;">10 free credits. Unlimited with Miiro+</p>
     </div>
   </div>
 </section>
@@ -2872,6 +3146,38 @@
     }
 
     setTimeout(runShared, 2500);
+  })();
+
+  // My Day phone mockup animation
+  (function() {
+    var items = document.querySelectorAll('[data-myday-item]');
+    var screen = document.getElementById('myday-screen');
+
+    if (!screen || items.length === 0) return;
+
+    function reset() {
+      items.forEach(function(item) { item.classList.remove('visible'); });
+      screen.classList.remove('fade-out');
+      screen.style.opacity = '1';
+    }
+
+    function runMyDay() {
+      reset();
+
+      items.forEach(function(item, idx) {
+        setTimeout(function() {
+          item.classList.add('visible');
+        }, 600 + idx * 400);
+      });
+
+      // Hold then fade and restart
+      setTimeout(function() {
+        screen.classList.add('fade-out');
+        setTimeout(runMyDay, 500);
+      }, 600 + items.length * 400 + 3000);
+    }
+
+    setTimeout(runMyDay, 2000);
   })();
 </script>
 
