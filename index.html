@@ -73,7 +73,7 @@
   }
 
   .section {
-    padding: clamp(60px, 10vw, 140px) 0;
+    padding: 72px 0;
   }
 
   .text-center { text-align: center; }
@@ -1030,153 +1030,107 @@
     animation: mock-fade-out 0.5s ease forwards;
   }
 
-  /* ===== MY DAY PHONE MOCKUP ===== */
-  .myday-screen {
-    padding: 10px 14px 16px;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.7rem;
+  /* ===== HOW IT WORKS ===== */
+  .how-it-works {
+    background: white;
   }
 
-  .myday-header {
+  .how-it-works-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .how-it-works-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(16.66% + 20px);
+    right: calc(16.66% + 20px);
+    height: 2px;
+    background: var(--border);
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 2px 0 2px;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Lora', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
   }
 
-  .myday-header-left {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .myday-header-logo {
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
-  }
-
-  .myday-header-title {
-    font-weight: 700;
-    font-size: 0.65rem;
-    color: var(--text-primary);
-  }
-
-  .myday-date {
-    font-size: 0.4rem;
-    color: var(--text-tertiary);
+  .step h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin-bottom: 8px;
   }
 
-  .myday-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    flex: 1;
+  .step p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
-  .myday-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(44, 40, 37, 0.05);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+  /* ===== QUOTE BREAK ===== */
+  .quote-break {
+    background: var(--cream);
+    text-align: center;
   }
 
-  .myday-item.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .quote-break-stars {
+    color: var(--coral);
+    font-size: 1rem;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    display: block;
   }
 
-  .myday-time {
-    font-size: 0.38rem;
-    color: var(--text-tertiary);
-    font-weight: 500;
-    min-width: 32px;
-    padding-top: 1px;
-    flex-shrink: 0;
+  .quote-break-text {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 680px;
+    margin: 0 auto 24px;
   }
 
-  .myday-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 3px;
-  }
-
-  .myday-item-content {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .myday-item-title {
-    font-size: 0.48rem;
+  .quote-break-author {
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.2;
   }
 
-  .myday-item-meta {
-    font-size: 0.36rem;
+  .quote-break-role {
+    font-size: 0.8rem;
     color: var(--text-tertiary);
-    line-height: 1.2;
-  }
-
-  .myday-item-type {
-    font-size: 0.34rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-    padding: 2px 5px;
-    border-radius: 4px;
-    line-height: 1;
-    margin-top: 1px;
-  }
-
-  .myday-grocery-list {
-    background: rgba(212, 168, 83, 0.04);
-    border: 1px solid rgba(212, 168, 83, 0.12);
-    border-radius: 8px;
-    padding: 6px 8px;
-    margin-top: 4px;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .myday-grocery-list.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .myday-grocery-header {
-    font-size: 0.38rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 3px;
-  }
-
-  .myday-grocery-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px 8px;
-  }
-
-  .myday-grocery-items span {
-    font-size: 0.4rem;
-    color: var(--text-secondary);
-  }
-
-  .myday-screen.fade-out {
-    animation: mock-fade-out 0.5s ease forwards;
   }
 
   /* ===== FEATURE CARDS ROW ===== */
@@ -1184,11 +1138,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-top: clamp(40px, 5vw, 60px);
   }
 
   .feature-mini-card {
-    background: white;
+    background: var(--cream);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 28px 24px;
@@ -1224,43 +1177,12 @@
     line-height: 1.6;
   }
 
-  /* ===== LIGHT PHONE FRAME ===== */
-  .phone-frame.light {
-    background: var(--cream-dark);
-    box-shadow: 0 20px 60px rgba(44, 40, 37, 0.08);
-  }
-
-  .phone-frame.light .phone-notch {
-    background: var(--cream-dark);
-  }
-
-  .phone-frame.light .phone-screen {
-    background: var(--cream);
-  }
-
-  /* ===== TESTIMONIALS ===== */
-  .testimonials {
-    background: var(--warm-white);
-    border-top: 1px solid var(--border);
-  }
-
-  .testimonials-header {
-    text-align: center;
-    margin-bottom: clamp(40px, 5vw, 64px);
-  }
-
-  .testimonials-header h2 {
-    font-family: 'Lora', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 500;
-  }
-
-  .testimonials-grid {
+  /* ===== INLINE TESTIMONIAL CARDS ===== */
+  .testimonial-pair {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
-    max-width: 1000px;
-    margin: 0 auto;
+    margin-top: 48px;
   }
 
   .testimonial-card {
@@ -1344,7 +1266,7 @@
   }
 
   /* ===== FEATURES ===== */
-  .features { background: var(--cream); }
+  .features { }
 
   .features-header {
     text-align: center;
@@ -1423,7 +1345,7 @@
   }
 
   .feature-phone {
-    max-width: 260px;
+    max-width: 280px;
     margin: 0 auto;
   }
 
@@ -1432,7 +1354,7 @@
   }
 
   /* ===== PRICING ===== */
-  .pricing { background: var(--cream); }
+  .pricing { background: white; }
 
   .pricing-header {
     text-align: center;
@@ -1640,7 +1562,7 @@
 
   /* ===== STORY ===== */
   .story {
-    background: var(--warm-white);
+    background: white;
     border-top: 1px solid var(--border);
   }
 
@@ -1894,8 +1816,18 @@
     .feature-cards-row {
       grid-template-columns: 1fr;
       gap: 16px;
-      padding: 0 24px;
     }
+
+    .testimonial-pair {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .steps-grid::before { display: none; }
 
     .pricing-cards {
       grid-template-columns: 1fr;
@@ -1908,17 +1840,12 @@
       grid-template-columns: 1fr;
     }
 
-    .testimonials-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
     .nav-links { display: none; }
   }
 
   @media (max-width: 768px) {
     .section {
-      padding: 60px 0;
+      padding: 48px 0;
     }
 
     .feature-block .feature-text {
@@ -1929,10 +1856,10 @@
     .feature-detail { justify-content: flex-start; }
 
     .feature-phone {
-      max-width: 220px;
+      max-width: 240px;
     }
     .hero-device {
-      max-width: 220px;
+      max-width: 240px;
     }
 
     .stats-bar .container {
@@ -1941,6 +1868,10 @@
       gap: 16px;
     }
     .stat-card { min-width: unset; max-width: none; width: 100%; }
+
+    .quote-break-text {
+      font-size: 1.1rem;
+    }
   }
 
   @media (max-width: 600px) {
@@ -2290,93 +2221,46 @@
   </div>
 </section>
 
-<!-- ===== FEATURES ===== -->
-<section class="features section" id="features">
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how-it-works section" id="features">
   <div class="container">
-    <div class="features-header animate-in">
-      <span class="label">Features</span>
-      <h2>Everything you need.<br>Nothing you don't.</h2>
+    <div class="how-it-works-header animate-in">
+      <span class="label">How it works</span>
+      <h2>From chaos to calm in 3 steps</h2>
     </div>
-
-    <!-- Tell Miiro -->
-    <div class="feature-block reverse animate-in">
-      <div class="feature-text">
-        <span class="feature-kanji indigo">伝</span>
-        <h3>Tell Miiro</h3>
-        <p>Brain dump everything on your mind in one message. Miiro sorts it into tasks, meals, groceries, and events on your timeline. Your whole day, organized in seconds.</p>
-        <div class="feature-detail">
-          <span class="feature-detail-dot" style="background: var(--indigo);"></span>
-          10 free credits. Unlimited with Miiro+
-        </div>
+    <div class="steps-grid animate-in">
+      <div class="step">
+        <div class="step-number" style="background: var(--indigo-bg); color: var(--indigo);">1</div>
+        <h3>Brain dump everything</h3>
+        <p>Type naturally. Tasks, meals, groceries, appointments. All in one message.</p>
       </div>
-      <div class="feature-visual">
-        <div class="feature-phone">
-          <div class="phone-frame light">
-            <div class="phone-screen">
-              <div class="phone-notch"></div>
-              <div class="myday-screen" id="myday-screen">
-                <div class="myday-header">
-                  <div class="myday-header-left">
-                    <img src="koi-logo.png" alt="" class="myday-header-logo">
-                    <span class="myday-header-title">My Day</span>
-                  </div>
-                </div>
-                <div class="myday-date">Sunday, Mar 9</div>
-                <div class="myday-timeline" id="myday-timeline">
-                  <div class="myday-item" data-myday-item>
-                    <span class="myday-time">9:00</span>
-                    <div class="myday-dot" style="background: var(--coral);"></div>
-                    <div class="myday-item-content">
-                      <div class="myday-item-title">Call the vet about Rose</div>
-                    </div>
-                    <span class="myday-item-type" style="color: var(--coral); background: var(--coral-bg);">Task</span>
-                  </div>
-                  <div class="myday-item" data-myday-item>
-                    <span class="myday-time">12:00</span>
-                    <div class="myday-dot" style="background: var(--mint);"></div>
-                    <div class="myday-item-content">
-                      <div class="myday-item-title">Pasta for dinner</div>
-                      <div class="myday-item-meta">Tonight's meal</div>
-                    </div>
-                    <span class="myday-item-type" style="color: var(--mint); background: var(--mint-bg);">Meal</span>
-                  </div>
-                  <div class="myday-item" data-myday-item>
-                    <span class="myday-time">2:00</span>
-                    <div class="myday-dot" style="background: var(--indigo);"></div>
-                    <div class="myday-item-content">
-                      <div class="myday-item-title">Dentist</div>
-                      <div class="myday-item-meta">Dr. van der Berg</div>
-                    </div>
-                    <span class="myday-item-type" style="color: var(--indigo); background: var(--indigo-bg);">Event</span>
-                  </div>
-                  <div class="myday-item" data-myday-item>
-                    <span class="myday-time">3:00</span>
-                    <div class="myday-dot" style="background: var(--coral);"></div>
-                    <div class="myday-item-content">
-                      <div class="myday-item-title">Pick up Miles</div>
-                      <div class="myday-item-meta">From school</div>
-                    </div>
-                    <span class="myday-item-type" style="color: var(--coral); background: var(--coral-bg);">Task</span>
-                  </div>
-                  <div class="myday-grocery-list" data-myday-item>
-                    <div class="myday-grocery-header">Shopping list</div>
-                    <div class="myday-grocery-items">
-                      <span>Milk</span>
-                      <span>·</span>
-                      <span>Eggs</span>
-                      <span>·</span>
-                      <span>Chicken</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="step">
+        <div class="step-number" style="background: var(--coral-bg); color: var(--coral);">2</div>
+        <h3>Share with your partner</h3>
+        <p>Invite them. Everything syncs instantly. Both see the same day.</p>
+      </div>
+      <div class="step">
+        <div class="step-number" style="background: var(--mint-bg); color: var(--mint);">3</div>
+        <h3>See what matters today</h3>
+        <p>My Day shows your tasks, meals, and events. Nothing more, nothing less.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Toru -->
+<!-- ===== TESTIMONIAL BREAK ===== -->
+<section class="quote-break section">
+  <div class="container animate-in">
+    <span class="quote-break-stars">★★★★★</span>
+    <p class="quote-break-text">"The mental load was crushing me. Now I brain dump into Miiro and everything is organized. My partner finally sees what needs doing."</p>
+    <div class="quote-break-author">Maria</div>
+    <div class="quote-break-role">Amsterdam</div>
+  </div>
+</section>
+
+<!-- ===== TORU FEATURE ===== -->
+<section class="features section" style="background: white;">
+  <div class="container">
     <div class="feature-block reverse animate-in">
       <div class="feature-text">
         <span class="feature-kanji coral">取</span>
@@ -2427,8 +2311,12 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Shared Living -->
+<!-- ===== SHARED LIVING FEATURE ===== -->
+<section class="features section" style="background: var(--cream);">
+  <div class="container">
     <div class="feature-block animate-in">
       <div class="feature-text">
         <span class="feature-kanji mint">間</span>
@@ -2490,8 +2378,16 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Feature Cards Row -->
+<!-- ===== FEATURE CARDS + TESTIMONIALS ===== -->
+<section class="section" style="background: white;">
+  <div class="container">
+    <div class="features-header animate-in">
+      <span class="label">And also</span>
+      <h2>Everything you need.<br>Nothing you don't.</h2>
+    </div>
     <div class="feature-cards-row animate-in">
       <div class="feature-mini-card">
         <div class="feature-mini-icon" style="background: var(--coral-bg); color: var(--coral);">
@@ -2515,12 +2411,25 @@
         <p>See everyone's schedule in one view. No more double-bookings or missed appointments.</p>
       </div>
     </div>
-
+    <div class="testimonial-pair animate-in">
+      <div class="testimonial-card">
+        <span class="testimonial-stars">★★★★★</span>
+        <p class="testimonial-quote">"Miiro replaced our whiteboard, shared notes app, and the constant 'did you get my text?' We just tell Miiro and it's done."</p>
+        <div class="testimonial-author">Sarah & Tom</div>
+        <div class="testimonial-role">Parents of 2</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">★★★★★</span>
+        <p class="testimonial-quote">"Toru is worth the subscription alone. No more scrolling through life stories to find a recipe. Just ingredients and steps."</p>
+        <div class="testimonial-author">Kenji</div>
+        <div class="testimonial-role">Family of 3</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ===== STATS BAR ===== -->
-<section class="stats-bar">
+<section class="stats-bar" style="background: var(--cream); padding: 48px 0;">
   <div class="container animate-in">
     <div class="stat-card">
       <div class="stat-number" style="color: var(--coral);">1</div>
@@ -2537,36 +2446,6 @@
     <div class="stat-card">
       <div class="stat-number" style="color: var(--text-primary);">100%</div>
       <div class="stat-label">real-time sync</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TESTIMONIALS ===== -->
-<section class="testimonials section">
-  <div class="container">
-    <div class="testimonials-header animate-in">
-      <span class="label">What people say</span>
-      <h2>Loved by real households</h2>
-    </div>
-    <div class="testimonials-grid animate-in">
-      <div class="testimonial-card">
-        <span class="testimonial-stars">★★★★★</span>
-        <p class="testimonial-quote">"Miiro replaced our whiteboard, shared notes app, and the constant 'did you get my text?' We just tell Miiro and it's done."</p>
-        <div class="testimonial-author">Sarah & Tom</div>
-        <div class="testimonial-role">Parents of 2</div>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-stars">★★★★★</span>
-        <p class="testimonial-quote">"The mental load was crushing me. Now I brain dump into Miiro and everything is organized. My partner finally sees what needs doing."</p>
-        <div class="testimonial-author">Maria</div>
-        <div class="testimonial-role">Amsterdam</div>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-stars">★★★★★</span>
-        <p class="testimonial-quote">"Toru is worth the subscription alone. No more scrolling through life stories to find a recipe. Just ingredients and steps."</p>
-        <div class="testimonial-author">Kenji</div>
-        <div class="testimonial-role">Family of 3</div>
-      </div>
     </div>
   </div>
 </section>
@@ -3070,37 +2949,6 @@
     setTimeout(runShared, 2500);
   })();
 
-  // My Day phone mockup animation
-  (function() {
-    var items = document.querySelectorAll('[data-myday-item]');
-    var screen = document.getElementById('myday-screen');
-
-    if (!screen || items.length === 0) return;
-
-    function reset() {
-      items.forEach(function(item) { item.classList.remove('visible'); });
-      screen.classList.remove('fade-out');
-      screen.style.opacity = '1';
-    }
-
-    function runMyDay() {
-      reset();
-
-      items.forEach(function(item, idx) {
-        setTimeout(function() {
-          item.classList.add('visible');
-        }, 600 + idx * 400);
-      });
-
-      // Hold then fade and restart
-      setTimeout(function() {
-        screen.classList.add('fade-out');
-        setTimeout(runMyDay, 500);
-      }, 600 + items.length * 400 + 3000);
-    }
-
-    setTimeout(runMyDay, 2000);
-  })();
 </script>
 
 </body>
