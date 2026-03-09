@@ -1874,8 +1874,8 @@
   .pricing-note {
     text-align: center;
     margin-top: 32px;
-    font-size: 0.8rem;
-    color: var(--text-tertiary);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -2395,7 +2395,7 @@
           </a>
           <a href="#features" class="btn-secondary">See how it works</a>
         </div>
-        <p class="hero-note">Free to start · Built with love in Amsterdam 🇳🇱</p>
+        <p class="hero-note">Free to start · One subscription covers both of you</p>
       </div>
 
       <!-- Phone Mockup -->
@@ -2802,6 +2802,10 @@
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             Private calendars stay completely private
           </div>
+          <div class="feature-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            One Miiro+ subscription covers everyone
+          </div>
         </div>
       </div>
       <div class="feature-visual">
@@ -2996,7 +3000,7 @@
           <span class="pricing-card-amount" id="price-amount">$4.99</span>
           <span class="pricing-card-period" id="price-period">/month</span>
         </div>
-        <p class="pricing-card-desc">Unlimited everything for your whole household.</p>
+        <p class="pricing-card-desc">Unlimited everything for your whole household. <span style="color: var(--coral); font-weight: 500;" id="per-person-price">That's just $2.50/person.</span></p>
         <ul class="pricing-features">
           <li>Unlimited Tell Miiro AI</li>
           <li>Unlimited lists & calendars</li>
@@ -3009,7 +3013,7 @@
     </div>
 
     <p class="pricing-note animate-in">
-      One subscription covers your whole household. Cancel anytime. 7-day free trial available for both plans.
+      <span style="color: var(--indigo); font-weight: 500;">One subscription covers your whole household.</span> Cancel anytime. 7-day free trial available.
     </p>
   </div>
 </section>
@@ -3047,7 +3051,7 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access when you invite them to your household.</div>
+          <div class="faq-answer-inner">No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access automatically when they join your household. No extra payment, no extra steps.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -3189,6 +3193,8 @@
     yl.classList.toggle('active', isYearly);
     amount.textContent = isYearly ? '$44.99' : '$4.99';
     period.textContent = isYearly ? '/year' : '/month';
+    var perPerson = document.getElementById('per-person-price');
+    if (perPerson) perPerson.textContent = isYearly ? "That's just $1.88/person." : "That's just $2.50/person.";
   }
 
   // Scroll animations
