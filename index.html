@@ -1314,10 +1314,28 @@
     margin-bottom: 16px;
   }
 
-  .tell-demo-text .tell-demo-note {
-    font-size: 0.82rem;
-    color: var(--text-tertiary);
-    font-style: italic;
+  .tell-demo-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .tell-demo-highlight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .tell-demo-highlight svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke: var(--text-tertiary);
+    fill: none;
+    stroke-width: 2;
   }
 
   /* ===== QUOTE BREAK ===== */
@@ -2570,8 +2588,23 @@
       <div class="tell-demo-text">
         <span class="label">Tell Miiro</span>
         <h3>Tell Miiro what's on your mind</h3>
-        <p>Type it like you'd text a friend. Miiro turns your thoughts into tasks, events, meals, and groceries. Instantly.</p>
-        <p class="tell-demo-note">10 free credits. Unlimited with Miiro+.</p>
+        <p>Stop switching between 4 different apps. Type everything on your mind in one message, just like you'd text a friend. Miiro uses AI to understand what you mean and sorts it into the right place automatically.</p>
+        <p>Tasks go to your to-do list. Meals go to your meal plan. Groceries go to your shopping list. Events go to your calendar. All from one message.</p>
+        <p>Works in any language. No templates, no forms, no dropdowns. Just type.</p>
+        <div class="tell-demo-highlights">
+          <div class="tell-demo-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Understands natural language in any language
+          </div>
+          <div class="tell-demo-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Sorts into tasks, meals, groceries, and events in seconds
+          </div>
+          <div class="tell-demo-highlight">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+            10 free credits. Unlimited with Miiro+.
+          </div>
+        </div>
       </div>
     </div>
   </div>
