@@ -492,6 +492,21 @@
     box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
   }
 
+  /* BLOG CTA */
+  .blog-cta {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+  .blog-cta h3 { font-family: 'Lora', Georgia, serif; font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin-bottom: 12px; }
+  .blog-cta p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+  .blog-cta .cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .blog-cta .cta-button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3); }
+
   /* FOOTER */
   footer {
     background: var(--text-primary);
@@ -618,6 +633,7 @@
         <li><a href="#shop-together" class="toc-sub">Shop together or split it</a></li>
         <li><a href="#common-mistakes">Common mistakes</a></li>
         <li><a href="#our-setup">Our setup</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </aside>
 
@@ -637,6 +653,7 @@
           <li><a href="#shop-together" class="toc-sub">Shop together or split it</a></li>
           <li><a href="#common-mistakes">Common mistakes</a></li>
           <li><a href="#our-setup">Our setup</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
 
@@ -669,11 +686,13 @@
 
       <p>Sunday evening works for most couples. Sit down together (or separately, whatever works) and decide what you're eating for the week. You don't need to plan every single meal. Focus on dinners. Lunches and breakfasts are usually simpler and more repetitive.</p>
 
+      <!-- TODO: Add Miiro screenshot showing the weekly meal plan view -->
+
       <h3 id="keep-a-recipe-collection">Step 2: Keep a recipe collection</h3>
 
       <p>Over time, build a collection of recipes you actually make. Not recipes you saved three years ago and never tried. Recipes you've cooked, liked, and would make again. Aim for 15 to 20 reliable recipes and you'll always have something to choose from.</p>
 
-      <p>In Miiro, we built a recipe saver called Toru that lets you paste any recipe URL from the web and saves it to your shared cookbook. No more bookmarks scattered across browsers.</p>
+      <p>In Miiro, we built a recipe saver called <a href="/blog/how-toru-recipe-saver-works">Toru</a> that lets you paste any recipe URL from the web and saves it to your shared cookbook. No more bookmarks scattered across browsers.</p>
 
       <h3 id="plan-five-dinners">Step 3: Plan 5 dinners, not 7</h3>
 
@@ -683,7 +702,7 @@
 
       <p>This is where most meal planning falls apart. You plan the meals but then have to manually figure out what you need to buy. The best systems connect your meal plan directly to your grocery list.</p>
 
-      <p>In Miiro, when you add a recipe to your meal plan, the ingredients automatically flow to your shared grocery list, sorted by store section. You add the meals, the list builds itself.</p>
+      <p>In Miiro, when you add a recipe to your meal plan, the ingredients automatically flow to your <a href="/blog/shared-grocery-list-apps-2026">shared grocery list</a>, sorted by store section. You add the meals, the list builds itself.</p>
 
       <h3 id="shop-together">Step 5: Shop together (or split it)</h3>
 
@@ -699,9 +718,30 @@
 
       <h2 id="our-setup">Our setup</h2>
 
-      <p>My wife and I use Miiro to plan our week. On Sunday evening, we scroll through our saved recipes in Toru, pick five dinners, and drag them onto the meal plan. The grocery list populates automatically. During the week, either of us can check the plan to see what's for dinner and start prepping.</p>
+      <p>My wife and I use Miiro to plan our week. On Sunday evening, we scroll through our saved recipes in <a href="/blog/how-toru-recipe-saver-works">Toru</a>, pick five dinners, and drag them onto the meal plan. The grocery list populates automatically. During the week, either of us can check the plan to see what's for dinner and start prepping.</p>
+
+      <p>We also use <a href="/blog/what-is-tell-miiro-ai-household-management">Tell Miiro</a> to add things on the fly. If one of us remembers we need to pick up something extra, we just tell Miiro and it lands on the shared list.</p>
 
       <p>It took us about two weeks to build the habit. Now we can't imagine going back to the nightly "what are we eating?" conversation.</p>
+
+      <!-- TODO: Add Miiro screenshot showing Toru recipe collection -->
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>How long does meal planning actually take?</h3>
+      <p>About 15 to 20 minutes per week once you have a recipe collection built up. The first few weeks take a bit longer as you're saving recipes and figuring out your rhythm. After that, it becomes a quick Sunday evening routine.</p>
+
+      <h3>What if my partner doesn't want to meal plan?</h3>
+      <p>Start small. Don't ask them to plan seven dinners from scratch. Ask them to pick two meals for the week from your saved recipes. That's it. Once they see that the grocery list builds itself and the nightly "what are we eating?" question disappears, the habit usually sticks.</p>
+
+      <h3>Do I need a special app for meal planning?</h3>
+      <p>You can meal plan with pen and paper, a spreadsheet, or a notes app. But a dedicated tool that connects your meal plan to a <a href="/blog/shared-grocery-list-apps-2026">shared grocery list</a> and a recipe collection saves a lot of manual work. The fewer steps between "we're having tacos Thursday" and a completed shopping list, the more likely you'll stick with it.</p>
+
+      <div class="blog-cta">
+        <h3>Try Miiro for free</h3>
+        <p>Plan your meals, save recipes from the web, and let the grocery list build itself. Miiro connects everything so the only hard part is choosing what to eat.</p>
+        <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
+      </div>
 
       <hr>
 
@@ -709,11 +749,6 @@
         <strong>About the author:</strong> Robert is the co-founder of Miiro. He builds the app with his wife, who serves as chief tester and most honest critic. They live in the Netherlands with their son Miles.
       </div>
     </section>
-
-      <div class="article-cta">
-        <p>Ready to simplify your household?</p>
-        <a href="https://miiro.app" class="btn-primary">Try Miiro</a>
-      </div>
     </div>
   </div>
 </article>
@@ -723,7 +758,7 @@
   var ids = [
     'why-meal-planning-matters','the-simple-system','pick-your-planning-day',
     'keep-a-recipe-collection','plan-five-dinners','generate-grocery-list',
-    'shop-together','common-mistakes','our-setup'
+    'shop-together','common-mistakes','our-setup','faq'
   ];
   var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
   var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');

@@ -492,6 +492,51 @@
     box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
   }
 
+  /* BLOG CTA */
+  .blog-cta {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+
+  .blog-cta h3 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .blog-cta p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .blog-cta .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .blog-cta .cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
+  }
+
   /* FOOTER */
   footer {
     background: var(--text-primary);
@@ -614,7 +659,9 @@
         <li><a href="#recipe-to-grocery-list">From recipe to grocery list</a></li>
         <li><a href="#cooking-mode">Cooking mode</a></li>
         <li><a href="#what-it-works-with">What it works with</a></li>
+        <li><a href="#tips-for-couples">Tips for using Toru as a couple</a></li>
         <li><a href="#why-we-built-it">Why we built it</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </aside>
 
@@ -630,7 +677,9 @@
           <li><a href="#recipe-to-grocery-list">From recipe to grocery list</a></li>
           <li><a href="#cooking-mode">Cooking mode</a></li>
           <li><a href="#what-it-works-with">What it works with</a></li>
+          <li><a href="#tips-for-couples">Tips for using Toru as a couple</a></li>
           <li><a href="#why-we-built-it">Why we built it</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
 
@@ -649,11 +698,13 @@
 
       <p>Open Toru in Miiro, paste a recipe URL, and tap the arrow. Toru extracts the recipe title, ingredients, and cooking steps from the page. No more scrolling past life stories to find the actual recipe. No more ads. Just the recipe.</p>
 
+      <!-- TODO: Add Miiro screenshot showing Toru URL paste interface -->
+
       <p>The saved recipe goes into your shared cookbook, which both you and your partner can access. You can browse your collection, search by name, and open any recipe with one tap.</p>
 
       <h2 id="recipe-to-grocery-list">From recipe to grocery list</h2>
 
-      <p>This is where Toru connects to the rest of Miiro. When you add a saved recipe to your meal plan, the ingredients automatically flow to your shared grocery list, sorted by store section.</p>
+      <p>This is where Toru connects to the rest of Miiro. When you add a saved recipe to your <a href="/blog/meal-planning-for-couples-guide">meal plan</a>, the ingredients automatically flow to your shared grocery list, sorted by store section.</p>
 
       <p>So the workflow looks like this:</p>
 
@@ -668,11 +719,15 @@
 
       <p>No manual ingredient copying. No separate shopping list. The whole pipeline is connected.</p>
 
+      <!-- TODO: Add Miiro screenshot showing recipe ingredients flowing to grocery list -->
+
       <h2 id="cooking-mode">Cooking mode</h2>
 
       <p>When it's time to cook, open the recipe and tap "Start Cooking." Miiro switches to cooking mode: large text, step-by-step navigation, and built-in timers. Swipe through the steps while you cook. No need to scroll up and down a recipe page or keep your phone from locking.</p>
 
       <p>Cooking mode shows one step at a time with clear, readable text. When a step mentions a time (like "simmer for 5 minutes"), Miiro offers a timer button right there. Tap it and the timer starts. No switching to a separate timer app.</p>
+
+      <!-- TODO: Add Miiro screenshot showing cooking mode step-by-step view -->
 
       <h2 id="what-it-works-with">What it works with</h2>
 
@@ -680,11 +735,36 @@
 
       <p>Some pages with unusual formatting might not extract perfectly. In those cases, you can always edit the recipe manually after saving.</p>
 
+      <h2 id="tips-for-couples">Tips for using Toru as a couple</h2>
+
+      <p>Toru works best when both partners contribute to the shared cookbook. Here are a few ways couples get the most out of it:</p>
+
+      <p><strong>Save recipes when you find them, not when you need them.</strong> Browsing TikTok and see a recipe that looks good? Paste the URL right away. Your future self will thank you on Sunday evening when it's time to plan the week.</p>
+
+      <p><strong>Build a "weeknight easy" collection.</strong> Tag or mentally note which recipes take under 30 minutes. On busy weeks, pull from that list instead of trying something ambitious.</p>
+
+      <p><strong>Let each partner pick half the meals.</strong> If you're planning five dinners, one person picks three and the other picks two (or vice versa). This way both of you feel ownership over the meal plan and nobody gets stuck eating food they didn't choose.</p>
+
+      <p>If meal planning is new to you, our <a href="/blog/meal-planning-for-couples-guide">complete guide to meal planning for couples</a> breaks down the whole process step by step.</p>
+
       <h2 id="why-we-built-it">Why we built it</h2>
 
       <p>Before Miiro, my wife and I had recipes everywhere. Bookmarks in Safari, screenshots in Photos, links in WhatsApp, a few saved in Pinterest. When it was time to cook, we'd spend 10 minutes finding the recipe before we even started.</p>
 
       <p>Toru puts everything in one place. Our shared cookbook has about 25 recipes now, and it grows every time we try something new. Knowing exactly where every recipe lives (and being able to turn it into a grocery list with one tap) is one of those small quality-of-life improvements that makes a bigger difference than you'd expect.</p>
+
+      <p>You can also use <a href="/blog/what-is-tell-miiro-ai-household-management">Tell Miiro</a> to quickly save a recipe by pasting a URL in natural language. It's another fast way to get recipes into your cookbook without navigating through menus.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>Does Toru work with TikTok and Instagram recipe links?</h3>
+      <p>Yes. Toru can extract recipes from TikTok, Instagram, YouTube, and most food blogs. If a page has a structured recipe, Toru can pull it. For social media links, Toru extracts the recipe content from the video description or associated page.</p>
+
+      <h3>Can both partners add recipes to the same cookbook?</h3>
+      <p>Absolutely. The cookbook is shared between both partners in your Miiro household. Either of you can save recipes, browse the collection, and add them to the meal plan. You can also use <a href="/blog/what-is-tell-miiro-ai-household-management">Tell Miiro</a> to quickly add a recipe URL by typing or pasting it in natural language.</p>
+
+      <h3>What happens if Toru can't extract a recipe properly?</h3>
+      <p>If a recipe page has unusual formatting and Toru doesn't extract it perfectly, you can manually edit any field after saving. You can adjust the title, ingredients, or steps to get it right. Most recipe websites use standard formatting that Toru handles well, but the manual edit option is always there as a fallback.</p>
 
       <hr>
 
@@ -693,9 +773,10 @@
       </div>
     </section>
 
-      <div class="article-cta">
-        <p>Ready to simplify your household?</p>
-        <a href="https://miiro.app" class="btn-primary">Try Miiro</a>
+      <div class="blog-cta">
+        <h3>Try Miiro for free</h3>
+        <p>Toru is built into Miiro, along with meal planning, shared grocery lists, and everything else you need to run your household together.</p>
+        <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
       </div>
     </div>
   </div>
@@ -705,7 +786,7 @@
 (function() {
   var ids = [
     'what-is-toru','how-it-works','recipe-to-grocery-list','cooking-mode',
-    'what-it-works-with','why-we-built-it'
+    'what-it-works-with','tips-for-couples','why-we-built-it','faq'
   ];
   var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
   var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');

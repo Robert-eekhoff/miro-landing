@@ -492,6 +492,47 @@
     box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
   }
 
+  /* BLOG CTA */
+  .blog-cta {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+  .blog-cta h3 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .blog-cta p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .blog-cta .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .blog-cta .cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
+  }
+
   /* FOOTER */
   footer {
     background: var(--text-primary);
@@ -617,6 +658,7 @@
         <li><a href="#the-numbers">The numbers</a></li>
         <li><a href="#what-we-learned">What we learned</a></li>
         <li><a href="#whats-next">What's next</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </aside>
 
@@ -635,6 +677,7 @@
           <li><a href="#the-numbers">The numbers</a></li>
           <li><a href="#what-we-learned">What we learned</a></li>
           <li><a href="#whats-next">What's next</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
 
@@ -675,15 +718,19 @@
 
       <p><strong>A shared timeline (My Day)</strong> where both of us see tasks, events, and meals in one view. No more switching between calendar and to-do list.</p>
 
+      <!-- TODO: Add Miiro screenshot showing My Day shared timeline -->
+
       <p><strong>A shared calendar</strong> with day, week, and month views. Tasks and events live together because that's how real life works.</p>
 
-      <p><strong>A recipe saver called Toru.</strong> Paste any recipe URL from the web and it extracts the ingredients and steps. No more bookmarked recipes you can never find.</p>
+      <p><strong>A recipe saver called <a href="/blog/how-toru-recipe-saver-works">Toru</a>.</strong> Paste any recipe URL from the web and it extracts the ingredients and steps. No more bookmarked recipes you can never find.</p>
 
       <p><strong>Meal planning</strong> that connects to your recipe collection. Pick your meals for the week and the ingredients flow to your grocery list automatically.</p>
 
       <p><strong>A grocery list</strong> auto-sorted by store section. Produce, dairy, meat, pantry. Shopping trips got noticeably faster.</p>
 
-      <p>And the feature I'm most proud of: <strong>Tell Miiro.</strong> An AI-powered input where you can type everything on your mind in natural language. "Pick up Miles at 3, we're having tacos Friday, buy avocados and limes, dentist next Thursday." Miiro sorts it all into tasks, events, meals, and grocery items automatically.</p>
+      <p>And the feature I'm most proud of: <strong><a href="/blog/what-is-tell-miiro-ai-household-management">Tell Miiro</a>.</strong> An AI-powered input where you can type everything on your mind in natural language. "Pick up Miles at 3, we're having tacos Friday, buy avocados and limes, dentist next Thursday." Miiro sorts it all into tasks, events, meals, and grocery items automatically.</p>
+
+      <!-- TODO: Add Miiro screenshot showing Tell Miiro AI input -->
 
       <h2 id="the-hard-parts">The hard parts</h2>
 
@@ -703,7 +750,7 @@
 
       <p>Building for yourself is a superpower. Every decision was easy because we were the users. "Would this annoy my wife?" was our entire product strategy.</p>
 
-      <p>Ship when it's good, not when it's perfect. There are features we want to add (voice input, smart nudges, widgets) but the core experience is solid. Perfect is the enemy of shipped.</p>
+      <p>Ship when it's good, not when it's perfect. There are features we want to add (voice input, smart nudges, widgets) but the core experience is solid. Perfect is the enemy of shipped. For a deeper dive into the technical and product lessons, read <a href="/blog/lessons-learned-building-miiro">what I learned building Miiro in 4 months</a>.</p>
 
       <h2 id="whats-next">What's next</h2>
 
@@ -713,6 +760,23 @@
 
       <p>That's what we set out to build. And it feels pretty good.</p>
 
+<h2 id="faq">Frequently asked questions</h2>
+
+<h3>Can I really build an app with no engineering background?</h3>
+<p>Yes, but it takes patience. React Native and Expo have excellent documentation, and tools like Firebase handle a lot of the backend complexity. The learning curve is real, but if you're motivated by a problem you personally want to solve, that motivation carries you through the hard parts.</p>
+
+<h3>How much did it cost to build Miiro?</h3>
+<p>The main costs were the Apple Developer account ($99/year), Firebase (free tier covers most usage at launch), and the Anthropic API for Tell Miiro's AI features. RevenueCat for subscription management is free up to a revenue threshold. Total out-of-pocket was under $200 before launch.</p>
+
+<h3>What would you do differently?</h3>
+<p>I'd consider Supabase instead of Firebase from the start. Firestore's NoSQL model caused our hardest debugging sessions around data ownership and security rules. For more on the technical lessons, read <a href="/blog/lessons-learned-building-miiro">what I learned building Miiro in 4 months</a>.</p>
+
+<div class="blog-cta">
+  <h3>Try Miiro for free</h3>
+  <p>Miiro is the household app we wished existed. If you and your partner are tired of juggling five apps to run one household, give it a try.</p>
+  <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
+</div>
+
       <hr>
 
       <div class="author-bio">
@@ -720,10 +784,6 @@
       </div>
     </section>
 
-      <div class="article-cta">
-        <p>Ready to simplify your household?</p>
-        <a href="https://miiro.app" class="btn-primary">Try Miiro</a>
-      </div>
     </div>
   </div>
 </article>
@@ -732,7 +792,7 @@
 (function() {
   var ids = [
     'the-problem','the-first-version','the-name','what-we-built',
-    'the-hard-parts','the-numbers','what-we-learned','whats-next'
+    'the-hard-parts','the-numbers','what-we-learned','whats-next','faq'
   ];
   var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
   var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');

@@ -492,6 +492,51 @@
     box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
   }
 
+  /* BLOG CTA */
+  .blog-cta {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+
+  .blog-cta h3 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .blog-cta p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .blog-cta .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .blog-cta .cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
+  }
+
   /* FOOTER */
   footer {
     background: var(--text-primary);
@@ -616,6 +661,7 @@
         <li><a href="#cut-features">Cut features ruthlessly</a></li>
         <li><a href="#hard-truth">The hard truth</a></li>
         <li><a href="#advice">What I'd tell someone</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </aside>
 
@@ -633,6 +679,7 @@
           <li><a href="#cut-features">Cut features ruthlessly</a></li>
           <li><a href="#hard-truth">The hard truth</a></li>
           <li><a href="#advice">What I'd tell someone</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
 
@@ -647,6 +694,8 @@
 
       <p>When you build for yourself, you skip the customer research phase. You already know the pain points because you live them. You know which features matter and which are nice-to-have because you feel the difference.</p>
 
+      <!-- TODO: Add Miiro screenshot showing the shared timeline view -->
+
       <h2 id="best-tester">Your partner is your best tester</h2>
 
       <p>My wife tested every build. She doesn't care about the technical implementation. She cares about whether adding a grocery item takes one tap or three. She notices when a button is slightly too small. She tells me when a flow feels confusing.</p>
@@ -655,7 +704,7 @@
 
       <h2 id="boring-technology">Pick boring technology</h2>
 
-      <p>I built Miiro with React Native (Expo), Firebase, and RevenueCat. Nothing exotic. Nothing bleeding edge. These are all proven, well-documented tools with large communities.</p>
+      <p>I built Miiro with React Native (Expo), Firebase, and RevenueCat. Nothing exotic. Nothing bleeding edge. These are all proven, well-documented tools with large communities. For a deeper look at the technical decisions, read <a href="/blog/how-we-built-miiro">how we built Miiro from side project to the App Store</a>.</p>
 
       <p>The benefit of boring technology is that when things break (and they will), the answer is usually on Stack Overflow. When you're a non-technical founder working evenings, you can't afford to debug obscure framework issues at midnight.</p>
 
@@ -673,9 +722,11 @@
 
       <p>My wife kept asking: "But does the grocery list work properly yet?"</p>
 
-      <p>She was right. Every time I added a "cool" feature, it distracted from getting the core experience right. We shipped with tasks, calendar, meals, recipes, groceries, and Tell Miiro. Everything else is on the post-launch roadmap.</p>
+      <p>She was right. Every time I added a "cool" feature, it distracted from getting the core experience right. We shipped with tasks, calendar, meals, recipes, groceries, and Tell Miiro. Everything else is on the post-launch roadmap. If you're curious how Miiro compares to other options, we put together a <a href="/blog/best-household-apps-for-couples-2026">roundup of the best household apps for couples in 2026</a>.</p>
 
       <p>The app we shipped is simple. And that simplicity is its biggest strength.</p>
+
+      <!-- TODO: Add Miiro screenshot showing the Tell Miiro AI input -->
 
       <h2 id="hard-truth">The hard truth about indie development</h2>
 
@@ -687,6 +738,17 @@
 
       <p>Miiro isn't perfect. But it's real, it's in the App Store, and my family uses it every day. That's a pretty good starting point.</p>
 
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What tech stack did you use to build Miiro?</h3>
+      <p>React Native with Expo for the frontend, Firebase (Firestore, Cloud Functions, Auth) for the backend, RevenueCat for subscription management, and the Anthropic Claude API for Tell Miiro's AI-powered natural language parsing.</p>
+
+      <h3>How long did it take to build Miiro?</h3>
+      <p>4 months of evenings and weekends. The first version was a basic shared task list. By launch, it included a shared timeline, calendar, meal planner, recipe saver (Toru), auto-sorted grocery lists, and Tell Miiro AI input. For more on the build journey, read <a href="/blog/how-we-built-miiro">how we built Miiro from side project to the App Store</a>.</p>
+
+      <h3>Is Miiro available on Android?</h3>
+      <p>Not yet. Miiro launched on iOS first. Android support is on the roadmap.</p>
+
       <hr>
 
       <div class="author-bio">
@@ -694,9 +756,10 @@
       </div>
     </section>
 
-      <div class="article-cta">
-        <p>Ready to simplify your household?</p>
-        <a href="https://miiro.app" class="btn-primary">Try Miiro</a>
+      <div class="blog-cta">
+        <h3>Try Miiro for free</h3>
+        <p>Miiro is the app we built for couples who want tasks, meals, recipes, and groceries in one place. It's on the App Store now.</p>
+        <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
       </div>
     </div>
   </div>
@@ -706,7 +769,7 @@
 (function() {
   var ids = [
     'start-with-your-problem','best-tester','boring-technology','simulator-first',
-    'cut-features','hard-truth','advice'
+    'cut-features','hard-truth','advice','faq'
   ];
   var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
   var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');

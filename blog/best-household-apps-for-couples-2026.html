@@ -492,6 +492,21 @@
     box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
   }
 
+  /* BLOG CTA */
+  .blog-cta {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+  .blog-cta h3 { font-family: 'Lora', Georgia, serif; font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin-bottom: 12px; }
+  .blog-cta p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+  .blog-cta .cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .blog-cta .cta-button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3); }
+
   /* FOOTER */
   footer {
     background: var(--text-primary);
@@ -620,6 +635,7 @@
         <li><a href="#the-gap">The gap</a></li>
         <li><a href="#so-we-built-it">The best app for couples</a></li>
         <li><a href="#the-bottom-line">The bottom line</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </aside>
 
@@ -641,6 +657,7 @@
           <li><a href="#the-gap">The gap</a></li>
           <li><a href="#so-we-built-it">The best app for couples</a></li>
           <li><a href="#the-bottom-line">The bottom line</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
 
@@ -670,6 +687,8 @@
         <li>A grocery list that auto-sorts by category so shopping isn't chaos</li>
         <li>Low friction because if one partner doesn't enjoy using it, neither of you will stick with it</li>
       </ul>
+
+      <!-- TODO: Add Miiro screenshot showing the shared My Day timeline -->
 
       <p>That last point matters more than anything. The best household app in the world doesn't help if your partner opens it once and never comes back. Simplicity isn't a nice-to-have. It's the whole game.</p>
 
@@ -831,7 +850,7 @@
 
       <h2 id="the-gap">The gap we kept running into</h2>
 
-      <p>After testing all of these, we noticed the same pattern. The couple-focused apps (Cupla, Between) were great for connection but didn't cover household logistics. The household apps (Cozi, FamilyWall) covered the logistics but felt dated or overwhelming. The productivity apps (Todoist) were powerful but not designed for family life. And the grocery apps (AnyList) nailed the kitchen but couldn't help with the rest.</p>
+      <p>After testing all of these, we noticed the same pattern. The couple-focused apps (Cupla, Between) were great for connection but didn't cover household logistics. The household apps (Cozi, FamilyWall) covered the logistics but felt dated or overwhelming. The productivity apps (Todoist) were powerful but not designed for family life. And the <a href="/blog/shared-grocery-list-apps-2026">grocery apps</a> (AnyList) nailed the kitchen but couldn't help with the rest. For a more detailed comparison of the couple-first apps, see our <a href="/blog/miiro-vs-cozi-vs-cupla">Miiro vs Cozi vs Cupla</a> breakdown.</p>
 
       <p>We kept thinking: what if there was just one place where you could say "pick up Miles at 3, we're having pasta tonight, buy olive oil, and dentist appointment is Thursday" and the app would sort all of that into the right place? An event, a meal, a grocery item, and a calendar entry. Without you having to file each one into a different screen.</p>
 
@@ -844,13 +863,15 @@
       <p>It does everything we spent months looking for across all those other apps:</p>
 
       <ul>
-        <li><strong>A shared timeline</strong> where both of us see our day at a glance. Tasks, events, and meals together.</li>
+        <li><strong>A <a href="/blog/shared-calendar-for-couples">shared timeline</a></strong> where both of us see our day at a glance. Tasks, events, and meals together.</li>
         <li><strong>Smart tasks</strong> we can assign to each other, schedule, and check off without any project management overhead.</li>
         <li><strong>Meal planning</strong> tied to our recipe collection and grocery list.</li>
         <li><strong>A recipe saver called Toru</strong> that pulls any recipe from the web. Just paste a URL.</li>
         <li><strong>Auto-sorted grocery lists</strong> organized by store section (produce, dairy, meat, pantry).</li>
-        <li><strong>An AI brain dump called Tell Miiro.</strong> Type everything on your mind in plain language and the AI sorts it into tasks, events, meals, and grocery items automatically.</li>
+        <li><strong>An AI brain dump called <a href="/blog/what-is-tell-miiro-ai-household-management">Tell Miiro</a>.</strong> Type everything on your mind in plain language and the AI sorts it into tasks, events, meals, and grocery items automatically.</li>
       </ul>
+
+      <!-- TODO: Add Miiro screenshot showing Tell Miiro AI parsing results -->
 
       <p>That last feature is the one I'm most proud of. You don't have to decide whether something is a task or a calendar event or a grocery item. You just tell Miiro what's going on, all at once, in your own words, and it figures it out. It's the closest thing to telling your partner "here's everything in my head right now."</p>
 
@@ -868,17 +889,29 @@
 
       <p>Miiro is available on the App Store. You can learn more at <a href="https://miiro.app">miiro.app</a>.</p>
 
+      <h2 id="faq">Frequently asked questions</h2>
+
+<h3>Do we really need a dedicated household app?</h3>
+<p>Not necessarily. Plenty of couples get by with Google Calendar and a shared notes app. But if you find yourself constantly coordinating through text messages, forgetting groceries, or asking "what are we eating tonight?", a dedicated app consolidates everything into one place and saves both of you time and mental energy.</p>
+
+<h3>What if my partner won't use another app?</h3>
+<p>This is the most common concern we hear. The key is starting with the feature that solves the biggest pain point. For most couples, that's the grocery list. Once your partner sees the benefit of a shared, auto-sorted grocery list, they're more open to using the calendar, tasks, and meal planning too. Low friction is everything.</p>
+
+<h3>Is Miiro free?</h3>
+<p>Miiro has a free version that includes shared tasks, calendar, and grocery lists. Miiro+ ($4.99/month or $44.99/year) adds Tell Miiro AI, the Toru recipe saver, meal planning, and other premium features. For details on how Tell Miiro works, check out our <a href="/blog/what-is-tell-miiro-ai-household-management">guide to Tell Miiro</a>.</p>
+
+      <div class="blog-cta">
+  <h3>Try Miiro for free</h3>
+  <p>We tested every household app and then built the one we actually wanted. Shared tasks, calendar, meal planning, recipe saving, auto-sorted grocery lists, and Tell Miiro AI. All in one place for you and your partner.</p>
+  <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
+</div>
+
       <hr>
 
       <div class="author-bio">
         <strong>About the author:</strong> Robert is the co-founder of Miiro. He builds the app with his wife, who serves as chief tester and most honest critic. They live in the Netherlands with their son Miles.
       </div>
     </section>
-
-      <div class="article-cta">
-        <p>Ready to simplify your household?</p>
-        <a href="https://miiro.app" class="btn-primary">Try Miiro</a>
-      </div>
     </div>
   </div>
 </article>
@@ -887,7 +920,7 @@
 (function() {
   var ids = [
     'what-we-were-looking-for','cozi','cupla','todoist','anylist',
-    'google-calendar','ourhome','familywall','the-gap','so-we-built-it','the-bottom-line'
+    'google-calendar','ourhome','familywall','the-gap','so-we-built-it','the-bottom-line','faq'
   ];
   var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
   var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');
