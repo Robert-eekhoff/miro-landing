@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miiro - See what matters.</title>
+<title>Miiro - Household App for Couples | Shared Tasks, Meals & Calendar</title>
+<meta name="description" content="Miiro is the all-in-one household app for couples. Shared grocery lists, meal planning, calendars, and AI-powered task management. Download free for iOS.">
+<link rel="canonical" href="https://miiro.app/" />
 <meta property="og:title" content="Miiro - The household app for couples & families">
 <meta property="og:description" content="One shared space for tasks, meals, groceries, and calendars. Tell Miiro what's on your mind. It sorts everything instantly.">
 <meta property="og:image" content="https://miiro.app/og-image.png">
@@ -13,6 +15,119 @@
 <meta name="twitter:title" content="Miiro - The household app for couples & families">
 <meta name="twitter:description" content="One shared space for tasks, meals, groceries, and calendars.">
 <meta name="twitter:image" content="https://miiro.app/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Miiro",
+      "url": "https://miiro.app",
+      "logo": "https://miiro.app/koi-logo.png",
+      "sameAs": [
+        "https://instagram.com/miiroapp",
+        "https://tiktok.com/@miiroapp",
+        "https://x.com/miiroapp"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Miiro",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free tier with limited features"
+        },
+        {
+          "@type": "Offer",
+          "price": "4.99",
+          "priceCurrency": "USD",
+          "description": "Miiro+ monthly subscription"
+        },
+        {
+          "@type": "Offer",
+          "price": "44.99",
+          "priceCurrency": "USD",
+          "description": "Miiro+ annual subscription"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Tell Miiro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tell Miiro is our AI assistant. Type everything on your mind in natural language, and Miiro automatically sorts it into tasks, events, meals, and grocery lists. Free users get 10 credits. Miiro+ users get unlimited."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every core feature works on the free plan. You get 3 lists, 2 calendars, 5 saved recipes, and sharing with 1 person. Miiro+ removes all limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my partner need to pay too?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access automatically when they join your household. No extra payment, no extra steps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after the free trial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After 7 days, you'll be charged $4.99/month or $44.99/year. Cancel anytime in iPhone Settings. You keep access until the end of your billing period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What recipe sites does Toru work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Toru works with most major recipe websites including BBC Good Food, RecipeTin Eats, Budget Bytes, and Allrecipes. It also extracts recipes from TikTok, Instagram, and YouTube cooking videos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Miiro work in other languages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Tell Miiro and grocery sorting work in any language. Add grocery items in Dutch, German, Spanish, French, or any other language and Miiro automatically sorts them into the right categories. Recipe import works with websites and videos in any language too."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stored securely on Google Firebase with encryption. We don't sell data, show ads, or track browsing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Miiro without sharing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Miiro works great solo. Sharing is optional."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -211,6 +326,108 @@
   .nav-cta:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
+
+  /* ===== HAMBURGER MENU ===== */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 201;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(44, 40, 37, 0.95);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .mobile-nav-overlay.open {
+    display: flex;
+  }
+
+  .mobile-nav-overlay a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    transition: color 0.2s;
+  }
+
+  .mobile-nav-overlay a:hover {
+    color: var(--coral);
+  }
+
+  .mobile-nav-overlay .nav-cta {
+    background: var(--indigo);
+    padding: 14px 36px;
+    border-radius: 100px;
+  }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky-mobile-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: #E8634A;
+    z-index: 150;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 8px rgba(44, 40, 37, 0.12);
+  }
+
+  .sticky-mobile-cta a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .sticky-mobile-cta.visible {
+      display: flex;
+    }
   }
 
   /* ===== HERO ===== */
@@ -2168,6 +2385,7 @@
     }
 
     .nav-links { display: none; }
+    .hamburger { display: flex; }
   }
 
   @media (max-width: 768px) {
@@ -2374,16 +2592,31 @@
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#story">Our Story</a></li>
+      <li><a href="/blog">Blog</a></li>
       <li><a href="#" class="nav-cta">Get Miiro</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-nav-overlay" id="mobile-nav-overlay">
+  <a href="#features" onclick="closeMobileNav()">Features</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="#story" onclick="closeMobileNav()">Our Story</a>
+  <a href="/blog" onclick="closeMobileNav()">Blog</a>
+  <a href="#" class="nav-cta" onclick="closeMobileNav()">Get Miiro</a>
+</div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
+        <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #E8634A; margin-bottom: 12px; animation: fadeUp 0.8s ease forwards;">The household app for couples</p>
         <p style="font-size: 0.95rem; color: var(--text-tertiary); margin-bottom: 16px; animation: fadeUp 0.8s ease forwards;">The mental load shouldn't live in one person's head.</p>
         <h1>One message.<br>Your whole day, <em>sorted.</em></h1>
         <p class="hero-stars"><span class="hero-stars-icons">★★★★★</span> Loved by beta testers</p>
@@ -2604,6 +2837,28 @@
         <h3>See your day</h3>
         <p>My Day shows exactly what matters today. Nothing more, nothing less.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="stats-bar" style="background: var(--cream); padding: 48px 0;">
+  <div class="container animate-in">
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--coral);">1</div>
+      <div class="stat-label">message sorts your day</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--indigo);">2</div>
+      <div class="stat-label">people, finally in sync</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--mint);">0</div>
+      <div class="stat-label">ads. Not now, not ever.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="color: var(--text-primary);">100%</div>
+      <div class="stat-label">real-time sync</div>
     </div>
   </div>
 </section>
@@ -2961,28 +3216,6 @@
   </div>
 </section>
 
-<!-- ===== STATS BAR ===== -->
-<section class="stats-bar" style="background: var(--cream); padding: 48px 0;">
-  <div class="container animate-in">
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--coral);">1</div>
-      <div class="stat-label">message sorts your day</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--indigo);">2</div>
-      <div class="stat-label">people, finally in sync</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--mint);">0</div>
-      <div class="stat-label">ads. Not now, not ever.</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" style="color: var(--text-primary);">100%</div>
-      <div class="stat-label">real-time sync</div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== PRICING ===== -->
 <section class="pricing section" id="pricing">
   <div class="container">
@@ -3030,7 +3263,7 @@
           <li>Unlimited lists & calendars</li>
           <li>Unlimited recipes & imports</li>
           <li>Unlimited sharing</li>
-          <li>Up to 6 household members</li>
+          <li>Share with your whole household</li>
         </ul>
         <a href="#" class="pricing-card-btn">Start 7-Day Free Trial</a>
       </div>
@@ -3183,6 +3416,11 @@
     <p class="final-cta-sub">Free to start · Cancel anytime</p>
   </div>
 </section>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-mobile-cta" id="sticky-mobile-cta">
+  <a href="#">Download for iOS</a>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -3573,6 +3811,43 @@
     }
 
     setTimeout(runShared, 2500);
+  })();
+
+  // Mobile hamburger menu
+  function toggleMobileNav() {
+    var hamburger = document.getElementById('hamburger');
+    var overlay = document.getElementById('mobile-nav-overlay');
+    hamburger.classList.toggle('active');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function closeMobileNav() {
+    var hamburger = document.getElementById('hamburger');
+    var overlay = document.getElementById('mobile-nav-overlay');
+    hamburger.classList.remove('active');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Sticky mobile CTA bar
+  (function() {
+    var stickyBar = document.getElementById('sticky-mobile-cta');
+    var heroSection = document.querySelector('.hero');
+    if (!stickyBar || !heroSection) return;
+
+    function checkScroll() {
+      var heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 0 && window.innerWidth <= 768) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    window.addEventListener('resize', checkScroll, { passive: true });
+    checkScroll();
   })();
 
 </script>

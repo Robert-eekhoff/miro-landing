@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy - Miiro</title>
 <meta name="description" content="Miiro Privacy Policy - how we collect, use, and protect your data.">
+<link rel="canonical" href="https://miiro.app/privacy.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -93,7 +94,7 @@ footer a:hover { color: var(--indigo); }
 
 <div class="container">
   <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: March 8, 2026</p>
+  <p class="last-updated">Last updated: March 13, 2026</p>
 
   <h2>Data Controller</h2>
   <p>Miiro is operated by Robert Eekhoff, Amsterdam, Netherlands. For privacy inquiries: <a href="mailto:support@miiro.app">support@miiro.app</a></p>
@@ -109,7 +110,8 @@ footer a:hover { color: var(--indigo); }
     <li><strong>Tell Miiro Input:</strong> When you use the Tell Miiro AI feature, your natural language input is sent to Anthropic's AI service for processing. This data is used solely to organize your tasks, meals, and grocery lists. Your input is not stored by Anthropic for training purposes and is processed in accordance with Anthropic's usage policy.</li>
     <li><strong>Profile Photos:</strong> Optional profile image stored in Firebase Storage.</li>
     <li><strong>Referral Data:</strong> Referral codes and device identifiers for our referral program.</li>
-    <li><strong>AI Processing:</strong> Text you enter in Tell Miiro is sent to Anthropic's Claude API for natural language processing. We send only the text content, not your identity.</li>
+    <li><strong>AI Processing:</strong> Text you enter in Tell Miiro is sent to Anthropic's Claude API for natural language processing. We send only the text content, not your identity. Additionally, when you add items to your grocery list, item names are sent to Anthropic's API for automatic category sorting. These item names may reflect cultural or dietary preferences but are not linked to your identity. No other user data is included in these requests.</li>
+    <li><strong>Recipe Import via URL:</strong> When you import a recipe by sharing a social media URL (from TikTok, Instagram, or YouTube), the URL is sent to Supadata (<a href="https://supadata.ai">supadata.ai</a>), a third-party data processor, to retrieve the video transcript and post metadata. Only the URL is transmitted — no user identity or personal data is sent to Supadata. The retrieved transcript and metadata are then processed by Anthropic's AI service to extract structured recipe information. Supadata processes data in accordance with its privacy policy.</li>
   </ul>
 
   <h2>What We Don't Collect</h2>
@@ -130,13 +132,13 @@ footer a:hover { color: var(--indigo); }
 
   <h2>Data Storage</h2>
   <p>Stored securely on Google Firebase with encryption at rest and in transit. Access restricted to authenticated household members.</p>
-  <p>Your data may be transferred to and processed in the United States through our service providers (Google Firebase, Anthropic, RevenueCat). These transfers are protected by Standard Contractual Clauses.</p>
+  <p>Your data may be transferred to and processed in the United States through our service providers (Google Firebase, Anthropic, RevenueCat, Supadata). These transfers are protected by Standard Contractual Clauses.</p>
 
   <h2>Data Retention</h2>
   <p>We retain your data for as long as your account is active. Upon account deletion, your data is permanently removed within 30 days. Anonymized analytics may be retained indefinitely.</p>
 
   <h2>Data Sharing</h2>
-  <p>We share data only with: Google Firebase (storage/auth), RevenueCat (subscriptions), Apple (payments), Anthropic (AI processing for Tell Miiro), Expo (push notifications), and Zoho Mail (transactional emails). We never sell your data.</p>
+  <p>We share data only with: Google Firebase (storage/auth), RevenueCat (subscriptions), Apple (payments), Anthropic (AI processing for Tell Miiro and grocery categorization), Supadata (video transcript retrieval for recipe import), Expo (push notifications), and Zoho Mail (transactional emails). We never sell your data.</p>
 
   <h2>Your Rights</h2>
   <p>Request deletion anytime at <a href="mailto:support@miiro.app">support@miiro.app</a>. EU/EEA users have rights under GDPR including: access, rectification, erasure, portability, restriction of processing, and objection. We respond to requests within 30 days. You also have the right to lodge a complaint with your local supervisory authority (in the Netherlands: Autoriteit Persoonsgegevens, <a href="https://autoriteitpersoonsgegevens.nl">autoriteitpersoonsgegevens.nl</a>).</p>
