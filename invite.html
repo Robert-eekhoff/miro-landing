@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z"></script>
+<!-- GA4 loaded conditionally after cookie consent -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P82S08N37Z');
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
 </script>
 
 <meta charset="UTF-8">
@@ -314,5 +326,35 @@ body {
 })();
 </script>
 
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We use cookies to understand how you use our site and improve your experience. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacy Policy</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Decline</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
 </body>
 </html>
