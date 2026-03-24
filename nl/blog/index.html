@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Miiro - Tips voor Koppels en Huishouden</title>
+<meta name="description" content="Tips, vergelijkingen en gidsen voor koppels die samen hun huishouden willen organiseren. Gemaakt door het Miiro team in Amsterdam.">
+<link rel="canonical" href="https://miiro.app/nl/blog/" />
+<link rel="alternate" hreflang="en" href="https://miiro.app/blog/" />
+<link rel="alternate" hreflang="nl" href="https://miiro.app/nl/blog/" />
+<link rel="alternate" hreflang="x-default" href="https://miiro.app/blog/" />
+<meta property="og:title" content="Blog | Miiro - Tips voor Koppels en Huishouden">
+<meta property="og:description" content="Tips, vergelijkingen en gidsen voor koppels die samen hun huishouden willen organiseren. Gemaakt door het Miiro team in Amsterdam.">
+<meta property="og:url" content="https://miiro.app/nl/blog/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://miiro.app/og-image-nl.png">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Miiro">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --indigo: #4A5CE8;
+    --mint: #3BBFA0;
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  .nav-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--indigo);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
+
+  /* CONTENT */
+  .page-header {
+    padding: 80px 0 40px;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .container--narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
+
+  /* CATEGORY HEADINGS */
+  .category-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    margin-top: 48px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .category-heading:first-child {
+    margin-top: 0;
+  }
+
+  /* POST LIST */
+  .post-list {
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .post-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .post-card-date {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .post-card-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .post-card-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .post-card-read {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--coral);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-primary);
+    border-top: 1px solid rgba(249, 246, 241, 0.06);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .footer-brand-text {
+    font-family: 'Lora', serif;
+    color: rgba(249, 246, 241, 0.6);
+    font-size: 0.95rem;
+  }
+
+  .footer-tagline {
+    font-style: italic;
+    color: rgba(249, 246, 241, 0.3);
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(249, 246, 241, 0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(249, 246, 241, 0.7); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(249, 246, 241, 0.2);
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .post-card { padding: 28px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/nl/" class="nav-logo">
+      <img src="/koi-logo.png" alt="Miiro koi logo">
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/nl/">Home</a></li>
+      <li><a href="/nl/blog">Blog</a></li>
+      <li><a href="/blog" title="English" style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;color:var(--text-tertiary)">EN</a></li>
+      <li><a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="nav-cta">Download Miiro</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container--narrow">
+  <header class="page-header">
+    <h1>Blog</h1>
+  </header>
+
+  <div class="post-list">
+
+    <!-- ===== Vergelijkingen & Alternatieven ===== -->
+    <h2 class="category-heading">Vergelijkingen &amp; Alternatieven</h2>
+
+    <a href="/nl/blog/klender-vs-miiro" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Klender vs Miiro: Welke App Past bij Jou?</h2>
+      <p class="post-card-excerpt">Klender en Miiro vergeleken. Functies, prijzen en welke huishoud-app het beste bij jou en je partner past.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/klender-alternatieven" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Klender Alternatieven 2026: 5 Apps Vergeleken</h2>
+      <p class="post-card-excerpt">Op zoek naar een Klender alternatief? We vergelijken 5 huishoud-apps voor koppels op functies, prijs en gebruiksgemak.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/cozi-app-nederlands" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Cozi App Nederlands: Alternatieven die W&#233;l Werken</h2>
+      <p class="post-card-excerpt">Cozi is niet beschikbaar in het Nederlands. Ontdek alternatieven die wel in het Nederlands werken voor gezinnen en koppels.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/timetree-alternatief" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">TimeTree Alternatief met Maaltijdplanning</h2>
+      <p class="post-card-excerpt">TimeTree is goed voor agenda's, maar mist maaltijdplanning en boodschappenlijsten. Bekijk alternatieven die alles combineren.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/gedeelde-agenda-app-koppels" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Gedeelde Agenda App voor Koppels 2026</h2>
+      <p class="post-card-excerpt">De beste gedeelde agenda-apps voor koppels in 2026. Van Google Agenda tot alles-in-een oplossingen met taken en maaltijden.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/boodschappenlijst-app-vergelijken" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Beste Boodschappenlijst Apps 2026</h2>
+      <p class="post-card-excerpt">De beste boodschappenlijst-apps voor koppels en gezinnen vergeleken. Gedeeld, realtime en met slimme sortering.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/google-agenda-delen-partner" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Google Agenda Delen met je Partner: Tips</h2>
+      <p class="post-card-excerpt">Stap-voor-stap uitleg om Google Agenda te delen met je partner, plus tips als je meer wilt dan alleen een gedeelde agenda.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/beste-apps-voor-koppels" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Beste Apps voor Koppels 2026: Onze Top 10</h2>
+      <p class="post-card-excerpt">De 10 beste apps voor koppels in 2026. Van huishouden en planning tot financi&#235;n en quality time.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/beste-huishoud-apps" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Beste Huishoud Apps 2026 voor Koppels</h2>
+      <p class="post-card-excerpt">De beste huishoud-apps voor koppels vergeleken. Taken, boodschappen, maaltijden en agenda in &#233;&#233;n overzicht.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <!-- ===== Huishouden & Planning ===== -->
+    <h2 class="category-heading">Huishouden &amp; Planning</h2>
+
+    <a href="/nl/blog/mentale-belasting-huishouden" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Mentale Belasting Verdelen: Tips voor Koppels</h2>
+      <p class="post-card-excerpt">De mentale belasting eerlijk verdelen met je partner. Praktische tips en tools die echt helpen.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/huishouden-organiseren-als-koppel" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Huishouden Organiseren als Koppel: Tips &amp; Apps</h2>
+      <p class="post-card-excerpt">Samen je huishouden organiseren zonder stress. Tips, routines en apps die koppels helpen om alles draaiende te houden.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/taken-verdelen-met-partner" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Taken Verdelen met je Partner: Zonder Gedoe</h2>
+      <p class="post-card-excerpt">Huishoudelijke taken eerlijk verdelen zonder ruzie. Praktische manieren om samen verantwoordelijkheid te nemen.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/samenwonen-checklist" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Samenwonen Checklist 2026: Alles Wat Je Moet Regelen</h2>
+      <p class="post-card-excerpt">Ga je samenwonen? Deze checklist dekt alles: van verzekeringen en inrichting tot huishoudafspraken.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/zondag-reset-routine" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Zondag Reset Routine voor Koppels</h2>
+      <p class="post-card-excerpt">Een zondag reset routine van 30 minuten die je hele week op orde houdt. Stap-voor-stap voor koppels.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/apps-samenwonen" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Apps voor Samenwonenden: Complete Gids 2026</h2>
+      <p class="post-card-excerpt">De handigste apps voor als je gaat samenwonen. Van gedeelde lijsten en agenda tot financi&#235;n en taken.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/app-tips-druk-gezinsleven" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Druk Gezinsleven? App Tips voor Meer Rust</h2>
+      <p class="post-card-excerpt">Praktische app-tips voor drukke gezinnen. Minder chaos, meer overzicht en meer quality time samen.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <!-- ===== Maaltijden & Recepten ===== -->
+    <h2 class="category-heading">Maaltijden &amp; Recepten</h2>
+
+    <a href="/nl/blog/weekmenu-maken-tips" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Weekmenu Maken: Moeiteloos Maaltijden Plannen</h2>
+      <p class="post-card-excerpt">Een weekmenu maken hoeft niet moeilijk te zijn. Tips en tools om moeiteloos je maaltijden voor de week te plannen.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/recepten-opslaan-tiktok-instagram" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Recepten Opslaan van TikTok en Instagram</h2>
+      <p class="post-card-excerpt">Stop met recepten kwijtraken in je bookmarks. Zo sla je TikTok- en Instagram-recepten op zodat je ze echt kookt.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <a href="/nl/blog/maaltijdplanning-voor-twee" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">Maaltijdplanning voor Twee: Bespaar Tijd en Geld</h2>
+      <p class="post-card-excerpt">Maaltijdplanning voor twee personen. Bespaar tijd, geld en vermijd voedselverspilling met deze praktische aanpak.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+    <!-- ===== AI & Technologie ===== -->
+    <h2 class="category-heading">AI &amp; Technologie</h2>
+
+    <a href="/nl/blog/ai-assistent-huishouden" class="post-card">
+      <div class="post-card-date">Maart 2026</div>
+      <h2 class="post-card-title">AI-Assistent voor je Huishouden: Tell Miiro</h2>
+      <p class="post-card-excerpt">Tell Miiro is een AI-functie waarmee je taken, afspraken, maaltijden en boodschappen in gewone taal kunt invoeren.</p>
+      <span class="post-card-read">Lees meer</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/koi-logo.png" alt="Miiro">
+      <span class="footer-brand-text">Miiro</span>
+      <span class="footer-tagline">- Zie wat ertoe doet.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Voorwaarden</a></li>
+      <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 Miiro. Met liefde gemaakt in Amsterdam.</span>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We gebruiken cookies om te begrijpen hoe je onze site gebruikt en je ervaring te verbeteren. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacybeleid</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Weigeren</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accepteren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>

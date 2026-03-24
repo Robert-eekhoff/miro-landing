@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Assistent voor je Huishouden: Tell Miiro | Miiro</title>
+<meta name="description" content="Hoe werkt een AI-assistent voor je huishouden? Ontdek Tell Miiro: typ alles wat je bezighoudt en het wordt automatisch gesorteerd.">
+<meta property="og:title" content="AI-Assistent voor je Huishouden: Tell Miiro">
+<meta property="og:description" content="Hoe werkt een AI-assistent voor je huishouden? Ontdek Tell Miiro: typ alles wat je bezighoudt en het wordt automatisch gesorteerd.">
+<meta property="og:url" content="https://miiro.app/nl/blog/ai-assistent-huishouden">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://miiro.app/og-image.png">
+<meta property="article:published_time" content="2026-03-24">
+<meta property="article:author" content="Robert">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-Assistent voor je Huishouden: Tell Miiro">
+<meta name="twitter:description" content="Hoe werkt een AI-assistent voor je huishouden? Ontdek Tell Miiro: typ alles wat je bezighoudt en het wordt automatisch gesorteerd.">
+<link rel="canonical" href="https://miiro.app/nl/blog/ai-assistent-huishouden">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI-Assistent voor je Huishouden: Tell Miiro",
+  "description": "Hoe werkt een AI-assistent voor je huishouden? Ontdek Tell Miiro: typ alles wat je bezighoudt en het wordt automatisch gesorteerd.",
+  "datePublished": "2026-03-24",
+  "dateModified": "2026-03-24",
+  "author": {
+    "@type": "Person",
+    "name": "Robert",
+    "jobTitle": "Medeoprichter van Miiro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Miiro",
+    "url": "https://miiro.app"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://miiro.app/nl/blog/ai-assistent-huishouden"
+  }
+}
+</script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --coral-bg: rgba(232, 99, 74, 0.06);
+    --indigo: #4A5CE8;
+    --indigo-bg: rgba(74, 92, 232, 0.06);
+    --mint: #3BBFA0;
+    --mint-bg: rgba(59, 191, 160, 0.06);
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav { background: rgba(249, 246, 241, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+  nav .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-primary); }
+  .nav-logo img { width: 36px; height: 36px; object-fit: contain; }
+  .nav-logo-text { font-family: 'Lora', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta { background: var(--indigo); color: white !important; padding: 10px 24px; border-radius: 100px; font-weight: 600 !important; transition: transform 0.2s, box-shadow 0.2s !important; }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25); }
+
+  .article-layout { max-width: 1100px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
+  .article-container { max-width: 700px; min-width: 0; }
+  .article-header { padding: 80px 0 48px; text-align: center; max-width: 700px; margin: 0 auto; padding-left: clamp(20px, 5vw, 40px); padding-right: clamp(20px, 5vw, 40px); }
+
+  .toc-sidebar { position: sticky; top: 100px; padding-top: 80px; }
+  .toc-sidebar .toc-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 16px; }
+  .toc-sidebar ul { list-style: none; border-left: 2px solid var(--border); }
+  .toc-sidebar li { margin-bottom: 2px; }
+  .toc-sidebar a { display: block; padding: 5px 0 5px 16px; font-size: 0.78rem; color: var(--text-tertiary); text-decoration: none; border-left: 2px solid transparent; margin-left: -2px; transition: color 0.2s, border-color 0.2s; line-height: 1.4; }
+  .toc-sidebar a:hover { color: var(--text-secondary); }
+  .toc-sidebar a.active { color: var(--coral); border-left-color: var(--coral); font-weight: 500; }
+  .toc-sidebar .toc-sub { padding-left: 28px; font-size: 0.73rem; }
+
+  .toc-mobile { display: none; margin-bottom: 32px; }
+  .toc-mobile-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: var(--warm-white); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; }
+  .toc-mobile-toggle svg { width: 16px; height: 16px; transition: transform 0.2s; flex-shrink: 0; }
+  .toc-mobile.open .toc-mobile-toggle svg { transform: rotate(180deg); }
+  .toc-mobile-list { list-style: none; background: var(--warm-white); border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; padding: 8px 0; display: none; margin-top: -1px; }
+  .toc-mobile.open .toc-mobile-list { display: block; }
+  .toc-mobile.open .toc-mobile-toggle { border-radius: 12px 12px 0 0; }
+  .toc-mobile-list a { display: block; padding: 8px 20px; font-size: 0.82rem; color: var(--text-tertiary); text-decoration: none; transition: color 0.15s, background 0.15s; }
+  .toc-mobile-list a:hover { color: var(--text-secondary); background: rgba(44, 40, 37, 0.03); }
+  .toc-mobile-list a.active { color: var(--coral); font-weight: 500; }
+  .toc-mobile-list .toc-sub { padding-left: 36px; font-size: 0.78rem; }
+
+  .article-breadcrumb { font-size: 0.8rem; color: var(--text-tertiary); margin-bottom: 32px; }
+  .article-breadcrumb a { color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+  .article-breadcrumb a:hover { color: var(--coral); }
+
+  .article-header h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 20px; }
+  .article-meta { font-size: 0.875rem; color: var(--text-tertiary); }
+  .article-meta .author { color: var(--text-secondary); font-weight: 500; }
+
+  .article-body { padding-bottom: 80px; font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); }
+  .article-body p { margin-bottom: 24px; }
+  .article-body h2 { font-family: 'Lora', Georgia, serif; font-size: 1.6rem; font-weight: 500; color: var(--text-primary); margin-top: 56px; margin-bottom: 20px; letter-spacing: -0.01em; }
+  .article-body h3 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; }
+  .article-body ul { margin-bottom: 24px; padding-left: 24px; }
+  .article-body li { margin-bottom: 8px; }
+  .article-body a { color: var(--coral); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(232, 99, 74, 0.3); transition: text-decoration-color 0.2s; }
+  .article-body a:hover { text-decoration-color: var(--coral); }
+  .article-body blockquote { border-left: 3px solid var(--coral); padding: 4px 0 4px 24px; margin: 32px 0; font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1.1rem; color: var(--text-primary); line-height: 1.7; }
+
+  .callout { border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; font-size: 0.95rem; line-height: 1.7; }
+  .callout-label { font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; display: block; }
+  .callout-positive { background: var(--mint-bg); border: 1px solid rgba(59, 191, 160, 0.15); }
+  .callout-positive .callout-label { color: var(--mint); }
+  .callout-negative { background: var(--coral-bg); border: 1px solid rgba(232, 99, 74, 0.12); }
+  .callout-negative .callout-label { color: var(--coral); }
+  .callout-info { background: var(--indigo-bg); border: 1px solid rgba(74, 92, 232, 0.12); }
+  .callout-info .callout-label { color: var(--indigo); }
+
+  .article-body hr { border: none; height: 1px; background: var(--border); margin: 48px 0; }
+
+  .author-bio { background: var(--warm-white); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-top: 48px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+  .author-bio strong { color: var(--text-primary); }
+
+  .blog-cta { background: var(--warm-white); border: 1px solid var(--border); border-radius: 20px; padding: 40px 32px; text-align: center; margin-top: 48px; margin-bottom: 24px; }
+  .blog-cta h3 { font-family: 'Lora', Georgia, serif; font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin-bottom: 12px; }
+  .blog-cta p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+  .blog-cta .cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .blog-cta .cta-button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3); }
+
+  footer { background: var(--text-primary); border-top: 1px solid rgba(249, 246, 241, 0.06); padding: 40px 0; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-brand img { width: 28px; height: 28px; object-fit: contain; }
+  .footer-brand-text { font-family: 'Lora', serif; color: rgba(249, 246, 241, 0.6); font-size: 0.95rem; }
+  .footer-tagline { font-style: italic; color: rgba(249, 246, 241, 0.3); font-family: 'Lora', serif; font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+  .footer-links a { color: rgba(249, 246, 241, 0.4); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(249, 246, 241, 0.7); }
+  .footer-copy { font-size: 0.75rem; color: rgba(249, 246, 241, 0.2); }
+
+  @media (max-width: 1060px) {
+    .article-layout { display: block; }
+    .toc-sidebar { display: none; }
+    .toc-mobile { display: block; }
+    .article-container { margin: 0 auto; }
+  }
+  @media (max-width: 900px) { .nav-links { display: none; } }
+  @media (max-width: 600px) {
+    .callout { padding: 20px 22px; }
+    .author-bio { padding: 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/nl/" class="nav-logo">
+      <img src="/koi-logo.png" alt="Miiro koi logo">
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/nl/">Home</a></li>
+      <li><a href="/nl/blog">Blog</a></li>
+      <li><a href="/" title="English" style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;color:var(--text-tertiary)">EN</a></li>
+      <li><a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="nav-cta">Download Miiro</a></li>
+    </ul>
+  </div>
+</nav>
+
+<article>
+  <header class="article-header">
+    <div class="article-breadcrumb"><a href="/nl/blog">Blog</a> / AI-assistent huishouden</div>
+    <h1>AI-Assistent voor je Huishouden: Hoe Tell Miiro Werkt</h1>
+    <p class="article-meta">Door <span class="author">Robert</span>, medeoprichter van Miiro &middot; Maart 2026</p>
+  </header>
+
+  <div class="article-layout">
+    <aside class="toc-sidebar" aria-label="Inhoudsopgave">
+      <div class="toc-label">Inhoud</div>
+      <ul>
+        <li><a href="#het-probleem">Het probleem</a></li>
+        <li><a href="#wat-is-tell-miiro">Wat is Tell Miiro?</a></li>
+        <li><a href="#hoe-werkt-het">Hoe werkt het?</a></li>
+        <li><a href="#voorbeelden">Voorbeelden</a></li>
+        <li><a href="#waarom-het-werkt">Waarom het werkt</a></li>
+        <li><a href="#talen">Nederlands en meer</a></li>
+        <li><a href="#prijs">Wat kost het?</a></li>
+        <li><a href="#meer-dan-ai">Meer dan alleen AI</a></li>
+        <li><a href="#faq">Veelgestelde vragen</a></li>
+      </ul>
+    </aside>
+
+    <div class="article-container">
+      <div class="toc-mobile" id="toc-mobile">
+        <button class="toc-mobile-toggle" onclick="document.getElementById('toc-mobile').classList.toggle('open')" aria-expanded="false" aria-controls="toc-mobile-list">
+          Inhoudsopgave
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <ul class="toc-mobile-list" id="toc-mobile-list">
+          <li><a href="#het-probleem">Het probleem</a></li>
+          <li><a href="#wat-is-tell-miiro">Wat is Tell Miiro?</a></li>
+          <li><a href="#hoe-werkt-het">Hoe werkt het?</a></li>
+          <li><a href="#voorbeelden">Voorbeelden</a></li>
+          <li><a href="#waarom-het-werkt">Waarom het werkt</a></li>
+          <li><a href="#talen">Nederlands en meer</a></li>
+          <li><a href="#prijs">Wat kost het?</a></li>
+          <li><a href="#meer-dan-ai">Meer dan alleen AI</a></li>
+          <li><a href="#faq">Veelgestelde vragen</a></li>
+        </ul>
+      </div>
+
+      <section class="article-body">
+      <p>Je staat in de keuken. In je hoofd draait een waslijst aan dingen: morgen boodschappen, donderdag de tandarts, vanavond iets met pasta, oh en de wasmachine moet nog aan, en is er eigenlijk nog melk? Je pakt je telefoon. En dan de vraag: in welke app zet je wat?</p>
+
+      <p>De agenda-app voor de tandarts. De takenlijst voor de wasmachine. De boodschappenlijst voor de melk. De maaltijdplanner voor de pasta. Vier apps. Vier keer openen, navigeren, invoeren, sluiten. Tegen de tijd dat je klaar bent, ben je vergeten dat je ook nog eieren nodig had.</p>
+
+      <p>Dit is het probleem dat Tell Miiro oplost.</p>
+
+      <h2 id="het-probleem">Het echte probleem: niet vergeetachtigheid, maar verspreiding</h2>
+
+      <p>De meeste mensen zijn niet vergeetachtig. Ze zijn overspoeld. Er zijn te veel plekken waar informatie naartoe moet, en het sorteren van die informatie kost energie. Elke keer dat je moet nadenken "is dit een taak of een afspraak?" verlies je een beetje mentale bandbreedte.</p>
+
+      <p>Onderzoekers noemen dit de <a href="/nl/blog/mentale-belasting-huishouden">mentale belasting</a> van het huishouden. Het is niet het doen van de taken zelf dat vermoeiend is. Het is het onthouden, plannen, prioriteren en verdelen ervan. En dat proces wordt erger naarmate je meer apps gebruikt, omdat elke app een eigen plek is waar je iets moet invoeren en later moet terugvinden.</p>
+
+      <p>Wat als je alles gewoon in een keer kon dumpen? In je eigen woorden, zonder na te denken over categorieen? En de app het sorteren voor je deed?</p>
+
+      <h2 id="wat-is-tell-miiro">Wat is Tell Miiro?</h2>
+
+      <p>Tell Miiro is de AI-assistent in de Miiro app. Het werkt als volgt: je opent Tell Miiro, typt alles wat in je hoofd zit in gewone taal, en de AI herkent automatisch wat een taak is, wat een afspraak is, wat een maaltijd is, en wat een boodschap is. Vervolgens sorteert het alles in de juiste categorie binnen Miiro.</p>
+
+      <p>Geen formulieren. Geen aparte schermen. Geen keuzemenu's. Gewoon typen wat er in je hoofd zit, alsof je het tegen je partner vertelt.</p>
+
+      <blockquote>
+        "Morgen boodschappen doen, donderdag tandarts om 14:00, pasta bolognese voor vanavond, en pak melk en eieren mee."
+      </blockquote>
+
+      <p>Dat ene bericht wordt door Tell Miiro verwerkt tot:</p>
+
+      <ul>
+        <li><strong>Taak:</strong> Boodschappen doen (morgen)</li>
+        <li><strong>Afspraak:</strong> Tandarts, donderdag 14:00</li>
+        <li><strong>Maaltijd:</strong> Pasta bolognese (vanavond)</li>
+        <li><strong>Boodschappen:</strong> Melk, eieren</li>
+      </ul>
+
+      <p>Vier categorieen, automatisch gesorteerd, vanuit een enkel bericht. Dat is Tell Miiro.</p>
+
+      <h2 id="hoe-werkt-het">Hoe werkt het technisch?</h2>
+
+      <p>Tell Miiro gebruikt een AI-model dat getraind is om de context van alledaagse huishoudelijke communicatie te begrijpen. Het herkent patronen in hoe mensen praten over hun dag. "Donderdag om 14:00" is duidelijk een afspraak met een tijdstip. "Pasta bolognese voor vanavond" bevat een gerecht en een moment. "Melk en eieren" zijn boodschappen.</p>
+
+      <p>Het model houdt rekening met context. Als je schrijft "ik moet morgen naar de huisarts," begrijpt Tell Miiro dat dit een afspraak is en niet een taak. Als je schrijft "morgen stofzuigen," herkent het een taak met een datum. En als je schrijft "pad thai vanavond," weet het dat je een maaltijd plant.</p>
+
+      <p>Na de analyse krijg je een overzicht te zien van hoe Tell Miiro je bericht heeft verwerkt. Je kunt items aanpassen, verwijderen of verplaatsen voordat je bevestigt. De AI doet het zware werk, maar jij houdt de controle.</p>
+
+      <h2 id="voorbeelden">Concrete voorbeelden</h2>
+
+      <p>Hier zijn een paar realistische voorbeelden van hoe je Tell Miiro kunt gebruiken:</p>
+
+      <h3>Na het werk</h3>
+
+      <blockquote>
+        "Vanavond risotto maken, morgenochtend de auto naar de garage brengen, vrijdag borrel bij Sanne, en we hebben afwasmiddel en keukenrol nodig."
+      </blockquote>
+
+      <p>Tell Miiro maakt hiervan:</p>
+      <ul>
+        <li><strong>Maaltijd:</strong> Risotto (vanavond)</li>
+        <li><strong>Taak:</strong> Auto naar de garage brengen (morgenochtend)</li>
+        <li><strong>Afspraak:</strong> Borrel bij Sanne (vrijdag)</li>
+        <li><strong>Boodschappen:</strong> Afwasmiddel, keukenrol</li>
+      </ul>
+
+      <h3>Zondagavond weekplanning</h3>
+
+      <blockquote>
+        "Maandag chili con carne, woensdag shoarma, vrijdag pizza bestellen. Dinsdag om 10:00 videocall met school. Woensdag stofzuigen. Knoflook, komijn, tortilla's, paprika en geraspte kaas kopen."
+      </blockquote>
+
+      <p>Tell Miiro herkent drie maaltijden, een afspraak, een taak, en vijf boodschappen. Alles in de juiste categorie, alles op de juiste dag.</p>
+
+      <h3>Snel tussendoor</h3>
+
+      <blockquote>
+        "Melk halen en de planten water geven."
+      </blockquote>
+
+      <p>Simpel: een boodschap en een taak. Tell Miiro hoeft niet altijd ingewikkeld te zijn. Het werkt net zo goed voor twee items als voor tien.</p>
+
+      <h2 id="waarom-het-werkt">Waarom dit beter werkt dan handmatig invoeren</h2>
+
+      <p>Het klinkt misschien als een klein verschil. In plaats van vier apps openen, open je een. In plaats van vier keer navigeren, typ je een bericht. Maar dat verschil is groter dan het lijkt.</p>
+
+      <p><strong>Het vermindert drempels.</strong> De reden dat veel mensen stoppen met planningsapps is niet dat de app slecht is, maar dat het te veel moeite kost om er iets in te zetten. Tell Miiro maakt invoer zo makkelijk als een berichtje typen. En hoe lager de drempel, hoe vaker je het doet.</p>
+
+      <p><strong>Het vangt alles in een keer.</strong> Wanneer je alles in je hoofd hebt, wil je het in een keer kwijt. Niet in vier stappen. Tell Miiro pakt je gedachtestroom en ordent het voor je, zodat je hoofd weer leeg is.</p>
+
+      <p><strong>Het werkt zoals jij denkt.</strong> Mensen denken niet in categorieen. Je denkt niet: "nu ga ik drie taken invoeren, dan een afspraak, dan twee boodschappen." Je denkt in een stroom: alles wat er nu in je hoofd zit. Tell Miiro past zich aan jouw manier van denken aan, niet andersom.</p>
+
+      <div class="callout callout-positive">
+        <span class="callout-label">Wat gebruikers zeggen</span>
+        "Het voelt alsof ik mijn hoofd leeggooi en de app het opruimt. Dat is precies wat ik nodig had." Dit is het soort feedback dat we het vaakst horen. Niet over de technologie, maar over het gevoel van opluchting.
+      </div>
+
+      <h2 id="talen">Het werkt in het Nederlands (en elke andere taal)</h2>
+
+      <p>Tell Miiro begrijpt Nederlands. Je hoeft niet in het Engels te typen of je taal aan te passen. Schrijf zoals je praat. "Morgen bij de kapper om half 3" werkt net zo goed als "haircut tomorrow at 2:30."</p>
+
+      <p>Het model begrijpt ook context die specifiek Nederlands is. Tijdnotaties als "half drie" of "kwart over vier" worden correct herkend. Nederlandse productnamen in de supermarkt worden herkend als boodschappen. En typisch Nederlandse gerechten als "stamppot" of "erwtensoep" worden herkend als maaltijden.</p>
+
+      <p>Daarnaast werkt Tell Miiro ook in het Engels, Duits, Frans, Spaans en andere talen. Handig als een van jullie liever in een andere taal typt.</p>
+
+      <h2 id="prijs">Wat kost Tell Miiro?</h2>
+
+      <p>Tell Miiro is onderdeel van Miiro+ en je krijgt 10 gratis credits om het uit te proberen. Elk bericht dat je verwerkt, kost een credit. Na de 10 gratis credits heb je een Miiro+ abonnement nodig.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">Miiro+ prijzen</span>
+        €4,99 per maand of €44,99 per jaar. Inclusief onbeperkt Tell Miiro, Toru recepten importeren, maaltijdplanning, en alle premium functies. Eén abonnement geldt voor het hele huishouden.
+      </div>
+
+      <p>De gratis versie van Miiro bevat al gedeelde taken, agenda, en boodschappenlijst. Tell Miiro is de premium functie die daar bovenop komt.</p>
+
+      <h2 id="meer-dan-ai">Tell Miiro in de context van je hele huishouden</h2>
+
+      <p>Tell Miiro staat niet op zichzelf. Het is onderdeel van een app die je hele huishouden organiseert. De items die Tell Miiro aanmaakt, verschijnen direct in je gedeelde taken, agenda, maaltijdplanning en boodschappenlijst. Je partner ziet ze ook.</p>
+
+      <p>Dat is het verschil met een losse AI-assistent zoals Siri of Google Assistant. Die kunnen ook taken aanmaken of herinneringen instellen, maar ze staan los van je gedeelde huishouden. Je partner ziet niet wat jij hebt toegevoegd. Er is geen gedeelde boodschappenlijst, geen maaltijdplanning, geen gezamenlijk overzicht van de dag.</p>
+
+      <p>Tell Miiro is AI die werkt binnen de context van jullie samen. En dat maakt het verschil. Bekijk onze <a href="/nl/blog/beste-huishoud-apps">vergelijking van huishoud apps</a> om te zien hoe Miiro zich verhoudt tot andere opties.</p>
+
+      <h2 id="faq">Veelgestelde vragen</h2>
+
+      <h3>Maakt Tell Miiro fouten?</h3>
+      <p>Soms. Het model is goed, maar niet perfect. Daarom krijg je altijd een overzicht te zien voordat iets definitief wordt opgeslagen. Je kunt items verplaatsen tussen categorieen of aanpassen. Het is een assistent, geen autopilot.</p>
+
+      <h3>Kan ik Tell Miiro ook gebruiken voor dingen voor mijn partner?</h3>
+      <p>Ja. Je kunt taken toewijzen aan je partner via Tell Miiro. Schrijf bijvoorbeeld "vraag aan [partner] om de was te doen" en het wordt een taak die aan je partner wordt toegewezen.</p>
+
+      <h3>Werkt het ook met spraak?</h3>
+      <p>Op dit moment werkt Tell Miiro met tekst. Je kunt wel de spraak-naar-tekst functie van je telefoon gebruiken om te dicteren, en vervolgens Tell Miiro het laten verwerken.</p>
+
+      <h3>Hoeveel credits heb ik per dag nodig?</h3>
+      <p>De meeste gebruikers gebruiken Tell Miiro een tot drie keer per dag. Een ochtend braindump, een bericht na het werk, en misschien een op zondag voor de weekplanning. Met Miiro+ zijn credits onbeperkt, dus je hoeft niet te tellen. Lees ook onze tips over <a href="/nl/blog/weekmenu-maken-tips">weekmenu maken</a> om het meeste uit je zondagavond planning te halen.</p>
+
+      <div class="blog-cta">
+        <h3>Probeer Miiro gratis</h3>
+        <p>Eén app voor je agenda, taken, maaltijden, boodschappen en recepten. Gedeeld met je partner. Gemaakt in Amsterdam.</p>
+        <a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
+      </div>
+
+      <hr>
+
+      <div class="author-bio">
+        <strong>Over de auteur:</strong> Robert is medeoprichter van Miiro. Hij bouwt de app samen met zijn vrouw, die dient als hoofdtester en eerlijkste criticus. Ze wonen in Nederland met hun zoon Miles.
+      </div>
+    </section>
+    </div>
+  </div>
+</article>
+
+<script>
+(function() {
+  var ids = [
+    'het-probleem','wat-is-tell-miiro','hoe-werkt-het','voorbeelden',
+    'waarom-het-werkt','talen','prijs','meer-dan-ai','faq'
+  ];
+  var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+  var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');
+  var current = '';
+
+  function onScroll() {
+    var scrollY = window.scrollY + 120;
+    var active = '';
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= scrollY) {
+        active = sections[i].id;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      tocLinks.forEach(function(link) {
+        if (link.getAttribute('href') === '#' + active) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.querySelectorAll('.toc-mobile-list a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('toc-mobile').classList.remove('open');
+    });
+  });
+})();
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/koi-logo.png" alt="Miiro">
+      <span class="footer-brand-text">Miiro</span>
+      <span class="footer-tagline">- Zie wat ertoe doet.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 Miiro. Met liefde gemaakt in Amsterdam.</span>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We gebruiken cookies om te begrijpen hoe je onze site gebruikt en je ervaring te verbeteren. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacybeleid</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Weigeren</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accepteren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>

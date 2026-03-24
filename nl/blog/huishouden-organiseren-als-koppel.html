@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huishouden Organiseren als Koppel: Tips & Apps | Miiro</title>
+<meta name="description" content="Praktische tips om samen je huishouden te organiseren. Van boodschappen tot maaltijdplanning, ontdek hoe koppels het slim aanpakken.">
+<meta property="og:title" content="Huishouden Organiseren als Koppel: Tips & Apps">
+<meta property="og:description" content="Praktische tips om samen je huishouden te organiseren. Van boodschappen tot maaltijdplanning, ontdek hoe koppels het slim aanpakken.">
+<meta property="og:url" content="https://miiro.app/nl/blog/huishouden-organiseren-als-koppel">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://miiro.app/og-image.png">
+<meta property="article:published_time" content="2026-03-24">
+<meta property="article:author" content="Robert">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Huishouden Organiseren als Koppel: Tips & Apps">
+<meta name="twitter:description" content="Praktische tips om samen je huishouden te organiseren. Van boodschappen tot maaltijdplanning, ontdek hoe koppels het slim aanpakken.">
+<link rel="canonical" href="https://miiro.app/nl/blog/huishouden-organiseren-als-koppel">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Huishouden Organiseren als Koppel: Tips & Apps",
+  "description": "Praktische tips om samen je huishouden te organiseren. Van boodschappen tot maaltijdplanning, ontdek hoe koppels het slim aanpakken.",
+  "datePublished": "2026-03-24",
+  "dateModified": "2026-03-24",
+  "author": {
+    "@type": "Person",
+    "name": "Robert",
+    "jobTitle": "Medeoprichter van Miiro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Miiro",
+    "url": "https://miiro.app"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://miiro.app/nl/blog/huishouden-organiseren-als-koppel"
+  }
+}
+</script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --coral-bg: rgba(232, 99, 74, 0.06);
+    --indigo: #4A5CE8;
+    --indigo-bg: rgba(74, 92, 232, 0.06);
+    --mint: #3BBFA0;
+    --mint-bg: rgba(59, 191, 160, 0.06);
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  .nav-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--indigo);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
+
+  /* ARTICLE LAYOUT */
+  .article-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 40px);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .article-container {
+    max-width: 700px;
+    min-width: 0;
+  }
+
+  .article-header {
+    padding: 80px 0 48px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 5vw, 40px);
+    padding-right: clamp(20px, 5vw, 40px);
+  }
+
+  /* TOC SIDEBAR (desktop) */
+  .toc-sidebar {
+    position: sticky;
+    top: 100px;
+    padding-top: 80px;
+  }
+
+  .toc-sidebar .toc-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+
+  .toc-sidebar ul {
+    list-style: none;
+    border-left: 2px solid var(--border);
+  }
+
+  .toc-sidebar li {
+    margin-bottom: 2px;
+  }
+
+  .toc-sidebar a {
+    display: block;
+    padding: 5px 0 5px 16px;
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -2px;
+    transition: color 0.2s, border-color 0.2s;
+    line-height: 1.4;
+  }
+
+  .toc-sidebar a:hover {
+    color: var(--text-secondary);
+  }
+
+  .toc-sidebar a.active {
+    color: var(--coral);
+    border-left-color: var(--coral);
+    font-weight: 500;
+  }
+
+  .toc-sidebar .toc-sub {
+    padding-left: 28px;
+    font-size: 0.73rem;
+  }
+
+  /* TOC MOBILE */
+  .toc-mobile {
+    display: none;
+    margin-bottom: 32px;
+  }
+
+  .toc-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .toc-mobile-toggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .toc-mobile.open .toc-mobile-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .toc-mobile-list {
+    list-style: none;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 8px 0;
+    display: none;
+    margin-top: -1px;
+  }
+
+  .toc-mobile.open .toc-mobile-list {
+    display: block;
+  }
+
+  .toc-mobile.open .toc-mobile-toggle {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .toc-mobile-list a {
+    display: block;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .toc-mobile-list a:hover {
+    color: var(--text-secondary);
+    background: rgba(44, 40, 37, 0.03);
+  }
+
+  .toc-mobile-list a.active {
+    color: var(--coral);
+    font-weight: 500;
+  }
+
+  .toc-mobile-list .toc-sub {
+    padding-left: 36px;
+    font-size: 0.78rem;
+  }
+
+  .article-breadcrumb {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-bottom: 32px;
+  }
+
+  .article-breadcrumb a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .article-breadcrumb a:hover { color: var(--coral); }
+
+  .article-header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .article-meta {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+  }
+
+  .article-meta .author {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* BODY */
+  .article-body {
+    padding-bottom: 80px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .article-body p {
+    margin-bottom: 24px;
+  }
+
+  .article-body h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .article-body h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+
+  .article-body ul, .article-body ol {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+
+  .article-body li {
+    margin-bottom: 8px;
+  }
+
+  .article-body a {
+    color: var(--coral);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(232, 99, 74, 0.3);
+    transition: text-decoration-color 0.2s;
+  }
+
+  .article-body a:hover {
+    text-decoration-color: var(--coral);
+  }
+
+  .article-body blockquote {
+    border-left: 3px solid var(--coral);
+    padding: 4px 0 4px 24px;
+    margin: 32px 0;
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .callout-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .callout-positive {
+    background: var(--mint-bg);
+    border: 1px solid rgba(59, 191, 160, 0.15);
+  }
+
+  .callout-positive .callout-label {
+    color: var(--mint);
+  }
+
+  .callout-negative {
+    background: var(--coral-bg);
+    border: 1px solid rgba(232, 99, 74, 0.12);
+  }
+
+  .callout-negative .callout-label {
+    color: var(--coral);
+  }
+
+  .callout-info {
+    background: var(--indigo-bg);
+    border: 1px solid rgba(74, 92, 232, 0.12);
+  }
+
+  .callout-info .callout-label {
+    color: var(--indigo);
+  }
+
+  /* DIVIDER */
+  .article-body hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
+
+  /* AUTHOR BIO */
+  .author-bio {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 48px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .author-bio strong {
+    color: var(--text-primary);
+  }
+
+  /* CTA */
+  .article-cta {
+    text-align: center;
+    padding: 56px 0 80px;
+  }
+
+  .article-cta p {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
+  }
+
+  /* BLOG CTA */
+  .blog-cta {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+  .blog-cta h3 { font-family: 'Lora', Georgia, serif; font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin-bottom: 12px; }
+  .blog-cta p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+  .blog-cta .cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .blog-cta .cta-button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-primary);
+    border-top: 1px solid rgba(249, 246, 241, 0.06);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .footer-brand-text {
+    font-family: 'Lora', serif;
+    color: rgba(249, 246, 241, 0.6);
+    font-size: 0.95rem;
+  }
+
+  .footer-tagline {
+    font-style: italic;
+    color: rgba(249, 246, 241, 0.3);
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(249, 246, 241, 0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(249, 246, 241, 0.7); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(249, 246, 241, 0.2);
+  }
+
+  @media (max-width: 1060px) {
+    .article-layout {
+      display: block;
+    }
+    .toc-sidebar {
+      display: none;
+    }
+    .toc-mobile {
+      display: block;
+    }
+    .article-container {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .callout { padding: 20px 22px; }
+    .author-bio { padding: 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/nl/" class="nav-logo">
+      <img src="/koi-logo.png" alt="Miiro koi logo">
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/nl/">Home</a></li>
+      <li><a href="/nl/blog">Blog</a></li>
+      <li><a href="/" title="English" style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;color:var(--text-tertiary)">EN</a></li>
+      <li><a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="nav-cta">Download Miiro</a></li>
+    </ul>
+  </div>
+</nav>
+
+<article>
+  <header class="article-header">
+    <div class="article-breadcrumb"><a href="/nl/blog">Blog</a> / Huishouden organiseren</div>
+    <h1>Huishouden Organiseren als Koppel: Praktische Tips die Echt Werken</h1>
+    <p class="article-meta">Door <span class="author">Robert</span>, medeoprichter van Miiro &middot; Maart 2026</p>
+  </header>
+
+  <div class="article-layout">
+    <aside class="toc-sidebar" aria-label="Inhoudsopgave">
+      <div class="toc-label">Inhoud</div>
+      <ul>
+        <li><a href="#het-probleem">Het echte probleem</a></li>
+        <li><a href="#gedeeld-systeem">Maak alles zichtbaar</a></li>
+        <li><a href="#taken-verdelen">Verdeel terugkerende taken</a></li>
+        <li><a href="#maaltijden-plannen">Plan je maaltijden</a></li>
+        <li><a href="#een-app">Gebruik een app, niet vijf</a></li>
+        <li><a href="#weekly-reset">De wekelijkse reset</a></li>
+        <li><a href="#veelgestelde-vragen">Veelgestelde vragen</a></li>
+      </ul>
+    </aside>
+
+    <div class="article-container">
+      <div class="toc-mobile" id="toc-mobile">
+        <button class="toc-mobile-toggle" onclick="document.getElementById('toc-mobile').classList.toggle('open')" aria-expanded="false" aria-controls="toc-mobile-list">
+          Inhoudsopgave
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <ul class="toc-mobile-list" id="toc-mobile-list">
+          <li><a href="#het-probleem">Het echte probleem</a></li>
+          <li><a href="#gedeeld-systeem">Maak alles zichtbaar</a></li>
+          <li><a href="#taken-verdelen">Verdeel terugkerende taken</a></li>
+          <li><a href="#maaltijden-plannen">Plan je maaltijden</a></li>
+          <li><a href="#een-app">Gebruik een app, niet vijf</a></li>
+          <li><a href="#weekly-reset">De wekelijkse reset</a></li>
+          <li><a href="#veelgestelde-vragen">Veelgestelde vragen</a></li>
+        </ul>
+      </div>
+
+      <section class="article-body">
+      <p>Laten we eerlijk zijn: de meeste koppels die samen een huishouden runnen, zijn niet slecht georganiseerd. Ze hebben gewoon geen systeem. En dat is een belangrijk verschil. Het probleem zit zelden in de relatie. Het zit in hoe je dagelijkse dingen regelt. Of eigenlijk: het gebrek aan een manier om dat samen te doen.</p>
+
+      <p>Mijn vrouw en ik liepen hier zelf tegenaan. We zijn allebei werkende ouders. We hebben een zoon, Miles. En op een gegeven moment hadden we de boodschappenlijst in de Notities-app, de agenda in Google Calendar, taken in WhatsApp-berichten, en recepten verspreid over drie browsers. Alles stond ergens, maar niets stond op dezelfde plek.</p>
+
+      <p>Sindsdien hebben we veel geleerd over hoe je als koppel je huishouden beter kunt organiseren. Niet met een ingewikkeld systeem, maar met een paar simpele principes die echt het verschil maken. Dit zijn ze.</p>
+
+      <h2 id="het-probleem">Het echte probleem: onzichtbaar werk</h2>
+
+      <p>Het grootste obstakel bij het organiseren van je huishouden als koppel is niet dat er te veel te doen is. Het is dat de helft van het werk onzichtbaar is. Denk aan het bijhouden wat er in de koelkast staat. Het onthouden dat de verzekering verlengd moet worden. Het plannen van het avondeten voordat je honger hebt. Het is mentaal werk dat nergens genoteerd wordt.</p>
+
+      <blockquote>
+        "Wat eten we vanavond?"<br>
+        "Hebben we nog melk?"<br>
+        "Heb jij die rekening betaald?"<br>
+        "Wanneer was dat feestje ook alweer?"
+      </blockquote>
+
+      <p>Herkenbaar? Dan ben je niet alleen. Onderzoek noemt dit de <a href="/nl/blog/mentale-belasting-huishouden">mentale belasting</a>: het constante plannen, onthouden en co&ouml;rdineren dat nodig is om een huishouden draaiende te houden. En het valt vaak op de schouders van dezelfde persoon.</p>
+
+      <p>De oplossing is niet harder werken of een betere partner vinden. De oplossing is een systeem bouwen waarin alles zichtbaar is voor allebei. Zodra jullie allebei kunnen zien wat er moet gebeuren, verdwijnt een groot deel van de frustratie vanzelf.</p>
+
+      <h2 id="gedeeld-systeem">Stap 1: Maak alles zichtbaar met een gedeeld systeem</h2>
+
+      <p>De eerste en belangrijkste stap is simpel: zorg dat alles wat je moet doen, kopen of plannen op een plek staat die jullie allebei kunnen zien. Geen losse briefjes op het aanrecht. Geen mentale lijstjes die je 's avonds in bed aan je partner vertelt. Een gedeeld systeem.</p>
+
+      <p>Wat er in dat systeem moet staan:</p>
+
+      <ul>
+        <li><strong>Taken</strong> die gedaan moeten worden (van stofzuigen tot de auto naar de APK brengen)</li>
+        <li><strong>De agenda</strong> met afspraken van jullie allebei</li>
+        <li><strong>Boodschappen</strong> die nodig zijn</li>
+        <li><strong>Maaltijden</strong> voor de komende dagen</li>
+        <li><strong>Recepten</strong> die je wilt bewaren of uitproberen</li>
+      </ul>
+
+      <p>Het maakt niet uit welk hulpmiddel je gebruikt, zolang het maar gedeeld is. Een whiteboard op de koelkast werkt. Een gedeelde app werkt ook. Het punt is: als het niet zichtbaar is voor allebei, bestaat het niet in jullie systeem.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">Praktische tip</span>
+        Begin klein. Start met alleen de boodschappenlijst gedeeld te maken. Zodra dat goed loopt, voeg je taken en de agenda toe. Je hoeft niet alles tegelijk over te zetten.
+      </div>
+
+      <p>In Miiro hebben we dit opgelost met de Mijn Dag-weergave. Als je de app opent, zie je direct wat er vandaag op het programma staat: taken, afspraken en maaltijden in een tijdlijn. Allebei dezelfde weergave, altijd up-to-date. Geen "heb je mijn bericht gezien?" meer.</p>
+
+      <h2 id="taken-verdelen">Stap 2: Verdeel terugkerende taken eerlijk</h2>
+
+      <p>Zodra alles zichtbaar is, komt de volgende vraag: wie doet wat? Dit is waar veel koppels vastlopen. Niet omdat ze het niet willen verdelen, maar omdat ze er nooit bewust over nagedacht hebben. Taken worden vaak verdeeld op basis van gewoonte, niet op basis van voorkeur of logica.</p>
+
+      <p>Een eerlijke verdeling betekent niet dat allebei precies evenveel doen. Het betekent dat allebei het gevoel hebben dat het in balans is. En dat begint met een eerlijk overzicht.</p>
+
+      <p>Probeer dit eens:</p>
+
+      <ol>
+        <li><strong>Schrijf alle taken op</strong> die wekelijks terugkomen: koken, afwas, stofzuigen, was draaien, boodschappen doen, de planten water geven, het aanrecht schoonmaken</li>
+        <li><strong>Voeg de onzichtbare taken toe:</strong> boodschappenlijst maken, maaltijden bedenken, afspraken inplannen, cadeaus kopen voor verjaardagen</li>
+        <li><strong>Verdeel op basis van voorkeur.</strong> De een vindt koken leuk, de ander ruimt liever op. Maak daar gebruik van</li>
+        <li><strong>Wissel af</strong> bij taken die niemand leuk vindt. Het toilet schoonmaken hoeft niet altijd dezelfde persoon te doen</li>
+      </ol>
+
+      <p>In Nederland is er een sterk gevoel rond eerlijk verdelen. Maar eerlijk hoeft niet 50/50 te zijn. Het gaat erom dat het voelt als een team-effort, niet als een eenzijdige klus. Meer tips over hoe je taken specifiek verdeelt lees je in ons artikel over <a href="/nl/blog/taken-verdelen-met-partner">taken verdelen met je partner</a>.</p>
+
+      <div class="callout callout-positive">
+        <span class="callout-label">Wat goed werkt</span>
+        Maak terugkerende taken zichtbaar in een gedeelde takenlijst. Wijs ze toe aan een persoon en geef ze een herhaalpatroon. Zo hoef je niet elke week opnieuw te bespreken wie de badkamer doet.
+      </div>
+
+      <p>In Miiro kun je taken toewijzen aan jezelf of je partner, een herhalingspatroon instellen, en ze verschijnen automatisch in de Mijn Dag-weergave. Geen discussie meer over wie er aan de beurt is. Het staat er gewoon.</p>
+
+      <h2 id="maaltijden-plannen">Stap 3: Plan je maaltijden voor de week</h2>
+
+      <p>De vraag "wat eten we vanavond?" kost meer energie dan je denkt. Niet omdat het antwoord zo ingewikkeld is, maar omdat het elke dag terugkomt. En als je er pas om 17:00 over nadenkt, eindig je vaker dan je wilt bij Thuisbezorgd.</p>
+
+      <p>Maaltijdplanning hoeft niet uitgebreid te zijn. Je hoeft geen zeven maaltijden vooruit te plannen. Begin met drie of vier avonden per week. Dat is genoeg om structuur te geven zonder dat het een verplichting voelt.</p>
+
+      <p>Een simpel framework:</p>
+
+      <ul>
+        <li><strong>Kies 3-4 maaltijden</strong> voor de komende week</li>
+        <li><strong>Check wat je al in huis hebt</strong> voordat je boodschappen doet</li>
+        <li><strong>Kies 1 nieuw recept per week</strong> om het leuk te houden</li>
+        <li><strong>Gebruik restjes strategisch:</strong> kook op zondag iets extra's voor maandag</li>
+        <li><strong>Doe boodschappen met een plan.</strong> De AH Bonus-aanbiedingen van de week zijn een prima startpunt</li>
+      </ul>
+
+      <p>Het mooie aan maaltijdplanning is dat het direct je boodschappenlijst vult. Als je weet dat je woensdag pasta pesto maakt, weet je ook dat je pijnboompitten nodig hebt. Die verbinding tussen maaltijden en boodschappen is precies wat de meeste systemen missen.</p>
+
+      <p>In Miiro plan je een maaltijd en de ingredi&euml;nten gaan met een tik naar je boodschappenlijst. Wil je een recept bewaren dat je op TikTok of Instagram zag? Plak de link en Toru haalt het recept eruit: ingredi&euml;nten, stappen, en een kookmodus die je scherm aan houdt terwijl je kookt. Meer over <a href="/nl/blog/weekmenu-maken-tips">weekmenu maken</a> lees je in ons aparte artikel.</p>
+
+      <h2 id="een-app">Stap 4: Gebruik een app in plaats van vijf</h2>
+
+      <p>Dit klinkt als een verkooppraatje. Maar het is een oprecht advies dat losstaat van welke app je kiest. Het probleem met vijf losse apps is niet dat ze slecht zijn. Het probleem is dat de informatie verspreid raakt.</p>
+
+      <p>De typische setup van een Nederlands koppel:</p>
+
+      <ul>
+        <li>Google Calendar voor afspraken</li>
+        <li>De Notities-app of een WhatsApp-groep voor de boodschappenlijst</li>
+        <li>Appie (AH-app) voor de Bonus-aanbiedingen</li>
+        <li>Screenshots van recepten op Instagram en TikTok</li>
+        <li>WhatsApp voor "kun je nog even..."</li>
+      </ul>
+
+      <p>Elk van die tools doet zijn ding prima. Maar je hersenen moeten onthouden waar alles staat. En dat is precies de mentale belasting die je probeert te verminderen.</p>
+
+      <p>Een betere aanpak: kies een tool die zoveel mogelijk van deze functies combineert. Dat kan een gedeeld notitieboek zijn. Een planner op papier. Of een app die specifiek ontworpen is voor huishoudco&ouml;rdinatie.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">Waar je op moet letten</span>
+        De beste huishoudapp is de app die je partner ook wil gebruiken. Kies iets dat simpel genoeg is om dagelijks te openen. Als het te ingewikkeld is, houdt een van jullie er binnen een week mee op.
+      </div>
+
+      <p>Wij hebben Miiro gebouwd precies om deze reden. Taken, agenda, maaltijden, boodschappen en recepten in een app. Met bi-directionele agenda-sync zodat je bestaande Google of Apple Calendar gewoon meekomt. En met Tell Miiro, een AI-functie waarmee je gewoon kunt zeggen wat er in je hoofd zit: "Donderdag tandarts om 14:00, we moeten nog wasmiddel kopen, en vrijdag maken we risotto." Miiro sorteert dat automatisch in een afspraak, een boodschap en een maaltijd.</p>
+
+      <h2 id="weekly-reset">Stap 5: Doe een wekelijkse reset samen</h2>
+
+      <p>Dit is misschien wel de krachtigste tip van allemaal. Plan elke week een vast moment waarop jullie samen even door de week heen lopen. Geen uur. Geen uitgebreide vergadering. Tien tot vijftien minuten is genoeg.</p>
+
+      <p>Wat je bespreekt tijdens de wekelijkse reset:</p>
+
+      <ul>
+        <li><strong>Wat staat er deze week op de agenda?</strong> Afspraken, deadlines, sociale plannen</li>
+        <li><strong>Wat eten we deze week?</strong> Kies samen 3-4 maaltijden</li>
+        <li><strong>Wat moet er gedaan worden?</strong> Zijn er klussen die voorrang hebben?</li>
+        <li><strong>Is er iets blijven liggen?</strong> Taken van vorige week die niet afgerond zijn</li>
+      </ul>
+
+      <p>Het beste moment hiervoor verschilt per koppel. Sommigen doen het op zondagavond, anderen op maandagochtend bij de koffie. Het maakt niet uit wanneer, zolang het maar een gewoonte wordt.</p>
+
+      <div class="callout callout-positive">
+        <span class="callout-label">Waarom dit werkt</span>
+        De wekelijkse reset voorkomt dat taken zich ophopen en dat een van jullie zich overweldigd voelt. Het is het moment waarop je samen de controle terugneemt over de week. En het duurt korter dan je denkt.
+      </div>
+
+      <p>Tip: open tijdens de reset je gedeelde app of planner en loop er samen doorheen. Voeg taken toe, plan maaltijden, check de agenda. In Miiro duurt dat letterlijk vijf minuten omdat alles al op een plek staat.</p>
+
+      <h2 id="samenvatting">Samenvatting: je huishouden hoeft geen chaos te zijn</h2>
+
+      <p>Een georganiseerd huishouden draait niet om perfectie. Het draait om zichtbaarheid en samenwerking. Als jullie allebei kunnen zien wat er speelt, eerlijk verdelen wat er moet gebeuren, en wekelijks even afstemmen, verdwijnt het grootste deel van de dagelijkse stress.</p>
+
+      <p>De vijf stappen op een rij:</p>
+
+      <ol>
+        <li>Maak alles zichtbaar in een gedeeld systeem</li>
+        <li>Verdeel terugkerende taken eerlijk op basis van voorkeur</li>
+        <li>Plan 3-4 maaltijden per week vooruit</li>
+        <li>Gebruik zo min mogelijk losse tools</li>
+        <li>Doe een wekelijkse reset van 10-15 minuten</li>
+      </ol>
+
+      <p>Het probleem is nooit de relatie. Het zijn de systemen. Of het gebrek daaraan. En het goede nieuws: dat is op te lossen.</p>
+
+      <h2 id="veelgestelde-vragen">Veelgestelde vragen</h2>
+
+      <h3>Hoe begin je met je huishouden organiseren als koppel?</h3>
+      <p>Begin met een gedeelde boodschappenlijst. Dat is de laagste drempel en levert direct resultaat op. Zodra dat werkt, kun je taken en maaltijdplanning toevoegen. Probeer niet alles tegelijk te veranderen.</p>
+
+      <h3>Wat als mijn partner niet mee wil doen?</h3>
+      <p>Begin met het onderdeel dat voor jullie allebei het meest frustrerend is. Meestal is dat de boodschappen of de vraag "wat eten we vanavond?". Als je partner het voordeel ervaart van een gedeeld systeem, groeit de motivatie vanzelf. Dwing niets af.</p>
+
+      <h3>Is een app nodig om je huishouden te organiseren?</h3>
+      <p>Nee. Een whiteboard, een gedeeld notitieboek, of zelfs een goed systeem met briefjes kan werken. Een app maakt het wel makkelijker om dingen bij te houden als je onderweg bent, en om automatisch herinneringen te krijgen. De beste optie is wat jullie allebei willen gebruiken.</p>
+
+      <h3>Wat kost Miiro?</h3>
+      <p>Miiro heeft een gratis versie met gedeelde taken, agenda en boodschappenlijsten. Miiro+ kost &euro;4,99 per maand of &euro;44,99 per jaar en voegt onder andere Tell Miiro AI, Toru recepten, en maaltijdplanning toe. Een abonnement geldt voor het hele huishouden.</p>
+
+      <div class="blog-cta">
+        <h3>Probeer Miiro gratis</h3>
+        <p>E&eacute;n app voor je agenda, taken, maaltijden, boodschappen en recepten. Gedeeld met je partner. Gemaakt in Amsterdam.</p>
+        <a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
+      </div>
+
+      <hr>
+
+      <div class="author-bio">
+        <strong>Over de auteur:</strong> Robert is medeoprichter van Miiro. Hij bouwt de app samen met zijn vrouw, die dient als hoofdtester en eerlijkste criticus. Ze wonen in Nederland met hun zoon Miles.
+      </div>
+    </section>
+    </div>
+  </div>
+</article>
+
+<script>
+(function() {
+  var ids = [
+    'het-probleem','gedeeld-systeem','taken-verdelen','maaltijden-plannen',
+    'een-app','weekly-reset','veelgestelde-vragen'
+  ];
+  var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+  var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');
+  var current = '';
+
+  function onScroll() {
+    var scrollY = window.scrollY + 120;
+    var active = '';
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= scrollY) {
+        active = sections[i].id;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      tocLinks.forEach(function(link) {
+        if (link.getAttribute('href') === '#' + active) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.querySelectorAll('.toc-mobile-list a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('toc-mobile').classList.remove('open');
+    });
+  });
+})();
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/koi-logo.png" alt="Miiro">
+      <span class="footer-brand-text">Miiro</span>
+      <span class="footer-tagline">- Zie wat ertoe doet.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 Miiro. Met liefde gemaakt in Amsterdam.</span>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We gebruiken cookies om te begrijpen hoe je onze site gebruikt en je ervaring te verbeteren. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacybeleid</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Weigeren</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accepteren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>

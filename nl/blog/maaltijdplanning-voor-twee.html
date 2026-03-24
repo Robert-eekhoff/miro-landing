@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maaltijdplanning voor Twee: Bespaar Tijd en Geld | Miiro</title>
+<meta name="description" content="Maaltijdplanning voor twee hoeft niet ingewikkeld te zijn. Tips om samen moeiteloos je weekmenu te plannen en minder te verspillen.">
+<meta property="og:title" content="Maaltijdplanning voor Twee: Bespaar Tijd en Geld">
+<meta property="og:description" content="Maaltijdplanning voor twee hoeft niet ingewikkeld te zijn. Tips om samen moeiteloos je weekmenu te plannen en minder te verspillen.">
+<meta property="og:url" content="https://miiro.app/nl/blog/maaltijdplanning-voor-twee">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://miiro.app/og-image.png">
+<meta property="article:published_time" content="2026-03-24">
+<meta property="article:author" content="Robert">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maaltijdplanning voor Twee: Bespaar Tijd en Geld">
+<meta name="twitter:description" content="Maaltijdplanning voor twee hoeft niet ingewikkeld te zijn. Tips om samen moeiteloos je weekmenu te plannen en minder te verspillen.">
+<link rel="canonical" href="https://miiro.app/nl/blog/maaltijdplanning-voor-twee">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Maaltijdplanning voor Twee: Bespaar Tijd en Geld",
+  "description": "Maaltijdplanning voor twee hoeft niet ingewikkeld te zijn. Tips om samen moeiteloos je weekmenu te plannen en minder te verspillen.",
+  "datePublished": "2026-03-24",
+  "dateModified": "2026-03-24",
+  "author": {
+    "@type": "Person",
+    "name": "Robert",
+    "jobTitle": "Medeoprichter van Miiro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Miiro",
+    "url": "https://miiro.app"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://miiro.app/nl/blog/maaltijdplanning-voor-twee"
+  }
+}
+</script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --coral-bg: rgba(232, 99, 74, 0.06);
+    --indigo: #4A5CE8;
+    --indigo-bg: rgba(74, 92, 232, 0.06);
+    --mint: #3BBFA0;
+    --mint-bg: rgba(59, 191, 160, 0.06);
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  .nav-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--indigo);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
+
+  /* ARTICLE LAYOUT */
+  .article-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 40px);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .article-container {
+    max-width: 700px;
+    min-width: 0;
+  }
+
+  .article-header {
+    padding: 80px 0 48px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 5vw, 40px);
+    padding-right: clamp(20px, 5vw, 40px);
+  }
+
+  /* TOC SIDEBAR (desktop) */
+  .toc-sidebar {
+    position: sticky;
+    top: 100px;
+    padding-top: 80px;
+  }
+
+  .toc-sidebar .toc-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+
+  .toc-sidebar ul {
+    list-style: none;
+    border-left: 2px solid var(--border);
+  }
+
+  .toc-sidebar li {
+    margin-bottom: 2px;
+  }
+
+  .toc-sidebar a {
+    display: block;
+    padding: 5px 0 5px 16px;
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -2px;
+    transition: color 0.2s, border-color 0.2s;
+    line-height: 1.4;
+  }
+
+  .toc-sidebar a:hover {
+    color: var(--text-secondary);
+  }
+
+  .toc-sidebar a.active {
+    color: var(--coral);
+    border-left-color: var(--coral);
+    font-weight: 500;
+  }
+
+  .toc-sidebar .toc-sub {
+    padding-left: 28px;
+    font-size: 0.73rem;
+  }
+
+  /* TOC MOBILE */
+  .toc-mobile {
+    display: none;
+    margin-bottom: 32px;
+  }
+
+  .toc-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .toc-mobile-toggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .toc-mobile.open .toc-mobile-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .toc-mobile-list {
+    list-style: none;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 8px 0;
+    display: none;
+    margin-top: -1px;
+  }
+
+  .toc-mobile.open .toc-mobile-list {
+    display: block;
+  }
+
+  .toc-mobile.open .toc-mobile-toggle {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .toc-mobile-list a {
+    display: block;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .toc-mobile-list a:hover {
+    color: var(--text-secondary);
+    background: rgba(44, 40, 37, 0.03);
+  }
+
+  .toc-mobile-list a.active {
+    color: var(--coral);
+    font-weight: 500;
+  }
+
+  .toc-mobile-list .toc-sub {
+    padding-left: 36px;
+    font-size: 0.78rem;
+  }
+
+  .article-breadcrumb {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-bottom: 32px;
+  }
+
+  .article-breadcrumb a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .article-breadcrumb a:hover { color: var(--coral); }
+
+  .article-header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .article-meta {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+  }
+
+  .article-meta .author {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* BODY */
+  .article-body {
+    padding-bottom: 80px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .article-body p {
+    margin-bottom: 24px;
+  }
+
+  .article-body h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .article-body h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+
+  .article-body ul {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+
+  .article-body li {
+    margin-bottom: 8px;
+  }
+
+  .article-body a {
+    color: var(--coral);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(232, 99, 74, 0.3);
+    transition: text-decoration-color 0.2s;
+  }
+
+  .article-body a:hover {
+    text-decoration-color: var(--coral);
+  }
+
+  .article-body blockquote {
+    border-left: 3px solid var(--coral);
+    padding: 4px 0 4px 24px;
+    margin: 32px 0;
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .callout-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .callout-positive {
+    background: var(--mint-bg);
+    border: 1px solid rgba(59, 191, 160, 0.15);
+  }
+
+  .callout-positive .callout-label {
+    color: var(--mint);
+  }
+
+  .callout-negative {
+    background: var(--coral-bg);
+    border: 1px solid rgba(232, 99, 74, 0.12);
+  }
+
+  .callout-negative .callout-label {
+    color: var(--coral);
+  }
+
+  .callout-info {
+    background: var(--indigo-bg);
+    border: 1px solid rgba(74, 92, 232, 0.12);
+  }
+
+  .callout-info .callout-label {
+    color: var(--indigo);
+  }
+
+  /* DIVIDER */
+  .article-body hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
+
+  /* AUTHOR BIO */
+  .author-bio {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 48px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .author-bio strong {
+    color: var(--text-primary);
+  }
+
+  /* CTA */
+  .article-cta {
+    text-align: center;
+    padding: 56px 0 80px;
+  }
+
+  .article-cta p {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--coral);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3);
+  }
+
+  /* BLOG CTA */
+  .blog-cta {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+  .blog-cta h3 { font-family: 'Lora', Georgia, serif; font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin-bottom: 12px; }
+  .blog-cta p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+  .blog-cta .cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .blog-cta .cta-button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-primary);
+    border-top: 1px solid rgba(249, 246, 241, 0.06);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .footer-brand-text {
+    font-family: 'Lora', serif;
+    color: rgba(249, 246, 241, 0.6);
+    font-size: 0.95rem;
+  }
+
+  .footer-tagline {
+    font-style: italic;
+    color: rgba(249, 246, 241, 0.3);
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(249, 246, 241, 0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(249, 246, 241, 0.7); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(249, 246, 241, 0.2);
+  }
+
+  @media (max-width: 1060px) {
+    .article-layout {
+      display: block;
+    }
+    .toc-sidebar {
+      display: none;
+    }
+    .toc-mobile {
+      display: block;
+    }
+    .article-container {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .callout { padding: 20px 22px; }
+    .author-bio { padding: 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/nl/" class="nav-logo">
+      <img src="/koi-logo.png" alt="Miiro koi logo">
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/nl/">Home</a></li>
+      <li><a href="/nl/blog">Blog</a></li>
+      <li><a href="/" title="English" style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;color:var(--text-tertiary)">EN</a></li>
+      <li><a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="nav-cta">Download Miiro</a></li>
+    </ul>
+  </div>
+</nav>
+
+<article>
+  <header class="article-header">
+    <div class="article-breadcrumb"><a href="/nl/blog">Blog</a> / Maaltijdplanning voor twee</div>
+    <h1>Maaltijdplanning voor Twee: Bespaar Tijd en Geld</h1>
+    <p class="article-meta">Door <span class="author">Robert</span>, medeoprichter van Miiro &middot; Maart 2026</p>
+  </header>
+
+  <div class="article-layout">
+    <aside class="toc-sidebar" aria-label="Inhoudsopgave">
+      <div class="toc-label">Inhoud</div>
+      <ul>
+        <li><a href="#waarom-voor-twee">Waarom voor twee anders is</a></li>
+        <li><a href="#plan-niet-alles">Plan niet alle zeven dagen</a></li>
+        <li><a href="#dubbel-koken">Dubbel koken, slim bewaren</a></li>
+        <li><a href="#seizoensgroenten">Seizoensgroenten gebruiken</a></li>
+        <li><a href="#recepten-verzamelen">Samen recepten verzamelen</a></li>
+        <li><a href="#boodschappen-verdelen">Boodschappen slim verdelen</a></li>
+        <li><a href="#wie-kookt">Afwisselen: wie kookt?</a></li>
+        <li><a href="#verspilling">Minder verspillen als koppel</a></li>
+        <li><a href="#miiro-flow">Van weekmenu naar boodschappen</a></li>
+        <li><a href="#voorbeeld-weekmenu">Voorbeeld weekmenu</a></li>
+        <li><a href="#conclusie">Conclusie</a></li>
+      </ul>
+    </aside>
+
+    <div class="article-container">
+      <div class="toc-mobile" id="toc-mobile">
+        <button class="toc-mobile-toggle" onclick="document.getElementById('toc-mobile').classList.toggle('open')" aria-expanded="false" aria-controls="toc-mobile-list">
+          Inhoudsopgave
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <ul class="toc-mobile-list" id="toc-mobile-list">
+          <li><a href="#waarom-voor-twee">Waarom voor twee anders is</a></li>
+          <li><a href="#plan-niet-alles">Plan niet alle zeven dagen</a></li>
+          <li><a href="#dubbel-koken">Dubbel koken, slim bewaren</a></li>
+          <li><a href="#seizoensgroenten">Seizoensgroenten gebruiken</a></li>
+          <li><a href="#recepten-verzamelen">Samen recepten verzamelen</a></li>
+          <li><a href="#boodschappen-verdelen">Boodschappen slim verdelen</a></li>
+          <li><a href="#wie-kookt">Afwisselen: wie kookt?</a></li>
+          <li><a href="#verspilling">Minder verspillen als koppel</a></li>
+          <li><a href="#miiro-flow">Van weekmenu naar boodschappen</a></li>
+          <li><a href="#voorbeeld-weekmenu">Voorbeeld weekmenu</a></li>
+          <li><a href="#conclusie">Conclusie</a></li>
+        </ul>
+      </div>
+
+      <section class="article-body">
+      <p>Je kent het vast. Het is dinsdag, half zes, je komt thuis en kijkt je partner aan. "Wat eten we?" Stilte. De koelkast bevat een halve paprika, wat kaas en drie soorten mosterd. Niet echt een menu. En dus bestel je weer iets, of gooi je snel pasta met pesto in een pan.</p>
+
+      <p>Herkenbaar? Dan is maaltijdplanning iets voor jullie. Niet het rigide soort met spreadsheets en calorietabellen, maar een ontspannen manier om samen vooruit te denken. Even op zondagavond bespreken wat je de komende dagen eet, zodat doordeweeks die vraag gewoon niet meer bestaat.</p>
+
+      <p>Maar hier is het ding: de meeste tips over maaltijdplanning zijn gericht op gezinnen met kinderen. Vier porties, budgetrecepten voor zes personen, lunchboxen voor school. Als koppel zonder kinderen (of met een kleintje dat nog appelmoes eet) is je situatie anders. Je hebt meer flexibiliteit, kleinere porties en soms eet je gewoon buiten de deur. Dat vraagt om een andere aanpak.</p>
+
+      <h2 id="waarom-voor-twee">Waarom maaltijdplanning voor twee anders is</h2>
+
+      <p>Koken voor twee is een apart spelletje. De meeste recepten zijn ontworpen voor vier personen. Groenten worden in grote hoeveelheden verkocht. En de verleiding om "even iets te halen" is groot als je maar voor twee hoeft te plannen.</p>
+
+      <p>Tegelijkertijd heb je als koppel een groot voordeel: je hoeft minder rekening te houden met kieskeurige eters. Geen kind dat alleen maar brood met hagelslag wil. Jullie kunnen experimenteren, nieuwe keukens proberen en makkelijker inspelen op wat er in de aanbieding is.</p>
+
+      <p>De uitdaging zit hem vooral in portiegrootte en verspilling. Uit onderzoek van het Voedingscentrum blijkt dat Nederlandse huishoudens gemiddeld 34 kilo voedsel per persoon per jaar weggooien. Een groot deel daarvan zijn groenten, fruit en brood die over datum raken. Met een beetje planning kun je dat flink terugbrengen.</p>
+
+      <h2 id="plan-niet-alles">Plan niet alle zeven dagen</h2>
+
+      <p>Dit is misschien de belangrijkste tip: plan vier of vijf maaltijden per week, niet zeven. Laat ruimte voor spontaniteit. Misschien wil je vrijdagavond uit eten. Misschien heb je woensdag een etentje bij vrienden. Of misschien heb je gewoon geen zin om te koken en wordt het een "restjes-avond."</p>
+
+      <p>Door niet elke dag in te vullen, voelt het plan minder als een verplichting en meer als een hulpmiddel. Je hebt een basis, maar je bent er niet aan geketend.</p>
+
+      <blockquote>
+        "Wij plannen maandag tot en met donderdag. Vrijdag is vrij, zaterdag koken we iets speciaals en zondag eten we vaak bij familie."
+      </blockquote>
+
+      <p>Die structuur werkt voor ons. Vind wat bij jullie ritme past. Sommige koppels plannen juist het weekend en laten doordeweeks los. Het punt is: je hoeft niet alles dicht te plannen om er profijt van te hebben.</p>
+
+      <h2 id="dubbel-koken">Dubbel koken, slim bewaren</h2>
+
+      <p>Als je toch een stoofpot maakt, maak dan meteen dubbel. De extra portie gaat in een bakje in de vriezer en is over twee weken een kant-en-klare maaltijd. Veel gerechten zijn hier perfect voor: chili, soep, curry, lasagne, stamppot.</p>
+
+      <p>Met twee personen heb je al snel een voorraadje in de vriezer. Na een maand heb je misschien vier of vijf maaltijden opgeslagen. Dat zijn vier of vijf avonden waarop je niets hoeft te bedenken, niets hoeft te kopen en niets hoeft te snijden.</p>
+
+      <ul>
+        <li><strong>Soepen en stoofpotten</strong> zijn ideaal om in te vriezen en smaken vaak zelfs beter na een dag</li>
+        <li><strong>Curry's</strong> (denk aan dahl of Thaise rode curry) blijven prima twee maanden in de vriezer</li>
+        <li><strong>Sauzen</strong> zoals bolognese of een zelfgemaakte tomatensaus kun je in porties invriezen</li>
+        <li><strong>Pannenkoeken en wraps</strong> zijn verrassend goed in te vriezen met bakpapier ertussen</li>
+      </ul>
+
+      <p>Tip: schrijf de datum en het gerecht op het bakje. Over drie weken weet je echt niet meer of dat rode spul chili of tomatensaus is.</p>
+
+      <h2 id="seizoensgroenten">Seizoensgroenten gebruiken</h2>
+
+      <p>Nederland heeft geweldige seizoensproducten. In het voorjaar heb je asperges, rabarber en spinazie. In de zomer courgette, tomaten en sperziebonen. Herfst brengt pompoen, boerenkool en paddenstoelen. En in de winter zijn het knolselderij, rode kool en winterpeen.</p>
+
+      <p>Seizoensgroenten zijn goedkoper, verser en smaken beter. Plus: het houdt je menu gevarieerd zonder dat je er moeite voor hoeft te doen. Je kookt automatisch anders in oktober dan in juni.</p>
+
+      <p>Een paar Nederlandse favorieten die perfect zijn voor twee:</p>
+
+      <ul>
+        <li><strong>Voorjaar:</strong> asperges met een zachtgekookt ei en botersaus, of een frisse spinaziesalade</li>
+        <li><strong>Zomer:</strong> gegrilde courgette met feta, of een simpele caprese met Nederlandse tomaten</li>
+        <li><strong>Herfst:</strong> pompoensoep (maak dubbel!), of risotto met paddenstoelen</li>
+        <li><strong>Winter:</strong> stamppot boerenkool, of een hartige knolselderijpuree met gebakken zalm</li>
+      </ul>
+
+      <p>Platforms zoals Allerhande van Albert Heijn hebben filters voor seizoensrecepten. Handig als je inspiratie nodig hebt. En die recepten kun je trouwens makkelijk opslaan voor later, maar daarover zo meer.</p>
+
+      <h2 id="recepten-verzamelen">Samen recepten verzamelen</h2>
+
+      <p>Elke relatie heeft dat ene gerecht dat altijd werkt. Die pasta die je allebei lekker vindt. Die ovenschotel die je met je ogen dicht kunt maken. Maar na een jaar of twee draai je door datzelfde rijtje van tien recepten. Tijd om je collectie uit te breiden.</p>
+
+      <p>De truc is niet om een kookboek door te bladeren (dat doet toch niemand meer), maar om recepten te verzamelen wanneer je ze tegenkomt. Op Instagram, TikTok, in de Allerhande, of bij vrienden die iets lekkers op tafel zetten. <a href="/nl/blog/recepten-opslaan-tiktok-instagram">Recepten opslaan van social media</a> is makkelijker dan je denkt als je het juiste gereedschap hebt.</p>
+
+      <p>Het probleem is dat die recepten overal terechtkomen: screenshots op je telefoon, linkjes in WhatsApp, bladwijzers in drie browsers. Dat is precies waarom een gedeelde receptenverzameling zo fijn is. Eén plek waar jullie allebei bij kunnen. Als jij een recept opslaat, kan je partner het zien. En als je maaltijden plant, kies je gewoon uit je eigen collectie.</p>
+
+      <h2 id="boodschappen-verdelen">Boodschappen slim verdelen</h2>
+
+      <p>Er zijn twee soorten koppels. Koppels die samen boodschappen doen (en daar stiekem van genieten) en koppels die het verdelen. Beide prima. Maar in beide gevallen heb je een lijst nodig die jullie allebei kunnen aanvullen.</p>
+
+      <p>Het klinkt simpel, maar dit is waar het bij veel koppels misgaat. De een heeft een lijstje in Notities, de ander stuurt een WhatsApp-bericht. Resultaat: dubbele melk en vergeten brood.</p>
+
+      <p>Een <a href="/nl/blog/boodschappenlijst-app-vergelijken">goede boodschappenlijst-app</a> lost dit op. Je deelt dezelfde lijst, allebei real-time, en het liefst gesorteerd op categorie zodat je niet drie keer door dezelfde supermarkt heen hoeft. Groente bij groente, zuivel bij zuivel.</p>
+
+      <p>Nog beter: een boodschappenlijst die gekoppeld is aan je maaltijdplanning. Als je besluit dat jullie dinsdag pad thai eten, staan de ingredienten automatisch op de lijst. Geen handmatig overtypen, geen vergeten ingredienten.</p>
+
+      <h2 id="wie-kookt">Afwisselen: wie kookt?</h2>
+
+      <p>In veel relaties ontstaat er vanzelf een patroon: dezelfde persoon kookt bijna altijd. Soms omdat die persoon het leuk vindt, soms uit gewoonte, soms omdat de ander "niet zo goed kan koken."</p>
+
+      <p>Eerlijke verdeling van het koken is niet alleen praktisch, het is ook goed voor je relatie. De persoon die altijd kookt, draagt ook de mentale last van bedenken wat je eet, controleren wat er in huis is en op tijd beginnen. Dat is meer dan alleen pannen op het vuur zetten.</p>
+
+      <p>Een simpele afspraak: wissel af per dag, of per week. Als je om de dag kookt, kiest degene die kookt ook het recept. Zo verdeel je niet alleen het werk, maar ook de beslissing. Want "wat zullen we eten" is soms de zwaarste vraag van de dag.</p>
+
+      <p>En als een van jullie echt niet graag kookt? Dan kan die persoon de boodschappen doen, de keuken opruimen of het <a href="/nl/blog/weekmenu-maken-tips">weekmenu helpen maken</a>. Eerlijk verdelen hoeft niet te betekenen dat je allebei evenveel kookt.</p>
+
+      <h2 id="verspilling">Minder verspillen als koppel</h2>
+
+      <p>Voedselverspilling is een van de grootste voordelen van maaltijdplanning. Zonder plan koop je op gevoel, laat je dingen bederven en gooi je elke week een paar euro weg. Met een plan koop je wat je nodig hebt en gebruik je wat je koopt.</p>
+
+      <p>Een paar tips die specifiek voor twee werken:</p>
+
+      <ul>
+        <li><strong>Koop losse groenten</strong> in plaats van voorverpakte zakken. Twee wortels in plaats van een kilo</li>
+        <li><strong>Gebruik je vriezer</strong> voor brood, kruiden en overgebleven porties</li>
+        <li><strong>Plan een restjesavond</strong> aan het einde van de week. Alles wat over is, wordt een creatieve maaltijd</li>
+        <li><strong>Check je koelkast voor je gaat winkelen.</strong> Klinkt logisch, maar hoeveel mensen doen het echt?</li>
+        <li><strong>Koop minder, vaker.</strong> Voor twee personen kun je prima twee keer per week boodschappen doen in plaats van een grote weekvoorraad</li>
+      </ul>
+
+      <p>Met een beetje bewustzijn kun je als koppel je voedselverspilling makkelijk halveren. Dat scheelt niet alleen geld (gemiddeld 50 euro per maand volgens Milieu Centraal), maar voelt ook gewoon goed.</p>
+
+      <h2 id="miiro-flow">Van weekmenu naar boodschappen in een flow</h2>
+
+      <p>Het mooiste aan maaltijdplanning is wanneer alles met elkaar verbonden is. Je bedenkt wat je wilt eten, de ingredienten staan op je boodschappenlijst en tijdens het koken heb je het recept bij de hand. Dat klinkt als drie aparte stappen, maar het kan ook een flow zijn.</p>
+
+      <p>In Miiro werkt het zo: je opent de maaltijdplanner en kiest recepten voor de komende dagen. Die recepten komen uit je eigen verzameling, gevuld met Toru (onze receptimporter die elk recept van het web pakt). Als je een recept aan een dag koppelt, kun je de ingredienten met een tik naar je boodschappenlijst sturen. Die lijst sorteert automatisch op categorie, in het Nederlands.</p>
+
+      <p>En als je begint met koken, open je het recept in de kookmodus: grote tekst, stap voor stap, geen afleiding. Van "wat zullen we eten" tot het bord op tafel, zonder tussendoor vijf apps te openen.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">Tip</span>
+        Gebruik Tell Miiro om je hele weekplanning in te spreken. Zeg iets als "maandag pasta pesto, dinsdag Thaise curry, woensdag uit eten, donderdag die ovenschotel van vorige week" en de AI maakt er maaltijden, taken en agenda-items van.
+      </div>
+
+      <h2 id="voorbeeld-weekmenu">Voorbeeld weekmenu voor twee</h2>
+
+      <p>Ter inspiratie, een simpel weekmenu dat wij regelmatig draaien. Niks bijzonders, maar het werkt. Alles is in dertig tot veertig minuten klaar.</p>
+
+      <ul>
+        <li><strong>Maandag:</strong> Pasta met broccoli, knoflook en Parmezaan</li>
+        <li><strong>Dinsdag:</strong> Thaise rode curry met rijst (dubbele portie, de helft naar de vriezer)</li>
+        <li><strong>Woensdag:</strong> Wraps met kip, avocado en een snelle sla</li>
+        <li><strong>Donderdag:</strong> Aardappelen uit de oven met zalm en sperziebonen</li>
+        <li><strong>Vrijdag:</strong> Restjes of uit eten</li>
+      </ul>
+
+      <p>Op zaterdag koken we soms iets uitgebreiders (een risotto, zelfgemaakte pizza of iets uit een kookboek) en zondag eten we vaak bij familie of maken we iets simpels.</p>
+
+      <p>Het punt is niet dat dit het perfecte menu is. Het punt is dat je doordeweeks niet hoeft na te denken. Alles staat al klaar. De boodschappen zijn gedaan. Het enige wat je hoeft te doen is koken.</p>
+
+      <h2 id="conclusie">Begin klein, hou het simpel</h2>
+
+      <p>Je hoeft geen volledig systeem op te tuigen om te starten met maaltijdplanning. Begin met twee of drie dagen per week. Bespreek op zondag even wat jullie de komende dagen willen eten. Maak een boodschappenlijst. Dat is het.</p>
+
+      <p>Na een paar weken merk je het verschil. Minder stress doordeweeks, minder voedselverspilling, minder "wat eten we" en meer tijd voor de dingen die er echt toe doen. En als je het leuk begint te vinden, kun je het verder uitbreiden.</p>
+
+      <p>Benieuwd hoe andere koppels hun week organiseren? Lees dan ook ons stuk over de <a href="/nl/blog/weekmenu-maken-tips">beste tips voor het maken van een weekmenu</a> of ontdek hoe je <a href="/nl/blog/recepten-opslaan-tiktok-instagram">recepten van TikTok en Instagram opslaat</a> zodat je ze nooit meer kwijtraakt.</p>
+
+      <div class="blog-cta">
+        <h3>Probeer Miiro gratis</h3>
+        <p>Een app voor je agenda, taken, maaltijden, boodschappen en recepten. Gedeeld met je partner. Gemaakt in Amsterdam.</p>
+        <a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
+      </div>
+
+      <hr>
+
+      <div class="author-bio">
+        <strong>Over de auteur:</strong> Robert is medeoprichter van Miiro. Hij bouwt de app samen met zijn vrouw, die dient als hoofdtester en eerlijkste criticus. Ze wonen in Nederland met hun zoon Miles.
+      </div>
+    </section>
+    </div>
+  </div>
+</article>
+
+<script>
+(function() {
+  var ids = [
+    'waarom-voor-twee','plan-niet-alles','dubbel-koken','seizoensgroenten',
+    'recepten-verzamelen','boodschappen-verdelen','wie-kookt','verspilling',
+    'miiro-flow','voorbeeld-weekmenu','conclusie'
+  ];
+  var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+  var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');
+  var current = '';
+
+  function onScroll() {
+    var scrollY = window.scrollY + 120;
+    var active = '';
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= scrollY) {
+        active = sections[i].id;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      tocLinks.forEach(function(link) {
+        if (link.getAttribute('href') === '#' + active) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.querySelectorAll('.toc-mobile-list a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('toc-mobile').classList.remove('open');
+    });
+  });
+})();
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/koi-logo.png" alt="Miiro">
+      <span class="footer-brand-text">Miiro</span>
+      <span class="footer-tagline">- Zie wat ertoe doet.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 Miiro. Met liefde gemaakt in Amsterdam.</span>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We gebruiken cookies om te begrijpen hoe je onze site gebruikt en je ervaring te verbeteren. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacybeleid</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Weigeren</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accepteren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>

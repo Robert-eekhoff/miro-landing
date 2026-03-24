@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taken Verdelen met je Partner: Zonder Gedoe | Miiro</title>
+<meta name="description" content="Taken eerlijk verdelen met je partner zonder discussie. Praktische tips en slimme tools voor een soepeler huishouden.">
+<meta property="og:title" content="Taken Verdelen met je Partner: Zonder Gedoe">
+<meta property="og:description" content="Taken eerlijk verdelen met je partner zonder discussie. Praktische tips en slimme tools voor een soepeler huishouden.">
+<meta property="og:url" content="https://miiro.app/nl/blog/taken-verdelen-met-partner">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://miiro.app/og-image.png">
+<meta property="article:published_time" content="2026-03-24">
+<meta property="article:author" content="Robert">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Taken Verdelen met je Partner: Zonder Gedoe">
+<meta name="twitter:description" content="Taken eerlijk verdelen met je partner zonder discussie. Praktische tips en slimme tools voor een soepeler huishouden.">
+<link rel="canonical" href="https://miiro.app/nl/blog/taken-verdelen-met-partner">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Taken Verdelen met je Partner: Zonder Gedoe",
+  "description": "Taken eerlijk verdelen met je partner zonder discussie. Praktische tips en slimme tools voor een soepeler huishouden.",
+  "datePublished": "2026-03-24",
+  "dateModified": "2026-03-24",
+  "author": {
+    "@type": "Person",
+    "name": "Robert",
+    "jobTitle": "Medeoprichter van Miiro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Miiro",
+    "url": "https://miiro.app"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://miiro.app/nl/blog/taken-verdelen-met-partner"
+  }
+}
+</script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --coral-bg: rgba(232, 99, 74, 0.06);
+    --indigo: #4A5CE8;
+    --indigo-bg: rgba(74, 92, 232, 0.06);
+    --mint: #3BBFA0;
+    --mint-bg: rgba(59, 191, 160, 0.06);
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .nav-logo img { width: 36px; height: 36px; object-fit: contain; }
+
+  .nav-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--indigo);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
+
+  .article-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 40px);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .article-container { max-width: 700px; min-width: 0; }
+
+  .article-header {
+    padding: 80px 0 48px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 5vw, 40px);
+    padding-right: clamp(20px, 5vw, 40px);
+  }
+
+  .toc-sidebar { position: sticky; top: 100px; padding-top: 80px; }
+
+  .toc-sidebar .toc-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+
+  .toc-sidebar ul { list-style: none; border-left: 2px solid var(--border); }
+  .toc-sidebar li { margin-bottom: 2px; }
+
+  .toc-sidebar a {
+    display: block;
+    padding: 5px 0 5px 16px;
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -2px;
+    transition: color 0.2s, border-color 0.2s;
+    line-height: 1.4;
+  }
+
+  .toc-sidebar a:hover { color: var(--text-secondary); }
+
+  .toc-sidebar a.active {
+    color: var(--coral);
+    border-left-color: var(--coral);
+    font-weight: 500;
+  }
+
+  .toc-sidebar .toc-sub { padding-left: 28px; font-size: 0.73rem; }
+
+  .toc-mobile { display: none; margin-bottom: 32px; }
+
+  .toc-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .toc-mobile-toggle svg { width: 16px; height: 16px; transition: transform 0.2s; flex-shrink: 0; }
+  .toc-mobile.open .toc-mobile-toggle svg { transform: rotate(180deg); }
+
+  .toc-mobile-list {
+    list-style: none;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 8px 0;
+    display: none;
+    margin-top: -1px;
+  }
+
+  .toc-mobile.open .toc-mobile-list { display: block; }
+  .toc-mobile.open .toc-mobile-toggle { border-radius: 12px 12px 0 0; }
+
+  .toc-mobile-list a {
+    display: block;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .toc-mobile-list a:hover { color: var(--text-secondary); background: rgba(44, 40, 37, 0.03); }
+  .toc-mobile-list a.active { color: var(--coral); font-weight: 500; }
+  .toc-mobile-list .toc-sub { padding-left: 36px; font-size: 0.78rem; }
+
+  .article-breadcrumb { font-size: 0.8rem; color: var(--text-tertiary); margin-bottom: 32px; }
+  .article-breadcrumb a { color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+  .article-breadcrumb a:hover { color: var(--coral); }
+
+  .article-header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .article-meta { font-size: 0.875rem; color: var(--text-tertiary); }
+  .article-meta .author { color: var(--text-secondary); font-weight: 500; }
+
+  .article-body {
+    padding-bottom: 80px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .article-body p { margin-bottom: 24px; }
+
+  .article-body h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .article-body h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+
+  .article-body ul, .article-body ol { margin-bottom: 24px; padding-left: 24px; }
+  .article-body li { margin-bottom: 8px; }
+
+  .article-body a {
+    color: var(--coral);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(232, 99, 74, 0.3);
+    transition: text-decoration-color 0.2s;
+  }
+
+  .article-body a:hover { text-decoration-color: var(--coral); }
+
+  .article-body blockquote {
+    border-left: 3px solid var(--coral);
+    padding: 4px 0 4px 24px;
+    margin: 32px 0;
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  .callout { border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; font-size: 0.95rem; line-height: 1.7; }
+  .callout-label { font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; display: block; }
+  .callout-positive { background: var(--mint-bg); border: 1px solid rgba(59, 191, 160, 0.15); }
+  .callout-positive .callout-label { color: var(--mint); }
+  .callout-negative { background: var(--coral-bg); border: 1px solid rgba(232, 99, 74, 0.12); }
+  .callout-negative .callout-label { color: var(--coral); }
+  .callout-info { background: var(--indigo-bg); border: 1px solid rgba(74, 92, 232, 0.12); }
+  .callout-info .callout-label { color: var(--indigo); }
+
+  .article-body hr { border: none; height: 1px; background: var(--border); margin: 48px 0; }
+
+  .author-bio {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 48px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .author-bio strong { color: var(--text-primary); }
+
+  .article-cta { text-align: center; padding: 56px 0 80px; }
+  .article-cta p { font-family: 'Lora', Georgia, serif; font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 24px; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white;
+    padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3); }
+
+  .blog-cta {
+    background: var(--warm-white); border: 1px solid var(--border); border-radius: 20px;
+    padding: 40px 32px; text-align: center; margin-top: 48px; margin-bottom: 24px;
+  }
+  .blog-cta h3 { font-family: 'Lora', Georgia, serif; font-size: 1.3rem; font-weight: 500; color: var(--text-primary); margin-bottom: 12px; }
+  .blog-cta p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+  .blog-cta .cta-button { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; padding: 14px 32px; border-radius: 100px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .blog-cta .cta-button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232, 99, 74, 0.3); }
+
+  footer {
+    background: var(--text-primary);
+    border-top: 1px solid rgba(249, 246, 241, 0.06);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px);
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-brand img { width: 28px; height: 28px; object-fit: contain; }
+  .footer-brand-text { font-family: 'Lora', serif; color: rgba(249, 246, 241, 0.6); font-size: 0.95rem; }
+  .footer-tagline { font-style: italic; color: rgba(249, 246, 241, 0.3); font-family: 'Lora', serif; font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+  .footer-links a { color: rgba(249, 246, 241, 0.4); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(249, 246, 241, 0.7); }
+  .footer-copy { font-size: 0.75rem; color: rgba(249, 246, 241, 0.2); }
+
+  @media (max-width: 1060px) {
+    .article-layout { display: block; }
+    .toc-sidebar { display: none; }
+    .toc-mobile { display: block; }
+    .article-container { margin: 0 auto; }
+  }
+
+  @media (max-width: 900px) { .nav-links { display: none; } }
+
+  @media (max-width: 600px) {
+    .callout { padding: 20px 22px; }
+    .author-bio { padding: 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/nl/" class="nav-logo">
+      <img src="/koi-logo.png" alt="Miiro koi logo">
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/nl/">Home</a></li>
+      <li><a href="/nl/blog">Blog</a></li>
+      <li><a href="/" title="English" style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;color:var(--text-tertiary)">EN</a></li>
+      <li><a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="nav-cta">Download Miiro</a></li>
+    </ul>
+  </div>
+</nav>
+
+<article>
+  <header class="article-header">
+    <div class="article-breadcrumb"><a href="/nl/blog">Blog</a> / Taken verdelen</div>
+    <h1>Taken Verdelen met je Partner: Zo Doe Je Dat Zonder Gedoe</h1>
+    <p class="article-meta">Door <span class="author">Robert</span>, medeoprichter van Miiro &middot; Maart 2026</p>
+  </header>
+
+  <div class="article-layout">
+    <aside class="toc-sidebar" aria-label="Inhoudsopgave">
+      <div class="toc-label">Inhoud</div>
+      <ul>
+        <li><a href="#waarom-zo-lastig">Waarom het zo lastig is</a></li>
+        <li><a href="#zichtbaar-onzichtbaar">Zichtbaar vs. onzichtbaar</a></li>
+        <li><a href="#het-framework">Een praktisch framework</a></li>
+        <li><a href="#stap-1">Stap 1: Alles opschrijven</a></li>
+        <li><a href="#stap-2">Stap 2: Categoriseren</a></li>
+        <li><a href="#stap-3">Stap 3: Verdelen op voorkeur</a></li>
+        <li><a href="#stap-4">Stap 4: Regelmatig evalueren</a></li>
+        <li><a href="#tools-die-helpen">Tools die helpen</a></li>
+        <li><a href="#veelgestelde-vragen">Veelgestelde vragen</a></li>
+      </ul>
+    </aside>
+
+    <div class="article-container">
+      <div class="toc-mobile" id="toc-mobile">
+        <button class="toc-mobile-toggle" onclick="document.getElementById('toc-mobile').classList.toggle('open')" aria-expanded="false" aria-controls="toc-mobile-list">
+          Inhoudsopgave
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <ul class="toc-mobile-list" id="toc-mobile-list">
+          <li><a href="#waarom-zo-lastig">Waarom het zo lastig is</a></li>
+          <li><a href="#zichtbaar-onzichtbaar">Zichtbaar vs. onzichtbaar</a></li>
+          <li><a href="#het-framework">Een praktisch framework</a></li>
+          <li><a href="#stap-1">Stap 1: Alles opschrijven</a></li>
+          <li><a href="#stap-2">Stap 2: Categoriseren</a></li>
+          <li><a href="#stap-3">Stap 3: Verdelen op voorkeur</a></li>
+          <li><a href="#stap-4">Stap 4: Regelmatig evalueren</a></li>
+          <li><a href="#tools-die-helpen">Tools die helpen</a></li>
+          <li><a href="#veelgestelde-vragen">Veelgestelde vragen</a></li>
+        </ul>
+      </div>
+
+      <section class="article-body">
+      <p>De was ligt er nog. De vaatwasser moet uitgeruimd worden. En de boodschappen zijn er weer niet. Niet omdat jullie lui zijn, maar omdat er geen duidelijke afspraak is over wie wat doet. En dus ontstaat er wrevel. Niet over de taken zelf, maar over het gevoel dat het niet eerlijk verdeeld is.</p>
+
+      <p>Taken verdelen met je partner is een van die dingen die simpel klinken maar in de praktijk verrassend lastig zijn. Niet omdat het ingewikkeld is, maar omdat de meeste koppels er nooit bewust over praten. Het gaat vanzelf. Tot het niet meer vanzelf gaat.</p>
+
+      <p>In dit artikel deel ik een praktisch framework dat mijn vrouw en ik gebruiken. Geen theorie, geen schuldgevoel, geen scorekaarten. Gewoon een aanpak die werkt.</p>
+
+      <h2 id="waarom-zo-lastig">Waarom taken verdelen zo lastig is</h2>
+
+      <p>Er zijn een paar redenen waarom de verdeling van huishoudelijke taken bij zoveel koppels scheef loopt. En het heeft zelden te maken met luiheid.</p>
+
+      <p><strong>Gewoontes uit je ouderlijk huis.</strong> De manier waarop je bent opgegroeid bepaalt voor een groot deel hoe je naar huishoudelijk werk kijkt. Als je moeder altijd kookte en je vader altijd de tuin deed, is de kans groot dat je die patronen onbewust overneemt. Zelfs als je dat eigenlijk niet wilt.</p>
+
+      <p><strong>Geen overzicht.</strong> De meeste koppels hebben geen idee hoeveel taken er wekelijks gedaan worden. Je ziet wat je zelf doet, maar niet altijd wat je partner doet. En al helemaal niet het onzichtbare werk: plannen, onthouden, anticiperen.</p>
+
+      <p><strong>Verschillende standaarden.</strong> De een vindt het prima als de keuken "redelijk schoon" is. De ander wil dat het aanrecht blinkt. Dat verschil in standaard zorgt voor frustratie, omdat degene met de hogere standaard het gevoel heeft altijd "extra" te moeten doen.</p>
+
+      <blockquote>
+        Het gaat niet om wie er meer doet. Het gaat erom dat allebei het gevoel hebben dat het eerlijk is.
+      </blockquote>
+
+      <p>In Nederland hechten we veel waarde aan gelijkwaardigheid. We vinden het normaal dat beide partners werken, en we verwachten dat het huishouden dan ook gedeeld wordt. Maar de realiteit is weerbarstiger dan het ideaal. Uit onderzoek blijkt dat vrouwen in Nederland nog steeds meer huishoudelijk werk doen dan mannen, zelfs als beide partners fulltime werken.</p>
+
+      <h2 id="zichtbaar-onzichtbaar">Zichtbaar vs. onzichtbaar werk</h2>
+
+      <p>Dit is misschien wel het belangrijkste concept om te begrijpen als je taken eerlijker wilt verdelen. Er zijn twee soorten huishoudelijk werk:</p>
+
+      <p><strong>Zichtbaar werk</strong> is alles wat je kunt zien: stofzuigen, koken, de afwas doen, de was ophangen, boodschappen sjouwen. Het is fysiek, het is duidelijk, en je kunt het afvinken.</p>
+
+      <p><strong>Onzichtbaar werk</strong> is alles daaromheen: bedenken wat je gaat eten, de boodschappenlijst maken, onthouden dat de tandarts gebeld moet worden, het verjaardagscadeau voor je schoonmoeder regelen, uitzoeken welke verzekering het beste is. Dit wordt ook wel de <a href="/nl/blog/mentale-belasting-huishouden">mentale belasting</a> genoemd.</p>
+
+      <div class="callout callout-negative">
+        <span class="callout-label">Het probleem</span>
+        Bij veel koppels is het zichtbare werk redelijk verdeeld, maar draagt een persoon het grootste deel van het onzichtbare werk. Dat creëert een ongelijkheid die je niet in uren kunt meten, maar die je wel degelijk voelt.
+      </div>
+
+      <p>Een eerlijke verdeling houdt rekening met beide soorten werk. Het gaat niet alleen om wie er stofzuigt, maar ook om wie er bedenkt dat er gestofzuigd moet worden.</p>
+
+      <h2 id="het-framework">Een praktisch framework voor het verdelen van taken</h2>
+
+      <p>Wat volgt is een aanpak in vier stappen. Het kost jullie misschien een halfuur om het de eerste keer te doen. Daarna wordt het onderhoud: een kort gesprek per week.</p>
+
+      <h3 id="stap-1">Stap 1: Schrijf alle taken op</h3>
+
+      <p>Ga samen zitten en schrijf letterlijk alles op wat er wekelijks en maandelijks in jullie huishouden moet gebeuren. Wees compleet. Het doel is om niets over te slaan.</p>
+
+      <p><strong>Dagelijkse taken:</strong></p>
+      <ul>
+        <li>Koken</li>
+        <li>Afwas / vaatwasser in- en uitruimen</li>
+        <li>Aanrecht en keuken schoonmaken</li>
+        <li>Ontbijt en lunch klaarmaken</li>
+        <li>Opruimen</li>
+      </ul>
+
+      <p><strong>Wekelijkse taken:</strong></p>
+      <ul>
+        <li>Stofzuigen</li>
+        <li>Badkamer schoonmaken</li>
+        <li>Was draaien, ophangen en opvouwen</li>
+        <li>Boodschappen doen</li>
+        <li>Planten water geven</li>
+        <li>Vuilnis en oud papier buitenzetten</li>
+        <li>Bed verschonen</li>
+      </ul>
+
+      <p><strong>Onzichtbare taken:</strong></p>
+      <ul>
+        <li>Maaltijden bedenken voor de week</li>
+        <li>Boodschappenlijst maken</li>
+        <li>Afspraken inplannen (huisarts, tandarts, kapper)</li>
+        <li>Financiele administratie bijhouden</li>
+        <li>Cadeaus kopen voor verjaardagen</li>
+        <li>Sociale afspraken plannen</li>
+        <li>Voorraad bijhouden (zijn er nog vuilniszakken? Toiletpapier?)</li>
+      </ul>
+
+      <p>De lijst is waarschijnlijk langer dan je verwacht. Dat is precies het punt. Pas als je alles op papier hebt, kun je het eerlijk verdelen.</p>
+
+      <h3 id="stap-2">Stap 2: Categoriseer per frequentie</h3>
+
+      <p>Sorteer je lijst in drie categorie&euml;n: dagelijks, wekelijks en maandelijks. Dit helpt om een ritme te creëren. Dagelijkse taken (koken, opruimen) zijn de meest belastende en verdienen de meeste aandacht bij het verdelen. Maandelijkse taken (administratie, grote schoonmaak) kun je makkelijker rouleren.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">Tip</span>
+        Vergeet de seizoenstaken niet: in het najaar de tuin winterklaar maken, in het voorjaar de ramen lappen, rond de feestdagen cadeaus regelen. Deze taken komen niet elke week voor maar kosten wel flink wat tijd.
+      </div>
+
+      <h3 id="stap-3">Stap 3: Verdeel op basis van voorkeur, niet van gender</h3>
+
+      <p>Hier komt het leuke deel. Ga de lijst langs en laat allebei aangeven welke taken je niet erg vindt of zelfs leuk vindt. Je zult verrast zijn hoeveel overlap er niet is.</p>
+
+      <p>Mijn vrouw vindt het bijvoorbeeld prima om de was te doen, maar heeft een hekel aan stofzuigen. Ik vind boodschappen doen niet erg, maar ik heb geen zin om de badkamer schoon te maken. Door op voorkeur te verdelen in plaats van op gewoonte, voelt de verdeling al een stuk eerlijker.</p>
+
+      <p>Voor de taken die niemand leuk vindt (en die zijn er altijd), maak je een roulatiesysteem. Week A doet de een het toilet, week B de ander. Simpel, maar effectief.</p>
+
+      <div class="callout callout-positive">
+        <span class="callout-label">Wat goed werkt</span>
+        Wijs taken niet toe als straf of beloning. Het is teamwerk, geen competitie. De vraag is niet "wie moet dit doen?" maar "hoe verdelen we dit zo dat het voor allebei draaglijk is?"
+      </div>
+
+      <h3 id="stap-4">Stap 4: Evalueer regelmatig</h3>
+
+      <p>Een verdeling die in januari werkt, werkt misschien niet meer in september. Werkroosters veranderen, levensomstandigheden verschuiven, en soms ontdek je na een paar weken dat iets toch niet zo leuk is als je dacht.</p>
+
+      <p>Plan daarom een kort moment per week om even bij te praten. Niet een formeel "huishoudoverleg," maar gewoon: hoe loopt het? Is er iets dat beter kan? Moet er iets verschoven worden?</p>
+
+      <p>In ons artikel over het <a href="/nl/blog/huishouden-organiseren-als-koppel">organiseren van je huishouden als koppel</a> noemen we dit de wekelijkse reset. Tien minuten op zondagavond of maandagochtend. Loop samen de week door, check de agenda, verdeel wat er moet gebeuren. Het is het simpelste dat je kunt doen, en het maakt het meeste verschil.</p>
+
+      <p>En nee, het hoeft niet perfect te zijn. Sommige weken draait de een meer, andere weken de ander. Het gaat om de intentie en het gesprek, niet om een exacte 50/50-verdeling.</p>
+
+      <h2 id="tools-die-helpen">Tools die de verdeling zichtbaar maken</h2>
+
+      <p>Een eerlijke verdeling begint met zichtbaarheid. Als allebei kunnen zien welke taken er zijn en wie ze doet, verdwijnt een groot deel van de frustratie. Geen "ik dacht dat jij dat zou doen" meer.</p>
+
+      <p>Je kunt dit oplossen met een whiteboard op de koelkast, een gedeeld Google-document, of een app. Het maakt niet zoveel uit, zolang het maar een plek is die jullie allebei checken.</p>
+
+      <p>Wat je wilt van zo'n systeem:</p>
+
+      <ul>
+        <li><strong>Gedeelde takenlijst</strong> waar jullie allebei taken kunnen toevoegen en afvinken</li>
+        <li><strong>Toewijzing</strong> zodat duidelijk is wie wat doet</li>
+        <li><strong>Herhalingen</strong> voor terugkerende taken (elke dinsdag stofzuigen, elke maand de plant verpotten)</li>
+        <li><strong>Een dagweergave</strong> zodat je 's ochtends weet wat er vandaag op jouw bordje ligt</li>
+      </ul>
+
+      <p>In Miiro hebben we dit precies zo gebouwd. Je maakt een taak aan, wijst hem toe aan jezelf of je partner, stelt een herhaling in, en de taak verschijnt automatisch in de Mijn Dag-weergave. Je partner ziet direct wat er voor vandaag gepland staat. Geen WhatsApp-bericht nodig.</p>
+
+      <p>Met Tell Miiro kun je het nog sneller doen. Typ gewoon: "Stofzuigen elke dinsdag voor mij, badkamer elke vrijdag voor Lisa." De AI herkent de taken, de toewijzing en het herhaalpatroon, en maakt alles in een keer aan.</p>
+
+      <div class="callout callout-info">
+        <span class="callout-label">De beste test</span>
+        Als je partner de app niet wil openen, is de app te ingewikkeld. De drempel moet zo laag zijn dat het openen en afvinken sneller gaat dan een WhatsApp-bericht sturen. Dat was ons uitgangspunt bij het bouwen van Miiro.
+      </div>
+
+      <p>Meer over de <a href="/nl/blog/zondag-reset-routine">zondag-reset routine</a> en hoe je die kunt inrichten lees je in ons aparte artikel.</p>
+
+      <h2 id="veelgestelde-vragen">Veelgestelde vragen</h2>
+
+      <h3>Moeten taken 50/50 verdeeld worden?</h3>
+      <p>Nee. Eerlijk is niet hetzelfde als gelijk. De ene partner werkt misschien meer uren buitenshuis, de ander doet meer thuis. Wat telt is dat het voelt als een teameffort. Praat erover en stel bij als het scheef loopt.</p>
+
+      <h3>Wat als mijn partner taken anders doet dan ik?</h3>
+      <p>Laat het los. Als je partner de was anders opvouwt of de vaatwasser anders inruimt, is dat prima. Als je elke taak controleert en corrigeert, neemt je partner vanzelf minder initiatief. Geef ruimte, ook als het resultaat niet precies is zoals jij het zou doen.</p>
+
+      <h3>Hoe ga je om met taken die niemand wil doen?</h3>
+      <p>Rouleer ze. Maak een schema waarin de minst populaire taken elke week wisselen. Als het toilet deze week voor jou is, is het volgende week voor je partner. Geen discussie, gewoon het schema volgen.</p>
+
+      <h3>Wat kost Miiro?</h3>
+      <p>Miiro heeft een gratis versie met gedeelde taken, agenda en boodschappenlijsten. Miiro+ kost &euro;4,99 per maand of &euro;44,99 per jaar en voegt Tell Miiro AI, Toru recepten, en maaltijdplanning toe. Een abonnement dekt het hele huishouden.</p>
+
+      <div class="blog-cta">
+        <h3>Probeer Miiro gratis</h3>
+        <p>E&eacute;n app voor je agenda, taken, maaltijden, boodschappen en recepten. Gedeeld met je partner. Gemaakt in Amsterdam.</p>
+        <a href="https://apps.apple.com/nl/app/miiro-couple-family-planner/id6759159052" class="cta-button">Download Miiro</a>
+      </div>
+
+      <hr>
+
+      <div class="author-bio">
+        <strong>Over de auteur:</strong> Robert is medeoprichter van Miiro. Hij bouwt de app samen met zijn vrouw, die dient als hoofdtester en eerlijkste criticus. Ze wonen in Nederland met hun zoon Miles.
+      </div>
+    </section>
+    </div>
+  </div>
+</article>
+
+<script>
+(function() {
+  var ids = [
+    'waarom-zo-lastig','zichtbaar-onzichtbaar','het-framework','stap-1',
+    'stap-2','stap-3','stap-4','tools-die-helpen','veelgestelde-vragen'
+  ];
+  var sections = ids.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+  var tocLinks = document.querySelectorAll('.toc-sidebar a, .toc-mobile-list a');
+  var current = '';
+
+  function onScroll() {
+    var scrollY = window.scrollY + 120;
+    var active = '';
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= scrollY) {
+        active = sections[i].id;
+      }
+    }
+    if (active !== current) {
+      current = active;
+      tocLinks.forEach(function(link) {
+        if (link.getAttribute('href') === '#' + active) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.querySelectorAll('.toc-mobile-list a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('toc-mobile').classList.remove('open');
+    });
+  });
+})();
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/koi-logo.png" alt="Miiro">
+      <span class="footer-brand-text">Miiro</span>
+      <span class="footer-tagline">- Zie wat ertoe doet.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 Miiro. Met liefde gemaakt in Amsterdam.</span>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We gebruiken cookies om te begrijpen hoe je onze site gebruikt en je ervaring te verbeteren. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacybeleid</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Weigeren</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accepteren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>
