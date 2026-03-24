@@ -1,6 +1,8 @@
 {
   "cleanUrls": true,
   "rewrites": [
+    { "source": "/nl", "destination": "/nl/index.html" },
+    { "source": "/nl/", "destination": "/nl/index.html" },
     { "source": "/invite/:code", "destination": "/invite.html" },
     { "source": "/join/:code", "destination": "/invite.html" }
   ],

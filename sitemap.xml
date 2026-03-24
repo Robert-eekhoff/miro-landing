@@ -1,67 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- English Homepage -->
   <url>
     <loc>https://miiro.app/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://miiro.app/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://miiro.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://miiro.app/" />
   </url>
+
+  <!-- Dutch Homepage -->
   <url>
-    <loc>https://miiro.app/privacy.html</loc>
-    <lastmod>2026-03-14</lastmod>
+    <loc>https://miiro.app/nl/</loc>
+    <lastmod>2026-03-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://miiro.app/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://miiro.app/nl/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://miiro.app/" />
   </url>
-  <url>
-    <loc>https://miiro.app/support.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/terms.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/invite.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/best-household-apps-for-couples-2026.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/how-to-reduce-mental-load-in-your-relationship.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/how-toru-recipe-saver-works.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/how-we-built-miiro.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/lessons-learned-building-miiro.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/meal-planning-for-couples-guide.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/miiro-vs-cozi-vs-cupla.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/shared-calendar-for-couples.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/shared-grocery-list-apps-2026.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
-  <url>
-    <loc>https://miiro.app/blog/what-is-tell-miiro-ai-household-management.html</loc>
-    <lastmod>2026-03-14</lastmod>
-  </url>
+
+  <!-- English-only pages -->
+  <url><loc>https://miiro.app/privacy</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/support</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/terms</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/invite</loc><lastmod>2026-03-24</lastmod></url>
+
+  <!-- Blog -->
+  <url><loc>https://miiro.app/blog/</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/best-household-apps-for-couples-2026</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/how-to-reduce-mental-load-in-your-relationship</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/how-toru-recipe-saver-works</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/how-we-built-miiro</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/lessons-learned-building-miiro</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/meal-planning-for-couples-guide</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/miiro-vs-cozi-vs-cupla</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/shared-calendar-for-couples</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/shared-grocery-list-apps-2026</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/what-is-tell-miiro-ai-household-management</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/organize-grocery-list-by-aisle</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/turn-tiktok-recipes-into-cookbook</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/household-management-for-couples</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/multilingual-grocery-list-app</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/relationship-organization</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/moving-in-together-checklist</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/best-apps-couples-share-tasks-2026</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/manage-household-with-baby</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/how-to-save-recipes-tiktok-instagram-youtube</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/anylist-vs-cozi-comparison</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/couples-sunday-reset-routine</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/invisible-labor-in-relationships</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/cozi-alternatives-2026</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/apps-every-couple-needs-2026</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/how-to-stop-arguing-about-chores</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/cupla-alternatives-2026</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/newlywed-household-tips</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/how-to-organize-household-tasks</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/couple-productivity-tips</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://miiro.app/blog/weekly-planning-routine-couples</loc><lastmod>2026-03-24</lastmod></url>
 </urlset>
