@@ -700,6 +700,7 @@
   }
   .sam-flow-line {
     position: absolute; white-space: pre; color: var(--text-secondary);
+    font: 400 16.8px/31px Poppins, sans-serif;
   }
   .sam-header { text-align: center; margin-bottom: 56px; }
   .sam-header h2 {
@@ -1351,7 +1352,7 @@
       <span class="label" style="color: var(--teal); text-align: center; display: block;">Meet Sam</span>
       <h2 class="sam-flow-headline">Sam doesn't just organize. Sam thinks.</h2>
       <div class="sam-flow-wrap" id="sam-flow-wrap">
-        <div class="sam-flow-orb" id="sam-flow-orb"><canvas data-sam-orb="200" data-sam-bg="#F0EBE3"></canvas></div>
+        <div class="sam-flow-orb" id="sam-flow-orb"><canvas data-sam-orb="200" data-sam-bg="#F9F6F1"></canvas></div>
         <div class="sam-flow-text" id="sam-flow-text">
           <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Tell Sam you want green curry for dinner, and Sam generates the recipe, saves it to your cookbook, adds it to your meal plan, and offers to put the ingredients on your grocery list. One sentence, four actions. Ask what's happening tomorrow, and Sam checks your calendar, your tasks, and your meal plan. Say "move the dentist to Thursday" and it's done. By voice or by text, in any language.</p>
         </div>
@@ -2195,189 +2196,130 @@
     var linesEl = document.getElementById('sam-flow-lines');
     var orbEl = document.getElementById('sam-flow-orb');
     if (!wrap || !textEl || !linesEl || !orbEl) return;
-
-    // Skip on mobile
     if (window.innerWidth < 769) return;
 
     var text = textEl.querySelector('p').textContent.trim();
-    var font = '1.05rem Poppins, sans-serif';
-    var fontSize = 16.8; // 1.05rem at 16px base
-    var lineH = fontSize * 1.85;
+    var fontSize = 16.8;
+    var lineH = Math.round(fontSize * 1.85);
     var orbSize = 200;
-    var orbPad = 28; // glow padding
+    var orbPad = 36; // padding around orb for glow + breathing room
     var orbR = orbSize / 2 + orbPad;
 
-    // Wait for font to load
     document.fonts.ready.then(function() {
-      // Measure text using offscreen canvas
-      var canvas = document.createElement('canvas');
-      var ctx = canvas.getContext('2d');
-      ctx.font = fontSize + 'px Poppins, sans-serif';
+      var mc = document.createElement('canvas').getContext('2d');
+      mc.font = '400 ' + fontSize + 'px Poppins, sans-serif';
 
-      function measureWord(w) { return ctx.measureText(w).width; }
-
-      var wrapWidth = wrap.offsetWidth;
-      if (wrapWidth < 500) return; // too narrow, skip
-
-      // Circle center relative to wrap container
-      var cx = wrapWidth / 2;
-
-      // Compute how many lines we need, to figure out total height and center the orb vertically
-      // First pass: estimate total height with simple word-wrap
       var words = text.split(/\s+/);
-      var spaceW = measureWord(' ');
+      var spaceW = mc.measureText(' ').width;
+      // Pre-measure all words once
+      var wordWidths = words.map(function(w) { return mc.measureText(w).width; });
 
-      // We'll do the layout twice: first to get total height, then to center the orb
-      function doLayout(cy) {
-        var lines = [];
-        var y = 0;
-        var wordIdx = 0;
+      function render() {
+        var W = wrap.offsetWidth;
+        if (W < 500) { wrap.classList.remove('has-flow'); linesEl.innerHTML = ''; return; }
+        var cx = W / 2;
 
-        while (wordIdx < words.length && y < 2000) {
-          var bandTop = y;
-          var bandBottom = y + lineH;
+        // First pass: layout without centering to find total height
+        function layoutPass(cy) {
+          var lines = [];
+          var y = 0;
+          var wi = 0; // word index
 
-          // Compute circle exclusion for this line band
-          var dyTop = bandTop - cy;
-          var dyBot = bandBottom - cy;
-          var blocked = null;
+          while (wi < words.length && y < 3000) {
+            // Compute circle blockage at this line's vertical center
+            var lineMid = y + lineH / 2;
+            var dy = Math.abs(lineMid - cy);
+            var blocked = null;
 
-          // Check if this band intersects the circle
-          var minDy;
-          if (cy >= bandTop && cy <= bandBottom) {
-            minDy = 0;
-          } else if (cy < bandTop) {
-            minDy = bandTop - cy;
-          } else {
-            minDy = cy - bandBottom;
-          }
-
-          if (minDy < orbR) {
-            var maxDx = Math.sqrt(orbR * orbR - minDy * minDy);
-            blocked = { left: cx - maxDx, right: cx + maxDx };
-          }
-
-          if (blocked && blocked.left <= 0 && blocked.right >= wrapWidth) {
-            // Circle fills entire width, skip this line
-            y += lineH;
-            continue;
-          }
-
-          // Compute available slots
-          var slots = [];
-          if (!blocked) {
-            slots.push({ left: 0, right: wrapWidth });
-          } else {
-            if (blocked.left > 24) slots.push({ left: 0, right: blocked.left });
-            if (wrapWidth - blocked.right > 24) slots.push({ left: blocked.right, right: wrapWidth });
-          }
-
-          if (slots.length === 0) { y += lineH; continue; }
-
-          for (var s = 0; s < slots.length; s++) {
-            var slot = slots[s];
-            var slotW = slot.right - slot.left;
-            var lineText = '';
-            var lineWidth = 0;
-            var startIdx = wordIdx;
-
-            while (wordIdx < words.length) {
-              var word = words[wordIdx];
-              var ww = measureWord(word);
-              var addW = lineText.length === 0 ? ww : spaceW + ww;
-              if (lineWidth + addW > slotW && lineText.length > 0) break;
-              lineText += (lineText.length === 0 ? '' : ' ') + word;
-              lineWidth += addW;
-              wordIdx++;
+            if (dy < orbR) {
+              var dx = Math.sqrt(orbR * orbR - dy * dy);
+              blocked = { l: cx - dx, r: cx + dx };
             }
 
-            if (lineText.length > 0) {
-              // Center text within slot for justified feel
-              var textW = measureWord(lineText);
-              var textX;
-              if (slots.length === 2) {
-                // Two slots (text on both sides of orb): align inner edges
-                textX = s === 0 ? slot.right - textW : slot.left;
-              } else {
-                // Single slot: center
-                textX = slot.left + (slotW - textW) / 2;
+            // Available text slots
+            var slots = [];
+            if (!blocked) {
+              slots.push({ l: 0, r: W });
+            } else {
+              var leftW = blocked.l;
+              var rightW = W - blocked.r;
+              if (leftW > 40) slots.push({ l: 0, r: blocked.l });
+              if (rightW > 40) slots.push({ l: blocked.r, r: W });
+              if (slots.length === 0) { y += lineH; continue; }
+            }
+
+            for (var s = 0; s < slots.length; s++) {
+              if (wi >= words.length) break;
+              var slot = slots[s];
+              var sw = slot.r - slot.l;
+              var lt = ''; // line text
+              var lw = 0; // line width (accumulated)
+              var count = 0;
+
+              while (wi < words.length) {
+                var needed = count === 0 ? wordWidths[wi] : spaceW + wordWidths[wi];
+                if (lw + needed > sw + 0.5 && count > 0) break;
+                lt += (count === 0 ? '' : ' ') + words[wi];
+                lw += needed;
+                wi++;
+                count++;
               }
-              lines.push({ text: lineText, x: textX, y: y, width: textW });
-            }
-          }
 
-          y += lineH;
+              if (count > 0) {
+                // Measure final line for accurate positioning
+                var finalW = mc.measureText(lt).width;
+                var tx;
+                if (slots.length === 2) {
+                  tx = s === 0 ? slot.r - finalW : slot.l;
+                } else {
+                  tx = slot.l + (sw - finalW) / 2;
+                }
+                lines.push({ t: lt, x: tx, y: y, w: finalW });
+              }
+            }
+            y += lineH;
+          }
+          return { lines: lines, h: y };
         }
 
-        return { lines: lines, totalHeight: y };
+        // Pass 1: rough layout
+        var p1 = layoutPass(160);
+        // Pass 2: center orb in text block
+        var cy = p1.h / 2;
+        // Pass 3: final layout with centered orb
+        var result = layoutPass(cy);
+
+        if (result.lines.length < 5) {
+          wrap.classList.remove('has-flow');
+          linesEl.innerHTML = '';
+          return;
+        }
+
+        wrap.classList.add('has-flow');
+        linesEl.style.height = result.h + 'px';
+        orbEl.style.left = (cx - orbSize / 2) + 'px';
+        orbEl.style.top = (cy - orbSize / 2) + 'px';
+
+        var html = '';
+        for (var i = 0; i < result.lines.length; i++) {
+          var ln = result.lines[i];
+          html += '<span class="sam-flow-line" style="left:' + Math.round(ln.x) + 'px;top:' + Math.round(ln.y) + 'px">' + ln.t + '</span>';
+        }
+        linesEl.innerHTML = html;
       }
 
-      // First pass: guess center
-      var first = doLayout(150);
-      var totalH = first.totalHeight;
-      var cy = totalH / 2;
+      render();
 
-      // Second pass: center orb vertically in the text block
-      var result = doLayout(cy);
-
-      if (result.lines.length < 3) return; // layout failed, keep fallback
-
-      // Render
-      wrap.classList.add('has-flow');
-      linesEl.style.height = result.totalHeight + 'px';
-
-      // Position the orb
-      orbEl.style.position = 'absolute';
-      orbEl.style.left = (cx - orbSize / 2) + 'px';
-      orbEl.style.top = (cy - orbSize / 2) + 'px';
-
-      // Create line spans
-      var frag = document.createDocumentFragment();
-      for (var i = 0; i < result.lines.length; i++) {
-        var ln = result.lines[i];
-        var span = document.createElement('span');
-        span.className = 'sam-flow-line';
-        span.textContent = ln.text;
-        span.style.font = fontSize + 'px Poppins, sans-serif';
-        span.style.lineHeight = lineH + 'px';
-        span.style.left = Math.round(ln.x) + 'px';
-        span.style.top = Math.round(ln.y) + 'px';
-        frag.appendChild(span);
-      }
-      linesEl.appendChild(frag);
-
-      // Recalculate on resize (debounced)
-      var resizeTimer;
+      var rt;
       window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
+        clearTimeout(rt);
+        rt = setTimeout(function() {
           if (window.innerWidth < 769) {
-            // Revert to fallback on mobile
             wrap.classList.remove('has-flow');
             linesEl.innerHTML = '';
-            return;
+          } else {
+            render();
           }
-          wrapWidth = wrap.offsetWidth;
-          cx = wrapWidth / 2;
-          var r = doLayout(cy);
-          if (r.lines.length < 3) return;
-          linesEl.style.height = r.totalHeight + 'px';
-          orbEl.style.left = (cx - orbSize / 2) + 'px';
-          orbEl.style.top = (cy - orbSize / 2) + 'px';
-          linesEl.innerHTML = '';
-          var f = document.createDocumentFragment();
-          for (var j = 0; j < r.lines.length; j++) {
-            var l = r.lines[j];
-            var sp = document.createElement('span');
-            sp.className = 'sam-flow-line';
-            sp.textContent = l.text;
-            sp.style.font = fontSize + 'px Poppins, sans-serif';
-            sp.style.lineHeight = lineH + 'px';
-            sp.style.left = Math.round(l.x) + 'px';
-            sp.style.top = Math.round(l.y) + 'px';
-            f.appendChild(sp);
-          }
-          linesEl.appendChild(f);
         }, 200);
       });
     });
