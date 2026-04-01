@@ -2588,13 +2588,12 @@
     // Three.js setup
     var renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      alpha: true,
-      premultipliedAlpha: true,
+      alpha: false,
       antialias: false,
       powerPreference: 'low-power'
     });
     renderer.setSize(renderSize, renderSize, false);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setClearColor(0xF9F6F1, 1);
 
     var scene = new THREE.Scene();
     var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
@@ -2621,6 +2620,7 @@
       'uniform float uThinking;',
       'uniform float uIntensity;',
       '',
+      'const vec3 BG = vec3(0.976, 0.965, 0.945);',
       'const int MAX_RAY_MARCH_STEPS = 32;',
       'const float MAX_DISTANCE = 4.0;',
       'const float SURFACE_DISTANCE = 0.002;',
@@ -2681,9 +2681,9 @@
       '  vec3 bloomColor = mix(vec3(0.35, 0.92, 0.78), vec3(0.60, 0.25, 0.20), uWarmth);',
       '  float bloom = exp(-bloomDist * 2.5) * 0.35;',
       '',
-      '  // Outside unit circle: just bloom',
+      '  // Outside unit circle: bloom blended onto background',
       '  if (dot(uv, uv) > 1.0) {',
-      '    gl_FragColor = vec4(bloomColor * bloom, bloom);',
+      '    gl_FragColor = vec4(mix(BG, bloomColor, bloom), 1.0);',
       '    return;',
       '  }',
       '',
@@ -2703,12 +2703,14 @@
       '    if (hitDist >= MAX_DISTANCE || abs(sdf) <= SURFACE_DISTANCE) break;',
       '  }',
       '',
-      '  // Miss: cyan glow halo — boosted for light bg',
+      '  // Miss: cyan glow halo blended onto background',
       '  if (hitClosest >= SURFACE_DISTANCE) {',
       '    float glowStrength = pow(max(0.0, 1.0 - hitClosest * 4.0), 2.5);',
       '    vec3 glowTeal = mix(vec3(0.35, 0.92, 0.78), vec3(0.60, 0.25, 0.20), uWarmth);',
       '    float pulse = 1.0 + 0.08 * sin(uTime * 2.0);',
-      '    gl_FragColor = vec4(glowTeal * glowStrength * uBrightness * pulse * 1.3, glowStrength * 0.8);',
+      '    vec3 glowColor = glowTeal * uBrightness * pulse * 1.3;',
+      '    float glowAlpha = glowStrength * 0.8;',
+      '    gl_FragColor = vec4(mix(BG, glowColor, glowAlpha), 1.0);',
       '    return;',
       '  }',
       '',
@@ -2731,10 +2733,10 @@
       '  float intensityBoost = 1.0 + uIntensity * 0.3;',
       '  surfaceColor *= uBrightness * pulse * intensityBoost;',
       '',
-      '  // Fresnel alpha: transparent center, opaque rim',
+      '  // Fresnel blend: transparent center shows bg, opaque rim shows surface',
       '  float alpha = 0.5 + 0.5 * pow(1.0 - facing, 2.0);',
       '',
-      '  gl_FragColor = vec4(surfaceColor, alpha);',
+      '  gl_FragColor = vec4(mix(BG, surfaceColor, alpha), 1.0);',
       '}'
     ].join('\n');
 
@@ -2752,7 +2754,6 @@
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
       uniforms: uniforms,
-      transparent: true,
       depthTest: false,
       depthWrite: false
     });
