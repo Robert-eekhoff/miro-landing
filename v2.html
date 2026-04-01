@@ -708,6 +708,21 @@
 
   /* ===== SAM CAPABILITIES ===== */
   .sam-capabilities { background: var(--cream); }
+  .sam-orb-hero {
+    width: 220px; height: 220px; margin: 0 auto 32px; position: relative;
+    will-change: transform;
+  }
+  .sam-orb-hero canvas {
+    width: 100%; height: 100%; display: block; border-radius: 50%;
+  }
+  .sam-orb-fallback {
+    display: none; width: 100%; height: 100%; border-radius: 50%;
+    background: radial-gradient(circle at 45% 42%, #F0FFFC 0%, #B8FFF2 20%, #6EF0DE 45%, #40D4C0 70%, rgba(59, 200, 180, 0) 100%);
+    box-shadow: 0 0 10px 2px rgba(110, 240, 222, 0.5), 0 0 25px 5px rgba(92, 232, 216, 0.3), 0 0 50px 10px rgba(92, 232, 216, 0.15), 0 0 80px 20px rgba(92, 232, 216, 0.06);
+    animation: orb-breathe 3.14s ease-in-out infinite;
+  }
+  .sam-orb-hero.no-webgl canvas { display: none; }
+  .sam-orb-hero.no-webgl .sam-orb-fallback { display: block; }
   .sam-header { text-align: center; margin-bottom: 56px; }
   .sam-header h2 {
     font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
@@ -1200,6 +1215,7 @@
     .toru-text { order: 1; }
     .toru-visual { order: 2; }
 
+    .sam-orb-hero { width: 160px; height: 160px; }
     .sam-conversations { grid-template-columns: 1fr; gap: 20px; }
     .feature-cards-grid { grid-template-columns: 1fr; gap: 16px; }
     .testimonial-card { min-width: 280px; }
@@ -1593,6 +1609,11 @@
 <section class="sam-capabilities section" id="sam">
   <div class="container">
     <div class="sam-header animate-in">
+      <div class="sam-orb-hero" id="sam-orb-container">
+        <canvas id="sam-orb-canvas"></canvas>
+        <!-- CSS fallback if WebGL fails -->
+        <div class="sam-orb-fallback" id="sam-orb-fallback"></div>
+      </div>
       <span class="label" style="color: var(--teal);">Meet Sam</span>
       <h2>Sam doesn't just organize. Sam thinks.</h2>
       <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Here's what that looks like.</p>
@@ -2535,6 +2556,242 @@
     window.addEventListener('resize', checkScroll, { passive: true });
     checkScroll();
   })();
+</script>
+
+<!-- ===== SAM ORB WEBGL SHADER ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script>
+(function() {
+  // Wait for Three.js to load
+  function initSamOrb() {
+    if (typeof THREE === 'undefined') {
+      setTimeout(initSamOrb, 100);
+      return;
+    }
+
+    var container = document.getElementById('sam-orb-container');
+    var canvas = document.getElementById('sam-orb-canvas');
+    if (!canvas || !container) return;
+
+    // Check WebGL support
+    var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) {
+      container.classList.add('no-webgl');
+      return;
+    }
+
+    // Resolution: render at 2x for sharpness on retina, capped at 512px
+    var size = 220;
+    var pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    var renderSize = Math.min(Math.round(size * pixelRatio), 512);
+
+    // Three.js setup
+    var renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      premultipliedAlpha: true,
+      antialias: false,
+      powerPreference: 'low-power'
+    });
+    renderer.setSize(renderSize, renderSize, false);
+    renderer.setClearColor(0x000000, 0);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
+    camera.position.z = 1;
+
+    // Vertex shader: simple fullscreen quad
+    var vertexShader = [
+      'varying vec2 vUv;',
+      'void main() {',
+      '  vUv = uv;',
+      '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
+      '}'
+    ].join('\n');
+
+    // Fragment shader: ported 1:1 from IsabellaOrbShader.js SkSL
+    var fragmentShader = [
+      'precision highp float;',
+      '',
+      'uniform vec2 uResolution;',
+      'uniform float uTime;',
+      'uniform float uSpeed;',
+      'uniform float uWarmth;',
+      'uniform float uBrightness;',
+      'uniform float uThinking;',
+      'uniform float uIntensity;',
+      '',
+      'const int MAX_RAY_MARCH_STEPS = 32;',
+      'const float MAX_DISTANCE = 4.0;',
+      'const float SURFACE_DISTANCE = 0.002;',
+      '',
+      'float specularBlinnPhong(vec3 light_dir, vec3 ray_dir, vec3 normal) {',
+      '  vec3 halfway = normalize(light_dir + ray_dir);',
+      '  return max(0.0, dot(normal, halfway));',
+      '}',
+      '',
+      'vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }',
+      'vec4 perm(vec4 x) { return mod289(((x * 34.0) + 1.0) * x); }',
+      '',
+      'float noise(vec3 p) {',
+      '  vec3 a = floor(p);',
+      '  vec3 d = p - a;',
+      '  d = d * d * (3.0 - 2.0 * d);',
+      '  vec4 b = a.xxyy + vec4(0.0, 1.0, 0.0, 1.0);',
+      '  vec4 k1 = perm(b.xyxy);',
+      '  vec4 k2 = perm(k1.xyxy + b.zzww);',
+      '  vec4 c = k2 + a.zzzz;',
+      '  vec4 k3 = perm(c);',
+      '  vec4 k4 = perm(c + 1.0);',
+      '  vec4 o1 = fract(k3 * (1.0 / 41.0));',
+      '  vec4 o2 = fract(k4 * (1.0 / 41.0));',
+      '  vec4 o3 = o2 * d.z + o1 * (1.0 - d.z);',
+      '  vec2 o4 = o3.yw * d.x + o3.xz * (1.0 - d.x);',
+      '  return o4.y * d.y + o4.x * (1.0 - d.y);',
+      '}',
+      '',
+      'float SDF(vec3 point) {',
+      '  vec3 p = vec3(point.xy, uTime * 0.3 * uSpeed + point.z);',
+      '  float n = (noise(p) + noise(p * 2.0) * 0.5 + noise(p * 4.0) * 0.25) * 0.57;',
+      '  float thinkingPulse = uThinking * 0.015 * sin(uTime * 3.0);',
+      '  float noiseAmp = 0.3 + uIntensity * 0.15;',
+      '  return length(point) - (0.20 + thinkingPulse) - n * noiseAmp;',
+      '}',
+      '',
+      'vec3 getNormal(vec3 point) {',
+      '  vec2 e = vec2(0.002, 0.0);',
+      '  return normalize(vec3(',
+      '    SDF(point) - SDF(point - e.xyy),',
+      '    SDF(point) - SDF(point - e.yxy),',
+      '    SDF(point) - SDF(point - e.yyx)',
+      '  ));',
+      '}',
+      '',
+      'void main() {',
+      '  vec2 coord = gl_FragCoord.xy;',
+      '  vec2 uv = (coord * 2.0 - uResolution.xy) / uResolution.y;',
+      '',
+      '  // Isabella palette',
+      '  vec3 coreColor = mix(vec3(0.30, 0.85, 0.68), vec3(0.65, 0.30, 0.22), uWarmth);',
+      '  vec3 edgeColor = mix(vec3(0.25, 0.75, 0.58), vec3(0.60, 0.25, 0.20), uWarmth);',
+      '  vec3 specColor = vec3(0.7, 1.0, 0.95);',
+      '',
+      '  // Outer bloom',
+      '  float bloomDist = length(uv);',
+      '  vec3 bloomColor = mix(vec3(0.28, 0.80, 0.63), vec3(0.60, 0.25, 0.20), uWarmth);',
+      '  float bloom = exp(-bloomDist * 3.0) * 0.15;',
+      '',
+      '  // Outside unit circle: just bloom',
+      '  if (dot(uv, uv) > 1.0) {',
+      '    gl_FragColor = vec4(bloomColor * bloom, bloom);',
+      '    return;',
+      '  }',
+      '',
+      '  // Ray setup',
+      '  vec3 pos = vec3(0.0, 0.0, -1.0);',
+      '  vec3 dir = normalize(vec3(uv, 1.0));',
+      '',
+      '  // Raymarch',
+      '  float hitDist = 0.0;',
+      '  float hitClosest = MAX_DISTANCE;',
+      '  vec3 hitP = pos;',
+      '  for (int i = 0; i < MAX_RAY_MARCH_STEPS; i++) {',
+      '    float sdf = SDF(hitP);',
+      '    hitP += dir * sdf;',
+      '    hitClosest = min(hitClosest, sdf);',
+      '    hitDist += sdf;',
+      '    if (hitDist >= MAX_DISTANCE || abs(sdf) <= SURFACE_DISTANCE) break;',
+      '  }',
+      '',
+      '  // Miss: soft teal glow fading to transparent',
+      '  if (hitClosest >= SURFACE_DISTANCE) {',
+      '    float glowStrength = pow(max(0.0, 1.0 - hitClosest * 5.0), 3.0);',
+      '    vec3 glowTeal = mix(vec3(0.28, 0.80, 0.63), vec3(0.60, 0.25, 0.20), uWarmth);',
+      '    float pulse = 1.0 + 0.08 * sin(uTime * 2.0);',
+      '    gl_FragColor = vec4(glowTeal * glowStrength * uBrightness * pulse, glowStrength * 0.6);',
+      '    return;',
+      '  }',
+      '',
+      '  // Surface shading',
+      '  vec3 normal = getNormal(hitP);',
+      '  vec3 ray_dir = normalize(pos - hitP);',
+      '  float facing = max(0.0, dot(normal, -dir));',
+      '',
+      '  // Base: deep teal center, brighter teal at edges',
+      '  vec3 surfaceColor = mix(edgeColor, coreColor, facing);',
+      '  float rim = 1.0 - facing;',
+      '  surfaceColor = mix(surfaceColor, edgeColor * 1.5, rim * rim);',
+      '',
+      '  // Specular highlight',
+      '  float spec = pow(specularBlinnPhong(normalize(vec3(600.0, 800.0, -500.0) - hitP), ray_dir, normal), 16.0);',
+      '  surfaceColor += specColor * spec * 0.15;',
+      '',
+      '  // Brightness + breathing pulse + intensity boost',
+      '  float pulse = 1.0 + 0.08 * sin(uTime * 2.0);',
+      '  float intensityBoost = 1.0 + uIntensity * 0.3;',
+      '  surfaceColor *= uBrightness * pulse * intensityBoost;',
+      '',
+      '  // Fresnel alpha: transparent center, opaque rim',
+      '  float alpha = 0.5 + 0.5 * pow(1.0 - facing, 2.0);',
+      '',
+      '  gl_FragColor = vec4(surfaceColor, alpha);',
+      '}'
+    ].join('\n');
+
+    var uniforms = {
+      uResolution: { value: new THREE.Vector2(renderSize, renderSize) },
+      uTime: { value: 0.0 },
+      uSpeed: { value: 1.0 },
+      uWarmth: { value: 0.0 },
+      uBrightness: { value: 1.0 },
+      uThinking: { value: 0.0 },
+      uIntensity: { value: 0.0 }
+    };
+
+    var material = new THREE.ShaderMaterial({
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+      uniforms: uniforms,
+      transparent: true,
+      depthTest: false,
+      depthWrite: false
+    });
+
+    var geometry = new THREE.PlaneGeometry(2, 2);
+    var mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    // IntersectionObserver: only animate when visible
+    var isVisible = false;
+    var orbObserver = new IntersectionObserver(function(entries) {
+      isVisible = entries[0].isIntersecting;
+    }, { threshold: 0.1 });
+    orbObserver.observe(container);
+
+    var t0 = Date.now();
+    function animate() {
+      requestAnimationFrame(animate);
+      if (!isVisible) return;
+      uniforms.uTime.value = (Date.now() - t0) / 1000;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', function() {
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+    });
+  }
+
+  // Start after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSamOrb);
+  } else {
+    initSamOrb();
+  }
+})();
 </script>
 
 <!-- Cookie Consent Banner -->
