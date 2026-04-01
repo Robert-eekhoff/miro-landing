@@ -663,45 +663,53 @@
   }
   .sam-orb-hero canvas { width: 100%; height: 100%; display: block; }
 
-  /* Text-around-orb flow layout */
-  .sam-flow-headline {
-    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 500; letter-spacing: -0.02em; text-align: center; margin-bottom: 40px;
+  /* Sam solar system orbit */
+  .sam-orbit-container {
+    position: relative; width: 100%; max-width: 600px; height: 480px;
+    margin: 0 auto 48px; perspective: 900px;
   }
-  .sam-flow-wrap {
-    position: relative; max-width: 800px; margin: 0 auto 48px;
+  .sam-orbit-orb {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 220px; height: 220px; z-index: 2;
   }
-  .sam-flow-orb {
-    width: 200px; height: 200px;
-    position: absolute; left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1; pointer-events: none;
+  .sam-orbit-orb canvas { width: 100%; height: 100%; display: block; }
+  .sam-orbit-ring {
+    position: absolute; left: 50%; top: 50%; width: 0; height: 0;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%) rotateX(65deg);
+    animation: sam-orbit-spin 36s linear infinite;
   }
-  .sam-flow-orb canvas { width: 100%; height: 100%; display: block; }
-  /* The source text (visible as fallback, hidden when JS renders lines) */
-  .sam-flow-text {
+  @keyframes sam-orbit-spin { to { transform: translate(-50%, -50%) rotateX(65deg) rotateZ(360deg); } }
+  .sam-orbit-pill {
+    position: absolute; left: 0; top: 0;
+    transform-style: preserve-3d;
+    /* Each pill counter-rotates to stay upright */
+  }
+  .sam-orbit-pill-inner {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 100px;
+    background: var(--warm-white); border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(44, 40, 37, 0.06);
+    font-size: 0.78rem; font-weight: 500; color: var(--text-primary);
+    white-space: nowrap;
+    transform: rotateX(-65deg); /* counter-tilt to face camera */
+    backface-visibility: hidden;
+  }
+  .sam-orbit-badge {
+    font-size: 0.55rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 4px;
+  }
+  .sam-orbit-badge.task { color: var(--coral); background: var(--coral-bg); }
+  .sam-orbit-badge.meal { color: var(--mint); background: var(--mint-bg); }
+  .sam-orbit-badge.grocery { color: var(--gold); background: var(--gold-bg); }
+  .sam-orbit-badge.event { color: var(--indigo); background: var(--indigo-bg); }
+  .sam-orbit-badge.query { color: var(--teal); background: var(--teal-bg); }
+  .sam-orbit-badge.edit { color: var(--text-tertiary); background: rgba(44, 40, 37, 0.05); }
+  .sam-orbit-body {
+    max-width: 640px; margin: 0 auto; text-align: center;
     font-size: 1.05rem; color: var(--text-secondary); line-height: 1.85;
-    text-align: center;
   }
-  .sam-flow-text p { margin: 0; }
-  /* When JS is active, hide source text and show positioned lines */
-  .sam-flow-wrap.has-flow .sam-flow-text {
-    position: absolute; width: 1px; height: 1px; overflow: hidden;
-    clip: rect(0,0,0,0); border: 0;
-  }
-  .sam-flow-wrap.has-flow .sam-flow-orb {
-    position: absolute;
-  }
-  .sam-flow-lines {
-    display: none;
-  }
-  .sam-flow-wrap.has-flow .sam-flow-lines {
-    display: block; position: relative;
-  }
-  .sam-flow-line {
-    position: absolute; white-space: pre; color: var(--text-secondary);
-    font: 400 16.8px/31px Poppins, sans-serif;
-  }
+  .sam-orbit-body p { margin: 0; }
   .sam-header { text-align: center; margin-bottom: 56px; }
   .sam-header h2 {
     font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
@@ -1192,11 +1200,9 @@
     .toru-visual { order: 2; }
 
     .sam-orb-hero { width: 180px; height: 180px; }
-    .sam-flow-wrap.has-flow .sam-flow-text {
-      position: static; width: auto; height: auto; overflow: visible; clip: auto; border: none;
-    }
-    .sam-flow-wrap.has-flow .sam-flow-lines { display: none; }
-    .sam-flow-wrap.has-flow .sam-flow-orb { position: relative; left: auto; top: auto; transform: none; margin: 0 auto 20px; }
+    .sam-orbit-container { height: 380px; max-width: 100%; }
+    .sam-orbit-orb { width: 160px; height: 160px; }
+    .sam-orbit-pill-inner { font-size: 0.7rem; padding: 6px 10px; }
     .sam-conversations { grid-template-columns: 1fr; gap: 20px; }
     .feature-cards-grid { grid-template-columns: 1fr; gap: 16px; }
     .testimonial-card { min-width: 280px; }
@@ -1347,18 +1353,38 @@
 <!-- ===== MEET SAM ===== -->
 <section class="sam-capabilities section" id="sam">
   <div class="container">
-    <!-- Text-around-orb layout (desktop) / stacked (mobile) -->
-    <div class="sam-flow-section animate-in">
-      <span class="label" style="color: var(--teal); text-align: center; display: block;">Meet Sam</span>
-      <h2 class="sam-flow-headline">Sam doesn't just organize. Sam thinks.</h2>
-      <div class="sam-flow-wrap" id="sam-flow-wrap">
-        <div class="sam-flow-orb" id="sam-flow-orb"><canvas data-sam-orb="200" data-sam-bg="#F9F6F1"></canvas></div>
-        <div class="sam-flow-text" id="sam-flow-text">
-          <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Tell Sam you want green curry for dinner, and Sam generates the recipe, saves it to your cookbook, adds it to your meal plan, and offers to put the ingredients on your grocery list. One sentence, four actions. Ask what's happening tomorrow, and Sam checks your calendar, your tasks, and your meal plan. Say "move the dentist to Thursday" and it's done. By voice or by text, in any language.</p>
+    <div class="sam-header animate-in">
+      <span class="label" style="color: var(--teal);">Meet Sam</span>
+      <h2 style="font-family:'Lora',serif;font-size:clamp(2rem,4vw,3rem);font-weight:500;letter-spacing:-0.02em;text-align:center;margin-bottom:16px;">Sam doesn't just organize. Sam thinks.</h2>
+    </div>
+
+    <!-- Solar system: orb + orbiting capability pills -->
+    <div class="sam-orbit-container animate-in" id="sam-orbit">
+      <div class="sam-orbit-orb"><canvas data-sam-orb="220" data-sam-bg="#F9F6F1"></canvas></div>
+      <div class="sam-orbit-ring" id="sam-orbit-ring">
+        <div class="sam-orbit-pill" data-orbit-r="200" data-orbit-offset="0">
+          <div class="sam-orbit-pill-inner">Pick up Miles at 3 <span class="sam-orbit-badge task">Task</span></div>
         </div>
-        <!-- Positioned lines rendered by JS -->
-        <div class="sam-flow-lines" id="sam-flow-lines" aria-hidden="true"></div>
+        <div class="sam-orbit-pill" data-orbit-r="210" data-orbit-offset="60">
+          <div class="sam-orbit-pill-inner">Pasta tonight <span class="sam-orbit-badge meal">Meal</span></div>
+        </div>
+        <div class="sam-orbit-pill" data-orbit-r="190" data-orbit-offset="120">
+          <div class="sam-orbit-pill-inner">Milk, eggs <span class="sam-orbit-badge grocery">Grocery</span></div>
+        </div>
+        <div class="sam-orbit-pill" data-orbit-r="220" data-orbit-offset="180">
+          <div class="sam-orbit-pill-inner">Dentist Thursday 2pm <span class="sam-orbit-badge event">Event</span></div>
+        </div>
+        <div class="sam-orbit-pill" data-orbit-r="185" data-orbit-offset="240">
+          <div class="sam-orbit-pill-inner">What's for dinner? <span class="sam-orbit-badge query">Query</span></div>
+        </div>
+        <div class="sam-orbit-pill" data-orbit-r="205" data-orbit-offset="300">
+          <div class="sam-orbit-pill-inner">Move it to Thursday <span class="sam-orbit-badge edit">Edit</span></div>
+        </div>
       </div>
+    </div>
+
+    <div class="sam-orbit-body animate-in">
+      <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. One sentence can create tasks, plan meals, add groceries, and schedule events. By voice or by text, in any language.</p>
     </div>
     <div class="sam-conversations animate-in">
       <div class="sam-conversation">
@@ -2189,140 +2215,67 @@
     if (perPerson) perPerson.textContent = isYearly ? "That's just $1.88/person." : "That's just $2.50/person.";
   }
 
-  // ===== SAM FLOW TEXT AROUND ORB =====
+  // ===== SAM ORBIT: position pills and animate depth =====
   (function() {
-    var wrap = document.getElementById('sam-flow-wrap');
-    var textEl = document.getElementById('sam-flow-text');
-    var linesEl = document.getElementById('sam-flow-lines');
-    var orbEl = document.getElementById('sam-flow-orb');
-    if (!wrap || !textEl || !linesEl || !orbEl) return;
-    if (window.innerWidth < 769) return;
+    var pills = document.querySelectorAll('.sam-orbit-pill');
+    var container = document.getElementById('sam-orbit');
+    if (!pills.length || !container) return;
 
-    var text = textEl.querySelector('p').textContent.trim();
-    var fontSize = 16.8;
-    var lineH = Math.round(fontSize * 1.85);
-    var orbSize = 200;
-    var orbPad = 36; // padding around orb for glow + breathing room
-    var orbR = orbSize / 2 + orbPad;
-
-    document.fonts.ready.then(function() {
-      var mc = document.createElement('canvas').getContext('2d');
-      mc.font = '400 ' + fontSize + 'px Poppins, sans-serif';
-
-      var words = text.split(/\s+/);
-      var spaceW = mc.measureText(' ').width;
-      // Pre-measure all words once
-      var wordWidths = words.map(function(w) { return mc.measureText(w).width; });
-
-      function render() {
-        var W = wrap.offsetWidth;
-        if (W < 500) { wrap.classList.remove('has-flow'); linesEl.innerHTML = ''; return; }
-        var cx = W / 2;
-
-        // First pass: layout without centering to find total height
-        function layoutPass(cy) {
-          var lines = [];
-          var y = 0;
-          var wi = 0; // word index
-
-          while (wi < words.length && y < 3000) {
-            // Compute circle blockage at this line's vertical center
-            var lineMid = y + lineH / 2;
-            var dy = Math.abs(lineMid - cy);
-            var blocked = null;
-
-            if (dy < orbR) {
-              var dx = Math.sqrt(orbR * orbR - dy * dy);
-              blocked = { l: cx - dx, r: cx + dx };
-            }
-
-            // Available text slots
-            var slots = [];
-            if (!blocked) {
-              slots.push({ l: 0, r: W });
-            } else {
-              var leftW = blocked.l;
-              var rightW = W - blocked.r;
-              if (leftW > 40) slots.push({ l: 0, r: blocked.l });
-              if (rightW > 40) slots.push({ l: blocked.r, r: W });
-              if (slots.length === 0) { y += lineH; continue; }
-            }
-
-            for (var s = 0; s < slots.length; s++) {
-              if (wi >= words.length) break;
-              var slot = slots[s];
-              var sw = slot.r - slot.l;
-              var lt = ''; // line text
-              var lw = 0; // line width (accumulated)
-              var count = 0;
-
-              while (wi < words.length) {
-                var needed = count === 0 ? wordWidths[wi] : spaceW + wordWidths[wi];
-                if (lw + needed > sw + 0.5 && count > 0) break;
-                lt += (count === 0 ? '' : ' ') + words[wi];
-                lw += needed;
-                wi++;
-                count++;
-              }
-
-              if (count > 0) {
-                // Measure final line for accurate positioning
-                var finalW = mc.measureText(lt).width;
-                var tx;
-                if (slots.length === 2) {
-                  tx = s === 0 ? slot.r - finalW : slot.l;
-                } else {
-                  tx = slot.l + (sw - finalW) / 2;
-                }
-                lines.push({ t: lt, x: tx, y: y, w: finalW });
-              }
-            }
-            y += lineH;
-          }
-          return { lines: lines, h: y };
-        }
-
-        // Pass 1: rough layout
-        var p1 = layoutPass(160);
-        // Pass 2: center orb in text block
-        var cy = p1.h / 2;
-        // Pass 3: final layout with centered orb
-        var result = layoutPass(cy);
-
-        if (result.lines.length < 5) {
-          wrap.classList.remove('has-flow');
-          linesEl.innerHTML = '';
-          return;
-        }
-
-        wrap.classList.add('has-flow');
-        linesEl.style.height = result.h + 'px';
-        orbEl.style.left = (cx - orbSize / 2) + 'px';
-        orbEl.style.top = (cy - orbSize / 2) + 'px';
-
-        var html = '';
-        for (var i = 0; i < result.lines.length; i++) {
-          var ln = result.lines[i];
-          html += '<span class="sam-flow-line" style="left:' + Math.round(ln.x) + 'px;top:' + Math.round(ln.y) + 'px">' + ln.t + '</span>';
-        }
-        linesEl.innerHTML = html;
-      }
-
-      render();
-
-      var rt;
-      window.addEventListener('resize', function() {
-        clearTimeout(rt);
-        rt = setTimeout(function() {
-          if (window.innerWidth < 769) {
-            wrap.classList.remove('has-flow');
-            linesEl.innerHTML = '';
-          } else {
-            render();
-          }
-        }, 200);
+    var orbits = [];
+    pills.forEach(function(pill) {
+      orbits.push({
+        el: pill,
+        r: parseInt(pill.getAttribute('data-orbit-r'), 10),
+        offset: parseInt(pill.getAttribute('data-orbit-offset'), 10),
       });
     });
+
+    // Position pills on elliptical orbits
+    // The CSS rotateZ on the ring parent handles rotation.
+    // We just place each pill at its offset angle on the circle.
+    orbits.forEach(function(o) {
+      var rad = o.offset * Math.PI / 180;
+      var x = Math.cos(rad) * o.r;
+      var y = Math.sin(rad) * o.r;
+      o.el.style.transform = 'translate(' + Math.round(x) + 'px, ' + Math.round(y) + 'px)';
+    });
+
+    // Animate opacity: pills behind the orb (positive Z after rotateX tilt) should fade
+    var isVisible = false;
+    var orbObs = new IntersectionObserver(function(entries) {
+      isVisible = entries[0].isIntersecting;
+    }, { threshold: 0.05 });
+    orbObs.observe(container);
+
+    var rotSpeed = 360 / 36; // degrees per second (36s full rotation)
+    var t0 = Date.now();
+
+    function updateDepth() {
+      requestAnimationFrame(updateDepth);
+      if (!isVisible) return;
+      var elapsed = (Date.now() - t0) / 1000;
+      var ringAngle = (elapsed * rotSpeed) % 360;
+
+      orbits.forEach(function(o) {
+        // Current angle of this pill in the rotated ring
+        var totalDeg = (o.offset + ringAngle) % 360;
+        var rad = totalDeg * Math.PI / 180;
+        // After rotateX(65deg), the Y component maps to depth.
+        // sin(angle) > 0 means pill is in the "back" half of the orbit
+        var depthFactor = Math.sin(rad); // -1 (front) to 1 (back)
+        // Pills in back: lower opacity, lower z-index
+        if (depthFactor > 0) {
+          // Behind the orb
+          o.el.style.opacity = 0.15 + 0.15 * (1 - depthFactor);
+          o.el.style.zIndex = '1';
+        } else {
+          // In front of the orb
+          o.el.style.opacity = 0.5 + 0.5 * (1 - Math.abs(depthFactor));
+          o.el.style.zIndex = '3';
+        }
+      });
+    }
+    updateDepth();
   })();
 
   // ===== HERO PHONE ANIMATION =====
