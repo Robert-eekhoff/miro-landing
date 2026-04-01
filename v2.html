@@ -417,18 +417,13 @@
     gap: 6px; font-size: 0.7rem; flex: 1;
   }
 
-  /* Sam header (teal orb variant) */
-  .mock-sam-header {
-    display: flex; align-items: center; justify-content: space-between; padding: 2px 0 8px;
+  /* Hero phone: centered Sam orb */
+  .mock-hero-orb-area {
+    display: flex; align-items: center; justify-content: center;
+    padding: 8px 0 4px;
   }
-  .mock-sam-header-left { display: flex; align-items: center; gap: 8px; }
-  .mock-sam-orb-wrap { width: 32px; height: 32px; flex-shrink: 0; }
-  .mock-sam-orb-wrap canvas { width: 100%; height: 100%; display: block; }
-  .mock-sam-title { font-weight: 700; font-size: 0.75rem; color: var(--text-primary); }
-  .mock-close {
-    font-size: 0.55rem; color: var(--text-tertiary); width: 16px; height: 16px;
-    display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--cream);
-  }
+  .mock-hero-orb { width: 80px; height: 80px; }
+  .mock-hero-orb canvas { width: 100%; height: 100%; display: block; }
 
   /* Mock input & cards (shared across hero, brain dump, etc.) */
   .mock-tell-input {
@@ -1284,12 +1279,8 @@
           </svg>
           <div class="iphone-screen">
             <div class="iphone-screen-content" id="hero-screen">
-              <div class="mock-sam-header">
-                <div class="mock-sam-header-left">
-                  <div class="mock-sam-orb-wrap"><canvas data-sam-orb="32" data-sam-bg="#FAF8F5"></canvas></div>
-                  <span class="mock-sam-title">Sam</span>
-                </div>
-                <div class="mock-close">&#10005;</div>
+              <div class="mock-hero-orb-area">
+                <div class="mock-hero-orb"><canvas data-sam-orb="80" data-sam-bg="#FAF8F5"></canvas></div>
               </div>
               <div class="mock-tell-input">
                 <span id="hero-typing"></span><span class="mock-tell-cursor" id="hero-cursor"></span>
