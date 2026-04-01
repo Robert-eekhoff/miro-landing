@@ -662,6 +662,45 @@
     will-change: transform;
   }
   .sam-orb-hero canvas { width: 100%; height: 100%; display: block; }
+
+  /* Text-around-orb flow layout */
+  .sam-flow-headline {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.02em; text-align: center; margin-bottom: 40px;
+  }
+  .sam-flow-wrap {
+    position: relative; max-width: 800px; margin: 0 auto 48px;
+  }
+  .sam-flow-orb {
+    width: 200px; height: 200px;
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; pointer-events: none;
+  }
+  .sam-flow-orb canvas { width: 100%; height: 100%; display: block; }
+  /* The source text (visible as fallback, hidden when JS renders lines) */
+  .sam-flow-text {
+    font-size: 1.05rem; color: var(--text-secondary); line-height: 1.85;
+    text-align: center;
+  }
+  .sam-flow-text p { margin: 0; }
+  /* When JS is active, hide source text and show positioned lines */
+  .sam-flow-wrap.has-flow .sam-flow-text {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0,0,0,0); border: 0;
+  }
+  .sam-flow-wrap.has-flow .sam-flow-orb {
+    position: absolute;
+  }
+  .sam-flow-lines {
+    display: none;
+  }
+  .sam-flow-wrap.has-flow .sam-flow-lines {
+    display: block; position: relative;
+  }
+  .sam-flow-line {
+    position: absolute; white-space: pre; color: var(--text-secondary);
+  }
   .sam-header { text-align: center; margin-bottom: 56px; }
   .sam-header h2 {
     font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
@@ -1152,6 +1191,11 @@
     .toru-visual { order: 2; }
 
     .sam-orb-hero { width: 180px; height: 180px; }
+    .sam-flow-wrap.has-flow .sam-flow-text {
+      position: static; width: auto; height: auto; overflow: visible; clip: auto; border: none;
+    }
+    .sam-flow-wrap.has-flow .sam-flow-lines { display: none; }
+    .sam-flow-wrap.has-flow .sam-flow-orb { position: relative; left: auto; top: auto; transform: none; margin: 0 auto 20px; }
     .sam-conversations { grid-template-columns: 1fr; gap: 20px; }
     .feature-cards-grid { grid-template-columns: 1fr; gap: 16px; }
     .testimonial-card { min-width: 280px; }
@@ -1302,11 +1346,18 @@
 <!-- ===== MEET SAM ===== -->
 <section class="sam-capabilities section" id="sam">
   <div class="container">
-    <div class="sam-header animate-in">
-      <div class="sam-orb-hero"><canvas data-sam-orb="240" data-sam-bg="#F0EBE3"></canvas></div>
-      <span class="label" style="color: var(--teal);">Meet Sam</span>
-      <h2>Sam doesn't just organize. Sam thinks.</h2>
-      <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Here's what that looks like.</p>
+    <!-- Text-around-orb layout (desktop) / stacked (mobile) -->
+    <div class="sam-flow-section animate-in">
+      <span class="label" style="color: var(--teal); text-align: center; display: block;">Meet Sam</span>
+      <h2 class="sam-flow-headline">Sam doesn't just organize. Sam thinks.</h2>
+      <div class="sam-flow-wrap" id="sam-flow-wrap">
+        <div class="sam-flow-orb" id="sam-flow-orb"><canvas data-sam-orb="200" data-sam-bg="#F0EBE3"></canvas></div>
+        <div class="sam-flow-text" id="sam-flow-text">
+          <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Tell Sam you want green curry for dinner, and Sam generates the recipe, saves it to your cookbook, adds it to your meal plan, and offers to put the ingredients on your grocery list. One sentence, four actions. Ask what's happening tomorrow, and Sam checks your calendar, your tasks, and your meal plan. Say "move the dentist to Thursday" and it's done. By voice or by text, in any language.</p>
+        </div>
+        <!-- Positioned lines rendered by JS -->
+        <div class="sam-flow-lines" id="sam-flow-lines" aria-hidden="true"></div>
+      </div>
     </div>
     <div class="sam-conversations animate-in">
       <div class="sam-conversation">
@@ -2136,6 +2187,201 @@
     var perPerson = document.getElementById('per-person-price');
     if (perPerson) perPerson.textContent = isYearly ? "That's just $1.88/person." : "That's just $2.50/person.";
   }
+
+  // ===== SAM FLOW TEXT AROUND ORB =====
+  (function() {
+    var wrap = document.getElementById('sam-flow-wrap');
+    var textEl = document.getElementById('sam-flow-text');
+    var linesEl = document.getElementById('sam-flow-lines');
+    var orbEl = document.getElementById('sam-flow-orb');
+    if (!wrap || !textEl || !linesEl || !orbEl) return;
+
+    // Skip on mobile
+    if (window.innerWidth < 769) return;
+
+    var text = textEl.querySelector('p').textContent.trim();
+    var font = '1.05rem Poppins, sans-serif';
+    var fontSize = 16.8; // 1.05rem at 16px base
+    var lineH = fontSize * 1.85;
+    var orbSize = 200;
+    var orbPad = 28; // glow padding
+    var orbR = orbSize / 2 + orbPad;
+
+    // Wait for font to load
+    document.fonts.ready.then(function() {
+      // Measure text using offscreen canvas
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      ctx.font = fontSize + 'px Poppins, sans-serif';
+
+      function measureWord(w) { return ctx.measureText(w).width; }
+
+      var wrapWidth = wrap.offsetWidth;
+      if (wrapWidth < 500) return; // too narrow, skip
+
+      // Circle center relative to wrap container
+      var cx = wrapWidth / 2;
+
+      // Compute how many lines we need, to figure out total height and center the orb vertically
+      // First pass: estimate total height with simple word-wrap
+      var words = text.split(/\s+/);
+      var spaceW = measureWord(' ');
+
+      // We'll do the layout twice: first to get total height, then to center the orb
+      function doLayout(cy) {
+        var lines = [];
+        var y = 0;
+        var wordIdx = 0;
+
+        while (wordIdx < words.length && y < 2000) {
+          var bandTop = y;
+          var bandBottom = y + lineH;
+
+          // Compute circle exclusion for this line band
+          var dyTop = bandTop - cy;
+          var dyBot = bandBottom - cy;
+          var blocked = null;
+
+          // Check if this band intersects the circle
+          var minDy;
+          if (cy >= bandTop && cy <= bandBottom) {
+            minDy = 0;
+          } else if (cy < bandTop) {
+            minDy = bandTop - cy;
+          } else {
+            minDy = cy - bandBottom;
+          }
+
+          if (minDy < orbR) {
+            var maxDx = Math.sqrt(orbR * orbR - minDy * minDy);
+            blocked = { left: cx - maxDx, right: cx + maxDx };
+          }
+
+          if (blocked && blocked.left <= 0 && blocked.right >= wrapWidth) {
+            // Circle fills entire width, skip this line
+            y += lineH;
+            continue;
+          }
+
+          // Compute available slots
+          var slots = [];
+          if (!blocked) {
+            slots.push({ left: 0, right: wrapWidth });
+          } else {
+            if (blocked.left > 24) slots.push({ left: 0, right: blocked.left });
+            if (wrapWidth - blocked.right > 24) slots.push({ left: blocked.right, right: wrapWidth });
+          }
+
+          if (slots.length === 0) { y += lineH; continue; }
+
+          for (var s = 0; s < slots.length; s++) {
+            var slot = slots[s];
+            var slotW = slot.right - slot.left;
+            var lineText = '';
+            var lineWidth = 0;
+            var startIdx = wordIdx;
+
+            while (wordIdx < words.length) {
+              var word = words[wordIdx];
+              var ww = measureWord(word);
+              var addW = lineText.length === 0 ? ww : spaceW + ww;
+              if (lineWidth + addW > slotW && lineText.length > 0) break;
+              lineText += (lineText.length === 0 ? '' : ' ') + word;
+              lineWidth += addW;
+              wordIdx++;
+            }
+
+            if (lineText.length > 0) {
+              // Center text within slot for justified feel
+              var textW = measureWord(lineText);
+              var textX;
+              if (slots.length === 2) {
+                // Two slots (text on both sides of orb): align inner edges
+                textX = s === 0 ? slot.right - textW : slot.left;
+              } else {
+                // Single slot: center
+                textX = slot.left + (slotW - textW) / 2;
+              }
+              lines.push({ text: lineText, x: textX, y: y, width: textW });
+            }
+          }
+
+          y += lineH;
+        }
+
+        return { lines: lines, totalHeight: y };
+      }
+
+      // First pass: guess center
+      var first = doLayout(150);
+      var totalH = first.totalHeight;
+      var cy = totalH / 2;
+
+      // Second pass: center orb vertically in the text block
+      var result = doLayout(cy);
+
+      if (result.lines.length < 3) return; // layout failed, keep fallback
+
+      // Render
+      wrap.classList.add('has-flow');
+      linesEl.style.height = result.totalHeight + 'px';
+
+      // Position the orb
+      orbEl.style.position = 'absolute';
+      orbEl.style.left = (cx - orbSize / 2) + 'px';
+      orbEl.style.top = (cy - orbSize / 2) + 'px';
+
+      // Create line spans
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i < result.lines.length; i++) {
+        var ln = result.lines[i];
+        var span = document.createElement('span');
+        span.className = 'sam-flow-line';
+        span.textContent = ln.text;
+        span.style.font = fontSize + 'px Poppins, sans-serif';
+        span.style.lineHeight = lineH + 'px';
+        span.style.left = Math.round(ln.x) + 'px';
+        span.style.top = Math.round(ln.y) + 'px';
+        frag.appendChild(span);
+      }
+      linesEl.appendChild(frag);
+
+      // Recalculate on resize (debounced)
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          if (window.innerWidth < 769) {
+            // Revert to fallback on mobile
+            wrap.classList.remove('has-flow');
+            linesEl.innerHTML = '';
+            return;
+          }
+          wrapWidth = wrap.offsetWidth;
+          cx = wrapWidth / 2;
+          var r = doLayout(cy);
+          if (r.lines.length < 3) return;
+          linesEl.style.height = r.totalHeight + 'px';
+          orbEl.style.left = (cx - orbSize / 2) + 'px';
+          orbEl.style.top = (cy - orbSize / 2) + 'px';
+          linesEl.innerHTML = '';
+          var f = document.createDocumentFragment();
+          for (var j = 0; j < r.lines.length; j++) {
+            var l = r.lines[j];
+            var sp = document.createElement('span');
+            sp.className = 'sam-flow-line';
+            sp.textContent = l.text;
+            sp.style.font = fontSize + 'px Poppins, sans-serif';
+            sp.style.lineHeight = lineH + 'px';
+            sp.style.left = Math.round(l.x) + 'px';
+            sp.style.top = Math.round(l.y) + 'px';
+            f.appendChild(sp);
+          }
+          linesEl.appendChild(f);
+        }, 200);
+      });
+    });
+  })();
 
   // ===== HERO PHONE ANIMATION =====
   (function() {
