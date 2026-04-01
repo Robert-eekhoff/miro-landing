@@ -374,13 +374,8 @@
   .hero h1 em { font-style: italic; color: var(--coral); }
   .hero-sub {
     font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: var(--text-secondary);
-    max-width: 520px; margin: 0 0 20px; line-height: 1.75;
+    max-width: 520px; margin: 0 0 32px; line-height: 1.75;
     animation: fadeUp 0.8s ease 0.2s forwards; opacity: 0;
-  }
-  .hero-cta-line {
-    font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: var(--text-primary);
-    max-width: 520px; margin: 0 0 28px; line-height: 1.75; font-weight: 500;
-    animation: fadeUp 0.8s ease 0.25s forwards; opacity: 0;
   }
   .hero-stars {
     display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
@@ -420,14 +415,14 @@
   /* Hero phone: centered Sam orb */
   .mock-hero-orb-area {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 2px 0 2px;
+    padding: 0 0 2px;
   }
-  .mock-hero-orb-name {
-    font-family: 'Poppins', sans-serif; font-size: 0.6rem; font-weight: 700;
-    color: var(--text-primary); letter-spacing: 0.02em; margin-bottom: -4px;
-  }
-  .mock-hero-orb { width: 120px; height: 120px; }
+  .mock-hero-orb { width: 64px; height: 64px; }
   .mock-hero-orb canvas { width: 100%; height: 100%; display: block; }
+  .mock-hero-orb-name {
+    font-family: 'Poppins', sans-serif; font-size: 0.55rem; font-weight: 700;
+    color: var(--text-primary); letter-spacing: 0.02em; margin-top: -2px;
+  }
 
   /* Mock input & cards (shared across hero, brain dump, etc.) */
   .mock-tell-input {
@@ -499,43 +494,6 @@
     font-size: 0.55rem; flex-shrink: 0;
   }
   .iphone-screen-content.fade-out { animation: mock-fade-out 0.5s ease forwards; }
-
-  /* ===== HOW SAM WORKS ===== */
-  .how-sam-works { background: white; }
-  .how-sam-header { text-align: center; margin-bottom: 56px; }
-  .how-sam-header h2 {
-    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 500; letter-spacing: -0.02em;
-  }
-  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; }
-  .steps-grid::before {
-    content: ''; position: absolute; top: 40px;
-    left: calc(16.66% + 50px); right: calc(16.66% + 50px);
-    height: 0; border-top: 2px dashed var(--border); z-index: 0;
-  }
-  .step { text-align: center; }
-  .step-icon {
-    width: 80px; height: 80px; border-radius: 50%; display: flex;
-    align-items: center; justify-content: center; margin: 0 auto 20px;
-    position: relative; z-index: 1; background: white; border: 2px solid var(--border);
-    transition: border-color 0.5s ease, background 0.5s ease;
-  }
-  .step-icon svg { width: 32px; height: 32px; stroke-width: 1.5; fill: none; stroke: var(--text-tertiary); transition: stroke 0.3s ease; }
-  .step-icon.active { border-color: var(--teal); background: var(--teal-bg); }
-  .step-icon.active svg { stroke: var(--teal); }
-  .step-number {
-    font-size: 0.65rem; font-weight: 700; color: var(--text-tertiary);
-    letter-spacing: 0.06em; margin-bottom: 10px; text-transform: uppercase;
-  }
-  .step h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
-  .step p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; max-width: 300px; margin: 0 auto; }
-
-  /* Stats bar */
-  .stats-bar { background: var(--cream); padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .stats-bar-inner { display: flex; justify-content: center; gap: clamp(24px, 4vw, 60px); flex-wrap: wrap; }
-  .stat-item { text-align: center; }
-  .stat-value { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
-  .stat-label { font-size: 0.78rem; color: var(--text-tertiary); margin-top: 2px; }
 
   /* ===== RESEARCH CREDIBILITY ===== */
   .research-section { background: var(--cream-dark); }
@@ -1174,15 +1132,10 @@
 
     .hero-inner { grid-template-columns: 1fr; text-align: center; }
     .hero-content { text-align: center; }
-    .hero-sub, .hero-cta-line { margin-left: auto; margin-right: auto; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
     .hero-stars { justify-content: center; }
     .hero-ctas { justify-content: center; }
     .hero-device { margin-top: 32px; }
-
-    .steps-grid { grid-template-columns: 1fr; gap: 32px; }
-    .steps-grid::before { display: none; }
-    .stats-bar-inner { gap: 20px; }
-    .stat-item { min-width: 120px; }
 
     .stages-flow { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .stages-flow::before { display: none; }
@@ -1257,9 +1210,8 @@
           <span class="hero-stars-icons">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span class="hero-stars-text">Loved by families in the Netherlands and beyond</span>
         </div>
-        <h1>The mental load finally<br>has an <em>answer.</em></h1>
-        <p class="hero-sub">The planning, the remembering, the invisible work of running a household. It doesn't have to live in your head anymore.</p>
-        <p class="hero-cta-line">Meet Sam, your AI household assistant. One message or one voice command, and your whole day is handled.</p>
+        <h1>One message.<br>Your whole day, <em>handled.</em></h1>
+        <p class="hero-sub">Tell Sam what's on your mind, by voice or text. Tasks, meals, groceries, events. Sorted instantly and shared with your partner.</p>
         <div class="hero-ctas">
           <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="btn-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2z"/></svg>
@@ -1284,8 +1236,8 @@
           <div class="iphone-screen">
             <div class="iphone-screen-content" id="hero-screen">
               <div class="mock-hero-orb-area">
+                <div class="mock-hero-orb"><canvas data-sam-orb="64" data-sam-bg="#FAF8F5"></canvas></div>
                 <div class="mock-hero-orb-name">Sam</div>
-                <div class="mock-hero-orb"><canvas data-sam-orb="120" data-sam-bg="#FAF8F5"></canvas></div>
               </div>
               <div class="mock-tell-input">
                 <span id="hero-typing"></span><span class="mock-tell-cursor" id="hero-cursor"></span>
@@ -1347,75 +1299,55 @@
   </div>
 </section>
 
-<!-- ===== HOW SAM WORKS ===== -->
-<section class="how-sam-works section">
+<!-- ===== MEET SAM ===== -->
+<section class="sam-capabilities section" id="sam">
   <div class="container">
-    <div class="how-sam-header animate-in">
-      <span class="label" style="color: var(--teal);">How it works</span>
-      <h2>From your head to handled. In seconds.</h2>
+    <div class="sam-header animate-in">
+      <div class="sam-orb-hero"><canvas data-sam-orb="240" data-sam-bg="#F0EBE3"></canvas></div>
+      <span class="label" style="color: var(--teal);">Meet Sam</span>
+      <h2>Sam doesn't just organize. Sam thinks.</h2>
+      <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Here's what that looks like.</p>
     </div>
-    <div class="steps-grid animate-in">
-      <div class="step">
-        <div class="step-icon" data-step-icon>
-          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
+    <div class="sam-conversations animate-in">
+      <div class="sam-conversation">
+        <div class="sam-convo-messages">
+          <div class="sam-msg user">I want to try green curry tonight</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            I'll make that happen. Here's a recipe for Thai green curry (4 servings, 35 minutes). I've saved it to your cookbook and added it to tonight's meal plan. Want me to add the ingredients to your grocery list?
+          </div>
+          <div class="sam-msg user">Yes</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            Done. 8 ingredients added to your grocery list.
+          </div>
         </div>
-        <div class="step-number">Step 1</div>
-        <h3>Talk to Sam</h3>
-        <p>Type everything on your mind, or just say it. Tasks, meals, groceries, appointments. Sam understands natural language in any language, by text or by voice.</p>
+        <div class="sam-convo-caption">One voice command. Recipe generated, saved to your cookbook, planned for dinner, ingredients added to groceries.</div>
       </div>
-      <div class="step">
-        <div class="step-icon" data-step-icon>
-          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-            <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
-          </svg>
+      <div class="sam-conversation">
+        <div class="sam-convo-messages">
+          <div class="sam-msg user">What's happening tomorrow?</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            Tomorrow you have a dentist appointment at 2 PM and Miles has soccer practice at 4. No dinner planned yet. Want me to suggest something?
+          </div>
         </div>
-        <div class="step-number">Step 2</div>
-        <h3>Sam handles it</h3>
-        <p>Sam sorts your thoughts into tasks, meals, grocery items, and calendar events. Need a recipe? Sam generates one, saves it, plans the meal, and offers to add ingredients to your grocery list. All from one sentence.</p>
+        <div class="sam-convo-caption">Sam knows your schedule, your tasks, your meal plan. Ask anything.</div>
       </div>
-      <div class="step">
-        <div class="step-icon" data-step-icon>
-          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
+      <div class="sam-conversation">
+        <div class="sam-convo-messages">
+          <div class="sam-msg user">Move the dentist to Thursday</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            Done. Dentist appointment moved to Thursday at 2 PM.
+          </div>
         </div>
-        <div class="step-number">Step 3</div>
-        <h3>Both of you see everything</h3>
-        <p>Your partner gets it all instantly. Shared lists, shared calendar, shared meal plan. Updated in real time. No more "did you get my text?"</p>
+        <div class="sam-convo-caption">Change things as fast as you can say them.</div>
       </div>
     </div>
+    <p class="sam-footer-note animate-in">Sam works by voice or text, in any language. And every new capability we add is just a conversation away, no app update needed.</p>
   </div>
 </section>
-
-<!-- Stats bar -->
-<div class="stats-bar">
-  <div class="container">
-    <div class="stats-bar-inner animate-in">
-      <div class="stat-item">
-        <div class="stat-value">1 message</div>
-        <div class="stat-label">sorts your day</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">2 people</div>
-        <div class="stat-label">finally in sync</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">0 ads</div>
-        <div class="stat-label">not now, not ever</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">Real-time</div>
-        <div class="stat-label">sync, always</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ===== RESEARCH CREDIBILITY ===== -->
 <section class="research-section section">
@@ -1582,61 +1514,6 @@
         <button class="brain-dump-replay" id="bd-replay" onclick="runBrainDump()">&#8634; Watch again</button>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ===== SAM CAPABILITIES ===== -->
-<section class="sam-capabilities section" id="sam">
-  <div class="container">
-    <div class="sam-header animate-in">
-      <div class="sam-orb-hero"><canvas data-sam-orb="240" data-sam-bg="#F0EBE3"></canvas></div>
-      <span class="label" style="color: var(--teal);">Meet Sam</span>
-      <h2>Sam doesn't just organize. Sam thinks.</h2>
-      <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Here's what that looks like.</p>
-    </div>
-    <div class="sam-conversations animate-in">
-      <!-- Example 1: Recipe -->
-      <div class="sam-conversation">
-        <div class="sam-convo-messages">
-          <div class="sam-msg user">I want to try green curry tonight</div>
-          <div class="sam-msg sam">
-            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
-            I'll make that happen. Here's a recipe for Thai green curry (4 servings, 35 minutes). I've saved it to your cookbook and added it to tonight's meal plan. Want me to add the ingredients to your grocery list?
-          </div>
-          <div class="sam-msg user">Yes</div>
-          <div class="sam-msg sam">
-            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
-            Done. 8 ingredients added to your grocery list.
-          </div>
-        </div>
-        <div class="sam-convo-caption">One voice command. Recipe generated, saved to your cookbook, planned for dinner, ingredients added to groceries.</div>
-      </div>
-
-      <!-- Example 2: Schedule -->
-      <div class="sam-conversation">
-        <div class="sam-convo-messages">
-          <div class="sam-msg user">What's happening tomorrow?</div>
-          <div class="sam-msg sam">
-            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
-            Tomorrow you have a dentist appointment at 2 PM and Miles has soccer practice at 4. No dinner planned yet. Want me to suggest something?
-          </div>
-        </div>
-        <div class="sam-convo-caption">Sam knows your schedule, your tasks, your meal plan. Ask anything.</div>
-      </div>
-
-      <!-- Example 3: Quick modify -->
-      <div class="sam-conversation">
-        <div class="sam-convo-messages">
-          <div class="sam-msg user">Move the dentist to Thursday</div>
-          <div class="sam-msg sam">
-            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
-            Done. Dentist appointment moved to Thursday at 2 PM.
-          </div>
-        </div>
-        <div class="sam-convo-caption">Change things as fast as you can say them.</div>
-      </div>
-    </div>
-    <p class="sam-footer-note animate-in">Sam works by voice or text, in any language. And every new capability we add is just a conversation away, no app update needed.</p>
   </div>
 </section>
 
@@ -2259,24 +2136,6 @@
     var perPerson = document.getElementById('per-person-price');
     if (perPerson) perPerson.textContent = isYearly ? "That's just $1.88/person." : "That's just $2.50/person.";
   }
-
-  // ===== HOW IT WORKS STEP ANIMATION =====
-  (function() {
-    var section = document.querySelector('.how-sam-works');
-    var icons = document.querySelectorAll('[data-step-icon]');
-    if (!section || icons.length === 0) return;
-    function updateSteps() {
-      var rect = section.getBoundingClientRect();
-      var progress = (window.innerHeight - rect.top) / (rect.height + window.innerHeight);
-      progress = Math.max(0, Math.min(1, progress));
-      var activeIdx = progress < 0.4 ? 0 : progress < 0.65 ? 1 : 2;
-      icons.forEach(function(icon, i) {
-        icon.classList.toggle('active', i === activeIdx);
-      });
-    }
-    window.addEventListener('scroll', updateSteps, { passive: true });
-    updateSteps();
-  })();
 
   // ===== HERO PHONE ANIMATION =====
   (function() {
