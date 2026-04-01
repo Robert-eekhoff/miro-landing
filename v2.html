@@ -1,0 +1,2558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Miiro - The AI Household Assistant | Finally Stop Carrying It All</title>
+<meta name="description" content="Miiro's AI assistant Sam handles the invisible work of running your household. Brain dump tasks, meals, groceries, and events in one message. Shared with your partner in real time. Built on decades of cognitive labor research. Free to start.">
+<link rel="canonical" href="https://miiro.app/" />
+<meta property="og:title" content="Miiro - The AI Household Assistant">
+<meta property="og:description" content="The invisible work of running a household finally has an answer. Meet Sam.">
+<meta property="og:image" content="https://miiro.app/og-image.png">
+<meta property="og:url" content="https://miiro.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Miiro - The AI Household Assistant">
+<meta name="twitter:description" content="The invisible work of running a household finally has an answer. Meet Sam.">
+<meta name="twitter:image" content="https://miiro.app/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Miiro",
+      "url": "https://miiro.app",
+      "logo": "https://miiro.app/koi-logo.png",
+      "sameAs": [
+        "https://instagram.com/miiroapp",
+        "https://tiktok.com/@miiroapp",
+        "https://x.com/miiroapp"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Miiro",
+      "operatingSystem": "iOS",
+      "applicationCategory": "LifestyleApplication",
+      "installUrl": "https://apps.apple.com/app/miiro-couple-family-planner/id6759159052",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free tier with limited features"
+        },
+        {
+          "@type": "Offer",
+          "price": "4.99",
+          "priceCurrency": "USD",
+          "description": "Miiro+ monthly subscription"
+        },
+        {
+          "@type": "Offer",
+          "price": "44.99",
+          "priceCurrency": "USD",
+          "description": "Miiro+ annual subscription"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Sam?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sam (Smart Attentive Mind) is Miiro's AI assistant. Tell Sam what's on your mind by text or voice, and Sam sorts it into tasks, events, meals, and grocery items automatically. Sam can also answer questions about your schedule, generate recipes, plan meals, and modify anything you've created. Free users get 10 conversations. Miiro+ users get unlimited."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every core feature works on the free plan. You get 3 lists, 2 calendars, 5 saved recipes, and sharing with 1 person. Miiro+ removes all limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my partner need to pay too?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access automatically when they join. No extra payment, no extra steps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after the free trial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After 7 days, you'll be charged $4.99/month or $44.99/year (25% savings). Cancel anytime in your iPhone Settings. You keep access until the end of your billing period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What recipe sites does Toru work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Toru works with most major recipe websites including BBC Good Food, RecipeTin Eats, Budget Bytes, and Allrecipes. It also extracts recipes from TikTok, Instagram, and YouTube cooking videos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Miiro work in other languages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Sam understands any language, so you can talk to Sam in Dutch, German, Spanish, or whatever you're comfortable with. Grocery items are automatically sorted into categories regardless of language. Recipe import works with websites and videos in any language too."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stored securely on Google Firebase with encryption. We don't sell data, show ads, or track browsing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Miiro without sharing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Miiro works great solo. Sharing is optional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What research is Miiro based on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Miiro's AI assistant Sam was designed around the cognitive labor framework identified by sociologist Allison Daminger, whose research shows that household management involves four invisible stages: anticipating, identifying, deciding, and monitoring. Most household apps only help with doing. Sam was built to help with the carrying. You can read more about Daminger's work in her book 'What's on Her Mind' (Princeton University Press, 2025)."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --coral-soft: #F4A393;
+    --coral-bg: rgba(232, 99, 74, 0.06);
+    --indigo: #4A5CE8;
+    --indigo-soft: #7B8AF0;
+    --indigo-bg: rgba(74, 92, 232, 0.06);
+    --mint: #3BBFA0;
+    --mint-bg: rgba(59, 191, 160, 0.06);
+    --gold: #D4A853;
+    --gold-bg: rgba(212, 168, 83, 0.08);
+    --teal: #2BA8A0;
+    --teal-bg: rgba(43, 168, 160, 0.1);
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+    --shadow-lg: 0 8px 40px rgba(44, 40, 37, 0.08);
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-xl: 40px;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .serif { font-family: 'Lora', Georgia, serif; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); }
+  .container--narrow { max-width: 900px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); }
+  .section { padding: 80px 0; }
+  .text-center { text-align: center; }
+  .accent { color: var(--coral); }
+  .label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 16px; display: block;
+  }
+  h1, h2, h3, h4 { line-height: 1.15; font-weight: 600; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes send-tap {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+  @keyframes processing-bounce {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-2px); }
+  }
+  @keyframes mock-fade-out {
+    to { opacity: 0; }
+  }
+  @keyframes item-glow {
+    0% { background: transparent; }
+    30% { background: var(--indigo-bg); }
+    100% { background: transparent; }
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  @keyframes orb-breathe {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 6px 2px rgba(71, 204, 161, 0.15); }
+    50% { transform: scale(1.08); box-shadow: 0 0 10px 3px rgba(71, 204, 161, 0.2); }
+  }
+
+  .animate-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 0; transition: all 0.3s ease;
+  }
+  nav.scrolled {
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-primary); }
+  .nav-logo-icon { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; }
+  .nav-logo-icon img { width: 36px; height: 36px; object-fit: contain; }
+  .nav-logo-text { font-family: 'Lora', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-secondary); font-size: 0.875rem;
+    font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta {
+    background: var(--indigo); color: white !important;
+    padding: 10px 24px; border-radius: 100px; font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 201;
+  }
+  .hamburger span { display: block; width: 100%; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all 0.3s ease; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .mobile-nav-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(44, 40, 37, 0.95); z-index: 200; flex-direction: column;
+    align-items: center; justify-content: center; gap: 32px;
+  }
+  .mobile-nav-overlay.open { display: flex; }
+  .mobile-nav-overlay a {
+    text-decoration: none; color: white; font-size: 1.25rem; font-weight: 500;
+    padding: 12px 24px; transition: color 0.2s;
+  }
+  .mobile-nav-overlay a:hover { color: var(--coral); }
+  .mobile-nav-overlay .nav-cta { background: var(--indigo); padding: 14px 36px; border-radius: 100px; }
+
+  /* Sticky mobile CTA */
+  .sticky-mobile-cta {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; height: 56px;
+    background: var(--coral); z-index: 150; align-items: center; justify-content: center;
+    box-shadow: 0 -2px 8px rgba(44, 40, 37, 0.12);
+  }
+  .sticky-mobile-cta a { color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  @media (max-width: 768px) {
+    .sticky-mobile-cta.visible { display: flex; }
+    body.has-sticky-cta { padding-bottom: 56px; }
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--indigo); color: white; padding: 16px 32px;
+    border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 1rem;
+    transition: all 0.25s ease; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74, 92, 232, 0.25); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--text-primary); padding: 16px 32px;
+    border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 1rem;
+    border: 1.5px solid var(--border); transition: all 0.25s ease; cursor: pointer;
+  }
+  .btn-secondary:hover { border-color: var(--text-tertiary); transform: translateY(-1px); }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding-top: clamp(120px, 12vw, 160px);
+    padding-bottom: clamp(40px, 6vw, 80px);
+    position: relative; overflow: hidden;
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 5vw, 80px); align-items: center;
+  }
+  .hero-content { text-align: left; }
+  .hero-subtitle {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--coral); margin-bottom: 16px;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .hero h1 {
+    font-family: 'Lora', Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 500; letter-spacing: -0.02em; line-height: 1.12;
+    margin-bottom: 24px; animation: fadeUp 0.8s ease 0.1s forwards; opacity: 0;
+  }
+  .hero h1 em { font-style: italic; color: var(--coral); }
+  .hero-sub {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: var(--text-secondary);
+    max-width: 520px; margin: 0 0 20px; line-height: 1.75;
+    animation: fadeUp 0.8s ease 0.2s forwards; opacity: 0;
+  }
+  .hero-cta-line {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: var(--text-primary);
+    max-width: 520px; margin: 0 0 28px; line-height: 1.75; font-weight: 500;
+    animation: fadeUp 0.8s ease 0.25s forwards; opacity: 0;
+  }
+  .hero-stars {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+    animation: fadeUp 0.8s ease 0.05s forwards; opacity: 0;
+  }
+  .hero-stars-icons { color: var(--coral); font-size: 0.9rem; letter-spacing: 2px; }
+  .hero-stars-text { font-size: 0.8rem; color: var(--text-tertiary); font-weight: 500; }
+  .hero-ctas {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 12px;
+    animation: fadeUp 0.8s ease 0.35s forwards; opacity: 0; flex-wrap: wrap;
+  }
+  .hero-note {
+    font-size: 0.8rem; color: var(--text-tertiary); margin-top: 16px;
+    animation: fadeUp 0.8s ease 0.45s forwards; opacity: 0;
+  }
+
+  /* Phone mockup */
+  .hero-device {
+    max-width: 260px; margin: 0 auto; position: relative;
+    animation: fadeUp 1s ease 0.5s forwards; opacity: 0;
+  }
+  .iphone-mockup {
+    position: relative; width: 260px; max-width: 260px;
+    filter: drop-shadow(0 20px 60px rgba(44, 40, 37, 0.12));
+  }
+  .iphone-mockup > svg { width: 100%; height: auto; display: block; position: relative; z-index: 1; }
+  .iphone-screen {
+    position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border-radius: 32px; overflow: hidden; z-index: 2; background: #FAF8F5;
+    display: flex; flex-direction: column;
+  }
+  .iphone-screen-content {
+    padding: 40px 12px 12px; display: flex; flex-direction: column;
+    gap: 6px; font-size: 0.7rem; flex: 1;
+  }
+
+  /* Sam header (teal orb variant) */
+  .mock-sam-header {
+    display: flex; align-items: center; justify-content: space-between; padding: 2px 0 4px;
+  }
+  .mock-sam-header-left { display: flex; align-items: center; gap: 6px; }
+  .mock-sam-orb {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+    animation: orb-breathe 3.14s ease-in-out infinite;
+  }
+  .mock-sam-title { font-weight: 700; font-size: 0.65rem; color: var(--text-primary); }
+  .mock-close {
+    font-size: 0.55rem; color: var(--text-tertiary); width: 16px; height: 16px;
+    display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--cream);
+  }
+
+  /* Mock input & cards (shared across hero, brain dump, etc.) */
+  .mock-tell-input {
+    background: white; border: 1px solid var(--border); border-radius: 10px;
+    padding: 8px 10px; font-family: 'Poppins', sans-serif; font-size: 0.5rem;
+    color: var(--text-primary); line-height: 1.55; position: relative; min-height: 3.2em;
+  }
+  .mock-tell-cursor {
+    display: inline-block; width: 1px; height: 0.65em; background: var(--text-primary);
+    margin-left: 1px; vertical-align: text-bottom; animation: blink-cursor 0.6s step-end infinite;
+  }
+  .mock-tell-send { display: flex; justify-content: flex-end; margin-top: 4px; }
+  .mock-tell-send-btn {
+    width: 18px; height: 18px; background: var(--indigo); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.45rem; color: white;
+    transition: transform 0.15s ease;
+  }
+  .mock-tell-send-btn.pulse { animation: send-tap 0.3s ease; }
+  .mock-processing {
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    padding: 4px 0; opacity: 0; transition: opacity 0.2s ease;
+  }
+  .mock-processing.visible { opacity: 1; }
+  .mock-processing-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--teal); }
+  .mock-processing.visible .mock-processing-dot:nth-child(1) { animation: processing-bounce 0.5s ease infinite 0s; }
+  .mock-processing.visible .mock-processing-dot:nth-child(2) { animation: processing-bounce 0.5s ease infinite 0.1s; }
+  .mock-processing.visible .mock-processing-dot:nth-child(3) { animation: processing-bounce 0.5s ease infinite 0.2s; }
+  .mock-sorted-divider {
+    display: flex; align-items: center; gap: 8px; margin: 2px 0 0;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .mock-sorted-divider.visible { opacity: 1; }
+  .mock-sorted-divider::before, .mock-sorted-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .mock-sorted-divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); animation: pulse-soft 2s ease-in-out infinite; }
+  .mock-sorted-label {
+    font-size: 0.45rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-tertiary); padding: 0; opacity: 0; transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .mock-sorted-label.visible { opacity: 1; transform: translateY(0); }
+  .mock-result-card {
+    display: flex; align-items: center; gap: 6px; padding: 5px 8px;
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .mock-result-card.visible { opacity: 1; transform: translateY(0); }
+  .mock-result-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .mock-result-content { flex: 1; min-width: 0; }
+  .mock-result-title { font-size: 0.5rem; font-weight: 600; color: var(--text-primary); line-height: 1.2; }
+  .mock-result-meta { font-size: 0.4rem; color: var(--text-tertiary); line-height: 1.2; }
+  .mock-result-type {
+    font-size: 0.38rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    flex-shrink: 0; padding: 2px 5px; border-radius: 4px; line-height: 1;
+  }
+  .mock-result-type.type-task { color: var(--coral); background: var(--coral-bg); }
+  .mock-result-type.type-meal { color: var(--mint); background: var(--mint-bg); }
+  .mock-result-type.type-grocery { color: var(--gold); background: var(--gold-bg); }
+  .mock-result-type.type-event { color: var(--indigo); background: var(--indigo-bg); }
+  .mock-bottom-input {
+    display: flex; align-items: center; gap: 6px; margin-top: auto;
+    padding: 6px 8px; background: white; border: 1px solid var(--border); border-radius: 20px;
+  }
+  .mock-bottom-input-text { flex: 1; font-size: 0.6rem; color: var(--text-tertiary); }
+  .mock-bottom-input-icons { display: flex; align-items: center; gap: 4px; }
+  .mock-mic-icon { color: var(--teal); width: 10px; height: 10px; flex-shrink: 0; }
+  .mock-bottom-input-btn {
+    width: 20px; height: 20px; border-radius: 50%; background: var(--indigo);
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-size: 0.55rem; flex-shrink: 0;
+  }
+  .iphone-screen-content.fade-out { animation: mock-fade-out 0.5s ease forwards; }
+
+  /* ===== HOW SAM WORKS ===== */
+  .how-sam-works { background: white; }
+  .how-sam-header { text-align: center; margin-bottom: 56px; }
+  .how-sam-header h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.02em;
+  }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; }
+  .steps-grid::before {
+    content: ''; position: absolute; top: 40px;
+    left: calc(16.66% + 50px); right: calc(16.66% + 50px);
+    height: 0; border-top: 2px dashed var(--border); z-index: 0;
+  }
+  .step { text-align: center; }
+  .step-icon {
+    width: 80px; height: 80px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; margin: 0 auto 20px;
+    position: relative; z-index: 1; background: white; border: 2px solid var(--border);
+    transition: border-color 0.5s ease, background 0.5s ease;
+  }
+  .step-icon svg { width: 32px; height: 32px; stroke-width: 1.5; fill: none; stroke: var(--text-tertiary); transition: stroke 0.3s ease; }
+  .step-icon.active { border-color: var(--teal); background: var(--teal-bg); }
+  .step-icon.active svg { stroke: var(--teal); }
+  .step-number {
+    font-size: 0.65rem; font-weight: 700; color: var(--text-tertiary);
+    letter-spacing: 0.06em; margin-bottom: 10px; text-transform: uppercase;
+  }
+  .step h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; max-width: 300px; margin: 0 auto; }
+
+  /* Stats bar */
+  .stats-bar { background: var(--cream); padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .stats-bar-inner { display: flex; justify-content: center; gap: clamp(24px, 4vw, 60px); flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-value { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
+  .stat-label { font-size: 0.78rem; color: var(--text-tertiary); margin-top: 2px; }
+
+  /* ===== RESEARCH CREDIBILITY ===== */
+  .research-section { background: var(--cream-dark); }
+  .research-card {
+    background: var(--warm-white); border-radius: var(--radius-lg); padding: clamp(32px, 5vw, 56px);
+    border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  }
+  .research-card h2 {
+    font-family: 'Lora', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 32px; text-align: center;
+  }
+  .research-copy { max-width: 720px; margin: 0 auto 48px; }
+  .research-copy p {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: var(--text-secondary);
+    line-height: 1.8; margin-bottom: 20px;
+  }
+  .research-copy p:last-child { margin-bottom: 0; }
+  .research-copy strong { color: var(--text-primary); font-weight: 600; }
+  .research-highlight {
+    font-size: clamp(1.1rem, 1.6vw, 1.25rem); color: var(--text-primary);
+    font-weight: 500; text-align: center; margin-bottom: 0;
+  }
+
+  /* Four stages diagram */
+  .stages-diagram { margin-bottom: 48px; }
+  .stages-flow {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin-bottom: 40px; position: relative;
+  }
+  .stages-flow::before {
+    content: ''; position: absolute; top: 32px;
+    left: calc(12.5% + 30px); right: calc(12.5% + 30px);
+    height: 2px; background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 8px, transparent 8px, transparent 16px);
+  }
+  .stage-item { text-align: center; position: relative; z-index: 1; }
+  .stage-circle {
+    width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--warm-white); border: 2px solid var(--border);
+    transition: all 0.5s ease;
+  }
+  .stage-circle svg { width: 24px; height: 24px; stroke-width: 1.5; fill: none; stroke: var(--text-tertiary); }
+  .stage-name {
+    font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;
+  }
+  .stage-desc { font-size: 0.78rem; color: var(--text-tertiary); line-height: 1.5; max-width: 180px; margin: 0 auto; }
+
+  /* Comparison bars */
+  .comparison-bars { max-width: 680px; margin: 0 auto; }
+  .comparison-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .comparison-label { font-size: 0.75rem; color: var(--text-tertiary); width: 200px; flex-shrink: 0; text-align: right; }
+  .comparison-bar-track { flex: 1; height: 10px; background: rgba(44, 40, 37, 0.04); border-radius: 5px; overflow: hidden; }
+  .comparison-bar-fill { height: 100%; border-radius: 5px; }
+  .comparison-bar-fill.other { width: 25%; background: var(--text-tertiary); opacity: 0.3; }
+  .comparison-bar-fill.sam { width: 100%; background: var(--indigo); }
+
+  /* Research attribution */
+  .research-attribution {
+    text-align: center; padding-top: 32px; border-top: 1px solid var(--border); margin-top: 40px;
+  }
+  .research-attribution-label { font-size: 0.7rem; color: var(--text-tertiary); margin-bottom: 8px; letter-spacing: 0.06em; }
+  .research-attribution-sources { font-size: 0.78rem; color: var(--text-tertiary); font-weight: 500; }
+
+  /* ===== BRAIN DUMP DEMO ===== */
+  .brain-dump { background: white; }
+  .brain-dump-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 6vw, 80px); align-items: start;
+  }
+  .brain-dump-text .label { color: var(--coral); }
+  .brain-dump-text h2 {
+    font-family: 'Lora', serif; font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .brain-dump-text p {
+    font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;
+  }
+  .feature-callouts {
+    display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 20px;
+  }
+  .feature-callout {
+    font-size: 0.82rem; color: var(--text-tertiary); display: flex; align-items: center; gap: 6px;
+  }
+  .feature-callout::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--coral); flex-shrink: 0;
+  }
+  .credit-note { font-size: 0.8rem; color: var(--text-tertiary); margin-top: 20px; font-style: italic; }
+
+  /* Brain dump demo card */
+  .brain-dump-card {
+    background: var(--cream); border-radius: var(--radius-md); padding: 28px;
+    border: 1px solid var(--border);
+  }
+  .brain-dump-demo-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 8px; display: flex;
+    align-items: center; gap: 6px;
+  }
+  .brain-dump-demo-orb {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+  }
+  .brain-dump-input {
+    background: white; border-radius: var(--radius-sm); padding: 16px;
+    min-height: 80px; font-size: 0.88rem; color: var(--text-primary);
+    line-height: 1.6; border: 1px solid var(--border);
+  }
+  .brain-dump-cursor {
+    display: inline-block; width: 2px; height: 1em; background: var(--teal);
+    margin-left: 1px; vertical-align: text-bottom; animation: blink 0.8s step-end infinite;
+  }
+  .brain-dump-divider {
+    display: flex; align-items: center; gap: 12px; margin: 24px 0 16px;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .brain-dump-divider.visible { opacity: 1; }
+  .brain-dump-divider::before, .brain-dump-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .brain-dump-divider-text {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-tertiary); white-space: nowrap;
+  }
+  .brain-dump-results { display: flex; flex-direction: column; gap: 8px; }
+  .brain-dump-result {
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+    background: white; border-radius: var(--radius-sm); border: 1px solid var(--border);
+    opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .brain-dump-result.visible { opacity: 1; transform: translateY(0); }
+  .brain-dump-result-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .brain-dump-result-icon svg { width: 14px; height: 14px; stroke-width: 2; fill: none; }
+  .brain-dump-result-icon.task { background: var(--coral-bg); }
+  .brain-dump-result-icon.task svg { stroke: var(--coral); }
+  .brain-dump-result-icon.meal { background: var(--mint-bg); }
+  .brain-dump-result-icon.meal svg { stroke: var(--mint); }
+  .brain-dump-result-icon.event { background: var(--indigo-bg); }
+  .brain-dump-result-icon.event svg { stroke: var(--indigo); }
+  .brain-dump-result-icon.grocery { background: var(--gold-bg); }
+  .brain-dump-result-icon.grocery svg { stroke: var(--gold); }
+  .brain-dump-result-content { flex: 1; min-width: 0; }
+  .brain-dump-result-title { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+  .brain-dump-result-meta { font-size: 0.72rem; color: var(--text-tertiary); margin-top: 2px; }
+  .brain-dump-result-badge {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 6px; flex-shrink: 0;
+  }
+  .brain-dump-result-badge.task { background: var(--coral-bg); color: var(--coral); }
+  .brain-dump-result-badge.meal { background: var(--mint-bg); color: var(--mint); }
+  .brain-dump-result-badge.event { background: var(--indigo-bg); color: var(--indigo); }
+  .brain-dump-result-badge.grocery { background: var(--gold-bg); color: var(--gold); }
+  .brain-dump-replay {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+    font-size: 0.8rem; color: var(--teal); cursor: pointer; border: none;
+    background: none; font-family: inherit; font-weight: 500;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .brain-dump-replay.visible { opacity: 1; }
+  .brain-dump-replay:hover { text-decoration: underline; }
+
+  /* ===== SAM CAPABILITIES ===== */
+  .sam-capabilities { background: var(--cream); }
+  .sam-header { text-align: center; margin-bottom: 56px; }
+  .sam-header h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .sam-header p { font-size: 1.05rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto; }
+  .sam-conversations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 40px; }
+  .sam-conversation {
+    background: var(--warm-white); border-radius: var(--radius-md); padding: 28px 24px;
+    border: 1px solid var(--border); display: flex; flex-direction: column;
+  }
+  .sam-convo-messages { flex: 1; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .sam-msg {
+    padding: 10px 14px; border-radius: 16px; font-size: 0.82rem; line-height: 1.55; max-width: 90%;
+  }
+  .sam-msg.user {
+    background: var(--indigo); color: white; align-self: flex-end; border-bottom-right-radius: 4px;
+  }
+  .sam-msg.sam {
+    background: white; color: var(--text-secondary); align-self: flex-start; border-bottom-left-radius: 4px;
+    border: 1px solid var(--border);
+  }
+  .sam-msg.sam .sam-msg-name {
+    font-size: 0.65rem; font-weight: 700; color: var(--teal); margin-bottom: 4px;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .sam-msg-orb-sm {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+  }
+  .sam-convo-caption {
+    font-size: 0.78rem; color: var(--text-tertiary); line-height: 1.55;
+    padding-top: 16px; border-top: 1px solid var(--border); font-style: italic;
+  }
+  .sam-footer-note {
+    text-align: center; font-size: 0.95rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;
+  }
+
+  /* ===== TORU ===== */
+  .toru-section { background: white; }
+  .toru-grid {
+    display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 80px); align-items: center;
+  }
+  .toru-text { order: 2; }
+  .toru-visual { order: 1; }
+  .toru-text .label { color: var(--coral); }
+  .toru-text h2 {
+    font-family: 'Lora', serif; font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .toru-text p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+
+  /* Toru phone mockup */
+  .toru-screen {
+    padding: 40px 12px 12px; display: flex; flex-direction: column;
+    gap: 8px; font-size: 0.7rem; flex: 1;
+  }
+  .toru-header { display: flex; align-items: center; justify-content: space-between; padding: 2px 0 4px; }
+  .toru-header-title { font-weight: 700; font-size: 0.65rem; color: var(--text-primary); }
+  .toru-close {
+    font-size: 0.55rem; color: var(--text-tertiary); width: 16px; height: 16px;
+    display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--cream);
+  }
+  .toru-url-bar {
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    padding: 6px 10px; font-family: 'Poppins', sans-serif; font-size: 0.45rem;
+    color: var(--text-secondary); display: flex; align-items: center; gap: 6px; min-height: 1.8em;
+  }
+  .toru-url-icon { color: var(--text-tertiary); font-size: 0.5rem; flex-shrink: 0; }
+  .toru-url-text { display: inline; color: var(--text-primary); }
+  .toru-cursor {
+    display: inline-block; width: 1px; height: 0.6em; background: var(--text-primary);
+    margin-left: 1px; vertical-align: text-bottom; animation: blink-cursor 0.6s step-end infinite;
+  }
+  .toru-extract-btn {
+    background: var(--coral); color: white; border: none; border-radius: 8px; padding: 7px 0;
+    font-family: 'Poppins', sans-serif; font-size: 0.5rem; font-weight: 600; text-align: center;
+    opacity: 0; transform: scale(0.95); transition: opacity 0.2s ease, transform 0.15s ease;
+  }
+  .toru-extract-btn.visible { opacity: 1; transform: scale(1); }
+  .toru-extract-btn.pulse { animation: send-tap 0.3s ease; }
+  .toru-loading {
+    text-align: center; font-size: 0.45rem; color: var(--text-tertiary); padding: 6px 0;
+    opacity: 0; transition: opacity 0.2s ease;
+  }
+  .toru-loading.visible { opacity: 1; }
+  .toru-loading-dots { display: inline-flex; gap: 3px; margin-left: 4px; vertical-align: middle; }
+  .toru-loading-dots span { width: 3px; height: 3px; border-radius: 50%; background: var(--coral-soft); }
+  .toru-loading.visible .toru-loading-dots span:nth-child(1) { animation: processing-bounce 0.5s ease infinite 0s; }
+  .toru-loading.visible .toru-loading-dots span:nth-child(2) { animation: processing-bounce 0.5s ease infinite 0.1s; }
+  .toru-loading.visible .toru-loading-dots span:nth-child(3) { animation: processing-bounce 0.5s ease infinite 0.2s; }
+  .toru-recipe-card {
+    background: white; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px;
+    opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease;
+    flex: 1; display: flex; flex-direction: column;
+  }
+  .toru-recipe-card.visible { opacity: 1; transform: translateY(0); }
+  .toru-recipe-title { font-family: 'Lora', serif; font-size: 0.7rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+  .toru-recipe-meta { font-size: 0.4rem; color: var(--text-tertiary); margin-bottom: 8px; }
+  .toru-recipe-info { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+  .toru-recipe-info-item { display: flex; align-items: center; gap: 6px; font-size: 0.42rem; color: var(--text-secondary); }
+  .toru-recipe-info-icon {
+    width: 14px; height: 14px; border-radius: 4px; background: var(--coral-bg);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 0.4rem; color: var(--coral);
+  }
+  .toru-recipe-actions { display: flex; gap: 6px; margin-top: auto; }
+  .toru-btn-save {
+    flex: 1; background: var(--coral); color: white; border: none; border-radius: 6px;
+    padding: 5px 0; font-family: 'Poppins', sans-serif; font-size: 0.38rem; font-weight: 600; text-align: center;
+  }
+  .toru-btn-grocery {
+    flex: 1; background: white; color: var(--text-primary); border: 1px solid var(--border);
+    border-radius: 6px; padding: 5px 0; font-family: 'Poppins', sans-serif; font-size: 0.38rem;
+    font-weight: 600; text-align: center;
+  }
+  .toru-screen.fade-out { animation: mock-fade-out 0.5s ease forwards; }
+
+  /* ===== SHARED EVERYTHING ===== */
+  .shared-section { background: var(--cream); }
+  .shared-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 6vw, 80px); align-items: center;
+  }
+  .shared-text .label { color: var(--indigo); }
+  .shared-text h2 {
+    font-family: 'Lora', serif; font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .shared-text p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+
+  /* Shared list mockup */
+  .shared-screen {
+    padding: 40px 12px 12px; display: flex; flex-direction: column; font-size: 0.7rem; flex: 1;
+  }
+  .shared-header { display: flex; align-items: center; justify-content: space-between; padding: 2px 0 2px; }
+  .shared-header-left { display: flex; align-items: center; gap: 5px; }
+  .shared-header-logo { width: 14px; height: 14px; object-fit: contain; }
+  .shared-header-title { font-weight: 700; font-size: 0.65rem; color: var(--text-primary); }
+  .shared-header-subtitle { font-size: 0.4rem; color: var(--text-tertiary); margin-bottom: 6px; }
+  .shared-list { display: flex; flex-direction: column; gap: 0; }
+  .shared-item {
+    display: flex; align-items: center; gap: 7px; padding: 6px 0;
+    border-bottom: 1px solid rgba(44, 40, 37, 0.05); position: relative;
+  }
+  .shared-check {
+    width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--border);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease; font-size: 0.4rem; color: transparent;
+  }
+  .shared-check.checked { background: var(--mint); border-color: var(--mint); color: white; }
+  .shared-item-text {
+    font-size: 0.5rem; font-weight: 500; color: var(--text-primary); flex: 1; transition: all 0.3s ease;
+  }
+  .shared-item-text.struck { text-decoration: line-through; color: var(--text-tertiary); }
+  .shared-item-avatar {
+    width: 14px; height: 14px; border-radius: 50%; font-size: 0.35rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    opacity: 0; transform: scale(0.5); transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .shared-item-avatar.visible { opacity: 1; transform: scale(1); }
+  .shared-item-avatar.you { background: var(--indigo-bg); color: var(--indigo); }
+  .shared-item-avatar.partner { background: var(--coral-bg); color: var(--coral); }
+  .shared-item.new-item { opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .shared-item.new-item.visible { opacity: 1; transform: translateY(0); }
+  .shared-item.highlight { animation: item-glow 0.8s ease; }
+  .shared-input {
+    display: flex; align-items: center; gap: 6px; padding: 8px;
+    margin-top: auto; background: white; border: 1px solid var(--border); border-radius: 20px;
+  }
+  .shared-input-field {
+    background: none; border: none; border-radius: 6px; padding: 0 4px;
+    font-family: 'Poppins', sans-serif; font-size: 0.6rem; color: var(--text-primary);
+    flex: 1; min-height: 1.4em;
+  }
+  .shared-input-text { display: inline; }
+  .shared-input-cursor {
+    display: none; width: 1px; height: 0.55em; background: var(--text-primary);
+    margin-left: 1px; vertical-align: text-bottom; animation: blink-cursor 0.6s step-end infinite;
+  }
+  .shared-input-placeholder { color: var(--text-tertiary); font-size: 0.6rem; }
+  .shared-input-add {
+    width: 20px; height: 20px; background: var(--mint); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.6rem;
+    color: white; flex-shrink: 0; opacity: 0.4; transition: opacity 0.2s ease;
+  }
+  .shared-input-add.active { opacity: 1; }
+  .shared-screen.fade-out { animation: mock-fade-out 0.5s ease forwards; }
+
+  /* ===== MY DAY ===== */
+  .myday-section { background: white; }
+  .myday-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 6vw, 80px); align-items: center;
+  }
+  .myday-text .label { color: var(--teal); }
+  .myday-text h2 {
+    font-family: 'Lora', serif; font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .myday-text p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+
+  /* My Day phone mockup */
+  .myday-screen {
+    padding: 40px 12px 12px; display: flex; flex-direction: column;
+    gap: 0; font-size: 0.7rem; flex: 1;
+  }
+  .myday-mock-header {
+    font-family: 'Lora', serif; font-size: 0.85rem; font-weight: 600;
+    color: var(--text-primary); margin-bottom: 2px; padding: 2px 0;
+  }
+  .myday-mock-date { font-size: 0.42rem; color: var(--text-tertiary); margin-bottom: 10px; }
+  .myday-timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 18px; }
+  .myday-timeline::before {
+    content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(to bottom, var(--teal), var(--border));
+    border-radius: 1px;
+  }
+  .myday-item {
+    display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; position: relative;
+  }
+  .myday-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    position: absolute; left: -18px; top: 10px; border: 2px solid white;
+  }
+  .myday-item-content {
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 10px; flex: 1;
+  }
+  .myday-item-title { font-size: 0.5rem; font-weight: 600; color: var(--text-primary); }
+  .myday-item-meta { font-size: 0.38rem; color: var(--text-tertiary); margin-top: 2px; }
+  .myday-item-type {
+    font-size: 0.32rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 1px 4px; border-radius: 3px; display: inline-block; margin-top: 3px;
+  }
+  .myday-briefing {
+    background: linear-gradient(135deg, var(--teal-bg), rgba(43, 168, 160, 0.04));
+    border: 1px solid rgba(43, 168, 160, 0.15); border-radius: 10px;
+    padding: 10px 12px; margin-bottom: 8px;
+  }
+  .myday-briefing-header {
+    display: flex; align-items: center; gap: 5px; margin-bottom: 4px;
+  }
+  .myday-briefing-orb {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+  }
+  .myday-briefing-title { font-size: 0.48rem; font-weight: 700; color: var(--teal); }
+  .myday-briefing-text { font-size: 0.4rem; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ===== FEATURE GRID ===== */
+  .feature-grid-section { background: white; }
+  .feature-grid-header { text-align: center; margin-bottom: clamp(40px, 5vw, 64px); }
+  .feature-grid-header h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.02em;
+  }
+  .feature-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .feature-mini-card {
+    background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 28px 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .feature-mini-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .feature-mini-icon {
+    width: 40px; height: 40px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+  }
+  .feature-mini-icon svg { width: 22px; height: 22px; stroke-width: 2; fill: none; }
+  .feature-mini-card h4 { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+  .feature-mini-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-section { background: var(--cream); overflow: hidden; }
+  .testimonials-header { text-align: center; margin-bottom: 48px; }
+  .testimonials-header h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.02em;
+  }
+  .testimonials-scroll {
+    display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 16px;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .testimonials-scroll::-webkit-scrollbar { display: none; }
+  .testimonial-card {
+    background: var(--warm-white); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 32px 28px; min-width: 340px; max-width: 400px; flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  .testimonial-stars { color: var(--coral); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 16px; display: block; }
+  .testimonial-quote {
+    font-family: 'Lora', serif; font-style: italic; font-size: 0.95rem;
+    color: var(--text-secondary); line-height: 1.75; margin-bottom: 20px;
+  }
+  .testimonial-author { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); }
+  .testimonial-role { font-size: 0.75rem; color: var(--text-tertiary); }
+
+  /* ===== PRICING ===== */
+  .pricing { background: white; }
+  .pricing-header { text-align: center; margin-bottom: clamp(40px, 5vw, 64px); }
+  .pricing-header h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; margin-bottom: 12px;
+  }
+  .pricing-header p { color: var(--text-secondary); font-size: 1.05rem; }
+  .pricing-toggle {
+    display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 48px;
+  }
+  .pricing-toggle-label { font-size: 0.9rem; font-weight: 500; color: var(--text-tertiary); transition: color 0.2s; }
+  .pricing-toggle-label.active { color: var(--text-primary); font-weight: 600; }
+  .pricing-toggle-switch {
+    width: 48px; height: 26px; background: var(--indigo); border-radius: 13px;
+    cursor: pointer; position: relative; transition: background 0.3s;
+  }
+  .pricing-toggle-switch::after {
+    content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+    background: white; border-radius: 50%; transition: transform 0.3s;
+  }
+  .pricing-toggle-switch.yearly::after { transform: translateX(22px); }
+  .pricing-save {
+    font-size: 0.7rem; font-weight: 600; color: var(--coral); background: var(--coral-bg);
+    padding: 3px 8px; border-radius: 6px;
+  }
+  .pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 740px; margin: 0 auto; }
+  .pricing-card {
+    background: var(--cream); border-radius: var(--radius-md); padding: 36px 32px;
+    border: 1px solid var(--border); position: relative;
+  }
+  .pricing-card.featured {
+    background: var(--warm-white); border-color: var(--indigo);
+    box-shadow: 0 0 0 1px var(--indigo), var(--shadow-lg);
+  }
+  .pricing-card-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--indigo); color: white; padding: 4px 16px; border-radius: 100px;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap;
+  }
+  .pricing-card-name { font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; }
+  .pricing-card-price { margin-bottom: 8px; }
+  .pricing-card-amount { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; }
+  .pricing-card-period { font-size: 0.9rem; color: var(--text-tertiary); }
+  .pricing-card-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+  .pricing-features { list-style: none; margin-bottom: 28px; }
+  .pricing-features li {
+    font-size: 0.9rem; color: var(--text-secondary); padding: 6px 0;
+    padding-left: 24px; position: relative;
+  }
+  .pricing-features li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--mint-bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%233BBFA0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: center; background-size: 8px;
+  }
+  .pricing-card-btn {
+    display: block; text-align: center; padding: 14px; border-radius: 100px;
+    text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.25s ease;
+  }
+  .pricing-card .pricing-card-btn {
+    background: transparent; color: var(--text-primary); border: 1.5px solid var(--border);
+  }
+  .pricing-card .pricing-card-btn:hover { border-color: var(--text-tertiary); }
+  .pricing-card.featured .pricing-card-btn {
+    background: var(--indigo); color: white; border: none;
+  }
+  .pricing-card.featured .pricing-card-btn:hover {
+    transform: translateY(-1px); box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
+  .pricing-note {
+    text-align: center; margin-top: 32px; font-size: 0.9rem; color: var(--text-secondary);
+  }
+
+  /* ===== FAQ ===== */
+  .faq { background: var(--cream); }
+  .faq-header { text-align: center; margin-bottom: clamp(40px, 5vw, 64px); }
+  .faq-header h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.02em;
+  }
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-question {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0; background: none; border: none; cursor: pointer;
+    font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600;
+    color: var(--text-primary); text-align: left; line-height: 1.4;
+  }
+  .faq-icon {
+    font-size: 1.3rem; color: var(--text-tertiary); flex-shrink: 0; margin-left: 16px;
+    transition: transform 0.3s ease;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+  }
+  .faq-item.open .faq-answer { max-height: 400px; }
+  .faq-answer-inner {
+    padding: 0 0 20px; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75;
+  }
+
+  /* ===== STORY ===== */
+  .story { background: white; }
+  .story-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px); align-items: start;
+  }
+  .story-text h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; margin-bottom: 24px;
+  }
+  .story-text p {
+    font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;
+  }
+  .story-text p em { font-family: 'Lora', serif; }
+  .story-signature { display: flex; align-items: center; gap: 14px; margin-top: 32px; }
+  .story-sig-avatar {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--indigo-bg);
+    color: var(--indigo); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem;
+  }
+  .story-sig-name { font-weight: 600; font-size: 0.95rem; }
+  .story-sig-role { font-size: 0.8rem; color: var(--text-tertiary); }
+  .story-principles { display: flex; flex-direction: column; gap: 16px; }
+  .principle-card {
+    background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 24px; text-align: center;
+  }
+  .principle-kanji { font-size: 2rem; line-height: 1; margin-bottom: 6px; display: block; color: var(--text-primary); }
+  .principle-name { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+  .principle-romaji { font-size: 0.75rem; color: var(--text-tertiary); font-style: italic; display: block; margin-bottom: 10px; }
+  .principle-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta { background: var(--cream); }
+  .final-cta h2 {
+    font-family: 'Lora', serif; font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .final-cta p { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 32px; }
+  .final-cta-sub { font-size: 0.85rem; color: var(--text-tertiary); margin-top: 16px !important; margin-bottom: 0 !important; }
+
+  /* ===== FOOTER ===== */
+  footer { padding: 48px 0 32px; background: var(--cream); border-top: 1px solid var(--border); }
+  .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+  .footer-brand { display: flex; align-items: center; gap: 8px; }
+  .footer-brand-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+  .footer-brand-icon img { width: 28px; height: 28px; object-fit: contain; }
+  .footer-brand-text { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; }
+  .footer-tagline { font-size: 0.85rem; color: var(--text-tertiary); }
+  .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; justify-content: center; }
+  .footer-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text-primary); }
+  .footer-copy { font-size: 0.75rem; color: var(--text-tertiary); }
+
+  /* Feature phone container */
+  .feature-phone {
+    max-width: 260px; margin: 0 auto; display: flex; justify-content: center;
+  }
+  .feature-phone .iphone-mockup { filter: drop-shadow(0 16px 48px rgba(44, 40, 37, 0.08)); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .section { padding: 56px 0; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-content { text-align: center; }
+    .hero-sub, .hero-cta-line { margin-left: auto; margin-right: auto; }
+    .hero-stars { justify-content: center; }
+    .hero-ctas { justify-content: center; }
+    .hero-device { margin-top: 32px; }
+
+    .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+    .steps-grid::before { display: none; }
+    .stats-bar-inner { gap: 20px; }
+    .stat-item { min-width: 120px; }
+
+    .stages-flow { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .stages-flow::before { display: none; }
+    .comparison-row { flex-direction: column; gap: 6px; }
+    .comparison-label { width: auto; text-align: left; }
+
+    .brain-dump-grid,
+    .toru-grid,
+    .shared-grid,
+    .myday-grid,
+    .story-grid { grid-template-columns: 1fr; gap: 32px; }
+
+    .toru-text { order: 1; }
+    .toru-visual { order: 2; }
+
+    .sam-conversations { grid-template-columns: 1fr; gap: 20px; }
+    .feature-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+    .testimonial-card { min-width: 280px; }
+    .pricing-cards { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 1.9rem; }
+    .stages-flow { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon"><img src="koi-logo.png" alt="Miiro koi logo"></div>
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sam">Sam</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/nl/" title="Nederlands" style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;color:var(--text-tertiary)">NL</a></li>
+      <li><a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="nav-cta">Get Miiro</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav-overlay" id="mobile-nav-overlay">
+  <a href="#sam" onclick="closeMobileNav()">Sam</a>
+  <a href="#features" onclick="closeMobileNav()">Features</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="#story" onclick="closeMobileNav()">Our Story</a>
+  <a href="/blog" onclick="closeMobileNav()">Blog</a>
+  <a href="/nl/" onclick="closeMobileNav()" style="font-size:0.875rem;letter-spacing:0.05em;color:var(--text-tertiary)">NL</a>
+  <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="nav-cta" onclick="closeMobileNav()">Get Miiro</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-subtitle">The AI household assistant</p>
+        <div class="hero-stars">
+          <span class="hero-stars-icons">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="hero-stars-text">Loved by families in the Netherlands and beyond</span>
+        </div>
+        <h1>You're not just doing the tasks.<br>You're <em>carrying</em> all of them.</h1>
+        <p class="hero-sub">The planning. The remembering. The noticing what's running low before anyone else does. The keeping track of everything so nothing falls through the cracks. It's invisible, it's exhausting, and it doesn't have to live in your head anymore.</p>
+        <p class="hero-cta-line">Meet Sam, your AI household assistant. One message or one voice command, and your whole day is handled.</p>
+        <div class="hero-ctas">
+          <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2z"/></svg>
+            Download for iOS
+          </a>
+          <a href="#sam" class="btn-secondary">See how Sam works &#8595;</a>
+        </div>
+        <p class="hero-note">Free to start &middot; One subscription covers your whole household</p>
+      </div>
+
+      <!-- Phone Mockup -->
+      <div class="hero-device">
+        <div class="iphone-mockup">
+          <svg viewBox="0 0 260 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="258" height="538" rx="38" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+            <rect x="8" y="8" width="244" height="524" rx="32" fill="#FAF8F5"/>
+            <rect x="95" y="14" width="70" height="22" rx="11" fill="#1a1a1a"/>
+            <rect x="258" y="120" width="3" height="40" rx="1" fill="#1a1a1a"/>
+            <rect x="-1" y="100" width="3" height="28" rx="1" fill="#1a1a1a"/>
+            <rect x="-1" y="140" width="3" height="28" rx="1" fill="#1a1a1a"/>
+          </svg>
+          <div class="iphone-screen">
+            <div class="iphone-screen-content" id="hero-screen">
+              <div class="mock-sam-header">
+                <div class="mock-sam-header-left">
+                  <div class="mock-sam-orb"></div>
+                  <span class="mock-sam-title">Sam</span>
+                </div>
+                <div class="mock-close">&#10005;</div>
+              </div>
+              <div class="mock-tell-input">
+                <span id="hero-typing"></span><span class="mock-tell-cursor" id="hero-cursor"></span>
+              </div>
+              <div class="mock-tell-send">
+                <div class="mock-tell-send-btn" id="hero-send-btn">&#8593;</div>
+              </div>
+              <div class="mock-processing" id="hero-processing">
+                <div class="mock-processing-dot"></div>
+                <div class="mock-processing-dot"></div>
+                <div class="mock-processing-dot"></div>
+              </div>
+              <div class="mock-sorted-divider" id="hero-divider"><div class="mock-sorted-divider-dot"></div></div>
+              <div class="mock-sorted-label" id="hero-sorted-label">Sam sorted this into:</div>
+              <div class="mock-result-card" data-hero-card>
+                <div class="mock-result-dot" style="background: var(--coral)"></div>
+                <div class="mock-result-content">
+                  <div class="mock-result-title">Pick up Miles</div>
+                  <div class="mock-result-meta">Today 3:00 PM</div>
+                </div>
+                <span class="mock-result-type type-task">Task</span>
+              </div>
+              <div class="mock-result-card" data-hero-card>
+                <div class="mock-result-dot" style="background: var(--mint)"></div>
+                <div class="mock-result-content">
+                  <div class="mock-result-title">Pasta</div>
+                  <div class="mock-result-meta">Tonight's dinner</div>
+                </div>
+                <span class="mock-result-type type-meal">Meal</span>
+              </div>
+              <div class="mock-result-card" data-hero-card>
+                <div class="mock-result-dot" style="background: var(--gold)"></div>
+                <div class="mock-result-content">
+                  <div class="mock-result-title">Milk, eggs, chicken</div>
+                  <div class="mock-result-meta">Shopping list</div>
+                </div>
+                <span class="mock-result-type type-grocery">Grocery</span>
+              </div>
+              <div class="mock-result-card" data-hero-card>
+                <div class="mock-result-dot" style="background: var(--indigo)"></div>
+                <div class="mock-result-content">
+                  <div class="mock-result-title">Dentist</div>
+                  <div class="mock-result-meta">Thursday 2:00 PM</div>
+                </div>
+                <span class="mock-result-type type-event">Event</span>
+              </div>
+              <div class="mock-bottom-input">
+                <span class="mock-bottom-input-text">What else is on your mind...</span>
+                <div class="mock-bottom-input-icons">
+                  <svg class="mock-mic-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+                  <div class="mock-bottom-input-btn">&#8593;</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW SAM WORKS ===== -->
+<section class="how-sam-works section">
+  <div class="container">
+    <div class="how-sam-header animate-in">
+      <span class="label" style="color: var(--teal);">How it works</span>
+      <h2>From your head to handled. In seconds.</h2>
+    </div>
+    <div class="steps-grid animate-in">
+      <div class="step">
+        <div class="step-icon" data-step-icon>
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <div class="step-number">Step 1</div>
+        <h3>Talk to Sam</h3>
+        <p>Type everything on your mind, or just say it. Tasks, meals, groceries, appointments. Sam understands natural language in any language, by text or by voice.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon" data-step-icon>
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+          </svg>
+        </div>
+        <div class="step-number">Step 2</div>
+        <h3>Sam handles it</h3>
+        <p>Sam sorts your thoughts into tasks, meals, grocery items, and calendar events. Need a recipe? Sam generates one, saves it, plans the meal, and offers to add ingredients to your grocery list. All from one sentence.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon" data-step-icon>
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="step-number">Step 3</div>
+        <h3>Both of you see everything</h3>
+        <p>Your partner gets it all instantly. Shared lists, shared calendar, shared meal plan. Updated in real time. No more "did you get my text?"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-bar-inner animate-in">
+      <div class="stat-item">
+        <div class="stat-value">1 message</div>
+        <div class="stat-label">sorts your day</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">2 people</div>
+        <div class="stat-label">finally in sync</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">0 ads</div>
+        <div class="stat-label">not now, not ever</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">Real-time</div>
+        <div class="stat-label">sync, always</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RESEARCH CREDIBILITY ===== -->
+<section class="research-section section">
+  <div class="container">
+    <div class="research-card animate-in">
+      <h2>The problem has a name.<br>And decades of research behind it.</h2>
+      <div class="research-copy">
+        <p>Sociologists call it <strong>cognitive labor</strong>: the invisible mental work of running a household. Not the cooking or cleaning, but the anticipating, planning, deciding, and tracking that happens before anyone lifts a finger.</p>
+        <p>Harvard sociologist Allison Daminger identified four stages of this work: anticipating what needs doing, identifying the options, making the decision, and monitoring the outcome. Her research, published in the <em class="serif">American Sociological Review</em> and expanded in her 2025 Princeton University Press book <em class="serif">"What's on Her Mind,"</em> has been cited over 300 times by researchers worldwide.</p>
+        <p>Bestselling books like <em class="serif">"Fair Play"</em> by Eve Rodsky and <em class="serif">"The Second Shift"</em> by Arlie Hochschild brought this research to millions. The findings are consistent: this invisible work is real, it's measurable, and it falls disproportionately on one person in the household.</p>
+        <p class="research-highlight">Every household app out there helps you do tasks. Check things off. Cross them out. But nobody built an app for the actual hard part: the carrying.<br><strong style="color: var(--teal);">Until Sam.</strong></p>
+      </div>
+
+      <!-- Four stages diagram -->
+      <div class="stages-diagram">
+        <div class="stages-flow">
+          <div class="stage-item animate-in">
+            <div class="stage-circle">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4l2 2"/>
+              </svg>
+            </div>
+            <div class="stage-name">Anticipate</div>
+            <div class="stage-desc">Noticing the milk is low before it's gone</div>
+          </div>
+          <div class="stage-item animate-in">
+            <div class="stage-circle">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+            <div class="stage-name">Identify</div>
+            <div class="stage-desc">Researching what to make for dinner</div>
+          </div>
+          <div class="stage-item animate-in">
+            <div class="stage-circle">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="stage-name">Decide</div>
+            <div class="stage-desc">Choosing what to do and when to do it</div>
+          </div>
+          <div class="stage-item animate-in">
+            <div class="stage-circle">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <div class="stage-name">Monitor</div>
+            <div class="stage-desc">Following up to make sure it actually happened</div>
+          </div>
+        </div>
+
+        <div class="comparison-bars animate-in">
+          <div class="comparison-row">
+            <div class="comparison-label">Other apps cover this part only</div>
+            <div class="comparison-bar-track">
+              <div class="comparison-bar-fill other"></div>
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="comparison-label" style="color: var(--indigo); font-weight: 600;">Sam covers all of it</div>
+            <div class="comparison-bar-track">
+              <div class="comparison-bar-fill sam"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="research-attribution">
+        <div class="research-attribution-label">Built on research from</div>
+        <div class="research-attribution-sources">Harvard University &middot; Princeton University Press &middot; American Sociological Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BRAIN DUMP DEMO ===== -->
+<section class="brain-dump section" id="features">
+  <div class="container">
+    <div class="brain-dump-grid">
+      <div class="brain-dump-text animate-in">
+        <span class="label">Tell Sam</span>
+        <h2>Brain dump everything. Sam sorts it in seconds.</h2>
+        <p>Stop switching between four different apps. Tell Sam everything that's on your mind in one message, the same way you'd text a friend. Sam uses AI to understand what you mean and puts everything in the right place automatically.</p>
+        <p>Tasks go to your to-do list. Meals go to your meal plan. Groceries go to your shopping list. Events go to your calendar. All from one message.</p>
+        <p>Works in any language. No templates, no forms, no dropdowns.</p>
+        <div class="feature-callouts">
+          <span class="feature-callout">Understands natural language in any language</span>
+          <span class="feature-callout">Sorts into tasks, meals, groceries, and events</span>
+          <span class="feature-callout">Or just say it out loud. Sam listens too.</span>
+        </div>
+        <p class="credit-note">10 free conversations. Unlimited with Miiro+.</p>
+      </div>
+
+      <div class="brain-dump-card animate-in">
+        <div class="brain-dump-demo-label">
+          <div class="brain-dump-demo-orb"></div>
+          Tell Miiro
+        </div>
+        <div class="brain-dump-input">
+          <span id="bd-typing"></span><span class="brain-dump-cursor" id="bd-cursor"></span>
+        </div>
+        <div class="brain-dump-divider" id="bd-divider">
+          <span class="brain-dump-divider-text">Sam sorted this into</span>
+        </div>
+        <div class="brain-dump-results">
+          <div class="brain-dump-result" data-bd-result>
+            <div class="brain-dump-result-icon task">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="brain-dump-result-content">
+              <div class="brain-dump-result-title">Pick up Miles from school at 3</div>
+              <div class="brain-dump-result-meta">Today 3:00 PM</div>
+            </div>
+            <span class="brain-dump-result-badge task">Task</span>
+          </div>
+          <div class="brain-dump-result" data-bd-result>
+            <div class="brain-dump-result-icon meal">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div class="brain-dump-result-content">
+              <div class="brain-dump-result-title">Chicken and rice</div>
+              <div class="brain-dump-result-meta">Tonight's dinner</div>
+            </div>
+            <span class="brain-dump-result-badge meal">Meal</span>
+          </div>
+          <div class="brain-dump-result" data-bd-result>
+            <div class="brain-dump-result-icon grocery">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+            <div class="brain-dump-result-content">
+              <div class="brain-dump-result-title">Olive oil, eggs, garlic</div>
+              <div class="brain-dump-result-meta">Grocery list</div>
+            </div>
+            <span class="brain-dump-result-badge grocery">Grocery</span>
+          </div>
+          <div class="brain-dump-result" data-bd-result>
+            <div class="brain-dump-result-icon event">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="brain-dump-result-content">
+              <div class="brain-dump-result-title">Doctor appointment</div>
+              <div class="brain-dump-result-meta">Tuesday 2:00 PM</div>
+            </div>
+            <span class="brain-dump-result-badge event">Event</span>
+          </div>
+          <div class="brain-dump-result" data-bd-result>
+            <div class="brain-dump-result-icon task">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="brain-dump-result-content">
+              <div class="brain-dump-result-title">Call the vet about Rose</div>
+              <div class="brain-dump-result-meta">To-do</div>
+            </div>
+            <span class="brain-dump-result-badge task">Task</span>
+          </div>
+        </div>
+        <button class="brain-dump-replay" id="bd-replay" onclick="runBrainDump()">&#8634; Watch again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SAM CAPABILITIES ===== -->
+<section class="sam-capabilities section" id="sam">
+  <div class="container">
+    <div class="sam-header animate-in">
+      <span class="label" style="color: var(--teal);">Meet Sam</span>
+      <h2>Sam doesn't just organize. Sam thinks.</h2>
+      <p>Most apps wait for you to tell them exactly what to do. Sam understands what you need and takes action. Here's what that looks like.</p>
+    </div>
+    <div class="sam-conversations animate-in">
+      <!-- Example 1: Recipe -->
+      <div class="sam-conversation">
+        <div class="sam-convo-messages">
+          <div class="sam-msg user">I want to try green curry tonight</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            I'll make that happen. Here's a recipe for Thai green curry (4 servings, 35 minutes). I've saved it to your cookbook and added it to tonight's meal plan. Want me to add the ingredients to your grocery list?
+          </div>
+          <div class="sam-msg user">Yes</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            Done. 8 ingredients added to your grocery list.
+          </div>
+        </div>
+        <div class="sam-convo-caption">One voice command. Recipe generated, saved to your cookbook, planned for dinner, ingredients added to groceries.</div>
+      </div>
+
+      <!-- Example 2: Schedule -->
+      <div class="sam-conversation">
+        <div class="sam-convo-messages">
+          <div class="sam-msg user">What's happening tomorrow?</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            Tomorrow you have a dentist appointment at 2 PM and Miles has soccer practice at 4. No dinner planned yet. Want me to suggest something?
+          </div>
+        </div>
+        <div class="sam-convo-caption">Sam knows your schedule, your tasks, your meal plan. Ask anything.</div>
+      </div>
+
+      <!-- Example 3: Quick modify -->
+      <div class="sam-conversation">
+        <div class="sam-convo-messages">
+          <div class="sam-msg user">Move the dentist to Thursday</div>
+          <div class="sam-msg sam">
+            <div class="sam-msg-name"><div class="sam-msg-orb-sm"></div> Sam</div>
+            Done. Dentist appointment moved to Thursday at 2 PM.
+          </div>
+        </div>
+        <div class="sam-convo-caption">Change things as fast as you can say them.</div>
+      </div>
+    </div>
+    <p class="sam-footer-note animate-in">Sam works by voice or text, in any language. And every new capability we add is just a conversation away, no app update needed.</p>
+  </div>
+</section>
+
+<!-- ===== TORU ===== -->
+<section class="toru-section section">
+  <div class="container">
+    <div class="toru-grid">
+      <div class="toru-text animate-in">
+        <span class="label">Toru</span>
+        <h2>Paste a link. Get the recipe. Start cooking.</h2>
+        <p>Every recipe online is buried under ads, pop-ups, and someone's life story. Toru strips all of that away. Paste any link from a website, TikTok, Instagram, or YouTube and get clean ingredients and steps in seconds.</p>
+        <p>Save recipes to your shared cookbook. Add every ingredient to your grocery list with one tap. Then switch to cooking mode: step-by-step guidance with built-in timers, designed for messy hands and busy kitchens.</p>
+        <p>One less thing to carry in your head.</p>
+        <div class="feature-callouts">
+          <span class="feature-callout">Works with TikTok, Instagram, YouTube, and hundreds of recipe sites</span>
+          <span class="feature-callout">Extracts recipes from cooking videos automatically</span>
+          <span class="feature-callout">Save to your cookbook, share with your household</span>
+          <span class="feature-callout">Cooking mode with built-in timers for every step</span>
+        </div>
+      </div>
+      <div class="toru-visual animate-in">
+        <div class="feature-phone">
+          <div class="iphone-mockup">
+            <svg viewBox="0 0 260 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="258" height="538" rx="38" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+              <rect x="8" y="8" width="244" height="524" rx="32" fill="#FAF8F5"/>
+              <rect x="95" y="14" width="70" height="22" rx="11" fill="#1a1a1a"/>
+              <rect x="258" y="120" width="3" height="40" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="100" width="3" height="28" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="140" width="3" height="28" rx="1" fill="#1a1a1a"/>
+            </svg>
+            <div class="iphone-screen">
+              <div class="toru-screen" id="toru-screen">
+                <div class="toru-header">
+                  <span class="toru-header-title">Toru</span>
+                  <div class="toru-close">&#10005;</div>
+                </div>
+                <div class="toru-url-bar">
+                  <span class="toru-url-icon">&#128279;</span>
+                  <span class="toru-url-text" id="toru-url-text"></span><span class="toru-cursor" id="toru-cursor"></span>
+                </div>
+                <div class="toru-extract-btn" id="toru-extract-btn">Extract Recipe</div>
+                <div class="toru-loading" id="toru-loading">
+                  Extracting recipe<span class="toru-loading-dots"><span></span><span></span><span></span></span>
+                </div>
+                <div class="toru-recipe-card" id="toru-recipe-card">
+                  <div class="toru-recipe-title">Pad Thai</div>
+                  <div class="toru-recipe-meta">@myhealthydish &middot; TikTok</div>
+                  <div class="toru-recipe-info">
+                    <div class="toru-recipe-info-item">
+                      <div class="toru-recipe-info-icon">&#9201;</div>
+                      25 minutes &middot; 4 servings
+                    </div>
+                    <div class="toru-recipe-info-item">
+                      <div class="toru-recipe-info-icon">&#9878;</div>
+                      12 ingredients &middot; 6 steps
+                    </div>
+                  </div>
+                  <div class="toru-recipe-actions">
+                    <div class="toru-btn-save">Save to Cookbook</div>
+                    <div class="toru-btn-grocery">Add to Groceries</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHARED EVERYTHING ===== -->
+<section class="shared-section section">
+  <div class="container">
+    <div class="shared-grid">
+      <div class="shared-text animate-in">
+        <span class="label">Shared living</span>
+        <h2>When everything is visible, nobody carries it alone.</h2>
+        <p>The invisible load of running a household is real. Who's picking up the kid? Did anyone buy milk? What's for dinner? With Miiro, both of you see the same lists, the same calendar, the same meal plan. Updated the moment anything changes.</p>
+        <p>When your partner checks off milk at the store, it disappears from your phone. Add a task and they get notified. No more sending texts that get buried. No more "I thought you were handling that."</p>
+        <p>One Miiro+ subscription covers your whole household. Your partner gets full access the moment they join.</p>
+        <div class="feature-callouts">
+          <span class="feature-callout">Real-time sync across all devices</span>
+          <span class="feature-callout">Shared lists, calendars, and meal plans</span>
+          <span class="feature-callout">Private calendars stay completely private</span>
+          <span class="feature-callout">Grocery items auto-sorted into categories in any language</span>
+        </div>
+      </div>
+      <div class="animate-in">
+        <div class="feature-phone">
+          <div class="iphone-mockup">
+            <svg viewBox="0 0 260 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="258" height="538" rx="38" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+              <rect x="8" y="8" width="244" height="524" rx="32" fill="#FAF8F5"/>
+              <rect x="95" y="14" width="70" height="22" rx="11" fill="#1a1a1a"/>
+              <rect x="258" y="120" width="3" height="40" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="100" width="3" height="28" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="140" width="3" height="28" rx="1" fill="#1a1a1a"/>
+            </svg>
+            <div class="iphone-screen">
+              <div class="shared-screen" id="shared-screen">
+                <div class="shared-header">
+                  <div class="shared-header-left">
+                    <img src="koi-logo.png" alt="Miiro" class="shared-header-logo">
+                    <span class="shared-header-title">Groceries</span>
+                  </div>
+                </div>
+                <div class="shared-header-subtitle">Shared with your partner</div>
+                <div class="shared-list">
+                  <div class="shared-item">
+                    <div class="shared-check" id="shared-tomatoes-check"></div>
+                    <span class="shared-item-text" id="shared-tomatoes-text">Tomatoes</span>
+                    <div class="shared-item-avatar you" id="shared-tomatoes-avatar">Y</div>
+                  </div>
+                  <div class="shared-item">
+                    <div class="shared-check">&#10003;</div>
+                    <span class="shared-item-text" style="text-decoration: line-through; color: var(--text-tertiary);">Pasta</span>
+                  </div>
+                  <div class="shared-item">
+                    <div class="shared-check" id="shared-garlic-check"></div>
+                    <span class="shared-item-text" id="shared-garlic-text">Garlic</span>
+                    <div class="shared-item-avatar partner" id="shared-garlic-avatar">P</div>
+                  </div>
+                  <div class="shared-item">
+                    <div class="shared-check"></div>
+                    <span class="shared-item-text">Rice</span>
+                  </div>
+                  <div class="shared-item new-item" id="shared-olive-oil">
+                    <div class="shared-check"></div>
+                    <span class="shared-item-text">Olive oil</span>
+                    <div class="shared-item-avatar partner" id="shared-olive-avatar">P</div>
+                  </div>
+                  <div class="shared-item new-item" id="shared-chicken">
+                    <div class="shared-check"></div>
+                    <span class="shared-item-text">Chicken</span>
+                    <div class="shared-item-avatar you" id="shared-chicken-avatar">Y</div>
+                  </div>
+                </div>
+                <div class="shared-input">
+                  <div class="shared-input-field">
+                    <span class="shared-input-text" id="shared-input-text"></span><span class="shared-input-cursor" id="shared-input-cursor"></span>
+                    <span class="shared-input-placeholder" id="shared-input-placeholder">Add item...</span>
+                  </div>
+                  <div class="shared-input-add" id="shared-input-add">+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MY DAY ===== -->
+<section class="myday-section section">
+  <div class="container">
+    <div class="myday-grid">
+      <div class="myday-text animate-in">
+        <span class="label">My Day</span>
+        <h2>Your whole day. One screen.</h2>
+        <p>My Day shows everything that matters today: your tasks, meals, events, and groceries, all in one timeline. Nothing hidden in separate tabs. Nothing buried in different apps.</p>
+        <p>Every morning, Sam reviews what's ahead so you can start your day knowing exactly what needs your attention. The planning that used to happen in your head now happens on your screen.</p>
+        <div class="feature-callouts">
+          <span class="feature-callout">Connects to every calendar on your iPhone (iCloud, Google, Outlook)</span>
+          <span class="feature-callout">One tap to connect, no passwords or extra logins</span>
+          <span class="feature-callout">Events sync both ways</span>
+        </div>
+      </div>
+      <div class="animate-in">
+        <div class="feature-phone">
+          <div class="iphone-mockup">
+            <svg viewBox="0 0 260 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="258" height="538" rx="38" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+              <rect x="8" y="8" width="244" height="524" rx="32" fill="#FAF8F5"/>
+              <rect x="95" y="14" width="70" height="22" rx="11" fill="#1a1a1a"/>
+              <rect x="258" y="120" width="3" height="40" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="100" width="3" height="28" rx="1" fill="#1a1a1a"/>
+              <rect x="-1" y="140" width="3" height="28" rx="1" fill="#1a1a1a"/>
+            </svg>
+            <div class="iphone-screen">
+              <div class="myday-screen">
+                <div class="myday-mock-header">My Day</div>
+                <div class="myday-mock-date">Tuesday, April 1</div>
+
+                <div class="myday-briefing">
+                  <div class="myday-briefing-header">
+                    <div class="myday-briefing-orb"></div>
+                    <span class="myday-briefing-title">Sam's morning briefing</span>
+                  </div>
+                  <div class="myday-briefing-text">You have 3 tasks, 1 event, and dinner planned. Miles needs to be picked up at 3.</div>
+                </div>
+
+                <div class="myday-timeline">
+                  <div class="myday-item">
+                    <div class="myday-dot" style="background: var(--indigo);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">Dentist</div>
+                      <div class="myday-item-meta">2:00 PM</div>
+                      <span class="myday-item-type" style="background: var(--indigo-bg); color: var(--indigo);">Event</span>
+                    </div>
+                  </div>
+                  <div class="myday-item">
+                    <div class="myday-dot" style="background: var(--coral);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">Pick up Miles</div>
+                      <div class="myday-item-meta">3:00 PM</div>
+                      <span class="myday-item-type" style="background: var(--coral-bg); color: var(--coral);">Task</span>
+                    </div>
+                  </div>
+                  <div class="myday-item">
+                    <div class="myday-dot" style="background: var(--mint);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">Green curry</div>
+                      <div class="myday-item-meta">Tonight's dinner</div>
+                      <span class="myday-item-type" style="background: var(--mint-bg); color: var(--mint);">Meal</span>
+                    </div>
+                  </div>
+                  <div class="myday-item">
+                    <div class="myday-dot" style="background: var(--gold);"></div>
+                    <div class="myday-item-content">
+                      <div class="myday-item-title">4 items left</div>
+                      <div class="myday-item-meta">Grocery list</div>
+                      <span class="myday-item-type" style="background: var(--gold-bg); color: var(--gold);">Grocery</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURE GRID ===== -->
+<section class="feature-grid-section section">
+  <div class="container">
+    <div class="feature-grid-header animate-in">
+      <span class="label">Features</span>
+      <h2>Everything you need. Nothing you don't.</h2>
+    </div>
+    <div class="feature-cards-grid animate-in">
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--coral-bg); color: var(--coral);">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M20 2v4h-4"/></svg>
+        </div>
+        <h4>Cooking Mode</h4>
+        <p>Step-by-step instructions with built-in timers. Hands-free cooking, no scrolling through blog posts.</p>
+      </div>
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--indigo-bg); color: var(--indigo);">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/></svg>
+        </div>
+        <h4>Calendar Sync</h4>
+        <p>Connects to every calendar on your iPhone. iCloud, Google, Outlook. No extra logins needed.</p>
+      </div>
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--gold-bg); color: var(--gold);">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h4>Birthdays &amp; Special Days</h4>
+        <p>Reminders a week before, a day before, and the morning of. Confetti on the day, because it should feel special.</p>
+      </div>
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--mint-bg); color: var(--mint);">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Any Language</h4>
+        <p>Talk to Sam, add groceries, or import recipes in Dutch, German, Spanish, or any language. Miiro understands.</p>
+      </div>
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--coral-bg); color: var(--coral);">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+        </div>
+        <h4>No Ads. Ever.</h4>
+        <p>No ads, no tracking, no selling your data. Miiro is a utility, not an attention trap.</p>
+      </div>
+      <div class="feature-mini-card">
+        <div class="feature-mini-icon" style="background: var(--indigo-bg); color: var(--indigo);">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>No Engagement Tricks</h4>
+        <p>No streaks, no gamification, no social feed. Just a calm tool that helps you run your household.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section section">
+  <div class="container">
+    <div class="testimonials-header animate-in">
+      <span class="label">What people say</span>
+      <h2>Loved by families</h2>
+    </div>
+    <div class="testimonials-scroll animate-in">
+      <div class="testimonial-card">
+        <span class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="testimonial-quote">"The mental load was crushing me. Now I brain dump into Miiro and everything is organized. My partner finally sees what needs doing."</p>
+        <div class="testimonial-author">Maria</div>
+        <div class="testimonial-role">Amsterdam</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="testimonial-quote">"It replaced 4 apps for us. One for groceries, one for to-dos, one for meal planning, one for calendars. Now it's just Miiro."</p>
+        <div class="testimonial-author">Family of 4</div>
+        <div class="testimonial-role">Rotterdam</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="testimonial-quote">"I just paste TikTok links and the recipe appears in my cookbook. Toru alone is worth the subscription."</p>
+        <div class="testimonial-author">Kris</div>
+        <div class="testimonial-role">Netherlands</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="testimonial-quote">"Cooking mode is a game changer. Step-by-step with timers, no scrolling through someone's life story."</p>
+        <div class="testimonial-author">Parent of 3</div>
+        <div class="testimonial-role"></div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="testimonial-quote">"I told Sam I wanted pad thai and it generated the recipe, saved it, planned dinner, and offered to add the ingredients to my grocery list. From one sentence."</p>
+        <div class="testimonial-author">Beta tester</div>
+        <div class="testimonial-role"></div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="testimonial-quote">"Finally, we're actually on the same page. Not 'I thought you were handling that' anymore."</p>
+        <div class="testimonial-author">Couple</div>
+        <div class="testimonial-role">Amsterdam</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="pricing section" id="pricing">
+  <div class="container">
+    <div class="pricing-header animate-in">
+      <span class="label">Simple pricing</span>
+      <h2>Start free. Upgrade<br>when you're ready.</h2>
+      <p>No hidden fees. No ads. Not now, not ever.</p>
+    </div>
+
+    <div class="pricing-toggle animate-in">
+      <span class="pricing-toggle-label active" id="monthly-label">Monthly</span>
+      <div class="pricing-toggle-switch" id="pricing-switch" onclick="togglePricing()"></div>
+      <span class="pricing-toggle-label" id="yearly-label">Yearly</span>
+      <span class="pricing-save">Save 25%</span>
+    </div>
+
+    <div class="pricing-cards animate-in">
+      <div class="pricing-card">
+        <div class="pricing-card-name">Free</div>
+        <div class="pricing-card-price">
+          <span class="pricing-card-amount">$0</span>
+        </div>
+        <p class="pricing-card-desc">Everything you need to get started.</p>
+        <ul class="pricing-features">
+          <li>10 Sam AI conversations</li>
+          <li>3 lists &amp; 2 calendars</li>
+          <li>5 saved recipes &amp; 5 imports</li>
+          <li>Share with 1 partner</li>
+        </ul>
+        <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="pricing-card-btn">Get Started Free</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-card-badge">Most Popular</div>
+        <div class="pricing-card-name">Miiro+</div>
+        <div class="pricing-card-price">
+          <span class="pricing-card-amount" id="price-amount">$4.99</span>
+          <span class="pricing-card-period" id="price-period">/month</span>
+        </div>
+        <p class="pricing-card-desc">Unlimited everything for your whole household. <span style="color: var(--coral); font-weight: 500;" id="per-person-price">That's just $2.50/person.</span></p>
+        <ul class="pricing-features">
+          <li>Unlimited Sam AI conversations</li>
+          <li>Unlimited lists &amp; calendars</li>
+          <li>Unlimited recipes &amp; imports</li>
+          <li>Unlimited sharing</li>
+          <li>Share with your whole household</li>
+        </ul>
+        <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="pricing-card-btn">Start 7-Day Free Trial</a>
+      </div>
+    </div>
+
+    <p class="pricing-note animate-in">
+      <span style="color: var(--indigo); font-weight: 500;">One subscription covers your whole household.</span> Cancel anytime. 7-day free trial included.
+    </p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq section" id="faq">
+  <div class="container">
+    <div class="faq-header animate-in">
+      <span class="label">Questions</span>
+      <h2>Frequently asked</h2>
+    </div>
+
+    <div class="faq-list animate-in">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What is Sam?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sam (Smart Attentive Mind) is Miiro's AI assistant. Tell Sam what's on your mind by text or voice, and Sam sorts it into tasks, events, meals, and grocery items automatically. Sam can also answer questions about your schedule, generate recipes, plan meals, and modify anything you've created. Free users get 10 conversations. Miiro+ users get unlimited.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is it really free?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. Every core feature works on the free plan. You get 3 lists, 2 calendars, 5 saved recipes, and sharing with 1 person. Miiro+ removes all limits.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Does my partner need to pay too?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No. One Miiro+ subscription covers your whole household, up to 6 people. Your partner gets full access automatically when they join. No extra payment, no extra steps.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What happens after the free trial?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">After 7 days, you'll be charged $4.99/month or $44.99/year (25% savings). Cancel anytime in your iPhone Settings. You keep access until the end of your billing period.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What recipe sites does Toru work with?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Toru works with most major recipe websites including BBC Good Food, RecipeTin Eats, Budget Bytes, and Allrecipes. It also extracts recipes from TikTok, Instagram, and YouTube cooking videos.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Does Miiro work in other languages?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. Sam understands any language, so you can talk to Sam in Dutch, German, Spanish, or whatever you're comfortable with. Grocery items are automatically sorted into categories regardless of language. Recipe import works with websites and videos in any language too.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is my data private?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Stored securely on Google Firebase with encryption. We don't sell data, show ads, or track browsing.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I use Miiro without sharing?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Absolutely. Miiro works great solo. Sharing is optional.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What research is Miiro based on?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Miiro's AI assistant Sam was designed around the cognitive labor framework identified by sociologist Allison Daminger, whose research shows that household management involves four invisible stages: anticipating, identifying, deciding, and monitoring. Most household apps only help with doing. Sam was built to help with the carrying. You can read more about Daminger's work in her book "What's on Her Mind" (Princeton University Press, 2025).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR STORY ===== -->
+<section class="story section" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text animate-in">
+        <span class="label">Our story</span>
+        <h2>Why I built Miiro</h2>
+        <p><em class="serif">Miiro</em> comes from the Japanese word <em class="serif">miru</em> (&#35211;&#12427;), meaning "to see."</p>
+        <p>I built it because the little things kept slipping through the cracks. Not because my wife and I weren't trying, but because no tool was built for how households actually work. The groceries nobody bought. The kindergarten pickup we both showed up to. The "I thought you were handling that" moments.</p>
+        <p>I read the research on cognitive labor and realized something: the hardest part of running a household isn't doing the tasks. It's carrying them. Remembering, planning, anticipating, tracking. And no app on earth was built for that.</p>
+        <p>So I built one. And I gave it an assistant named Sam who carries the load with you.</p>
+        <p>The name Miiro is a nod to both our names, rooted in the Japanese word <em class="serif">miru</em>, meaning "to see." Because the first step to sharing the load is making it visible.</p>
+        <div class="story-signature">
+          <div class="story-sig-avatar">R</div>
+          <div>
+            <div class="story-sig-name">Robert</div>
+            <div class="story-sig-role">Builder of Miiro &middot; Amsterdam &#127475;&#127473;</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-principles animate-in">
+        <div class="principle-card">
+          <span class="principle-kanji">&#35211;&#12427;</span>
+          <div class="principle-name">Miru</div>
+          <span class="principle-romaji">to see</span>
+          <p class="principle-desc">Make the invisible visible. See your partner's day, your shared responsibilities, everything that matters.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-kanji">&#38291;</span>
+          <div class="principle-name">Ma</div>
+          <span class="principle-romaji">space</span>
+          <p class="principle-desc">Create breathing room. Less noise, less clutter, less mental overhead. Just what you need.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-kanji">&#31777;&#32032;</span>
+          <div class="principle-name">Kanso</div>
+          <span class="principle-romaji">simplicity</span>
+          <p class="principle-desc">Strip away the unnecessary. One message handles it all. That's the whole point.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta section">
+  <div class="container text-center">
+    <h2 class="animate-in">The invisible work of running your<br>household finally has an answer.</h2>
+    <p class="animate-in">Join families who stopped carrying it all in their heads.</p>
+    <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="btn-primary animate-in">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2z"/></svg>
+      Download for iOS
+    </a>
+    <p class="final-cta-sub animate-in">Free to start &middot; Cancel anytime</p>
+  </div>
+</section>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-mobile-cta" id="sticky-mobile-cta">
+  <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052">Download for iOS &middot; Free to start</a>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-icon"><img src="koi-logo.png" alt="Miiro"></div>
+        <span class="footer-brand-text">Miiro</span>
+        <span class="footer-tagline">- See what matters.</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+      </ul>
+      <span class="footer-copy">&copy; 2026 Miiro. Built with care in Amsterdam.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== NAV =====
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  function toggleMobileNav() {
+    var hamburger = document.getElementById('hamburger');
+    var overlay = document.getElementById('mobile-nav-overlay');
+    hamburger.classList.toggle('active');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function closeMobileNav() {
+    var hamburger = document.getElementById('hamburger');
+    var overlay = document.getElementById('mobile-nav-overlay');
+    hamburger.classList.remove('active');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ===== SCROLL ANIMATIONS =====
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.animate-in').forEach(function(el) { observer.observe(el); });
+
+  // ===== PRICING TOGGLE =====
+  var isYearly = false;
+  function togglePricing() {
+    isYearly = !isYearly;
+    var sw = document.getElementById('pricing-switch');
+    var amount = document.getElementById('price-amount');
+    var period = document.getElementById('price-period');
+    var ml = document.getElementById('monthly-label');
+    var yl = document.getElementById('yearly-label');
+    sw.classList.toggle('yearly', isYearly);
+    ml.classList.toggle('active', !isYearly);
+    yl.classList.toggle('active', isYearly);
+    amount.textContent = isYearly ? '$44.99' : '$4.99';
+    period.textContent = isYearly ? '/year' : '/month';
+    var perPerson = document.getElementById('per-person-price');
+    if (perPerson) perPerson.textContent = isYearly ? "That's just $1.88/person." : "That's just $2.50/person.";
+  }
+
+  // ===== HOW IT WORKS STEP ANIMATION =====
+  (function() {
+    var section = document.querySelector('.how-sam-works');
+    var icons = document.querySelectorAll('[data-step-icon]');
+    if (!section || icons.length === 0) return;
+    function updateSteps() {
+      var rect = section.getBoundingClientRect();
+      var progress = (window.innerHeight - rect.top) / (rect.height + window.innerHeight);
+      progress = Math.max(0, Math.min(1, progress));
+      var activeIdx = progress < 0.4 ? 0 : progress < 0.65 ? 1 : 2;
+      icons.forEach(function(icon, i) {
+        icon.classList.toggle('active', i === activeIdx);
+      });
+    }
+    window.addEventListener('scroll', updateSteps, { passive: true });
+    updateSteps();
+  })();
+
+  // ===== HERO PHONE ANIMATION =====
+  (function() {
+    var text = 'Pick up Miles at 3, pasta for dinner, need milk eggs chicken, dentist Thursday 2pm';
+    var typingEl = document.getElementById('hero-typing');
+    var cursorEl = document.getElementById('hero-cursor');
+    var sendBtn = document.getElementById('hero-send-btn');
+    var processing = document.getElementById('hero-processing');
+    var divider = document.getElementById('hero-divider');
+    var sortedLabel = document.getElementById('hero-sorted-label');
+    var cards = document.querySelectorAll('[data-hero-card]');
+    var screenContent = document.getElementById('hero-screen');
+    if (!typingEl) return;
+
+    function reset() {
+      typingEl.textContent = '';
+      cursorEl.style.display = 'inline-block';
+      sendBtn.classList.remove('pulse');
+      processing.classList.remove('visible');
+      divider.classList.remove('visible');
+      sortedLabel.classList.remove('visible');
+      cards.forEach(function(c) { c.classList.remove('visible'); });
+      if (screenContent) { screenContent.classList.remove('fade-out'); screenContent.style.opacity = '1'; }
+    }
+
+    function runCycle() {
+      reset();
+      var i = 0;
+      var typeInterval = setInterval(function() {
+        if (i < text.length) { typingEl.textContent += text[i]; i++; }
+        else {
+          clearInterval(typeInterval);
+          cursorEl.style.display = 'none';
+          sendBtn.classList.add('pulse');
+          setTimeout(function() {
+            processing.classList.add('visible');
+            setTimeout(function() {
+              processing.classList.remove('visible');
+              divider.classList.add('visible');
+              sortedLabel.classList.add('visible');
+              cards.forEach(function(card, idx) {
+                setTimeout(function() { card.classList.add('visible'); }, idx * 200);
+              });
+              setTimeout(function() {
+                if (screenContent) screenContent.classList.add('fade-out');
+                setTimeout(runCycle, 500);
+              }, 3000);
+            }, 500);
+          }, 300);
+        }
+      }, 37);
+    }
+    setTimeout(runCycle, 1500);
+  })();
+
+  // ===== BRAIN DUMP DEMO =====
+  var bdText = "Pick up Miles from school at 3, we need chicken and rice for dinner tonight, doctor appointment Tuesday 2pm, call the vet about Rose's appointment, and grab olive oil and eggs from the store";
+  var bdTypingEl = document.getElementById('bd-typing');
+  var bdCursor = document.getElementById('bd-cursor');
+  var bdDivider = document.getElementById('bd-divider');
+  var bdResults = document.querySelectorAll('[data-bd-result]');
+  var bdReplay = document.getElementById('bd-replay');
+
+  function runBrainDump() {
+    if (!bdTypingEl) return;
+    bdTypingEl.textContent = '';
+    bdCursor.style.display = 'inline-block';
+    bdDivider.classList.remove('visible');
+    bdResults.forEach(function(r) { r.classList.remove('visible'); });
+    bdReplay.classList.remove('visible');
+    var i = 0;
+    function typeChar() {
+      if (i < bdText.length) {
+        bdTypingEl.textContent += bdText[i]; i++;
+        setTimeout(typeChar, 18);
+      } else {
+        bdCursor.style.display = 'none';
+        setTimeout(function() {
+          bdDivider.classList.add('visible');
+          bdResults.forEach(function(r, idx) {
+            setTimeout(function() { r.classList.add('visible'); }, idx * 200);
+          });
+          setTimeout(function() { bdReplay.classList.add('visible'); }, bdResults.length * 200 + 300);
+        }, 400);
+      }
+    }
+    setTimeout(typeChar, 600);
+  }
+
+  // Auto-start brain dump on scroll
+  if (bdTypingEl) {
+    var bdObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { runBrainDump(); bdObserver.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    bdObserver.observe(bdTypingEl.closest('.brain-dump'));
+  }
+
+  // ===== TORU ANIMATION =====
+  (function() {
+    var url = 'tiktok.com/@myhealthydish/pad-thai';
+    var urlText = document.getElementById('toru-url-text');
+    var cursor = document.getElementById('toru-cursor');
+    var extractBtn = document.getElementById('toru-extract-btn');
+    var loading = document.getElementById('toru-loading');
+    var recipeCard = document.getElementById('toru-recipe-card');
+    var screen = document.getElementById('toru-screen');
+    if (!urlText) return;
+
+    function reset() {
+      urlText.textContent = '';
+      cursor.style.display = 'inline-block';
+      extractBtn.classList.remove('visible', 'pulse');
+      loading.classList.remove('visible');
+      recipeCard.classList.remove('visible');
+      screen.classList.remove('fade-out');
+      screen.style.opacity = '1';
+    }
+
+    function runToru() {
+      reset();
+      var i = 0;
+      var typeInterval = setInterval(function() {
+        if (i < url.length) { urlText.textContent += url[i]; i++; }
+        else {
+          clearInterval(typeInterval);
+          cursor.style.display = 'none';
+          extractBtn.classList.add('visible');
+          setTimeout(function() {
+            extractBtn.classList.add('pulse');
+            setTimeout(function() {
+              extractBtn.classList.remove('visible');
+              loading.classList.add('visible');
+              setTimeout(function() {
+                loading.classList.remove('visible');
+                recipeCard.classList.add('visible');
+                setTimeout(function() {
+                  screen.classList.add('fade-out');
+                  setTimeout(runToru, 500);
+                }, 2500);
+              }, 1000);
+            }, 300);
+          }, 500);
+        }
+      }, 50);
+    }
+    setTimeout(runToru, 2000);
+  })();
+
+  // ===== SHARED LIST ANIMATION =====
+  (function() {
+    var screen = document.getElementById('shared-screen');
+    var oliveOil = document.getElementById('shared-olive-oil');
+    var oliveAvatar = document.getElementById('shared-olive-avatar');
+    var tomatoesCheck = document.getElementById('shared-tomatoes-check');
+    var tomatoesText = document.getElementById('shared-tomatoes-text');
+    var tomatoesAvatar = document.getElementById('shared-tomatoes-avatar');
+    var garlicCheck = document.getElementById('shared-garlic-check');
+    var garlicText = document.getElementById('shared-garlic-text');
+    var garlicAvatar = document.getElementById('shared-garlic-avatar');
+    var chicken = document.getElementById('shared-chicken');
+    var chickenAvatar = document.getElementById('shared-chicken-avatar');
+    var inputText = document.getElementById('shared-input-text');
+    var inputCursor = document.getElementById('shared-input-cursor');
+    var inputAdd = document.getElementById('shared-input-add');
+    var inputPlaceholder = document.getElementById('shared-input-placeholder');
+    if (!screen) return;
+
+    function reset() {
+      oliveOil.classList.remove('visible', 'highlight');
+      oliveAvatar.classList.remove('visible');
+      tomatoesCheck.classList.remove('checked'); tomatoesCheck.innerHTML = '';
+      tomatoesText.classList.remove('struck');
+      tomatoesAvatar.classList.remove('visible');
+      garlicCheck.classList.remove('checked'); garlicCheck.innerHTML = '';
+      garlicText.classList.remove('struck');
+      garlicAvatar.classList.remove('visible');
+      chicken.classList.remove('visible');
+      chickenAvatar.classList.remove('visible');
+      inputText.textContent = '';
+      inputCursor.style.display = 'none';
+      inputAdd.classList.remove('active');
+      if (inputPlaceholder) inputPlaceholder.style.display = '';
+      screen.classList.remove('fade-out');
+      screen.style.opacity = '1';
+    }
+
+    function runShared() {
+      reset();
+      setTimeout(function() {
+        oliveOil.classList.add('visible');
+        oliveAvatar.classList.add('visible');
+        setTimeout(function() { oliveOil.classList.add('highlight'); }, 50);
+        setTimeout(function() { oliveAvatar.classList.remove('visible'); }, 1500);
+      }, 1000);
+      setTimeout(function() {
+        tomatoesCheck.classList.add('checked'); tomatoesCheck.innerHTML = '&#10003;';
+        tomatoesText.classList.add('struck');
+        tomatoesAvatar.classList.add('visible');
+        setTimeout(function() { tomatoesAvatar.classList.remove('visible'); }, 1200);
+      }, 2500);
+      setTimeout(function() {
+        garlicCheck.classList.add('checked'); garlicCheck.innerHTML = '&#10003;';
+        garlicText.classList.add('struck');
+        garlicAvatar.classList.add('visible');
+        setTimeout(function() { garlicAvatar.classList.remove('visible'); }, 1200);
+      }, 4000);
+      setTimeout(function() {
+        if (inputPlaceholder) inputPlaceholder.style.display = 'none';
+        inputCursor.style.display = 'inline-block';
+        var word = 'Chicken';
+        var ci = 0;
+        var typeInt = setInterval(function() {
+          if (ci < word.length) { inputText.textContent += word[ci]; ci++; if (ci > 0) inputAdd.classList.add('active'); }
+          else {
+            clearInterval(typeInt);
+            inputCursor.style.display = 'none';
+            setTimeout(function() {
+              inputText.textContent = '';
+              inputAdd.classList.remove('active');
+              if (inputPlaceholder) inputPlaceholder.style.display = '';
+              chicken.classList.add('visible');
+              chickenAvatar.classList.add('visible');
+              setTimeout(function() { chickenAvatar.classList.remove('visible'); }, 1200);
+            }, 300);
+          }
+        }, 80);
+      }, 5500);
+      setTimeout(function() {
+        screen.classList.add('fade-out');
+        setTimeout(runShared, 500);
+      }, 9000);
+    }
+    setTimeout(runShared, 2500);
+  })();
+
+  // ===== STICKY MOBILE CTA =====
+  (function() {
+    var stickyBar = document.getElementById('sticky-mobile-cta');
+    var heroSection = document.querySelector('.hero');
+    if (!stickyBar || !heroSection) return;
+    function checkScroll() {
+      var heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 0 && window.innerWidth <= 768) {
+        stickyBar.classList.add('visible');
+        document.body.classList.add('has-sticky-cta');
+      } else {
+        stickyBar.classList.remove('visible');
+        document.body.classList.remove('has-sticky-cta');
+      }
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    window.addEventListener('resize', checkScroll, { passive: true });
+    checkScroll();
+  })();
+</script>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'Poppins',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#2C2825;line-height:1.5;flex:1;min-width:200px;">We use cookies to understand how you use our site and improve your experience. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacy Policy</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#2C2825;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Decline</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block'; b.style.opacity = '0'; b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>
