@@ -464,7 +464,7 @@
   .mock-sorted-divider::before, .mock-sorted-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .mock-sorted-divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); animation: pulse-soft 2s ease-in-out infinite; }
   .mock-sorted-label {
-    font-size: 0.45rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 0.45rem; font-weight: 600; letter-spacing: 0.04em;
     color: var(--text-tertiary); padding: 0; opacity: 0; transform: translateY(6px);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
@@ -2313,25 +2313,29 @@
         if (i < text.length) { typingEl.textContent += text[i]; i++; }
         else {
           clearInterval(typeInterval);
+          // Send tap
           cursorEl.style.display = 'none';
           sendBtn.classList.add('pulse');
           setTimeout(function() {
+            // Sam "thinking" - processing dots visible for 800ms
             processing.classList.add('visible');
             setTimeout(function() {
               processing.classList.remove('visible');
+              // Cards stagger in
               divider.classList.add('visible');
               sortedLabel.classList.add('visible');
               cards.forEach(function(card, idx) {
-                setTimeout(function() { card.classList.add('visible'); }, idx * 200);
+                setTimeout(function() { card.classList.add('visible'); }, idx * 250);
               });
+              // Hold 3.5s then fade and restart
               setTimeout(function() {
                 if (screenContent) screenContent.classList.add('fade-out');
-                setTimeout(runCycle, 500);
-              }, 3000);
-            }, 500);
-          }, 300);
+                setTimeout(runCycle, 600);
+              }, 3500);
+            }, 800);
+          }, 400);
         }
-      }, 37);
+      }, 35);
     }
     setTimeout(runCycle, 1500);
   })();
