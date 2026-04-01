@@ -256,8 +256,14 @@
     50% { opacity: 0; }
   }
   @keyframes orb-breathe {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 6px 2px rgba(71, 204, 161, 0.15); }
-    50% { transform: scale(1.08); box-shadow: 0 0 10px 3px rgba(71, 204, 161, 0.2); }
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 8px rgba(59, 191, 160, 0.4), 0 0 20px rgba(59, 191, 160, 0.2), 0 0 40px rgba(59, 191, 160, 0.1);
+    }
+    50% {
+      transform: scale(1.06);
+      box-shadow: 0 0 12px rgba(59, 191, 160, 0.5), 0 0 28px rgba(59, 191, 160, 0.25), 0 0 52px rgba(59, 191, 160, 0.12);
+    }
   }
 
   .animate-in {
@@ -356,7 +362,7 @@
   }
   .hero-content { text-align: left; }
   .hero-subtitle {
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--coral); margin-bottom: 16px;
     animation: fadeUp 0.8s ease forwards;
   }
@@ -413,15 +419,19 @@
 
   /* Sam header (teal orb variant) */
   .mock-sam-header {
-    display: flex; align-items: center; justify-content: space-between; padding: 2px 0 4px;
+    display: flex; align-items: center; justify-content: space-between; padding: 2px 0 8px;
   }
-  .mock-sam-header-left { display: flex; align-items: center; gap: 6px; }
+  .mock-sam-header-left { display: flex; align-items: center; gap: 8px; }
   .mock-sam-orb {
-    width: 16px; height: 16px; border-radius: 50%;
-    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+    width: 28px; height: 28px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #7EEFD4, #4DD9B4 40%, #3BBFA0 70%, #2A9A80);
+    box-shadow:
+      0 0 8px rgba(59, 191, 160, 0.4),
+      0 0 20px rgba(59, 191, 160, 0.2),
+      0 0 40px rgba(59, 191, 160, 0.1);
     animation: orb-breathe 3.14s ease-in-out infinite;
   }
-  .mock-sam-title { font-weight: 700; font-size: 0.65rem; color: var(--text-primary); }
+  .mock-sam-title { font-weight: 700; font-size: 0.75rem; color: var(--text-primary); }
   .mock-close {
     font-size: 0.55rem; color: var(--text-tertiary); width: 16px; height: 16px;
     display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--cream);
@@ -1247,8 +1257,8 @@
           <span class="hero-stars-icons">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span class="hero-stars-text">Loved by families in the Netherlands and beyond</span>
         </div>
-        <h1>You're not just doing the tasks.<br>You're <em>carrying</em> all of them.</h1>
-        <p class="hero-sub">The planning. The remembering. The noticing what's running low before anyone else does. The keeping track of everything so nothing falls through the cracks. It's invisible, it's exhausting, and it doesn't have to live in your head anymore.</p>
+        <h1>The mental load finally<br>has an <em>answer.</em></h1>
+        <p class="hero-sub">The planning, the remembering, the invisible work of running a household. It doesn't have to live in your head anymore.</p>
         <p class="hero-cta-line">Meet Sam, your AI household assistant. One message or one voice command, and your whole day is handled.</p>
         <div class="hero-ctas">
           <a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="btn-primary">
