@@ -419,10 +419,14 @@
 
   /* Hero phone: centered Sam orb */
   .mock-hero-orb-area {
-    display: flex; align-items: center; justify-content: center;
-    padding: 8px 0 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2px 0 2px;
   }
-  .mock-hero-orb { width: 80px; height: 80px; }
+  .mock-hero-orb-name {
+    font-family: 'Poppins', sans-serif; font-size: 0.6rem; font-weight: 700;
+    color: var(--text-primary); letter-spacing: 0.02em; margin-bottom: -4px;
+  }
+  .mock-hero-orb { width: 120px; height: 120px; }
   .mock-hero-orb canvas { width: 100%; height: 100%; display: block; }
 
   /* Mock input & cards (shared across hero, brain dump, etc.) */
@@ -1280,7 +1284,8 @@
           <div class="iphone-screen">
             <div class="iphone-screen-content" id="hero-screen">
               <div class="mock-hero-orb-area">
-                <div class="mock-hero-orb"><canvas data-sam-orb="80" data-sam-bg="#FAF8F5"></canvas></div>
+                <div class="mock-hero-orb-name">Sam</div>
+                <div class="mock-hero-orb"><canvas data-sam-orb="120" data-sam-bg="#FAF8F5"></canvas></div>
               </div>
               <div class="mock-tell-input">
                 <span id="hero-typing"></span><span class="mock-tell-cursor" id="hero-cursor"></span>
