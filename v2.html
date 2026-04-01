@@ -258,11 +258,11 @@
   @keyframes orb-breathe {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 0 8px rgba(59, 191, 160, 0.4), 0 0 20px rgba(59, 191, 160, 0.2), 0 0 40px rgba(59, 191, 160, 0.1);
+      box-shadow: 0 0 10px 2px rgba(110, 240, 222, 0.5), 0 0 25px 5px rgba(92, 232, 216, 0.3), 0 0 50px 10px rgba(92, 232, 216, 0.15), 0 0 80px 20px rgba(92, 232, 216, 0.06);
     }
     50% {
       transform: scale(1.06);
-      box-shadow: 0 0 12px rgba(59, 191, 160, 0.5), 0 0 28px rgba(59, 191, 160, 0.25), 0 0 52px rgba(59, 191, 160, 0.12);
+      box-shadow: 0 0 14px 3px rgba(110, 240, 222, 0.6), 0 0 30px 8px rgba(92, 232, 216, 0.35), 0 0 60px 14px rgba(92, 232, 216, 0.18), 0 0 90px 24px rgba(92, 232, 216, 0.08);
     }
   }
 
@@ -424,11 +424,12 @@
   .mock-sam-header-left { display: flex; align-items: center; gap: 8px; }
   .mock-sam-orb {
     width: 28px; height: 28px; border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, #7EEFD4, #4DD9B4 40%, #3BBFA0 70%, #2A9A80);
+    background: radial-gradient(circle at 45% 42%, #F0FFFC 0%, #B8FFF2 20%, #6EF0DE 45%, #40D4C0 70%, rgba(59, 200, 180, 0) 100%);
     box-shadow:
-      0 0 8px rgba(59, 191, 160, 0.4),
-      0 0 20px rgba(59, 191, 160, 0.2),
-      0 0 40px rgba(59, 191, 160, 0.1);
+      0 0 10px 2px rgba(110, 240, 222, 0.5),
+      0 0 25px 5px rgba(92, 232, 216, 0.3),
+      0 0 50px 10px rgba(92, 232, 216, 0.15),
+      0 0 80px 20px rgba(92, 232, 216, 0.06);
     animation: orb-breathe 3.14s ease-in-out infinite;
   }
   .mock-sam-title { font-weight: 700; font-size: 0.75rem; color: var(--text-primary); }
@@ -644,7 +645,7 @@
   }
   .brain-dump-demo-orb {
     width: 10px; height: 10px; border-radius: 50%;
-    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+    background: radial-gradient(circle at 45% 42%, #E0FFF8 0%, #6EF0DE 50%, #40D4C0 80%, rgba(59, 200, 180, 0) 100%);
   }
   .brain-dump-input {
     background: white; border-radius: var(--radius-sm); padding: 16px;
@@ -735,7 +736,7 @@
   }
   .sam-msg-orb-sm {
     width: 8px; height: 8px; border-radius: 50%;
-    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+    background: radial-gradient(circle at 45% 42%, #E0FFF8 0%, #6EF0DE 50%, #40D4C0 80%, rgba(59, 200, 180, 0) 100%);
   }
   .sam-convo-caption {
     font-size: 0.78rem; color: var(--text-tertiary); line-height: 1.55;
@@ -952,7 +953,7 @@
   }
   .myday-briefing-orb {
     width: 10px; height: 10px; border-radius: 50%;
-    background: radial-gradient(circle at 45% 45%, rgba(77, 217, 180, 0.9) 0%, rgba(77, 217, 180, 0.7) 55%, rgba(114, 128, 242, 0.25) 80%, rgba(114, 128, 242, 0) 100%);
+    background: radial-gradient(circle at 45% 42%, #E0FFF8 0%, #6EF0DE 50%, #40D4C0 80%, rgba(59, 200, 180, 0) 100%);
   }
   .myday-briefing-title { font-size: 0.48rem; font-weight: 700; color: var(--teal); }
   .myday-briefing-text { font-size: 0.4rem; color: var(--text-secondary); line-height: 1.5; }
