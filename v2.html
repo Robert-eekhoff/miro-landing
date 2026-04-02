@@ -670,14 +670,14 @@
   }
   .sam-orbit-orb {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 200px; height: 200px; z-index: 2;
+    width: 200px; height: 200px; z-index: 2; background: none;
   }
-  .sam-orbit-orb canvas { width: 100%; height: 100%; display: block; }
+  .sam-orbit-orb canvas { width: 100%; height: 100%; display: block; background: transparent; }
   /* Orbit path rings (decorative) */
   .sam-orbit-path {
     pointer-events: none; position: absolute; inset: 0; width: 100%; height: 100%;
   }
-  .sam-orbit-path circle { stroke: rgba(44, 40, 37, 0.06); stroke-width: 1; fill: none; }
+  .sam-orbit-path circle { stroke: rgba(44, 40, 37, 0.03); stroke-width: 1; fill: none; }
   /* Orbiting pill: Magic UI double-counter-rotation */
   @keyframes sam-pill-orbit {
     from {
@@ -1383,7 +1383,7 @@
       </svg>
 
       <!-- Center: Sam WebGL orb -->
-      <div class="sam-orbit-orb"><canvas data-sam-orb="200" data-sam-bg="#F9F6F1"></canvas></div>
+      <div class="sam-orbit-orb"><canvas data-sam-orb="200" data-sam-bg="#F9F6F1" data-sam-alpha></canvas></div>
 
       <!-- Inner ring: slower (40s), clockwise, 3 pills -->
       <div class="sam-orbit-pill" style="--angle:0;--radius:160;--duration:40s;--pill-w:180px;">
@@ -2519,6 +2519,7 @@
     'uniform float uThinking;',
     'uniform float uIntensity;',
     'uniform vec3 uBG;',
+    'uniform float uAlpha;',
     '',
     'const int MAX_RAY_MARCH_STEPS=32;',
     'const float MAX_DISTANCE=4.0;',
@@ -2555,7 +2556,7 @@
     '  float bd=length(uv);',
     '  vec3 bc=mix(vec3(0.35,0.92,0.78),vec3(0.60,0.25,0.20),uWarmth);',
     '  float bl=exp(-bd*3.5)*0.2;',
-    '  if(dot(uv,uv)>1.0){gl_FragColor=vec4(mix(uBG,bc,bl),1.0);return;}',
+    '  if(dot(uv,uv)>1.0){gl_FragColor=uAlpha>0.5?vec4(bc*bl,bl):vec4(mix(uBG,bc,bl),1.0);return;}',
     '  vec3 pos=vec3(0.0,0.0,-1.0);vec3 dir=normalize(vec3(uv,1.0));',
     '  float hd=0.0;float hc=MAX_DISTANCE;vec3 hp=pos;',
     '  for(int i=0;i<MAX_RAY_MARCH_STEPS;i++){',
@@ -2567,7 +2568,7 @@
     '    vec3 gt=mix(vec3(0.35,0.92,0.78),vec3(0.60,0.25,0.20),uWarmth);',
     '    float pu=1.0+0.08*sin(uTime*2.0);',
     '    vec3 gc=gt*uBrightness*pu*1.1;float ga=gs*0.65;',
-    '    gl_FragColor=vec4(mix(uBG,gc,ga),1.0);return;',
+    '    gl_FragColor=uAlpha>0.5?vec4(gc,ga):vec4(mix(uBG,gc,ga),1.0);return;',
     '  }',
     '  vec3 n=getNormal(hp);vec3 rd=normalize(pos-hp);',
     '  float f=max(0.0,dot(n,-dir));',
@@ -2579,7 +2580,7 @@
     '  float ib=1.0+uIntensity*0.3;',
     '  sc*=uBrightness*pu*ib;',
     '  float al=0.7+0.3*pow(1.0-f,2.0);',
-    '  gl_FragColor=vec4(mix(uBG,sc,al),1.0);',
+    '  gl_FragColor=uAlpha>0.5?vec4(sc,al):vec4(mix(uBG,sc,al),1.0);',
     '}'
   ].join('\n');
 
@@ -2616,14 +2617,19 @@
     canvases.forEach(function(canvas) {
       var size = parseInt(canvas.getAttribute('data-sam-orb'), 10);
       var bgHex = canvas.getAttribute('data-sam-bg') || '#F9F6F1';
+      var useAlpha = canvas.hasAttribute('data-sam-alpha');
       var renderSize = Math.min(Math.round(size * pixelRatio), 512);
 
       var renderer = new THREE.WebGLRenderer({
-        canvas: canvas, alpha: false, antialias: false, powerPreference: 'low-power'
+        canvas: canvas, alpha: useAlpha, antialias: false, powerPreference: 'low-power'
       });
       renderer.setSize(renderSize, renderSize, false);
-      var bgInt = parseInt(bgHex.replace('#',''), 16);
-      renderer.setClearColor(bgInt, 1);
+      if (useAlpha) {
+        renderer.setClearColor(0x000000, 0);
+      } else {
+        var bgInt = parseInt(bgHex.replace('#',''), 16);
+        renderer.setClearColor(bgInt, 1);
+      }
 
       var scene = new THREE.Scene();
       var uniforms = {
@@ -2634,12 +2640,14 @@
         uBrightness: { value: 1.2 },
         uThinking: { value: 0.0 },
         uIntensity: { value: 0.0 },
-        uBG: { value: hexToVec3(bgHex) }
+        uBG: { value: hexToVec3(bgHex) },
+        uAlpha: { value: useAlpha ? 1.0 : 0.0 }
       };
 
       var material = new THREE.ShaderMaterial({
         vertexShader: VERT, fragmentShader: FRAG,
-        uniforms: uniforms, depthTest: false, depthWrite: false
+        uniforms: uniforms, depthTest: false, depthWrite: false,
+        transparent: useAlpha
       });
 
       var mesh = new THREE.Mesh(sharedGeometry, material);
