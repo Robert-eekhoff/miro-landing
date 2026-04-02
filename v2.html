@@ -663,48 +663,62 @@
   }
   .sam-orb-hero canvas { width: 100%; height: 100%; display: block; }
 
-  /* Sam solar system orbit */
+  /* Sam solar system: Magic UI orbit pattern */
   .sam-orbit-container {
-    position: relative; width: 100%; max-width: 600px; height: 480px;
-    margin: 0 auto 48px; perspective: 900px;
+    position: relative; width: 100%; max-width: 700px; height: 500px;
+    margin: 0 auto 48px;
   }
   .sam-orbit-orb {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 220px; height: 220px; z-index: 2;
+    width: 200px; height: 200px; z-index: 2;
   }
   .sam-orbit-orb canvas { width: 100%; height: 100%; display: block; }
-  .sam-orbit-ring {
-    position: absolute; left: 50%; top: 50%; width: 0; height: 0;
-    transform-style: preserve-3d;
-    transform: translate(-50%, -50%) rotateX(65deg);
-    animation: sam-orbit-spin 36s linear infinite;
+  /* Orbit path rings (decorative) */
+  .sam-orbit-path {
+    pointer-events: none; position: absolute; inset: 0; width: 100%; height: 100%;
   }
-  @keyframes sam-orbit-spin { to { transform: translate(-50%, -50%) rotateX(65deg) rotateZ(360deg); } }
+  .sam-orbit-path circle { stroke: rgba(44, 40, 37, 0.06); stroke-width: 1; fill: none; }
+  /* Orbiting pill: Magic UI double-counter-rotation */
+  @keyframes sam-pill-orbit {
+    from {
+      transform:
+        rotate(calc(var(--angle) * 1deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc(var(--angle) * -1deg));
+    }
+    to {
+      transform:
+        rotate(calc(var(--angle) * 1deg + 360deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc(var(--angle) * -1deg - 360deg));
+    }
+  }
   .sam-orbit-pill {
-    position: absolute; left: 0; top: 0;
-    transform-style: preserve-3d;
-    /* Each pill counter-rotates to stay upright */
+    position: absolute; left: 50%; top: 50%;
+    margin-left: calc(var(--pill-w) / -2);
+    margin-top: -16px;
+    animation: sam-pill-orbit var(--duration) linear infinite;
+    will-change: transform;
   }
+  .sam-orbit-pill.reverse { animation-direction: reverse; }
   .sam-orbit-pill-inner {
     display: flex; align-items: center; gap: 6px;
-    padding: 8px 14px; border-radius: 100px;
+    padding: 8px 16px; border-radius: 100px;
     background: var(--warm-white); border: 1px solid var(--border);
-    box-shadow: 0 2px 12px rgba(44, 40, 37, 0.06);
-    font-size: 0.78rem; font-weight: 500; color: var(--text-primary);
+    box-shadow: 0 2px 16px rgba(44, 40, 37, 0.07);
+    font-size: 0.8rem; font-weight: 500; color: var(--text-primary);
     white-space: nowrap;
-    transform: rotateX(-65deg); /* counter-tilt to face camera */
-    backface-visibility: hidden;
   }
   .sam-orbit-badge {
-    font-size: 0.55rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-    padding: 2px 6px; border-radius: 4px;
+    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 4px; flex-shrink: 0;
   }
   .sam-orbit-badge.task { color: var(--coral); background: var(--coral-bg); }
   .sam-orbit-badge.meal { color: var(--mint); background: var(--mint-bg); }
   .sam-orbit-badge.grocery { color: var(--gold); background: var(--gold-bg); }
   .sam-orbit-badge.event { color: var(--indigo); background: var(--indigo-bg); }
   .sam-orbit-badge.query { color: var(--teal); background: var(--teal-bg); }
-  .sam-orbit-badge.edit { color: var(--text-tertiary); background: rgba(44, 40, 37, 0.05); }
+  .sam-orbit-badge.edit { color: var(--text-tertiary); background: rgba(44, 40, 37, 0.06); }
   .sam-orbit-body {
     max-width: 640px; margin: 0 auto; text-align: center;
     font-size: 1.05rem; color: var(--text-secondary); line-height: 1.85;
@@ -1200,9 +1214,11 @@
     .toru-visual { order: 2; }
 
     .sam-orb-hero { width: 180px; height: 180px; }
-    .sam-orbit-container { height: 380px; max-width: 100%; }
-    .sam-orbit-orb { width: 160px; height: 160px; }
-    .sam-orbit-pill-inner { font-size: 0.7rem; padding: 6px 10px; }
+    .sam-orbit-container { height: 400px; max-width: 100%; overflow: hidden; }
+    .sam-orbit-orb { width: 140px; height: 140px; }
+    .sam-orbit-pill-inner { font-size: 0.68rem; padding: 5px 10px; gap: 4px; }
+    .sam-orbit-pill { --radius: 120 !important; }
+    .sam-orbit-pill.reverse { --radius: 170 !important; }
     .sam-conversations { grid-template-columns: 1fr; gap: 20px; }
     .feature-cards-grid { grid-template-columns: 1fr; gap: 16px; }
     .testimonial-card { min-width: 280px; }
@@ -1358,28 +1374,37 @@
       <h2 style="font-family:'Lora',serif;font-size:clamp(2rem,4vw,3rem);font-weight:500;letter-spacing:-0.02em;text-align:center;margin-bottom:16px;">Sam doesn't just organize. Sam thinks.</h2>
     </div>
 
-    <!-- Solar system: orb + orbiting capability pills -->
-    <div class="sam-orbit-container animate-in" id="sam-orbit">
-      <div class="sam-orbit-orb"><canvas data-sam-orb="220" data-sam-bg="#F9F6F1"></canvas></div>
-      <div class="sam-orbit-ring" id="sam-orbit-ring">
-        <div class="sam-orbit-pill" data-orbit-r="200" data-orbit-offset="0">
-          <div class="sam-orbit-pill-inner">Pick up Miles at 3 <span class="sam-orbit-badge task">Task</span></div>
-        </div>
-        <div class="sam-orbit-pill" data-orbit-r="210" data-orbit-offset="60">
-          <div class="sam-orbit-pill-inner">Pasta tonight <span class="sam-orbit-badge meal">Meal</span></div>
-        </div>
-        <div class="sam-orbit-pill" data-orbit-r="190" data-orbit-offset="120">
-          <div class="sam-orbit-pill-inner">Milk, eggs <span class="sam-orbit-badge grocery">Grocery</span></div>
-        </div>
-        <div class="sam-orbit-pill" data-orbit-r="220" data-orbit-offset="180">
-          <div class="sam-orbit-pill-inner">Dentist Thursday 2pm <span class="sam-orbit-badge event">Event</span></div>
-        </div>
-        <div class="sam-orbit-pill" data-orbit-r="185" data-orbit-offset="240">
-          <div class="sam-orbit-pill-inner">What's for dinner? <span class="sam-orbit-badge query">Query</span></div>
-        </div>
-        <div class="sam-orbit-pill" data-orbit-r="205" data-orbit-offset="300">
-          <div class="sam-orbit-pill-inner">Move it to Thursday <span class="sam-orbit-badge edit">Edit</span></div>
-        </div>
+    <!-- Solar system: two orbital rings around the Sam orb -->
+    <div class="sam-orbit-container animate-in">
+      <!-- Decorative orbit paths -->
+      <svg class="sam-orbit-path" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50%" cy="50%" r="160"/>
+        <circle cx="50%" cy="50%" r="230"/>
+      </svg>
+
+      <!-- Center: Sam WebGL orb -->
+      <div class="sam-orbit-orb"><canvas data-sam-orb="200" data-sam-bg="#F9F6F1"></canvas></div>
+
+      <!-- Inner ring: slower (40s), clockwise, 3 pills -->
+      <div class="sam-orbit-pill" style="--angle:0;--radius:160;--duration:40s;--pill-w:180px;">
+        <div class="sam-orbit-pill-inner"><span class="sam-orbit-badge task">Task</span> Pick up Miles at 3</div>
+      </div>
+      <div class="sam-orbit-pill" style="--angle:120;--radius:160;--duration:40s;--pill-w:150px;">
+        <div class="sam-orbit-pill-inner"><span class="sam-orbit-badge meal">Meal</span> Pasta tonight</div>
+      </div>
+      <div class="sam-orbit-pill" style="--angle:240;--radius:160;--duration:40s;--pill-w:130px;">
+        <div class="sam-orbit-pill-inner"><span class="sam-orbit-badge grocery">Grocery</span> Milk, eggs</div>
+      </div>
+
+      <!-- Outer ring: faster (30s), counter-clockwise, 3 pills -->
+      <div class="sam-orbit-pill reverse" style="--angle:60;--radius:230;--duration:30s;--pill-w:180px;">
+        <div class="sam-orbit-pill-inner"><span class="sam-orbit-badge event">Event</span> Dentist Thursday</div>
+      </div>
+      <div class="sam-orbit-pill reverse" style="--angle:180;--radius:230;--duration:30s;--pill-w:190px;">
+        <div class="sam-orbit-pill-inner"><span class="sam-orbit-badge query">Query</span> What's for dinner?</div>
+      </div>
+      <div class="sam-orbit-pill reverse" style="--angle:300;--radius:230;--duration:30s;--pill-w:190px;">
+        <div class="sam-orbit-pill-inner"><span class="sam-orbit-badge edit">Edit</span> Move it to Thursday</div>
       </div>
     </div>
 
@@ -2214,69 +2239,6 @@
     var perPerson = document.getElementById('per-person-price');
     if (perPerson) perPerson.textContent = isYearly ? "That's just $1.88/person." : "That's just $2.50/person.";
   }
-
-  // ===== SAM ORBIT: position pills and animate depth =====
-  (function() {
-    var pills = document.querySelectorAll('.sam-orbit-pill');
-    var container = document.getElementById('sam-orbit');
-    if (!pills.length || !container) return;
-
-    var orbits = [];
-    pills.forEach(function(pill) {
-      orbits.push({
-        el: pill,
-        r: parseInt(pill.getAttribute('data-orbit-r'), 10),
-        offset: parseInt(pill.getAttribute('data-orbit-offset'), 10),
-      });
-    });
-
-    // Position pills on elliptical orbits
-    // The CSS rotateZ on the ring parent handles rotation.
-    // We just place each pill at its offset angle on the circle.
-    orbits.forEach(function(o) {
-      var rad = o.offset * Math.PI / 180;
-      var x = Math.cos(rad) * o.r;
-      var y = Math.sin(rad) * o.r;
-      o.el.style.transform = 'translate(' + Math.round(x) + 'px, ' + Math.round(y) + 'px)';
-    });
-
-    // Animate opacity: pills behind the orb (positive Z after rotateX tilt) should fade
-    var isVisible = false;
-    var orbObs = new IntersectionObserver(function(entries) {
-      isVisible = entries[0].isIntersecting;
-    }, { threshold: 0.05 });
-    orbObs.observe(container);
-
-    var rotSpeed = 360 / 36; // degrees per second (36s full rotation)
-    var t0 = Date.now();
-
-    function updateDepth() {
-      requestAnimationFrame(updateDepth);
-      if (!isVisible) return;
-      var elapsed = (Date.now() - t0) / 1000;
-      var ringAngle = (elapsed * rotSpeed) % 360;
-
-      orbits.forEach(function(o) {
-        // Current angle of this pill in the rotated ring
-        var totalDeg = (o.offset + ringAngle) % 360;
-        var rad = totalDeg * Math.PI / 180;
-        // After rotateX(65deg), the Y component maps to depth.
-        // sin(angle) > 0 means pill is in the "back" half of the orbit
-        var depthFactor = Math.sin(rad); // -1 (front) to 1 (back)
-        // Pills in back: lower opacity, lower z-index
-        if (depthFactor > 0) {
-          // Behind the orb
-          o.el.style.opacity = 0.15 + 0.15 * (1 - depthFactor);
-          o.el.style.zIndex = '1';
-        } else {
-          // In front of the orb
-          o.el.style.opacity = 0.5 + 0.5 * (1 - Math.abs(depthFactor));
-          o.el.style.zIndex = '3';
-        }
-      });
-    }
-    updateDepth();
-  })();
 
   // ===== HERO PHONE ANIMATION =====
   (function() {
