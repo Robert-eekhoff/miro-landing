@@ -654,7 +654,9 @@
   .brain-dump-replay:hover { text-decoration: underline; }
 
   /* ===== SAM CAPABILITIES ===== */
-  .sam-capabilities { background: var(--cream); }
+  .sam-capabilities {
+    background: radial-gradient(ellipse at 50% 55%, var(--cream) 0%, #F0EBE3 60%, #EAE4DA 100%);
+  }
   .sam-orb-hero {
     width: 240px; height: 240px; margin: 0 auto 32px;
     will-change: transform;
@@ -664,7 +666,7 @@
   /* Sam solar system: Magic UI orbit pattern */
   .sam-orbit-container {
     position: relative; width: 100%; max-width: 700px; height: 500px;
-    margin: 0 auto 48px;
+    margin: 0 auto 48px; overflow: visible;
   }
   .sam-orbit-orb {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
@@ -674,13 +676,19 @@
   /* Ambient light cast by the orb onto the page */
   .sam-orbit-glow {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 400px; height: 400px; z-index: 0; pointer-events: none;
-    background: radial-gradient(circle, rgba(59, 191, 160, 0.08) 0%, rgba(59, 191, 160, 0.03) 40%, transparent 70%);
-    animation: ambient-pulse 6s ease-in-out infinite;
+    width: 500px; height: 500px; z-index: 0; pointer-events: none;
+    background: radial-gradient(circle,
+      rgba(59, 191, 160, 0.12) 0%,
+      rgba(74, 92, 232, 0.04) 25%,
+      rgba(232, 99, 74, 0.03) 45%,
+      transparent 70%);
+    animation: ambient-pulse 7s ease-in-out infinite;
+    filter: blur(20px);
   }
   @keyframes ambient-pulse {
-    0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+    0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+    33% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
+    66% { opacity: 0.85; transform: translate(-50%, -50%) scale(1.02); }
   }
   .sam-wisps {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
@@ -690,7 +698,7 @@
   .sam-orbit-path {
     pointer-events: none; position: absolute; inset: 0; width: 100%; height: 100%;
   }
-  .sam-orbit-path circle { stroke: rgba(44, 40, 37, 0.03); stroke-width: 1; fill: none; }
+  .sam-orbit-path circle { stroke: rgba(44, 40, 37, 0.025); stroke-width: 0.5; fill: none; }
   /* Orbiting pill: Magic UI double-counter-rotation */
   @keyframes sam-pill-orbit {
     from {
@@ -1227,7 +1235,7 @@
     .toru-visual { order: 2; }
 
     .sam-orb-hero { width: 180px; height: 180px; }
-    .sam-orbit-container { height: 400px; max-width: 100%; overflow: hidden; }
+    .sam-orbit-container { height: 400px; max-width: 100%; overflow: visible; }
     .sam-orbit-orb { width: 140px; height: 140px; }
     .sam-orbit-pill-inner { font-size: 0.68rem; padding: 5px 10px; gap: 4px; }
     .sam-orbit-pill { --radius: 120 !important; }
@@ -2578,14 +2586,18 @@
     '  return normalize(vec3(SDF(pt)-SDF(pt-e.xyy),SDF(pt)-SDF(pt-e.yxy),SDF(pt)-SDF(pt-e.yyx)));',
     '}',
     '',
-    '// Color breathing: slow organic cycle through brand palette',
+    '// Color breathing: 7s cycle through all 3 brand colors',
     'vec3 breatheColor(vec3 base,float t){',
-    '  float c1=sin(t*0.15)*0.5+0.5;',
-    '  float c2=sin(t*0.11+1.5)*0.5+0.5;',
+    '  vec3 mint=vec3(0.23,0.75,0.63);',
+    '  vec3 coral=vec3(0.91,0.39,0.29);',
+    '  vec3 blue=vec3(0.29,0.36,0.91);',
     '  vec3 teal=vec3(0.45,0.95,0.82);',
-    '  vec3 cyan=vec3(0.55,0.85,0.95);',
-    '  vec3 warmTeal=vec3(0.50,0.90,0.75);',
-    '  return mix(mix(teal,cyan,c1),warmTeal,c2*0.3);',
+    '  float phase=fract(t*0.14);',
+    '  float w1=smoothstep(0.0,0.33,phase)-smoothstep(0.33,0.66,phase);',
+    '  float w2=smoothstep(0.25,0.55,phase)-smoothstep(0.55,0.85,phase);',
+    '  float w3=smoothstep(0.6,0.9,phase)+smoothstep(0.0,0.1,1.0-phase);',
+    '  vec3 accent=coral*w1+blue*w2+mint*w3;',
+    '  return mix(teal,teal+accent*0.4,0.5);',
     '}',
     '',
     'void main(){',
@@ -2595,7 +2607,7 @@
     '  // Color breathing: palette shifts slowly over time',
     '  vec3 coreBase=breatheColor(vec3(0.45,0.95,0.82),t);',
     '  vec3 core=mix(coreBase,vec3(0.65,0.30,0.22),uWarmth);',
-    '  vec3 edgeBase=breatheColor(vec3(0.30,0.88,0.72),t)*0.85;',
+    '  vec3 edgeBase=breatheColor(vec3(0.30,0.88,0.72),t)*0.75;',
     '  vec3 edge=mix(edgeBase,vec3(0.60,0.25,0.20),uWarmth);',
     '  vec3 spc=vec3(0.85,1.0,0.97);',
     '',
@@ -2629,7 +2641,7 @@
     '  float f=max(0.0,dot(n,-dir));',
     '  vec3 sc=mix(edge,core,f);',
     '  float rim=1.0-f;',
-    '  sc=mix(sc,edge*1.7,rim*rim);',
+    '  sc=mix(sc,edge*1.9,rim*rim);',
     '',
     '  // Dual specular: main highlight + rim catch light',
     '  float sp1=pow(specBP(normalize(vec3(600.0,800.0,-500.0)-hp),rd,n),14.0);',
@@ -2757,21 +2769,27 @@
       ctx.scale(dpr, dpr);
       var cx = cw / 2, cy = ch / 2;
 
-      // Create 28 wisps on elliptical orbits
+      // Brand color palette for wisps: teal, coral, indigo
+      var brandColors = [
+        { r: 59, g: 191, b: 160 },  // teal
+        { r: 59, g: 191, b: 160 },  // teal (weighted)
+        { r: 59, g: 191, b: 160 },  // teal (weighted)
+        { r: 232, g: 99, b: 74 },   // coral
+        { r: 74, g: 92, b: 232 },   // indigo
+      ];
+
+      // Create 18 wisps on tight elliptical orbits
       var wisps = [];
-      for (var w = 0; w < 28; w++) {
+      for (var w = 0; w < 18; w++) {
         var angle = Math.random() * Math.PI * 2;
-        var rx = 60 + Math.random() * 80;
-        var ry = 50 + Math.random() * 70;
-        var speed = 0.15 + Math.random() * 0.25;
+        var rx = 55 + Math.random() * 50;
+        var ry = 45 + Math.random() * 45;
+        var speed = 0.08 + Math.random() * 0.15;
         if (Math.random() > 0.5) speed *= -1;
-        var tilt = (Math.random() - 0.5) * 0.4;
-        var size = 1.2 + Math.random() * 2;
-        // Color: mostly teal with subtle variation
-        var hue = 160 + Math.random() * 20;
-        var sat = 60 + Math.random() * 20;
-        var light = 70 + Math.random() * 15;
-        wisps.push({ angle: angle, rx: rx, ry: ry, speed: speed, tilt: tilt, size: size, hue: hue, sat: sat, light: light });
+        var tilt = (Math.random() - 0.5) * 0.2;
+        var size = 1.0 + Math.random() * 1.8;
+        var col = brandColors[Math.floor(Math.random() * brandColors.length)];
+        wisps.push({ angle: angle, rx: rx, ry: ry, speed: speed, tilt: tilt, size: size, col: col, prevX: cx, prevY: cy });
       }
 
       var wispVisible = false;
@@ -2781,28 +2799,35 @@
       function drawWisps() {
         requestAnimationFrame(drawWisps);
         if (!wispVisible) return;
-        ctx.clearRect(0, 0, cw, ch);
+        // Soft trail: don't fully clear, leave faint afterimage
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'rgba(0,0,0,0.15)';
+        ctx.fillRect(0, 0, cw, ch);
+        ctx.globalCompositeOperation = 'source-over';
+
         var t = Date.now() / 1000;
         for (var i = 0; i < wisps.length; i++) {
           var p = wisps[i];
           var a = p.angle + t * p.speed;
           var x = cx + Math.cos(a) * p.rx;
           var y = cy + Math.sin(a) * p.ry + Math.sin(a) * p.tilt * p.rx;
-          // Fade based on position (behind orb = dimmer)
           var distFromCenter = Math.sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
-          var fade = distFromCenter < 45 ? distFromCenter / 45 : 1;
-          var alpha = (0.3 + 0.3 * Math.sin(t * 0.8 + i)) * fade;
+          var fade = distFromCenter < 50 ? distFromCenter / 50 : 1;
+          var alpha = (0.35 + 0.25 * Math.sin(t * 0.6 + i * 1.3)) * fade;
+          var c = p.col;
+          // Core dot
           ctx.beginPath();
           ctx.arc(x, y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = 'hsla(' + p.hue + ',' + p.sat + '%,' + p.light + '%,' + alpha.toFixed(2) + ')';
+          ctx.fillStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + alpha.toFixed(2) + ')';
           ctx.fill();
-          // Soft glow
-          if (p.size > 1.8) {
-            ctx.beginPath();
-            ctx.arc(x, y, p.size * 3, 0, Math.PI * 2);
-            ctx.fillStyle = 'hsla(' + p.hue + ',' + p.sat + '%,' + p.light + '%,' + (alpha * 0.15).toFixed(3) + ')';
-            ctx.fill();
-          }
+          // Soft radial glow
+          var grd = ctx.createRadialGradient(x, y, 0, x, y, p.size * 4);
+          grd.addColorStop(0, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (alpha * 0.2).toFixed(3) + ')');
+          grd.addColorStop(1, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',0)');
+          ctx.beginPath();
+          ctx.arc(x, y, p.size * 4, 0, Math.PI * 2);
+          ctx.fillStyle = grd;
+          ctx.fill();
         }
       }
       drawWisps();
