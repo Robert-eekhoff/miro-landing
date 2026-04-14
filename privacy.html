@@ -115,12 +115,12 @@ footer a:hover { color: var(--indigo); }
 
 <div class="container">
   <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: March 17, 2026</p>
+  <p class="last-updated">Last updated: April 14, 2026</p>
 
   <h2>Data Controller</h2>
   <p>Miiro is operated by Robert Eekhoff, Amsterdam, Netherlands. For privacy inquiries: <a href="mailto:support@miiro.app">support@miiro.app</a></p>
 
-  <p>Miiro ("we", "us", "our") is committed to protecting your privacy.</p>
+  <p>Miiro ("we", "us", "our") provides a task management, meal planning, grocery ordering, recipe management, household coordination, and AI-powered assistance application. We are committed to protecting your privacy.</p>
 
   <h2>What We Collect</h2>
   <ul>
@@ -129,6 +129,10 @@ footer a:hover { color: var(--indigo); }
     <li><strong>Push Notification Tokens:</strong> Device token for delivering activity notifications.</li>
     <li><strong>Subscription Information:</strong> Processed by Apple. We receive status through RevenueCat, never your payment info.</li>
     <li><strong>Tell Miiro Input:</strong> When you use the Tell Miiro AI feature, your natural language input is sent to Anthropic's AI service for processing. This data is used solely to organize your tasks, meals, and grocery lists. Your input is not stored by Anthropic for training purposes and is processed in accordance with Anthropic's usage policy.</li>
+    <li><strong>Sam Knowledge System:</strong> When you use Miiro, Sam (our AI assistant) learns about your household over time. This includes dietary preferences, allergies, food dislikes, cooking preferences, grocery brand preferences, household routines, important dates, and other facts you share in conversations. This data is stored in Firebase and is visible and editable by you in Settings under "What Sam knows." You can view, edit, or delete any of this data at any time.</li>
+    <li><strong>Grocery Ordering:</strong> When you order groceries through Miiro, your grocery list items are sent to our cloud service for product matching. For stores with direct API access (such as Albert Heijn, Crisp, and Picnic), your store authentication tokens (OAuth tokens, session tokens) are stored securely in Firebase to maintain your login session. Miiro never stores your store passwords. For stores without API access (such as Jumbo and Plus), Miiro automates the store's website inside a secure on-device browser to fill your cart. This happens entirely on your device using your own browser session and cookies.</li>
+    <li><strong>Store Authentication:</strong> When you link a supermarket account, the authentication flow happens directly between your device and the store. Miiro stores only the resulting session token, never your username or password. You can unlink any store at any time.</li>
+    <li><strong>Voice Input:</strong> When you use voice input with Sam, your audio is processed for speech recognition. The resulting text is then processed the same way as typed input.</li>
     <li><strong>Profile Photos:</strong> Optional profile image stored in Firebase Storage.</li>
     <li><strong>Referral Data:</strong> Referral codes and device identifiers for our referral program.</li>
     <li><strong>AI Processing:</strong> Text you enter in Tell Miiro is sent to Anthropic's Claude API for natural language processing. We send only the text content, not your identity. Additionally, when you add items to your grocery list, item names are sent to Anthropic's API for automatic category sorting. These item names may reflect cultural or dietary preferences but are not linked to your identity. No other user data is included in these requests.</li>
@@ -149,26 +153,30 @@ footer a:hover { color: var(--indigo); }
     <li>We don't sell data to advertisers</li>
     <li>We don't use data for targeted advertising</li>
     <li>We don't store your Tell Miiro conversations after processing</li>
+    <li>Your supermarket passwords (we store session tokens only, never credentials)</li>
+    <li>Your payment information for grocery orders (you pay the store directly)</li>
   </ul>
 
   <h2>How We Use Your Data</h2>
-  <p>Solely to provide the Miiro app: syncing content, sharing with household members, notifications, and subscription management.</p>
+  <p>We use your data solely to provide the Miiro app: syncing content across devices, sharing with household members, delivering notifications, managing subscriptions, processing AI requests to organize your tasks and meals, matching grocery products at supermarkets, learning your household preferences to provide better suggestions, and filling grocery carts at your chosen stores.</p>
 
   <h2>Legal Basis for Processing</h2>
   <p>We process your data based on: (a) performance of our contract with you (providing the Miiro service), (b) your consent (push notifications, optional features), and (c) legitimate interest (security, fraud prevention, service improvement).</p>
 
   <h2>Data Storage</h2>
   <p>Stored securely on Google Firebase with encryption at rest and in transit. Access restricted to authenticated household members.</p>
-  <p>Your data may be transferred to and processed in the United States through our service providers (Google Firebase, Anthropic, RevenueCat, Supadata). These transfers are protected by Standard Contractual Clauses.</p>
+  <p>Your data may be transferred to and processed in the United States through our service providers (Google Firebase, Anthropic, RevenueCat, Supadata, Apify, Inworld). These transfers are protected by Standard Contractual Clauses.</p>
 
   <h2>Data Retention</h2>
   <p>We retain your data for as long as your account is active. Upon account deletion, your data is permanently removed within 30 days. Anonymized analytics may be retained indefinitely.</p>
+  <p>Grocery ordering data (cart contents, order history) is retained for as long as your account is active. Store authentication tokens are stored until you unlink the store or delete your account. Sam's learned household knowledge is stored until you delete it manually or delete your account.</p>
 
   <h2>Data Sharing</h2>
-  <p>We share data only with: Google Firebase (storage/auth), RevenueCat (subscriptions), Apple (payments), Anthropic (AI processing for Tell Miiro and grocery categorization), Supadata (video transcript retrieval for recipe import), Google Analytics (anonymous website usage data), Expo (push notifications), and Zoho Mail (transactional emails). We never sell your data.</p>
+  <p>We share data only with: Google Firebase (storage and authentication), RevenueCat (subscription management), Apple (payments), Anthropic (AI processing for Sam assistant and grocery product matching), Apify (grocery product search across supermarkets), Supadata (video transcript retrieval for recipe import), Inworld (voice synthesis for Sam's spoken responses), Google Analytics (anonymous website usage data), Expo (push notifications), and Zoho Mail (transactional emails). For grocery ordering, your device connects directly to supermarket websites or APIs using your own account credentials. We never sell your data.</p>
 
   <h2>Your Rights</h2>
   <p>Request deletion anytime at <a href="mailto:support@miiro.app">support@miiro.app</a>. EU/EEA users have rights under GDPR including: access, rectification, erasure, portability, restriction of processing, and objection. We respond to requests within 30 days. You also have the right to lodge a complaint with your local supervisory authority (in the Netherlands: Autoriteit Persoonsgegevens, <a href="https://autoriteitpersoonsgegevens.nl">autoriteitpersoonsgegevens.nl</a>).</p>
+  <p>You can view, edit, and delete everything Sam has learned about your household at any time in Settings under "What Sam knows." You can also delete all learned data at once.</p>
 
   <h2>Changes</h2>
   <p>We'll notify you of significant changes through the app or email.</p>
