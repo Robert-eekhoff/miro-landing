@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join a household on Miiro</title>
+<meta name="description" content="You've been invited to a household on Miiro. Download the app to plan meals, groceries, and your calendar together.">
+<meta property="og:title" content="Join a household on Miiro">
+<meta property="og:description" content="You've been invited to a household on Miiro.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/koi-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #FAF9F6;
+  --warm: #F3F0EB;
+  --sand: #E4DED4;
+  --stone: #8C8578;
+  --charcoal: #3D3A36;
+  --indigo: #4A5CE8;
+  --coral: #E8634A;
+  --mint: #3BBFA0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--charcoal);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  line-height: 1.6;
+}
+
+.brand-ii { color: var(--indigo); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.join-container {
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  animation: fadeUp 0.6s ease-out;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  object-fit: contain;
+}
+
+.join-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.join-tagline {
+  font-size: 1rem;
+  color: var(--stone);
+  margin-bottom: 32px;
+}
+
+.code-card {
+  background: var(--warm);
+  border: 1px solid var(--sand);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.code-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--stone);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.code-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.step-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--warm);
+  border-radius: 12px;
+  font-size: 0.92rem;
+  color: var(--charcoal);
+}
+
+.step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--mint);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.download-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--mint);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.download-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(59, 191, 160, 0.3);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  color: var(--stone);
+  margin-top: 24px;
+}
+
+.footer-text a {
+  color: var(--stone);
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<div class="join-container">
+  <img src="/koi-logo.png" alt="Miiro" class="logo">
+
+  <h1 class="join-heading" id="heading">You've been invited to a household on M<span class="brand-ii">ii</span>ro</h1>
+  <p class="join-tagline">Plan meals, groceries, and your calendar together.</p>
+
+  <div class="code-card" id="codeCard" style="display:none;">
+    <div class="code-label">Household code</div>
+    <div class="code-value" id="codeValue">------</div>
+  </div>
+
+  <ol class="steps">
+    <li class="step-row"><span class="step-num">1</span><span>Download Miiro from the App Store.</span></li>
+    <li class="step-row"><span class="step-num">2</span><span>Open the app and create your account.</span></li>
+    <li class="step-row"><span class="step-num">3</span><span>Tap this invite link again — or paste the code in Settings.</span></li>
+  </ol>
+
+  <a class="download-btn" id="downloadBtn" href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052">
+    Download Miiro
+  </a>
+
+  <p class="footer-text">
+    <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+  </p>
+</div>
+
+<div class="toast" id="toast">Code copied!</div>
+
+<script>
+(function() {
+  // Extract household code from /join/CODE path. Household codes are 6
+  // uppercase alphanumerics — same shape the app generates.
+  var pathParts = window.location.pathname.split('/join/');
+  var rawCode = pathParts[1] ? pathParts[1].replace(/\/.*$/, '').replace(/\?.*$/, '') : null;
+  var code = rawCode && /^[A-Z0-9]{6,8}$/i.test(rawCode) ? rawCode.toUpperCase() : null;
+
+  if (code) {
+    document.getElementById('codeValue').textContent = code;
+    document.getElementById('codeCard').style.display = 'block';
+  }
+
+  // Tapping Download copies the code so the user can paste it after
+  // installing if Universal Links don't auto-route on first open.
+  // Apple doesn't have built-in deferred deep linking — without a
+  // third-party SDK (Branch, Adjust), the cleanest fallback is "tap
+  // the invite link again after install" which Universal Links handles
+  // because the app is now registered for miiro.app/join/* paths.
+  var downloadBtn = document.getElementById('downloadBtn');
+  downloadBtn.addEventListener('click', function(e) {
+    if (!code) return; // no-op, just follow the href to App Store
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).catch(function() {
+        fallbackCopy(code);
+      });
+    } else {
+      fallbackCopy(code);
+    }
+    showToast();
+  });
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
+  function showToast() {
+    var toast = document.getElementById('toast');
+    toast.classList.add('visible');
+    setTimeout(function() { toast.classList.remove('visible'); }, 2500);
+  }
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We use cookies to understand how you use our site and improve your experience. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacy Policy</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Decline</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>
