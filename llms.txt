@@ -1,0 +1,28 @@
+# Miiro · Household app for couples and families
+
+> Miiro is a household management app for couples and families. Tell Sam (the AI) what your household needs in plain language, and it organizes tasks, calendars, meals, recipes, and grocery orders. iOS first.
+
+## What Miiro does
+- Plain-language input via Tell Miiro AI, auto-sorted into tasks, events, meals, grocery lists
+- Shared grocery lists with supermarket integration (Albert Heijn, Jumbo, Picnic, Crisp, Plus in the Netherlands)
+- Recipe import from TikTok, Instagram, YouTube, recipe sites
+- Meal planning and shared cookbook
+- Shared calendar for couples
+- One subscription covers a household of up to 6
+
+## Pricing
+- 7-day free trial of Miiro+
+- $9.99/month or $59.99/year (US)
+- €9,99/maand of €59,99/jaar (NL)
+
+## Key pages
+- [Homepage (EN)](https://miiro.app/)
+- [Homepage (NL)](https://miiro.app/nl/)
+- [Blog (EN)](https://miiro.app/blog/)
+- [Blog (NL)](https://miiro.app/nl/blog/)
+- [App Store](https://apps.apple.com/app/miiro-couple-family-planner/id6759159052)
+
+## Company
+- Founded in Amsterdam
+- Built by a couple, designed for couples
+- One-person founding team plus partner contributions
