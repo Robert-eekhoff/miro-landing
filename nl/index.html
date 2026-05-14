@@ -1147,6 +1147,64 @@
     font-size: 13px; color: var(--text-3);
   }
 
+  /* ===== Uit de blog ===== */
+  .from-blog {
+    background: var(--warm-cream);
+    border-top: 1px solid var(--hairline);
+    padding: 120px 0;
+  }
+  @media (max-width: 720px) { .from-blog { padding: 80px 0; } }
+  .from-blog-header { text-align: center; margin-bottom: 64px; }
+  .from-blog-header .eyebrow { margin-bottom: 14px; display: inline-block; }
+  .from-blog-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -0.02em;
+  }
+  .from-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 980px) { .from-blog-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+  @media (max-width: 600px) { .from-blog-grid { grid-template-columns: 1fr; gap: 16px; } }
+  .from-blog-card {
+    display: flex; flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-lg);
+    padding: 28px;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .from-blog-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+    border-color: rgba(26,26,26,0.14);
+  }
+  .from-blog-card h3 {
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .from-blog-card p {
+    font-size: 14.5px;
+    color: var(--text-2);
+    line-height: 1.55;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  .from-blog-card .from-blog-read {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--coral);
+    letter-spacing: -0.005em;
+  }
+
   /* ===== Founder + Footer ===== */
   .founder {
     background: var(--warm);
@@ -2146,6 +2204,38 @@
     </div>
 
     <p class="pricing-fineprint">Alleen op iOS. Delen met huishouden inbegrepen.</p>
+  </div>
+</section>
+
+<!-- ====== UIT DE BLOG ====== -->
+<section class="from-blog" id="uit-de-blog" aria-labelledby="uit-de-blog-titel">
+  <div class="wrap">
+    <div class="from-blog-header reveal">
+      <span class="eyebrow">Uit de blog</span>
+      <h2 id="uit-de-blog-titel">Lezen voor een rustiger huishouden</h2>
+    </div>
+    <div class="from-blog-grid">
+      <a href="/nl/blog/klender-vs-miiro" class="from-blog-card reveal reveal-delay-1">
+        <h3>Klender vs Miiro: welke past bij jullie huishouden?</h3>
+        <p>Een eerlijke vergelijking tussen twee Nederlandse huishoud apps. Voor wie is welke beter.</p>
+        <span class="from-blog-read">Lees verder &rarr;</span>
+      </a>
+      <a href="/nl/blog/mentale-belasting-huishouden" class="from-blog-card reveal reveal-delay-2">
+        <h3>Mentale belasting verdelen: tips voor koppels</h3>
+        <p>Je bent niet vergeetachtig. Je draagt gewoon te veel mentale belasting. Wat je eraan kunt doen.</p>
+        <span class="from-blog-read">Lees verder &rarr;</span>
+      </a>
+      <a href="/nl/blog/gedeelde-agenda-app-koppels" class="from-blog-card reveal reveal-delay-3">
+        <h3>Gedeelde agenda apps voor koppels</h3>
+        <p>Welke agenda app werkt het best als jullie alles willen delen? We vergelijken de beste opties.</p>
+        <span class="from-blog-read">Lees verder &rarr;</span>
+      </a>
+      <a href="/nl/blog/maaltijdplanning-voor-twee" class="from-blog-card reveal reveal-delay-4">
+        <h3>Maaltijdplanning voor twee: zo werkt het</h3>
+        <p>Stoppen met elke avond improviseren. Een rustig systeem voor maaltijdplanning samen.</p>
+        <span class="from-blog-read">Lees verder &rarr;</span>
+      </a>
+    </div>
   </div>
 </section>
 
