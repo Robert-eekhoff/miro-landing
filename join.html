@@ -235,7 +235,7 @@ body {
   <ol class="steps">
     <li class="step-row"><span class="step-num">1</span><span>Download Miiro from the App Store.</span></li>
     <li class="step-row"><span class="step-num">2</span><span>Open the app and create your account.</span></li>
-    <li class="step-row"><span class="step-num">3</span><span>Tap this invite link again — or paste the code in Settings.</span></li>
+    <li class="step-row"><span class="step-num">3</span><span>Tap this invite link again, or paste the code in Settings.</span></li>
   </ol>
 
   <a class="download-btn" id="downloadBtn" href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052">
@@ -252,7 +252,7 @@ body {
 <script>
 (function() {
   // Extract household code from /join/CODE path. Household codes are 6
-  // uppercase alphanumerics — same shape the app generates.
+  // uppercase alphanumerics, same shape the app generates.
   var pathParts = window.location.pathname.split('/join/');
   var rawCode = pathParts[1] ? pathParts[1].replace(/\/.*$/, '').replace(/\?.*$/, '') : null;
   var code = rawCode && /^[A-Z0-9]{6,8}$/i.test(rawCode) ? rawCode.toUpperCase() : null;
@@ -264,7 +264,7 @@ body {
 
   // Tapping Download copies the code so the user can paste it after
   // installing if Universal Links don't auto-route on first open.
-  // Apple doesn't have built-in deferred deep linking — without a
+  // Apple doesn't have built-in deferred deep linking. Without a
   // third-party SDK (Branch, Adjust), the cleanest fallback is "tap
   // the invite link again after install" which Universal Links handles
   // because the app is now registered for miiro.app/join/* paths.
