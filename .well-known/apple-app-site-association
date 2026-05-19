@@ -5,7 +5,8 @@
         "appIDs": ["3AWJHCS4VV.com.miiroapp.main"],
         "components": [
           { "/": "/invite/*" },
-          { "/": "/join/*" }
+          { "/": "/join/*" },
+          { "/": "/h/*" }
         ]
       }
     ]
