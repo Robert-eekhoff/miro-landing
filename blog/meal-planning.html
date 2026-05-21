@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meal Planning for Couples: Guides, Tools, and Recipe Workflows | Miiro</title>
+<meta name="description" content="Everything we have written about meal planning for couples. Weekly systems, shared grocery lists, recipe collections, and wine pairings.">
+<meta property="og:title" content="Meal Planning for Couples: Guides, Tools, and Recipe Workflows">
+<meta property="og:description" content="Everything we have written about meal planning for couples. Weekly systems, shared grocery lists, recipe collections, and wine pairings.">
+<meta property="og:url" content="https://miiro.app/blog/meal-planning">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://miiro.app/og-image.png">
+<link rel="canonical" href="https://miiro.app/blog/meal-planning" />
+<link rel="alternate" hreflang="en" href="https://miiro.app/blog/meal-planning" />
+<link rel="alternate" hreflang="x-default" href="https://miiro.app/blog/meal-planning" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Meal Planning for Couples",
+  "description": "Guides, comparisons, and workflows for meal planning, shared grocery lists, recipe collections, and wine pairings.",
+  "url": "https://miiro.app/blog/meal-planning",
+  "inLanguage": "en",
+  "isPartOf": { "@type": "WebSite", "name": "Miiro", "url": "https://miiro.app" },
+  "about": [
+    { "@type": "Thing", "name": "Meal planning for couples" },
+    { "@type": "Thing", "name": "Shared grocery lists" },
+    { "@type": "Thing", "name": "Recipe collection" },
+    { "@type": "Thing", "name": "Wine pairing" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://miiro.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://miiro.app/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Meal Planning", "item": "https://miiro.app/blog/meal-planning" }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --warm-white: #FDFCFA;
+    --text-primary: #2C2825;
+    --text-secondary: #6B635B;
+    --text-tertiary: #9B9189;
+    --coral: #E8634A;
+    --indigo: #4A5CE8;
+    --mint: #3BBFA0;
+    --border: rgba(44, 40, 37, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 40, 37, 0.04);
+    --shadow-md: 0 4px 20px rgba(44, 40, 37, 0.06);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  .nav-logo-text {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--indigo);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 92, 232, 0.25);
+  }
+
+  /* CONTENT */
+  .page-header {
+    padding: 80px 0 24px;
+    text-align: center;
+  }
+
+  .page-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 18px;
+  }
+
+  .page-header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  .page-header .lede {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    text-align: center;
+    padding-top: 28px;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+  }
+
+  .breadcrumb a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover { color: var(--text-primary); }
+
+  .container--narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
+
+  /* POST LIST */
+  .post-list {
+    padding: 48px 0 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .post-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .post-card-date {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .post-card-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .post-card-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .post-card-read {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--coral);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-primary);
+    border-top: 1px solid rgba(249, 246, 241, 0.06);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .footer-brand-text {
+    font-family: 'Lora', serif;
+    color: rgba(249, 246, 241, 0.6);
+    font-size: 0.95rem;
+  }
+
+  .footer-tagline {
+    font-style: italic;
+    color: rgba(249, 246, 241, 0.3);
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(249, 246, 241, 0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(249, 246, 241, 0.7); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(249, 246, 241, 0.2);
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .post-card { padding: 28px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <img src="/koi-logo.png" alt="Miiro koi logo">
+      <span class="nav-logo-text">Miiro</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052" class="nav-cta">Get Miiro</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container--narrow">
+  <p class="breadcrumb"><a href="/blog/">Blog</a> &rsaquo; Meal Planning</p>
+  <header class="page-header">
+    <div class="page-eyebrow">Topic hub</div>
+    <h1>Meal Planning for Couples</h1>
+    <p class="lede">Weekly systems, shared grocery lists, recipe collections, and wine pairings. Everything we have written on planning meals together.</p>
+  </header>
+
+  <div class="post-list">
+
+    <a href="/blog/meal-planning-for-couples-guide" class="post-card">
+      <div class="post-card-date">The big guide</div>
+      <h2 class="post-card-title">The Complete Guide to Meal Planning for Couples</h2>
+      <p class="post-card-excerpt">A practical guide to weekly meal planning for couples. Save time, reduce food waste, and stop the nightly "what are we eating?" conversation for good.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/shared-grocery-list-apps-2026" class="post-card">
+      <div class="post-card-date">Grocery</div>
+      <h2 class="post-card-title">Shared Grocery List Apps: What Actually Works in 2026</h2>
+      <p class="post-card-excerpt">We compared the best shared grocery list apps for couples and families. AnyList, OurGroceries, Cozi, and more. Here's what works for real-time shared shopping.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/organize-grocery-list-by-aisle" class="post-card">
+      <div class="post-card-date">Grocery</div>
+      <h2 class="post-card-title">How to Organize Your Grocery List by Aisle (The Lazy Way)</h2>
+      <p class="post-card-excerpt">Organize your grocery list by store aisle and save 20+ minutes per trip. The manual way, templates, or apps that sort for you.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/multilingual-grocery-list-app" class="post-card">
+      <div class="post-card-date">Grocery</div>
+      <h2 class="post-card-title">The Multilingual Grocery List: How to Shop in Any Language</h2>
+      <p class="post-card-excerpt">Add grocery items in Spanish, German, Japanese, or any language. Miiro's AI sorts them by aisle automatically.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/anylist-vs-cozi-comparison" class="post-card">
+      <div class="post-card-date">Comparison</div>
+      <h2 class="post-card-title">AnyList vs Cozi: Which Grocery and Household App Is Better?</h2>
+      <p class="post-card-excerpt">AnyList vs Cozi compared side by side. Features, pricing, and a third option for couples who want more than just a grocery list.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/how-toru-recipe-saver-works" class="post-card">
+      <div class="post-card-date">Recipes</div>
+      <h2 class="post-card-title">Save Any Recipe from the Web: How Toru Works</h2>
+      <p class="post-card-excerpt">Toru is Miiro's built-in recipe saver. Paste any recipe URL and it extracts ingredients, steps, and everything you need. Here's how it works.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/how-to-save-recipes-tiktok-instagram-youtube" class="post-card">
+      <div class="post-card-date">Recipes</div>
+      <h2 class="post-card-title">How to Save Recipes from TikTok, Instagram, and YouTube</h2>
+      <p class="post-card-excerpt">Stop losing recipes in your bookmarks. 4 methods to save TikTok, Instagram, and YouTube recipes so you actually cook them.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/turn-tiktok-recipes-into-cookbook" class="post-card">
+      <div class="post-card-date">Recipes</div>
+      <h2 class="post-card-title">How to Turn TikTok Recipes into Your Own Digital Cookbook</h2>
+      <p class="post-card-excerpt">Hundreds of saved TikTok recipes, zero cooked? Here's how to turn social media recipes into a cookbook you actually use.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+    <a href="/blog/wine-pairing-with-sam" class="post-card">
+      <div class="post-card-date">Pairings</div>
+      <h2 class="post-card-title">Wine Pairing for Couples: How Sam Picks the Bottle</h2>
+      <p class="post-card-excerpt">Stop guessing which wine goes with dinner. Sam, the AI inside Miiro, pairs specific bottles to your meals through Vivino. Real picks, your budget.</p>
+      <span class="post-card-read">Read more &rarr;</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/koi-logo.png" alt="Miiro">
+      <span class="footer-brand-text">Miiro</span>
+      <span class="footer-tagline">- See what matters.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="mailto:support@miiro.app">support@miiro.app</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 Miiro. Built with care in Amsterdam.</span>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We use cookies to understand how you use our site and improve your experience. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacy Policy</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Decline</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>
