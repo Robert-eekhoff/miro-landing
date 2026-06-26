@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- GA4 loaded conditionally after cookie consent -->
+<script>
+  function miiroLoadGA4() {
+    if (document.getElementById('miiro-gtag')) return;
+    var s = document.createElement('script');
+    s.id = 'miiro-gtag';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P82S08N37Z';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-P82S08N37Z');
+  }
+  (function() {
+    var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+    if (c && c[2] === 'true') miiroLoadGA4();
+  })();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your order is on its way · Miiro</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://miiro.app/grocery-done" />
+<meta name="description" content="Your Instacart order is on its way. Head back to Miiro and your household stays in sync.">
+<meta property="og:title" content="Your order is on its way">
+<meta property="og:description" content="Your Instacart order is on its way. Head back to Miiro and your household stays in sync.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/koi-logo.png">
+
+<link rel="icon" href="/koi-logo.png" />
+<link rel="apple-touch-icon" href="/koi-logo.png" />
+<meta name="apple-itunes-app" content="app-id=6759159052">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #FAF9F6;
+  --warm: #F3F0EB;
+  --sand: #E4DED4;
+  --stone: #8C8578;
+  --charcoal: #3D3A36;
+  --indigo: #4A5CE8;
+  --coral: #E8634A;
+  --mint: #3BBFA0;
+  --plum: #7B4AE8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--charcoal);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  line-height: 1.6;
+}
+
+.brand-ii { color: var(--indigo); font-style: italic; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes settle {
+  from { opacity: 0; transform: scale(0.94) rotate(-3deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.done-container {
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Koi mark: the quiet Miiro signature */
+.logo {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 40px;
+  display: block;
+  object-fit: contain;
+  transform-origin: center;
+  animation: settle 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.done-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  animation: fadeUp 0.7s ease-out 0.15s both;
+}
+
+.done-tagline {
+  font-size: 1rem;
+  color: var(--stone);
+  margin-bottom: 48px;
+  animation: fadeUp 0.7s ease-out 0.25s both;
+}
+
+.steps {
+  max-width: 300px;
+  margin: 0 auto 48px;
+  text-align: left;
+  animation: fadeUp 0.7s ease-out 0.35s both;
+}
+
+.step-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--sand);
+}
+
+.step-row:first-child { border-top: none; }
+
+.step-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mint);
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  letter-spacing: 0.01em;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: none;
+  color: var(--mint);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  border: 1.5px solid var(--mint);
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  animation: fadeUp 0.7s ease-out 0.45s both;
+}
+
+.back-btn:hover {
+  background: var(--mint);
+  color: #fff;
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  color: var(--stone);
+  margin-top: 40px;
+  animation: fadeUp 0.7s ease-out 0.55s both;
+}
+
+.footer-text a {
+  color: var(--stone);
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<div class="done-container">
+  <img src="/koi-logo.png" alt="Miiro" class="logo">
+
+  <h1 class="done-heading">Your order is on its way</h1>
+  <p class="done-tagline">Instacart takes it from here. Your household stays in sync in M<span class="brand-ii">ii</span>ro.</p>
+
+  <div class="steps">
+    <div class="step-row">
+      <span class="step-dot"></span>
+      <span class="step-text">Your groceries are on their way</span>
+    </div>
+    <div class="step-row">
+      <span class="step-dot"></span>
+      <span class="step-text">Your household can see it's handled</span>
+    </div>
+    <div class="step-row">
+      <span class="step-dot"></span>
+      <span class="step-text">Sam is here when you need her</span>
+    </div>
+  </div>
+
+  <a class="back-btn" id="backBtn" href="https://apps.apple.com/app/miiro-couple-family-planner/id6759159052">
+    Back to Miiro
+  </a>
+
+  <p class="footer-text">
+    <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+  </p>
+</div>
+
+<script>
+(function() {
+  // Prefer reopening the installed app; fall back to the App Store listing.
+  var btn = document.getElementById('backBtn');
+  if (!btn) return;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var store = 'https://apps.apple.com/app/miiro-couple-family-planner/id6759159052';
+    var opened = false;
+    var fallback = setTimeout(function() {
+      if (!opened) window.location.href = store;
+    }, 900);
+    window.addEventListener('pagehide', function() {
+      opened = true;
+      clearTimeout(fallback);
+    });
+    // miiro:// is the app's registered URL scheme; opens the app when installed
+    window.location.href = 'miiro://';
+  });
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
+  <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We use cookies to understand how you use our site and improve your experience. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacy Policy</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Decline</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
+  if (!c) {
+    var b = document.getElementById('miiro-cookie-banner');
+    b.style.display = 'block';
+    b.style.opacity = '0';
+    b.style.transition = 'opacity 0.4s ease';
+    setTimeout(function(){ b.style.opacity = '1'; }, 100);
+  }
+})();
+function miiroConsent(accepted) {
+  var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
+  document.cookie = 'miiro_consent=' + accepted + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+  var b = document.getElementById('miiro-cookie-banner');
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+  if (accepted) miiroLoadGA4();
+}
+</script>
+</body>
+</html>
