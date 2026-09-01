@@ -683,6 +683,40 @@
     .footer-links { justify-content: center; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://miiro.app/blog/how-we-built-miiro",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I really build an app with no engineering background?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but it takes patience. React Native and Expo have excellent documentation, and tools like Firebase handle a lot of the backend complexity. The learning curve is real, but if you're motivated by a problem you personally want to solve, that motivation carries you through the hard parts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much did it cost to build Miiro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The main costs were the Apple Developer account ($99/year), Firebase (free tier covers most usage at launch), and the Anthropic API for Tell Sam's AI features. RevenueCat for subscription management is free up to a revenue threshold. Total out-of-pocket was under $200 before launch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What would you do differently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I'd consider Supabase instead of Firebase from the start. Firestore's NoSQL model caused our hardest debugging sessions around data ownership and security rules. For more on the technical lessons, read what I learned building Miiro in 4 months."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
