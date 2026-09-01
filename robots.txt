@@ -36,3 +36,5 @@ User-agent: YouBot
 Allow: /
 
 Sitemap: https://miiro.app/sitemap.xml
+Sitemap: https://miiro.app/sitemap-en.xml
+Sitemap: https://miiro.app/sitemap-nl.xml
