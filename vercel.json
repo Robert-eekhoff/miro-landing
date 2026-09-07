@@ -1,5 +1,9 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/nl/blog/klender-vs-miiro", "destination": "/nl/blog/gedeelde-agenda-app-koppels", "permanent": true },
+    { "source": "/nl/blog/klender-alternatieven", "destination": "/nl/blog/gedeelde-agenda-app-koppels", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/nl", "destination": "/nl/index.html" },
     { "source": "/nl/", "destination": "/nl/index.html" },
