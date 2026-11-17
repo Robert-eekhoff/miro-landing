@@ -104,6 +104,19 @@ body {
   margin-bottom: 32px;
 }
 
+.retap {
+  background: #E6F6F1;
+  border: 1.5px solid var(--mint);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 28px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.retap strong { display: block; margin-bottom: 2px; }
+
 .steps {
   display: flex;
   flex-direction: column;
@@ -181,21 +194,97 @@ body {
 <div class="h-container">
   <img src="/koi-logo.png" alt="Miiro" class="logo">
 
-  <h1 class="h-heading">You've been invited to a household on M<span class="brand-ii">ii</span>ro</h1>
-  <p class="h-tagline">Plan meals, groceries, and your calendar together.</p>
+  <div class="retap" role="note">
+    <strong data-i18n="retapTitle">Installed Miiro? Tap the invite link again.</strong>
+    <span data-i18n="retapBody">Go back to the message you got and tap the link once more. That's what adds you to the household.</span>
+  </div>
+
+  <h1 class="h-heading" id="heading">You've been invited to a household on M<span class="brand-ii">ii</span>ro</h1>
+  <p class="h-tagline" data-i18n="tagline">Plan meals, groceries, and your calendar together.</p>
 
   <ol class="steps">
-    <li class="step-row"><span class="step-num">1</span><span>Tap Open in Miiro to launch the app.</span></li>
-    <li class="step-row"><span class="step-num">2</span><span>If you don't have Miiro yet, download it from the App Store.</span></li>
-    <li class="step-row"><span class="step-num">3</span><span>Tap this invite link again after install to join the household.</span></li>
+    <li class="step-row"><span class="step-num">1</span><span data-i18n="step1">Install Miiro from the App Store.</span></li>
+    <li class="step-row"><span class="step-num">2</span><span data-i18n="step2">Open the app and make your account.</span></li>
+    <li class="step-row"><span class="step-num">3</span><span data-i18n="step3">Go back to the message and tap this invite link again.</span></li>
   </ol>
 
-  <button class="open-btn" id="openBtn" type="button">Open in Miiro</button>
+  <button class="open-btn" id="openBtn" type="button" data-i18n="openBtn">Open in Miiro</button>
 
   <p class="footer-text">
-    <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+    <a href="/privacy" data-i18n="privacy">Privacy</a> · <a href="/terms" data-i18n="terms">Terms</a>
   </p>
 </div>
+
+<script>
+// Language: ?lang=nl or ?lang=en wins (the app can pass it), else the
+// browser language. Optional ?from=Name shows who sent the invite.
+(function() {
+  var T = {
+    en: {
+      title: 'Join a household on Miiro',
+      heading: 'You\u2019ve been invited to a household on M<ii>ro',
+      headingFrom: '{name} invited you to M<ii>ro',
+      retapTitle: 'Installed Miiro? Tap the invite link again.',
+      retapBody: 'Go back to the message you got and tap the link once more. That\u2019s what adds you to the household.',
+      tagline: 'Plan meals, groceries, and your calendar together.',
+      step1: 'Install Miiro from the App Store.',
+      step2: 'Open the app and make your account.',
+      step3: 'Go back to the message and tap this invite link again.',
+      openBtn: 'Open in Miiro',
+      privacy: 'Privacy', terms: 'Terms',
+      cookieText: 'We use cookies to understand how you use our site and improve your experience.',
+      cookiePolicy: 'Privacy Policy', cookieDecline: 'Decline', cookieAccept: 'Accept'
+    },
+    nl: {
+      title: 'Doe mee met een huishouden op Miiro',
+      heading: 'Je bent uitgenodigd voor een huishouden op M<ii>ro',
+      headingFrom: '{name} nodigt je uit voor M<ii>ro',
+      retapTitle: 'Miiro ge\u00efnstalleerd? Tik nog een keer op de uitnodigingslink.',
+      retapBody: 'Ga terug naar het bericht dat je kreeg en tik nog een keer op de link. Zo kom je in het huishouden.',
+      tagline: 'Samen je maaltijden, boodschappen en agenda plannen.',
+      step1: 'Installeer Miiro uit de App Store.',
+      step2: 'Open de app en maak je account aan.',
+      step3: 'Ga terug naar het bericht en tik nog een keer op deze uitnodigingslink.',
+      openBtn: 'Openen in Miiro',
+      privacy: 'Privacy', terms: 'Voorwaarden',
+      cookieText: 'We gebruiken cookies om te begrijpen hoe je onze site gebruikt en je ervaring te verbeteren.',
+      cookiePolicy: 'Privacybeleid', cookieDecline: 'Weigeren', cookieAccept: 'Accepteren'
+    }
+  };
+  var params = new URLSearchParams(window.location.search);
+  var lang = (params.get('lang') || '').toLowerCase();
+  if (lang !== 'nl' && lang !== 'en') {
+    var nav = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+    lang = /^nl\b/i.test(nav) ? 'nl' : 'en';
+  }
+  var t = T[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  // Fills every [data-i18n] element under root. The cookie banner further
+  // down calls this again for itself.
+  window.miiroApplyLang = function(root) {
+    var nodes = (root || document).querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute('data-i18n');
+      if (t[k]) nodes[i].textContent = t[k];
+    }
+  };
+  window.miiroApplyLang(document);
+  // Heading: plain text only (the name is never parsed as HTML), the "ii"
+  // gets the brand colour.
+  var from = (params.get('from') || '').replace(/[<>]/g, '').trim().slice(0, 40);
+  var tpl = from ? t.headingFrom.replace('{name}', from) : t.heading;
+  var parts = tpl.split('<ii>');
+  var h = document.getElementById('heading');
+  h.textContent = parts[0];
+  var ii = document.createElement('span');
+  ii.className = 'brand-ii';
+  ii.textContent = 'ii';
+  h.appendChild(ii);
+  h.appendChild(document.createTextNode(parts[1] || ''));
+  window.miiroLang = lang;
+})();
+</script>
 
 <script>
 (function() {
@@ -234,10 +323,10 @@ body {
 <!-- Cookie Consent Banner -->
 <div id="miiro-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;font-family:'DM Sans',system-ui,sans-serif;">
   <div style="max-width:680px;margin:0 auto;padding:16px 20px;background:#fff;box-shadow:0 -2px 16px rgba(0,0,0,0.08);display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-radius:16px 16px 0 0;">
-    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;">We use cookies to understand how you use our site and improve your experience. <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;">Privacy Policy</a></p>
+    <p style="margin:0;font-size:14px;color:#1A1A2E;line-height:1.5;flex:1;min-width:200px;"><span data-i18n="cookieText">We use cookies to understand how you use our site and improve your experience.</span> <a href="https://miiro.app/privacy" style="color:#E8634A;text-decoration:underline;" data-i18n="cookiePolicy">Privacy Policy</a></p>
     <div style="display:flex;gap:8px;flex-shrink:0;">
-      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;">Decline</button>
-      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;">Accept</button>
+      <button onclick="miiroConsent(false)" style="padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:transparent;color:#1A1A2E;font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;" data-i18n="cookieDecline">Decline</button>
+      <button onclick="miiroConsent(true)" style="padding:8px 18px;border-radius:20px;border:none;background:#E8634A;color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;" data-i18n="cookieAccept">Accept</button>
     </div>
   </div>
 </div>
@@ -246,6 +335,7 @@ body {
   var c = document.cookie.match('(^|;)\\s*miiro_consent=([^;]*)');
   if (!c) {
     var b = document.getElementById('miiro-cookie-banner');
+    if (window.miiroApplyLang) window.miiroApplyLang(b);
     b.style.display = 'block';
     b.style.opacity = '0';
     b.style.transition = 'opacity 0.4s ease';
