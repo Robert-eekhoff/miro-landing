@@ -48,7 +48,7 @@
   "headline": "9 Free Shared To-Do List Apps for Couples (2026)",
   "description": "We tested 9 shared to-do list apps as a couple. All are free to start. See which sync both phones instantly, which show ads, and which one we use.",
   "datePublished": "2026-03-16",
-  "dateModified": "2026-05-14T12:00:00+02:00",
+  "dateModified": "2026-11-17T12:00:00+01:00",
   "author": {
     "@type": "Person",
     "name": "Robert",
@@ -392,6 +392,40 @@
     font-weight: 500;
   }
 
+  /* COMPARISON TABLE */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 0.92rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comparison-table th {
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--warm-white);
+    font-size: 0.85rem;
+  }
+
+  .comparison-table td {
+    color: var(--text-secondary);
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+  }
+
   /* BODY */
   .article-body {
     padding-bottom: 80px;
@@ -656,6 +690,8 @@
     .author-bio { padding: 24px; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
+    .comparison-table { font-size: 0.82rem; }
+    .comparison-table th, .comparison-table td { padding: 10px 12px; }
   }
 </style>
 <script type="application/ld+json">
@@ -665,6 +701,30 @@
   "url": "https://miiro.app/blog/best-apps-couples-share-tasks-2026",
   "inLanguage": "en",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best shared to-do list app for couples?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on what you share. If it's only tasks, shared Apple Reminders (two iPhones) or Google Keep (any phone) do the job for free. If your to-do list keeps spilling into groceries, meals and appointments, an app built for couples like Miiro or Cupla saves you from juggling three apps. We use Miiro because it puts tasks, groceries, meals and the calendar on one shared timeline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you share a to-do list with your partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pick one app you both have on your phone, make one shared list (call it Home), and invite your partner from inside the app. In Apple Reminders you share the list, in Google Keep you add your partner as a collaborator, and in Miiro you invite your partner to your household. Then agree on one rule: if it's not on the list, nobody is doing it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should go on a couples to-do list?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anything one of you might forget or both of you might do twice: bills, appointments, chores, birthdays and things to buy. Keep one list for the household and leave personal stuff out, so it stays short enough that you both actually read it. Recurring chores like the bins, laundry or watering the plants work best as repeating tasks, so nobody has to remember to add them."
+      }
+    },
     {
       "@type": "Question",
       "name": "What's the best free app for couples to share tasks?",
@@ -729,7 +789,7 @@
   <header class="article-header">
     <div class="article-breadcrumb"><a href="/blog/">Blog</a> / Best Apps for Couples</div>
     <h1>The 9 Best Shared To-Do List Apps for Couples in 2026</h1>
-    <p class="article-meta">By <span class="author">Robert</span>, founder of Miiro &middot; March 2026</p>
+    <p class="article-meta">By <span class="author">Robert</span>, founder of Miiro &middot; March 2026 &middot; Updated November 2026</p>
   </header>
 
   <div class="article-layout">
@@ -780,6 +840,11 @@
       </div>
 
       <section class="article-body">
+      <div class="callout callout-info">
+        <span class="callout-label">Short answer</span>
+        The best shared to-do list app for couples depends on your phones and on how much you want to share. Two iPhones and only tasks: shared Apple Reminders lists are free and sync instantly. One iPhone and one Android: Google Keep for simple lists, or Cozi if you also want a calendar. If your to-do list keeps spilling into groceries, meals and appointments, Miiro (our app, iPhone only) is free for shared tasks, calendar and grocery lists. All 9 apps below have a free version. <a href="#comparison">See the comparison table</a>.
+      </div>
+
       <p>When my wife and I became parents, the number of things we had to coordinate doubled overnight. Groceries, pediatrician appointments, daycare schedules, meal prep, cleaning, laundry. All of it needed to happen, and both of us needed to know what was going on at any given moment.</p>
 
       <p>The problem was never effort. We were both working hard. The problem was visibility. She'd buy diapers on the way home, not knowing I'd already picked some up at lunch. I'd plan dinner without realizing she'd already defrosted something else. Small miscommunications that added up into real frustration.</p>
@@ -809,6 +874,32 @@
       <p>That last question turned out to be the most important one. The best features in the world don't matter if your partner stops using the app after day three.</p>
 
       <h2 id="best-apps">The 9 best apps for couples to share tasks in 2026</h2>
+
+      <p id="comparison">Here's the quick version. Every app on this list has a free version, so you can try two or three before paying for anything. Details on each one follow below the table.</p>
+
+      <div class="table-scroll">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>App</th>
+            <th>Free version</th>
+            <th>Paid plan</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Miiro</td><td>Yes: shared tasks, calendar, grocery lists</td><td>$9.99/mo or $59.99/yr for the household</td><td>Tasks, groceries and meals in one app (iPhone)</td></tr>
+          <tr><td>Cupla</td><td>Yes, limited</td><td>~$6/mo</td><td>A couple-first calendar with lists</td></tr>
+          <tr><td>Todoist</td><td>Yes</td><td>~$5/mo</td><td>Couples who already live in Todoist</td></tr>
+          <tr><td>Cozi</td><td>Yes, with ads</td><td>~$39/yr</td><td>Families who want a free all-rounder</td></tr>
+          <tr><td>OurHome</td><td>Yes, with ads</td><td>Premium removes ads</td><td>Points and rewards for chores</td></tr>
+          <tr><td>Apple Reminders</td><td>Yes, fully free</td><td>None</td><td>Two iPhones, zero setup</td></tr>
+          <tr><td>Google Keep</td><td>Yes, fully free</td><td>None</td><td>Simple shared lists on any phone</td></tr>
+          <tr><td>Lovewick</td><td>Yes, limited</td><td>~$10/mo</td><td>Relationship check-ins with light task sharing</td></tr>
+          <tr><td>Any.do</td><td>Yes, basic</td><td>~$6/mo</td><td>A polished daily planner with shared spaces</td></tr>
+        </tbody>
+      </table>
+      </div>
 
       <!-- MIIRO -->
       <h3 id="app-miiro">1. Miiro</h3>
@@ -1016,6 +1107,15 @@
       <p>What I can say is this: if you want one app that handles tasks, meals, groceries, recipes, and your calendar together (without feeling overwhelming), that's exactly the problem we designed Miiro to solve.</p>
 
       <h2 id="faq">Frequently asked questions</h2>
+
+      <h3>What is the best shared to-do list app for couples?</h3>
+      <p>It depends on what you share. If it's only tasks, shared Apple Reminders (two iPhones) or Google Keep (any phone) do the job for free. If your to-do list keeps spilling into groceries, meals and appointments, an app built for couples like Miiro or Cupla saves you from juggling three apps. We use Miiro because it puts tasks, groceries, meals and the calendar on one shared timeline.</p>
+
+      <h3>How do you share a to-do list with your partner?</h3>
+      <p>Pick one app you both have on your phone, make one shared list (call it Home), and invite your partner from inside the app. In Apple Reminders you share the list, in Google Keep you add your partner as a collaborator, and in Miiro you invite your partner to your household. Then agree on one rule: if it's not on the list, nobody is doing it.</p>
+
+      <h3>What should go on a couples to-do list?</h3>
+      <p>Anything one of you might forget or both of you might do twice: bills, appointments, chores, birthdays and things to buy. Keep one list for the household and leave personal stuff out, so it stays short enough that you both actually read it. Recurring chores like the bins, laundry or watering the plants work best as repeating tasks, so nobody has to remember to add them.</p>
 
       <h3>What's the best free app for couples to share tasks?</h3>
       <p>For Apple users, shared Apple Reminders lists are hard to beat. They're built into your phone, sync instantly, and require zero setup. For cross-platform couples, Google Keep or Cozi's free tier are both solid options. If you need more than just tasks (grocery lists, calendar, meal planning), Miiro's free tier covers shared tasks, calendar, and grocery lists.</p>
